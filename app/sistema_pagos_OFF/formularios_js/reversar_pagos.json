@@ -1,0 +1,68 @@
+//{ usuario, fecha, identificador, archivo }
+cartola={
+						"formulario":'Reversar Pagos',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"paso_ws",
+													"tipo":"texto",
+													"opciones":[1],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"paso_ws"
+												},
+												{
+													"campo":"",
+													"tipo":"div",
+													"opciones":"&nbsp;<br>",
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"div_spa"
+												},
+												{
+													"campo":"Seleccione un motivo",
+													"tipo":"lista",
+													"opciones":datos_para_formulario.motivos,
+													"obligatorio":"si",
+													"nota":"Motivo",
+													"tamanio":[12,4,4],
+													"id":"motivo"
+												},
+												
+												
+												{
+													"campo":"fecha",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario.tabla,
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"seleccion"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"REVERSAR",
+							"ws":"reversar_pagos",
+							"funcion":""
+						}]
+				
+}

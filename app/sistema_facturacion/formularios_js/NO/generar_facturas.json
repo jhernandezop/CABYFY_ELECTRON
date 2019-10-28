@@ -1,0 +1,57 @@
+descuento={
+						"formulario":'Generar Facturas',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"CSV Contratos",
+													"tipo":"nota",
+													"opciones":["<h1 class='text-center'>¿Deseas generar la factura "+identificador+" ?</h1><hr>"],
+													"tamanio":[12,12,12],
+													"id":"nota_comtratos"
+												},{
+													"tipo":"div",
+													"opciones":[],
+													"tamanio":[12,3,4],
+													"id":"nota_comtratos_a"
+												},{
+													"tipo":"div",
+													"opciones":[],
+													"tamanio":[12,3,4],
+													"id":"nota_comtratos",
+													"id":"nota_comtratos_b"
+												},{
+													"campo":"CSV Contratos",
+													"tipo":"texto",
+													"opciones":[identificador],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[0],
+													"id":"id_tarea"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[,{
+							"boton":"SI, GENERAR",
+							"ws":"",
+							//"funcion":"descargar('"+identificador+"')"
+							"funcion":"enviar_facturar('"+identificador+"')"
+						},]
+				
+}
+//'+BH-ALZAS1918'"

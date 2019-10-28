@@ -1,0 +1,1009 @@
+<script>
+
+
+
+ 
+/*$( function() {	
+	$(".calendario").datepicker({
+		language: "es"
+	})//.datepicker("setDate", new Date());
+
+	//$( "#desde, #hasta" ).datepicker( "option", "maxDate", new Date() );
+				  
+} );
+//$( "#desde, #hasta" ).datepicker( "option", "maxDate", new Date() );
+  
+  
+  $( "#rango_fanel" ).on("change", function(){
+		//$( "#hasta" ).datepicker( "option", "minDate", $( "#desde" ).val() );
+			
+
+  })*/
+
+//grafico, origen_del_dato, lugar, tamanio
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+.espacio_de_trabajo{
+
+overflow: hidden;
+position: absolute;
+top: 80px;
+left: 15px;
+right: 15px;
+bottom: 15px;
+}
+
+.espacio_de_columnas{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 92px;
+	
+}
+
+.columna_base{
+	height: 100%;
+overflow-y: scroll;
+overflow-x:hidden;
+	
+}
+
+
+
+</style>
+
+<style>
+.input-group {
+    float: left !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+	margin-bottom:15px !important;
+}
+
+.btn-group{
+	margin-bottom:15px !important;
+}
+
+/*ESPECIFICAS DEL DOC*/
+
+#camanias_lista .list-group-item-text{
+	font-size:12px;
+	font-weight:bold;
+	color:#666;
+	
+	
+}
+#camanias_lista{
+	background:#f5f5f5;
+	padding:5px;
+	padding-top: 35px;
+	
+
+}
+#camanias_lista .list-group-item{
+	margin-bottom:5px !important;
+	margin:5px !important;
+	border:0px !important;
+	padding:1px !important;
+	background-image:url(assets/ima/esq.png) ;
+	background-size:20px;;
+	background-repeat:no-repeat;
+	background-position:right top;
+	padding:10px !important;
+
+}
+
+
+#camanias_lista a.list-group-item:focus{
+	background:#FFF !important;
+	
+}
+form .btn-group{
+	margin-bottom: 10px !important;
+}
+
+#camanias_lista .tarea_seleccionada{
+	background: #5cb85c !important;
+	color:#FFF !important;
+}
+
+#camanias_lista .tarea_seleccionada .list-group-item-text{
+	color:#FFF !important;
+}
+
+#camanias_lista .list-group-item:hover {
+    background: #eaeaea;
+	color:#000 !important;
+
+}
+
+#camanias_lista .input-group-addon { 
+    padding: 6px 12px!important;
+    font-size: 14px!important;
+    font-weight: 400!important;
+    line-height: 1!important;
+    color: #555!important;
+    text-align: center!important;
+    background: #eee!important;
+    border: 1px solid #ccc!important;
+    border-radius: 4px !important;
+}
+/*GENERALES*/
+
+
+#cuerpo .panel {
+    margin-bottom: 0px !important;
+    background-color: #fff;
+    border: 0px solid transparent;
+    border-radius: 0px !important;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0);
+    box-shadow: 0 1px 1px rgba(0,0,0,0);
+}
+.multi_lista .btn-group {
+	/*margin-bottom: 0px !important;*/
+	width:100%;
+}
+.multi_lista .multiselect {
+	width:100%;
+}
+#cuerpo .panel-heading {
+    font-size: 25px !important;
+    color: #000 !important;
+    border-radius: 0px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    -webkit-box-shadow: 0px 0px 13px -7px rgba(0,0,0,0);
+}
+
+#cuerpo .panel-body {
+	padding:20px;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+.header_formularios{
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+.header_formularios h2{
+	margin-bottom: 0px;
+	margin-top:3px;
+}
+
+.header_formularios .nav-tabs {
+
+    border-bottom: 0px;
+
+}
+
+
+</style>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 47px;
+  height: 20px;
+  margin: 25%;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  	background-color: #449344;
+	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.38);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+  
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#camanias_lista .btn-default, #camanias_lista.btn-default:hover, #camanias_lista.btn-default:focus{
+    color: #333;
+    background-color: #FFF;
+    border-color: #FFF;
+}
+
+.multiselect-container>li>a>label {
+  padding: 5px 30px 5px 30px;
+}
+
+/*LOADER*/
+.conter_loader {
+	position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background:rgb(255,255,255,0.5);
+z-index:8;
+	
+}
+.loader {
+	position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+	/*position: relative;
+    margin: auto;
+    top: 40%;*/
+    border: 5px solid #CCC; /* Light grey */
+    border-top: 5px solid #c11324; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 5s linear infinite;
+	
+	box-shadow: 0 0 50px #c11324, 0 0 5px #c11324;
+ 	opacity: 0.9;
+	  -webkit-transform: rotate(3deg) translate(0px, -4px);
+	  -moz-transform: rotate(3deg) translate(0px, -4px);
+	  -ms-transform: rotate(3deg) translate(0px, -4px);
+	  -o-transform: rotate(3deg) translate(0px, -4px);
+	  transform: rotate(3deg) translate(0px, -4px);
+	  z-index: 9;
+}
+
+#filtros_camban_campanias .form-control {
+    background: #FFF;
+    height: 25px; 
+    width: 100%;
+    border: 0px;
+    padding: 5px !important;
+    border-radius: 2px;
+    font-size: 12px;
+	
+	/**/
+}
+
+#filtros_camban_campanias .filtro {
+    /*float: left;
+    margin-left: 20px;
+    width: 90%;*/
+	
+	float: left;
+    margin-left: 15px;
+    padding-right: 25px;
+    height: 0px;
+    margin-top: 2px;
+    width: 100%;
+}
+
+#filtros_camban_campanias .filtro .dropdown-toggle{
+	width: 100%;
+}
+
+
+
+</style>
+
+<!--<link rel="stylesheet" type="text/css" href="assets_publica/css/kanban_001.css">-->
+<div class="espacio_de_trabajo">
+	  <!--BARRAS DE NAVEGACION-->
+      <div class="seccion-head row">
+      	  <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+          	<h2>USUARIOS</h2>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                    <div class="btn-group" style="width:100%">
+                    	<button  type="button" class="btn btn-success dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        	Selecciona un tipo usuario a crear<span class="caret"></span>
+                       	</button>
+                        <ul class="dropdown-menu">
+                        	<li data-formulario="user_dos"><a>Usuario Kanban</a></li>
+                        </ul>
+                    </div>
+			</div> 
+            <div class="col-xs-12 col-sm-6 col-md-9  text-right">
+            	<!--<i id="max" class="fa fa-window-maximize max" aria-hidden="true"></i>-->
+            </div>
+       </div>
+ 
+   
+
+       <div class="row espacio_de_columnas">
+       
+           
+           					
+                               
+                                       <div class="col-xs-6 col-sm-4 col-md-3 columna_base">
+                                           <div class="row ">
+                                           		
+                                                  <div class="panel panel-default">
+                                                      <div class="panel-heading "><!---->
+                                                      
+                                                      <div id="filtros_camban_campanias" class="text-center">
+                                                      	LISTA DE USUARIOS
+                                                      	<div class="btn-group filtro" data-tipo="input_buscar">
+                                                        	<span class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            	<div class="seleccion_seccion">
+                                                            		<input id="filtro_BUSCAR" type="text" class="form-control search_input_campanias" placeholder="BUSCAR..." aria-describedby="sizing-addon3">
+                                                            	</div>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                      </div>
+                                                      
+                                                      <!--<div  class="panel-body text-center"  ></div>-->
+                                                      		<div class="list-group text-left reorder-photos-list " id="camanias_lista">
+                                                              
+                                                            </div>
+                                                      
+                                                  </div>
+                                                
+                                           </div>
+                                           
+                                       </div>
+                                       
+                                       <div class="col-xs-6 col-sm-8 col-md-9 text-center columna_base">
+                                       		<div class="row h-100">
+                                                  <div class="panel panel-default">
+                                                      <div class="panel-heading text-center">GESTIÓN DEL USUARIO</div>
+                                                      
+                                                      
+                                                      
+                                                      <div class="panel-body text-center h-100">
+
+                                                      <!--DESCUENTO EN ARRIENDO-->
+                                                      <div id="user_dos" class=" col-xs-12 col-sm-12 col-md-12 " style="display:none">
+                                                        
+                                                      
+                                                      </div>
+                                                      
+                                                      <div class="defauld"></div>
+                                                  </div>
+                                            </div>
+                                       </div>
+                               
+                              
+                               
+                               
+                               
+
+           
+           
+           
+           
+           <!--INTERNACIONAL-->
+           
+           
+           
+           
+           
+    </div>
+
+
+</div>
+
+
+<script>
+
+//CONFIGURACIONDE INTERFAZ
+nota_accion=nota_campo_edicion
+$(".defauld").html(nota_accion);
+permisos=""
+
+
+
+
+
+//LISTA DE CAMPAÑAS Y PERMISOS
+
+function carga_usuarios(){
+$.ajax({
+		 	data:"",
+            url : direccion_ws+"cargar_usuarios_kanban",
+            type : "POST",           
+            dataType: 'json',
+			beforeSend: function () {
+				
+				
+				
+			},
+			success: function(data){
+				objeto_base=[];
+				//console.log(data)
+				permisos=data.permisos;
+				actualizar_usuarios(data.usuarios)
+				
+				
+				
+			},
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+
+        });
+
+	
+
+}
+
+
+ 
+carga_usuarios()
+
+
+
+
+posicion_maxima=0			
+
+function actualizar_usuarios(campañas_activas){			
+	$("#camanias_lista").html("")			
+	for (i in campañas_activas){
+		/*if(posicion_maxima<campañas_activas[i].posicion){
+		posicion_maxima=campañas_activas[i].posicion
+	}*/
+	estilo_boton="success"
+	if(campañas_activas[i].estado=="ACTIVA"){estilo_boton='<input data-id="'+campañas_activas[i].id+'" type="checkbox" checked="checked">'}
+	if(campañas_activas[i].estado=="NO ACTIVA"){estilo_boton='<input data-id="'+campañas_activas[i].id+'" type="checkbox">'}
+	
+	objeto_base.push([campañas_activas[i].id, i]);
+	$("#camanias_lista").append('<div data-buscar="'+campañas_activas[i].nombre+'" data-posicion="'+i+'" data-posicion_servicio="'+campañas_activas[i].posicion+'" id="'+campañas_activas[i].id+'" class="list-group-item ui-sortable-handle tarea">'+
+									
+									
+									//'<a href="#" class="list-group-item">'+
+										'<div class="row">'+
+											'<div class="col-xs-3 col-sm-3 col-md-3">'+
+												'<label class="switch">'+
+												  estilo_boton+
+												  '<span class="slider round"></span>'+
+												'</label>'+
+											//'<button class="btn btn-'+estilo_boton+' enviar" data-ws="">'+campañas_activas[i].estado+'</button>'+
+											'</div>'+
+											'<div class="col-xs-7 col-sm-7 col-md-7">'+
+												'<h4 class="list-group-item-heading"><strong>'+campañas_activas[i].nombre+' '+campañas_activas[i].apellido+'</strong></h4>'+
+												'<p class="list-group-item-text">'+
+													'<span class="label label-default">Interfaz: '+campañas_activas[i].interfaz+'</span><br>'+
+												'</p>'+
+														
+											
+											'</div>'+
+											'<div class="btn-group col-xs-2 col-sm-2 col-md-2">'+
+												'<button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+													'<i class="fa fa-cog" aria-hidden="true"></i>&nbsp;'+
+												'</button>'+
+												'<ul id="" class="dropdown-menu dropdown-menu-right">'+
+													'<li data-ws="crear_editar_usuario_kanban" data-para_formulario='+JSON.stringify({"id":campañas_activas[i].id, "paso_ws":0, "usuario": localStorage.usuario_reportes_seelmann})+' data-destino="user_dos"  class="accion_auto"><a href="#">Editar</a></li>'+
+													//'<li data-ws="{}" class="accion"><a href="#">Eliminar</a></li>'+
+												'</ul>'+
+											'</div>'+
+										'</div>'+
+										
+										
+								  	//'</a>'+
+								
+								'</div>')
+	
+}
+	
+	//$(".ui-sortable-handle").on("click", function(){recorrer_estado()});
+	
+	//$("#camanias_lista").mousedown( function(){recorrer_estado()});
+	$(".columna_base .switch").change( function(){actualizar_estado($(this).find("input").attr("data-id"))})
+	$(".accion_auto").on("click", function(){
+	//llamar_formulario($(this).attr("data-formulario"))
+	//alert($(this).attr("data-formulario"))
+	formulario="";
+	let cargo_formulario = new Promise((resolve, reject) => {
+	
+	
+	
+		id=JSON.parse($(this).attr("data-para_formulario")).id;
+		$.ajax({
+				
+				url : "formularios_js/"+$(this).data("destino")+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+				},
+				success: function(data){
+					//console.log(eval(formulario))
+					//eval(formulario)=data
+					//console.log(descuento_dia)
+					formulario=eval(data)
+					formulario.contendio[0].campos.push({
+																"campo":"id",
+																"tipo":"texto",
+																"opciones":id,
+																"obligatorio":"si",
+																"nota":"id",
+																"tamanio":[0],
+																"id":"id",
+															},{
+																"campo":"id",
+																"tipo":"texto",
+																"opciones":[1],
+																"obligatorio":"si",
+																"nota":"id",
+																"tamanio":[0],
+																"id":"paso_ws",
+															})
+					
+					
+					formulario=formulario
+					resolve("FIN")
+					
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					reject("NO")
+				}
+	
+			});
+		
+		});
+		
+		
+			
+			
+		Promise.all([cargo_formulario]).then(values => {
+	
+			if(values[0]=="FIN"){
+				$("#camanias_lista").find(".list-group-item").each(function(index, element) {
+					$(this).removeClass("tarea_seleccionada") 
+					
+				});
+				
+				$(this).parent("ul").parent("div").parent("div").parent("div").addClass("tarea_seleccionada");
+				
+				$("#usuarios, #paga_menos, #descuento_dia, .defauld").html("")
+				$("#usuarios, #paga_menos, #descuento_dia").hide()
+				//console.log(eval($(this).data("destino")).contendio[0].campos)
+				//llamar_datos_para_formulario($(this).data("ws"), $(this).attr("data-para_formulario"))
+				//cosntruir_formularios();
+				//
+				$.ajax({
+					data : JSON.parse($(this).attr("data-para_formulario")),
+					url : direccion_ws+$(this).data("ws"),
+					type : "POST",           
+					dataType: 'json',
+					beforeSend: function () {
+						
+						
+						
+					},
+					success: function(data){
+						
+						//console.log(eval(data.tipo_campania))
+						//console.log(eval(data.tipo_campania).contendio[0].campos[0].opciones)
+						
+						cosntruir_formularios(eval(formulario), "user_dos", data)
+						
+						//cosntruir_formularios(eval(data.tipo_campania), data.tipo_campania, data)
+						
+						
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						
+					}
+		
+				});
+				$("#"+$(this).data("destino")).show()
+			}	
+	
+		})	
+	})
+	
+	
+	
+}
+
+function actualizar_estado(id_actualizar){
+	
+	
+	$.ajax({
+				data: {id:id_actualizar},
+				url : direccion_ws+"estado_usuario_kanban",
+				type : "POST",           
+				dataType: 'json',
+				beforeSend: function () {
+					
+					
+					
+				},
+				success: function(data){
+					
+					//console.log(data)
+					carga_usuarios()
+					
+					
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+	
+				}
+	
+			});
+	
+}
+
+
+function recorrer_estado(){}
+
+function comparar_objetos(objeto_base,objeto_comparar){}
+
+
+
+//CONTROL DE CREACIONDE FORMULARIOS
+$(".dropdown-menu li").on("click", function(){
+	
+	$("#camanias_lista").find(".list-group-item").each(function(index, element) {
+			$(this).removeClass("tarea_seleccionada") 
+            
+        });
+	$("#usuarios, #paga_menos, #descuento_dia, .defauld").html("")
+	$("#usuarios, #paga_menos, #descuento_dia").hide()
+	
+	lugar=$(this).data("formulario")
+	//variables para formulario
+	permisos=permisos
+	console.log(permisos)
+	$.ajax({
+				
+				url : "formularios_js/"+$(this).data("formulario")+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+				},
+				success: function(data){
+					//console.log(eval(formulario))
+					//eval(formulario)=data
+					//eval(data)
+					//console.log(descuento_dia)
+					cosntruir_formularios(eval(data), lugar, "")	
+					
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					
+				}
+	
+			});
+	
+	
+	
+	$("#"+$(this).data("formulario")).show()
+})
+
+
+//PERSONALIZACION DE LA FUNCIONN DE INTERFAZ
+
+function comportamiento_interfaz(){
+	 
+	 $("#select_multi_id_grupo, #select_multi_id_categoria").parent("div").hide();
+	 for (i in campos_a_validar){
+				//console.log(campos_a_validar[i])	
+				if(campos_a_validar[i][0]=="id_grupo"){ campos_a_validar[i][2]="no"}
+				if(campos_a_validar[i][0]=="id_categoria"){ campos_a_validar[i][2]="no"}
+			}
+	 
+	 
+	 $("#select_aplicar_a > .select_item").on("click", function(){
+		//console.log(campos_a_validar)
+		$("#select_multi_id_grupo, #select_multi_id_categoria").parent("div").hide();
+		if($(this).data("opcion")=="Grupos"){
+			$("#select_multi_id_grupo").parent("div").show();
+			$("#select_multi_id_categoria").parent("div").hide();
+			for (i in campos_a_validar){
+				//console.log(campos_a_validar[i])	
+				if(campos_a_validar[i][0]=="id_grupo"){ campos_a_validar[i][2]="si"}
+				if(campos_a_validar[i][0]=="id_categoria"){ campos_a_validar[i][2]="no"}
+			}
+			
+			
+			
+		}else if($(this).data("opcion")=="Categorias"){
+			$("#select_multi_id_categoria").parent("div").show();
+			$("#select_multi_id_grupo").parent("div").hide();
+			for (i in campos_a_validar){
+				//console.log(campos_a_validar[i])	
+				if(campos_a_validar[i][0]=="id_grupo"){ campos_a_validar[i][2]="no"}
+				if(campos_a_validar[i][0]=="id_categoria"){ campos_a_validar[i][2]="si"}
+			}
+			
+		}
+		//for (i in campos_a_validar){ console.log(campos_a_validar[i])}	
+		
+	 })
+	 
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+function chequeo_base(){
+		
+		var valid = true;
+		
+		$("#filtros_camban_campanias").find('.filtro').each(function(index){				
+			tipo_filtro_seleccionado=$(this).data("tipo")
+				
+			if (tipo_filtro_seleccionado=="input_buscar"){
+				busqueda=$(this).find('.search_input').val();						
+				if(busqueda!=""){ valid = false }
+			}else if (tipo_filtro_seleccionado=="input_fecha_rango"){
+				busqueda=$(this).find('.input_fecha_rango').val();						
+				if(busqueda!=""){valid = false}
+			}else if (tipo_filtro_seleccionado=="input_select"){						
+				busqueda=$(this).find('.seleccion_seccion').html().replace(' <span class="caret"></span>', '');
+				if(busqueda!="TODOS"){valid = false}
+			}
+		});
+	 	return valid;
+		
+	}
+
+
+
+
+
+
+
+
+
+
+function recorer_filtro () {
+		let filtro_usado = 0;
+		if (chequeo_base()==false){
+			//ALGUN CAMPO LLENO
+			$(".tarea").hide();
+			$(".tarea").data("visulizacion", 0)
+
+			
+
+			//RECOORO LOS FILTROS
+			$("#filtros_camban_campanias").find('.filtro').each(function(index){
+			
+				tipo_filtro_seleccionado=$(this).data("tipo")
+				
+				if (tipo_filtro_seleccionado=="input_buscar"){
+						//ID DE FITRO SELECCIONADO
+						filtro_seleccionado=$(this).find(".search_input_campanias").attr("id").toLowerCase().replace("filtro_", "");
+						busqueda=$(this).find('.search_input_campanias').val();
+						filtro_usado = mostrar_tarea(tipo_filtro_seleccionado, filtro_seleccionado, busqueda, filtro_usado)
+						
+						
+			
+				}else if (tipo_filtro_seleccionado=="input_fecha_rango"){
+						//ID DE FITRO SELECCIONADO
+						filtro_seleccionado=$(this).find(".input_fecha_rango").attr("id").toLowerCase().replace("filtro_", "");
+						busqueda=$(this).find('.input_fecha_rango').val();
+						filtro_usado =  mostrar_tarea(tipo_filtro_seleccionado, filtro_seleccionado, busqueda, filtro_usado)
+						
+						
+				}else if (tipo_filtro_seleccionado=="input_select"){
+						//ID DE FITRO SELECCIONADO
+						filtro_seleccionado=$(this).find('ul').attr("id").toLowerCase().replace("filtro_", "");
+						busqueda=$(this).find('.seleccion_seccion').html().replace(' <span class="caret"></span>', '')
+						filtro_usado =  mostrar_tarea(tipo_filtro_seleccionado, filtro_seleccionado, busqueda, filtro_usado)
+						
+				
+				}
+
+				//console.log(filtro_seleccionado + ' | ' + filtro_usado);
+			})
+			
+		}else {
+			//TODOS LOS CAMPOS VACIOS
+			
+			$(".tarea").show();
+			$(".tarea").data("visulizacion", 1)
+		}
+		conteo_totales()
+		tag_seleccionados()
+	}
+	
+function mostrar_tarea(tipo_filtro_seleccionado, filtro_seleccionado, busqueda, filtro_usado){
+	
+		let ocultar = filtro_usado;
+		let mostrar = 0;
+		
+		/*if(tipo_filtro_seleccionado=="input_fecha_rango"){
+			busqueda=busqueda.split(" - ");
+			f1=busqueda[0]
+			f2=busqueda[1]
+						
+			if(f1!="" && f2!=""){
+				
+				filtro_usado = 1;
+
+				var aFecha1 = f1.split('/'); 
+				var aFecha2 = f2.split('/');
+					//console.log(f1 +"|"+ f2 )			 
+				var f1 = Date.UTC(aFecha1[2],aFecha1[1],aFecha1[0]); 
+				var f2 = Date.UTC(aFecha2[2],aFecha2[1],aFecha2[0]);
+					
+				for (i in kanban_usuario.columnas) {
+					$("#"+kanban_usuario.columnas[i].nombre).find('.tarea').each(function(){
+						seleccion=$(this).data(filtro_seleccionado)
+						var aFecha3 = seleccion.split('/');
+						var f3 = Date.UTC(aFecha3[2],aFecha3[1],aFecha3[0]); 
+
+						
+						mostrar = 1;
+						if (ocultar && $(this).data('visulizacion') == 0){
+							mostrar = 0;
+						}		
+
+						//console.log('OCULTAR:'+ocultar + '| Mostrar' + mostrar);				
+
+
+
+						
+						if (f1 <= f3 && f2 >= f3 && mostrar){							
+							$(this).show();
+							$(this).data("visulizacion", 1);
+						}else if ($(this).data("visulizacion") == 1) {
+							//console.log('2');
+							$(this).hide();
+							$(this).data("visulizacion", 0);
+						}
+						
+
+					});
+				}
+			}
+			
+		}
+		
+		if(tipo_filtro_seleccionado=="input_select"){
+
+
+			if (busqueda != 'TODOS'){
+				filtro_usado = 1;
+
+				for (i in kanban_usuario.columnas) {							
+					$("#camanias_lista").find('.tarea').each(function(){
+						seleccion=$(this).data(filtro_seleccionado);	
+
+						//console.log('ocultar|' + ocultar);
+
+						mostrar = 1;
+						if (ocultar && $(this).data('visulizacion') == 0){
+							mostrar = 0;
+						}		
+
+						//console.log('EACH INPUT ' + $(this).data("visulizacion"));
+
+						
+						if( busqueda==seleccion && mostrar){
+							//console.log(busqueda+" / "+seleccion)
+							$(this).show();
+							$(this).data("visulizacion", 1)
+						}else if ($(this).data("visulizacion") == 1) {
+							//console.log('OCURTANDO');
+							$(this).hide();
+							$(this).data("visulizacion", 0);
+						}
+						
+						
+					});
+				}
+			}
+		}*/
+		
+		if(tipo_filtro_seleccionado=="input_buscar"){
+
+			if (busqueda.length > 0){
+
+				filtro_usado = 1;			
+				for (i in kanban_usuario.columnas) {
+					$("#camanias_lista").find('.tarea').each(function(){
+						seleccion=$(this).data(filtro_seleccionado)
+										
+						//for (i in seleccion){
+							//if(seleccion[i]!=null){
+
+								mostrar = 1;
+								if (ocultar && $(this).data('visulizacion') == 0){
+									mostrar = 0;
+								}	
+
+								if(seleccion/*[i]*/.toUpperCase().indexOf(busqueda.toUpperCase())>=0 && mostrar){
+									$(this).show();
+									$(this).data("visulizacion", 1)
+									//break;
+								}else if ($(this).data("visulizacion") == 1) {
+									$(this).hide();
+									$(this).data("visulizacion", 0);
+								}
+							//}	
+						//}
+
+					});
+				}
+			}
+			
+		}
+
+		//console.log(filtro_seleccionado + '^' + filtro_usado);
+
+		return filtro_usado;
+		
+		
+	}
+
+
+$(".search_input_campanias").on("keyup", function(){
+	
+	if ($(this).val()==""){
+		
+		$("#camanias_lista").find('.tarea').each(function(){
+				$(this).show();
+				$(this).data("visulizacion", 1)
+		})
+		
+	}else{
+		recorer_filtro();
+	}
+})
+
+</script>

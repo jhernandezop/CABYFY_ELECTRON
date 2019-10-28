@@ -1,0 +1,271 @@
+descuento={
+						"formulario":'Detalle de Cliente',
+						"contendio":[	
+										{
+										"grupo":"Datos de Facturación",
+										"tamanio":[12,12,7],
+										"campos":[
+													{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"paso",
+													"tipo":"texto",
+													"opciones":"0",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[0],
+													"id":"paso"
+												},{
+													"campo":"_id",
+													"tipo":"texto",
+													"opciones":"0",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[0],
+													"id":"_id"
+												},{
+													"campo":"Rut",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"rut_fact"
+												},{
+													"campo":"Nombre Fantasia",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,8],
+													"id":"nombre_corto"
+												},{
+													"campo":"Razon Social",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"razon_social"
+												},{
+													"campo":"Giro",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"giro"
+												},{
+													"campo":"Mails Factura",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,5],
+													"id":"correos_fact"
+												},{
+													"campo":"Dirección",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,7],
+													"id":"direccion"
+												},{
+													"campo":"Ciudad",
+													"tipo":"lista",
+													"opciones": las_ciudades,
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"ciudad"
+												},{
+													"campo":"Comuna",
+													"tipo":"lista",
+													"opciones": las_comunas,
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"comuna"
+												}]
+										},
+										{
+										"grupo":"Detalle de Facturación",
+										"tamanio":[12,12,5],
+										"campos":[
+												
+												
+												{
+													"campo":"Facturar",
+													"tipo":"check",
+													"opciones":"false",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"det_facturar"
+												},{
+													"campo":"C. de Costos",
+													"tipo":"check",
+													"opciones":"false",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,5],
+													"id":"det_ccosto"
+												},{
+													"campo":"HES",
+													"tipo":"check",
+													"opciones":"false",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"det_hes"
+												},{
+													"campo":"O. Compra",
+													"tipo":"check",
+													"opciones":"false",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"det_ocompra"
+												},{
+													"campo":"Desglose",
+													"tipo":"check",
+													"opciones":"false",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,5],
+													"id":"det_desglose"
+												},{
+													"campo":"Metodo de Pago",
+													"tipo":"lista",
+													"opciones": metodoDePago,
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"metodo_pago"
+													
+													
+													
+												},{
+													"campo":"Payments Terms",
+													"tipo":"lista",
+													"opciones": paymentsTerms,
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"payments_term"
+												}]
+										},
+										{
+										"grupo":"Contacto Administrador",
+										"tamanio":[12,12,6],
+										"campos":[{
+													"campo":"Nombre Administador",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"nombre_admin"
+												},{
+													"campo":"Mail Administrador",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"correo_admin"
+												},{
+													"campo":"Teléfono Administrador",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"telefono_admin"
+												},{
+													"campo":"Teléfono Administrador",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"telefono_admin2"
+												}]
+										},
+										{
+										"grupo":"Contacto de Cobranza",
+										"tamanio":[12,12,6],
+										"campos":[{
+													"campo":"Nombre Cobranza",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"nombre_cob"
+												},{
+													"campo":"Mail Cobranza",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"correo_cob"
+												},{
+													"campo":"Teléfono Cobranza",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"telefono_cob"
+												},{
+													"campo":"Teléfono Cobranza",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"telefono_cob2"
+												}]
+										},
+										{
+										"grupo":"Responsable Cabify",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Representante de ventas",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"sales_rep"
+												},{
+													"campo":"Soporte",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"soporte"
+												}]
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"editar_clientex",
+							"funcion":""
+						}]
+				
+}
+
+
+

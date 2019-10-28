@@ -1,0 +1,65 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+descuento={
+						"formulario":'Descarga de Nomina',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"CSV Contratos",
+													"tipo":"nota",
+													"id":"nota",
+													"opciones":["<h1 class='text-center'>Deseas descargar el archivo de la nomina "+identificador+" </h1><hr>"],
+													"tamanio":[12,12,12]
+												},{
+													"campo":"Formato",
+													"tipo":"lista",
+													"opciones":datos_para_formulario.formatos,
+													"dependiente":"id_swift",
+													"dependencia":"",
+													"obligatorio":"si",
+													"nota":"Seleccione",
+													"tamanio":[12,12,12],
+													"id":"formato"
+												},
+												{
+													"campo":"Fecha de pago",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha de pago",
+													"tamanio":[12,12,12],
+													"id":"fecha_pago"
+												},{
+													"campo":"CSV Contratos",
+													"tipo":"texto",
+													"opciones":[identificador],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[0],
+													"id":"id_tarea"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[,{
+							"boton":"DESCARGAR",
+							"ws":"",
+							"funcion":"descargar('"+identificador+"')"
+						},]
+				
+}
+//'+BH-ALZAS1918'"

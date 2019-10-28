@@ -1,0 +1,56 @@
+descuento={
+						"formulario":'Cargar Ordenes de Compra '+identificador,
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Documentos Obligatorios",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"XLSX Facturas Ordenes de Compra",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tipo_file":"XLSX",
+													"tamanio":[12,12,6],
+													"id":"carga_ventas"
+												},{
+													"campo":"MES_SELECCIONADO",
+													"tipo":"texto",
+													"opciones":[$("#filtro_Mes").parent(".filtro").find(".seleccion_seccion").find(".label").html()],
+													"obligatorio":"si",
+													"nota":"ID TAREA",
+													"tamanio":[0],
+													"id":"mes"
+												},{
+													"campo":"ID TAREA",
+													"tipo":"texto",
+													"opciones":[identificador],
+													"obligatorio":"si",
+													"nota":"ID TAREA",
+													"tamanio":[0],
+													"id":"id_tarea"
+												}
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"cargar_desglose",
+							"funcion":""
+						}]
+				
+}

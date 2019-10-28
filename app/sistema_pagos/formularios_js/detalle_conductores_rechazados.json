@@ -1,0 +1,119 @@
+descuento={
+						"formulario":'Detalle de Pago Rechazados',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Datos del Conductor",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"id",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"Nomina",
+													"tamanio":[12,12,4],
+													"id":"nomina"
+												},{
+													"campo":"Rut Contable",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cliente",
+													"tamanio":[12,12,4],
+													"id":"id_cliente"
+												},{
+													"campo":"Rut Titular",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"nombre",
+													"tamanio":[12,12,4],
+													"id":"nombre"
+												},{
+													"campo":"Nombre Titular Cuenta",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cantidad de Viajes",
+													"tamanio":[12,12,6],
+													"id":"cant_viajes"
+												},{
+													"campo":"email",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,6],
+													"id":"total_pagar"
+												}
+												
+												]
+												
+												
+										},
+										{
+										"grupo":"Datos Bancarios",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Banco",
+													"tipo":"lista",
+													"opciones":[{"tag":"a", "id":"a"},{"tag":"b", "id":"b"}],
+													"dependiente":"id_swift",
+													"dependencia":"",
+													"obligatorio":"si",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,8],
+													"id":"banco"
+												},{
+													"campo":"Swift",
+													"tipo":"lista",
+													"opciones":[{"tag":"ad", "id":"ad", "id_dependiente":"a"},{"tag":"bd", "id":"bd", "id_dependiente":"b"}],
+													"dependiente":"",
+													"dependencia":"banco",
+													"obligatorio":"no",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,4],
+													"id":"id_swift"
+												},{
+													"campo":"Numero Cuenta",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,6],
+													"id":"total_pagar"
+												},{
+													"campo":"Monto Pagar Socio",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,6],
+													"id":"total_pagar"
+												}
+												
+												]
+												
+												
+										}
+									
+						]/*,
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos_banco('"+identificador+"')"
+						}]*/
+				
+}
+
+
+

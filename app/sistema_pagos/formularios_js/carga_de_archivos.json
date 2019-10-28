@@ -1,0 +1,622 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+descuento={
+						"formulario":'Carga de Archivos de Pagos',
+						"contendio":[	
+										
+										{
+										"grupo":"1",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm"> Cargar company Information (Obligatorio) <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>Company Invoice</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Company_Invoice.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Seleccione:</strong> la semana del año</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"usuario",
+														"tipo":"texto",
+														"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[0],
+														"id":"usuario"
+													},{
+														"campo":"Semana del Año",
+														"tipo":"fecha",
+														"navegacion":"anual y mensual",
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Semana a procesar",
+														"tamanio":[12,12,12],
+														"id":"semana"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"XLSX Company Information",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																					"c_company_id"
+																					//, "company_name"
+																					//, "company_email"
+																					, "tax_code"
+																					, "bank_account"
+																					, "swift"
+																					, "notes"
+																					//, "holder_name"
+																					, "tax_document_code"	
+																					, "bank_id"
+																					, "account_type"
+																					
+																					 
+
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"cargar_datos_bancarios"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha y la cuenta bancaria este en formato numero.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(1)"
+											}]
+										}
+										,{
+										"grupo":"2",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Cargar company Invoice (Obligatorio)<strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>Company Information</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Company_Information.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"XLSX Company Invoice",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":["Company_id"
+																				,"Company Name"
+																				, "Icon"
+																				, "Region"
+																				, "City"
+																				, "holder_name"
+																				, "holder_type"
+																				, "tax_document_code"
+																				//, "bank"
+																				//, "account_type"
+																				//, "swift"
+																				//, "bank account"
+																				, "company_tax_code"
+																				, "invoice_period (Custom SQL Query)"
+																				, "Email"
+																				, "company_invoice_code"
+																				, "company_invoice_date"
+																				, "notes"
+																				, "#invoices"
+																				, "#entries"
+																				, "Cost (variable)"
+																				, "Bonus (fixed)"
+																				, "Penalties (fixed)"
+																				, "Shifts (fixed)"
+																				, "Base Imponible"
+																				, "IVA"
+																				, "Total"
+																				, "Payouts Cash"
+																				, "Payouts Wallet"
+																				, "Payouts Others"
+																				, "Total a Pagar"	
+																				
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"cargar_company_invoice"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha y la cuenta bancaria este en formato numero.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(2)"
+											}]
+										},
+										{
+										"grupo":"3",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Cargar Documentos SII <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>documentos de SII</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/SII.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"CSV Datos Sii",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																				 "Mes"
+																				 ,"Nø de documento"
+																				 ,"Estado"
+																				 ,"Fecha"
+																				 ,"Rut"
+																				 ,"D.V"
+																				 ,"Nombre o Raz¢nÿSocial"
+																				 ,"Brutos"
+																				 ,"Retenido"
+																				 ,"iva"
+																				 ,"Pagado"
+																				 ,"Tipo"
+	
+																					 
+
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"cargar_datos_sii"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(3)"
+											},{
+												"boton":"OMITIR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(3, 'NO')"
+											}]
+										},
+										{
+										"grupo":"4",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Cargar descuentos de invesionistas <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>descuento de inversionistas.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Inversionista.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"CSV Socios",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																				
+																				"Company_id"
+																				,"Company Name"
+																				,"monto_inversionista"
+																				,"inversionista"
+	
+																					 
+
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"cargar_socios"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(4)"
+											},{
+												"boton":"OMITIR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(4,'NO')"
+											}]
+										},
+										{
+										"grupo":"5",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Cargar descuentos varios. <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>descuento varios</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Descuentos_Varios.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"CSV Desc. Varios",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																				"Company_id"
+																				,"monto_descuentos"
+																				,"concepto_descuentos"
+	
+																					 
+
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"descuentos_varios"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(5)"
+											},{
+												"boton":"OMITIR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(5,'NO')"
+											}]
+										},
+										{
+										"grupo":"6",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Claimed Invoice <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>descuento Claimed</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Claimed_Invoices.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													}*/,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"CSV Claimend Invoice",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																				"Company_id"
+																				,"company_name"
+																				,"requested_amount_local"
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"claimed_invoice"
+													}/*,{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}*/
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(6)"
+											},{
+												"boton":"OMITIR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(6,'NO')"
+											}]
+										}/*,
+										{
+										"grupo":"7",
+										"tamanio":[12,12,12],
+										"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+										"campos":[
+													{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm">Nomina de Rechazados <strong></strong></div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>Nomina de Rechazados</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync/documents/Nomina_rechazados.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"descargar_"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													},{
+														"campo":"XLSX Nomina de rechazados",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																					"ID COMPANY"
+																					,"Rut titular de la cuenta"
+																					,"D.V"
+																					,"Monto Socio"
+																					,"Medio de Pago"
+																					,"Codigo Swift Banco"
+																					,"Numero Cuenta Corriente o de Ahorro"
+																					,"Direccion e-mail"
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"nomina_rechazados"
+													},{
+														"campo":"",
+														"tipo":"div",
+														"opciones":['<br><div class="alert alert-danger" role="alert"><strong>IMPORTANTE: </strong>No cambies el orden de las columnas, valida que los campos con fechas tengan formato de fecha.</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}
+												],
+										"opciones":[{
+												"boton":"CARGAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(7)"
+											},{
+												"boton":"OMITIR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(7,'NO')"
+											}]
+										}*/,
+										{
+											"grupo":"7",
+											"tamanio":[12,12,12],
+											"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+											"campos":[
+													{
+														"campo":"usuario",
+														"tipo":"div",
+														"opciones":['<div class="well well-sm text-center">Listo, <strong></strong> los archivos fueron cargados</div>'],
+														"obligatorio":"si",
+														"nota":"usuario",
+														"tamanio":[12,12,12],
+														"id":"nota_01"
+													}],
+											"opciones":[{
+												"boton":"FINALIZAR",
+												"ws":"",
+												"funcion":"procesar_archivos_pago(7)"
+											}],
+													
+													
+										}
+										
+									
+						],
+						"opciones":[{
+							"boton":"CARGAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}]
+				
+}

@@ -1,0 +1,47 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+//$("#myModal").find(".modal-dialog").addClass("modal-sm");
+
+descuento={
+						"formulario":'Descargar',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Seleccione Formato",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Formato",
+													"tipo":"lista",
+													"opciones":datos_para_formulario.formatos,
+													"dependiente":"id_swift",
+													"dependencia":"",
+													"obligatorio":"si",
+													"nota":"Seleccione",
+													"tamanio":[12,12,12],
+													"id":"formato"
+												},
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"DESCARGAR",
+							"ws":"",
+							"funcion":"descargar_formato('"+identificador+"')"
+						}]
+				
+}
+
+
+

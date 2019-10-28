@@ -1,0 +1,101 @@
+user={
+				"formulario":'Crear Usuario',
+				"contendio":[	
+								{
+									"grupo":"Datos de Registro",
+									"tamanio":[12,6,6],
+									"campos":[	
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Nombre",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"nombre",
+													"tamanio":[12,12,12],
+													"id":"nombre"
+												},
+												{
+													"campo":"Apellido",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"apellido",
+													"tamanio":[12,6,6],
+													"id":"apellido"
+												},
+												{
+													"campo":"correo",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"correo",
+													"tamanio":[12,6,6],
+													"id":"correo"
+												}
+											]
+								},
+								{
+									"grupo":"Datos de sesión",
+									"tamanio":[12,6,6],
+									"campos":[	
+												
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"usuario"
+												},
+												{
+													"campo":"clave",
+													"tipo":"password",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"clave",
+													"tamanio":[12,12,12],
+													"id":"clave"
+												}
+											]
+								},
+								{
+									"grupo":"Opciones de Interfaz",
+									"tamanio":[12,12,12],
+									"campos":[	
+												
+												{
+													"campo":"Seleccione una Interfaz",
+													"tipo":"lista",
+													"opciones":[{"tag":"Kanban", "id":"kanban"}, {"tag":"Lista", "id":"lista"}],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"interfaz"
+												},
+												{
+													"campo":"Seleccione las Opciones de Interfaz",
+													"tipo":"lista_multi",
+													"opciones":[{"tag":"ventas", "id":"ventas"}, {"tag":"Campañas", "id":"campanias"}, {"tag":"Usuarios", "id":"usuarios"}],
+													"obligatorio":"si",
+													"nota":" las opciones de Interfaz",
+													"tamanio":[12,12,12],
+													"id":"opciones_interfaz"
+												}
+											]
+								}
+				],
+				"opciones":[{
+					"boton":"CREAR USUARIO",
+					"ws":"crear_editar_usuario_kanban"
+				}]
+				
+}

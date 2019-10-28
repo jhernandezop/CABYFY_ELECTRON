@@ -1,0 +1,1077 @@
+
+<!--<div id="kanaban_load"></div>-->
+<div class="kanaban_load" id="kanaban_cabify"></div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+alert(constantes.wsUrl)
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	parametro_filtro=parametro;
+	load_camban()
+}
+
+
+function load_camban(tipo){
+	
+	
+			let data_requerida = new Promise((resolve, reject) => {
+				$.ajax({
+					url: direccion_ws+"semanas",
+					type: 'get',
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						if(data.estatus){
+							if(data.estatus=="OK" || data.estatus=="FIN"){
+								las_semanas=data.data;
+								resolve("FIN")			
+											
+							}else if(data.estatus=="NO OK"){
+								
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);		
+											
+							}
+						}else{
+							$('#mensajes_alerta').modal("show");
+							console.log(data.codigo_error);
+							console.log(data.mensaje_error);			
+						}
+						
+						
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")						
+					}
+								
+				});
+			});
+			
+			
+			
+			
+			
+			Promise.all([data_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+			 
+			 	
+						$.ajax({
+								data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+								url : direccion_ws+"carga_kanban",
+								type : "POST",
+								headers:{"authorization": "JWT" + " " +localStorage.token },       
+								dataType: 'json',
+								beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+								},
+								success: function(data){
+									
+									if(data.estatus){
+									
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											
+											kanban_usuario=data.data;
+											$(".kanaban_load").html("");
+											//construccion(data.fichas, data)
+											construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify')
+											
+										}else if(data.estatus=="NO OK"){
+											
+											$('#mensajes_alerta').modal("show");
+											console.log(data.codigo_error);
+											console.log(data.mensaje_error);		
+										}
+									
+									}else{
+										$('#mensajes_alerta').modal("show");
+										console.log(data.codigo_error);
+										console.log(data.mensaje_error);			
+									}
+									
+									
+									
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+					
+								}
+					
+							});
+		
+			}
+	})
+		
+}
+
+function load_tareas(){
+
+		$.ajax({
+			data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+			url : direccion_ws+"carga_kanban",
+			type : "POST",           
+			dataType: 'json',
+			success: function(data) {
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						columnas=[]
+						for (i in data.data.columnas){
+							datos_columna=data.data.columnas[i].nombre.split("|",2);	
+							columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+						}
+						
+						refrescar_tareas(data.data.fichas, columnas)
+					
+					}else if(data.estatus=="NO OK"){
+						$('#mensajes_alerta').modal("show");
+						console.log(data.codigo_error);
+						console.log(data.mensaje_error);		
+					}
+									
+				}else{
+					$('#mensajes_alerta').modal("show");
+					console.log(data.codigo_error);
+					console.log(data.mensaje_error);			
+				}
+				
+			}			
+		});
+		
+
+	}
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+	
+		
+
+
+
+
+
+
+
+
+
+
+function tarea_click_cliente(){
+	
+	
+		$(".modal-header").html("")
+		//VER UN DOCUMENTO
+		if(ws=="" && documento_accion!=""){
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+				},
+				success: function(data){
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")	
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+			});
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			if(metodo_peticion=="GET"){
+				
+				window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				
+			}else{
+				
+			}
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+			
+				
+				datos_para_formulario="";
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0},
+						url : direccion_ws+ws,
+						type : "POST",
+						headers:{"authorization": "JWT" + " " +localStorage.token },           
+						dataType: 'json',
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+							}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+							}
+							
+							/*if(data=="BLOQUEADO"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_bloqueado+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO")
+						
+							}else if(data=="NO EXISTE"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_cambio+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO")
+						
+						
+							}else if(data!="BLOQUEADO" || data!="NO EXISTE" ){
+								datos_para_formulario=data.data
+								resolve("SI")
+							}*/
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						
+						
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+							dataType: "text",
+							beforeSend: function () {},
+							success: function(data){
+								cargo_formulario=eval(data)
+								
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+							},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		}
+}
+
+
+
+
+
+
+function tarea_dblclick_cliente(){
+	
+	
+	$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button>");
+	
+	//alert(identificador)
+
+	//VER UN DOCUMENTO
+	if(ws=="" && documento!=""){
+		
+		$.ajax({
+			url : nivel_sistema+"formularios_js/"+documento+".json",
+			dataType: "text",
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+				//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+				mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, "")	
+			},
+			error: function (xhr, ajaxOptions, thrownError) {}
+				
+		});
+	
+	//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK				
+	} else if(ws!="" && documento==""){
+	
+	//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+	} else if(ws!="" && documento!=""){
+	
+		
+		datos_para_formulario="";
+		//LAMO DATOS PARA FOMRULARIO
+		let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+		$.ajax({
+			data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0},
+			url : direccion_ws+ws,
+			type : "POST",
+			headers:{"authorization": "JWT" + " " +localStorage.token },           
+			dataType: 'json',
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+							}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+							}
+							/*if(data=="BLOQUEADO"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_bloqueado+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data=="NO EXISTE"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_cambio+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data!="BLOQUEADO" || data!="NO EXISTE" ){
+								datos_para_formulario=data
+								resolve("SI")
+							}*/
+						},
+						error: function (xhr, ajaxOptions, thrownError) {}
+						
+					});
+			});
+				
+				//LAMO  FOMRULARIO
+			Promise.all([llamar_datos_de_formulario]).then(values => {
+				if(values[0]=="SI"){
+					$.ajax({
+						url : nivel_sistema+"formularios_js/"+documento+".json",
+						dataType: "text",
+						beforeSend: function () {},
+						success: function(data){
+							//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_para_formulario)
+							
+									
+						},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		
+		
+	}
+		
+		
+}
+
+
+
+/////FUNCIONES DEL CLIENTE
+function enviar_archivos(){
+	
+	
+	/*$("grupo_1form_carga_de_archivos").find(".refrescar_validacion").each(function() {
+        
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo")
+		} else{
+			$(this).removeClass("fucus_negativo")
+		}
+		
+    });*/
+	nota_negativa=""
+	validacampo_auto(["semana","lista","si"])
+	validacampo_auto(["cargar_contratos","file","no"])
+	validacampo_auto(["cargar_alza","file","no"])
+	validacampo_auto(["cargar_datos_bancarios","file","no"])
+	validacampo_auto(["cargar_datos_sii","file","no"])
+	validacampo_auto(["datos_circulo","file","no"])
+	validacampo_auto(["cargar_company_invoice","file","si"])
+	/*$("#semana
+	$("#cargar_contratos
+	$("#cargar_alza
+	$("#cargar_datos_bancarios
+	$("#cargar_datos_sii
+	$("#cargar_company_invoice*/
+	
+	if(nota_negativa==""){
+		
+	$("#form_carga_de_archivos").append('<div class="conter_loader"><div class="loader"></div></div>');
+      let cargar_contratos = new Promise((resolve, reject) => {
+			 
+			if($("#cargar_contratos").val()!=""){
+			var files = $("#cargar_contratos").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+console.log(formData)
+            formData.append('semana',$("#semana").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_contratos",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+						
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#cargar_contratos_viuw").addClass("fucus_negativo");
+						
+						//resolve("NO")
+					}
+	
+				});
+				
+			}else {
+				resolve("OK")
+			}
+				
+		  
+		});
+		
+		
+		let cargar_alza = new Promise((resolve, reject) => {
+			
+			if($("#cargar_alza").val()!=""){	
+		  var files = $("#cargar_alza").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_alza",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#cargar_alza_viuw").addClass("fucus_negativo");
+						//$("#cargar_alza_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+			}else{resolve("OK")}
+		});
+		
+		let cargar_datos_bancarios = new Promise((resolve, reject) => {
+			
+			if($("#cargar_datos_bancarios").val()!=""){	
+		  var files = $("#cargar_datos_bancarios").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_datos_bancarios",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#cargar_datos_bancarios_viuw").addClass("fucus_negativo");
+						//$("#cargar_datos_bancarios_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+			}else{resolve("OK")}
+		});
+		
+		let cargar_datos_sii = new Promise((resolve, reject) => {
+			if($("#cargar_datos_sii").val()!=""){	
+		  var files = $("#cargar_datos_sii").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_datos_sii",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#cargar_datos_sii_viuw").addClass("fucus_negativo");
+						//$("#cargar_datos_sii_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+			}else{resolve("OK")}
+		});
+		
+		let datos_circulo = new Promise((resolve, reject) => {
+			if($("#datos_circulo").val()!=""){	
+		  var files = $("#datos_circulo").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_circulo",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#datos_circulo_viuw").addClass("fucus_negativo");
+						//$("#datos_circulo_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+				
+			}else{resolve("OK")}
+		});
+		
+		
+		let descuentos_varios = new Promise((resolve, reject) => {
+			
+		  var files = $("#descuentos_varios").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			
+			
+			 if($("#descuentos_varios").val()!=""){
+			  $.ajax({
+					url: direccion_ws+"cargar_descuentos_varios",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#descuentos_varios_viuw").addClass("fucus_negativo");
+						//$("#descuentos_varios_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+			 }else{resolve("OK")}
+		});
+		
+		
+		
+		let descuentos_documento = new Promise((resolve, reject) => {
+		  var files = $("#documento_admin").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 if($("#documento_admin").val()!=""){
+			  $.ajax({
+					url: direccion_ws+"cargar_tipo_documento",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#descuentos_de_cobranza_viuw").addClass("fucus_negativo");
+						//$("#descuentos_de_cobranza_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+				}else{resolve("OK")}
+		})
+		
+		
+		let cargar_claimend_invoice = new Promise((resolve, reject) => {
+		  var files = $("#claimed_invoice").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('semana',$("#semana").val());
+			 if($("#claimed_invoice").val()!=""){
+			  $.ajax({
+					url: direccion_ws+"cargar_claimend_invoice",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									resolve("OK")
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						//$(".conter_loader").remove();
+						//$("#descuentos_de_cobranza_viuw").addClass("fucus_negativo");
+						//$("#descuentos_de_cobranza_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+						//resolve("NO")
+					}
+	
+				});
+				}else{resolve("OK")}
+		})
+		
+		
+		Promise.all([cargar_contratos, cargar_alza, cargar_datos_bancarios, cargar_datos_sii, datos_circulo, descuentos_varios, descuentos_documento]).then(values => { 
+		  //console.log(values);  
+		  
+		  var files = $("#cargar_company_invoice").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+			
+			
+
+            formData.append('semana',$("#semana").val());
+			
+			 if(values[0]=="OK" && values[1]=="OK" && values[2]=="OK" && values[3]=="OK" && values[4]=="OK" && values[5]=="OK" && values[6]=="OK" && values[7]=="OK"){
+			  $.ajax({
+					url: direccion_ws+"cargar_company_invoice",
+					type: metodo_peticion,
+					data: formData,
+					//headers:{"authorization": "JWT" + " " +localStorage.token },/
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									$("#myModal").modal("hide");
+									load_tareas()
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+									
+									$(".conter_loader").remove();
+									 $("#cargar_company_invoice_viuw").addClass("fucus_negativo");
+									 $(".nota_validacion").html("")
+									 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+						
+						
+						
+						
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						reject("NO")
+						$(".conter_loader").remove();
+						//$("#cargar_company_invoice_viuw").addClass("fucus_negativo");
+						//$("#cargar_company_invoice_viuw").val("Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo")
+					
+					}
+	
+				});
+			 //ARCHIVO 1
+			 
+			 
+			
+			
+			
+			
+			
+			
+			//
+			
+			 } else  if(values[0]!="OK"){
+				 $(".conter_loader").remove();
+				 $("#cargar_contratos_viuw").addClass("fucus_negativo");
+				 $(".nota_validacion").html("")
+				 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+				 
+			 //ARCHIVO 1
+			 } else  if(values[1]!="OK"){
+				 $(".conter_loader").remove();
+				 $("#cargar_alza_viuw").addClass("fucus_negativo");
+				 $(".nota_validacion").html("")
+				 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+				 
+			 //ARCHIVO 1
+			 } else  if(values[2]!="OK"){
+				 $(".conter_loader").remove();
+				 $("#cargar_datos_bancarios_viuw").addClass("fucus_negativo");
+				 $(".nota_validacion").html("")
+				 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+				 
+			 //ARCHIVO 1
+			 } else  if(values[3]!="OK"){
+				 $(".conter_loader").remove();
+				 $("#cargar_datos_sii_viuw").addClass("fucus_negativo");
+				 $(".nota_validacion").html("")
+				 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+				 
+			 //ARCHIVO 1
+			 } else  if(values[4]!="OK"){
+				 $(".conter_loader").remove("");
+				 $("#datos_circulo_viuw").addClass("fucus_negativo");
+				 $(".nota_validacion").html("")
+				 $(".nota_validacion").append('<div class="alert alert-warning text-center" role="alert">Error durante la carga!, verifique el tipo de archivo, su estado y cargue de nuevo</div>')
+				 
+			 
+			 } 
+		
+		
+		});
+		
+	}
+
+   
+	
+}
+
+function descargar(documento){
+	
+	nota_negativa="";
+	validacampo_auto(["fecha_pago","fecha","si"]);
+	if(nota_negativa==""){
+		console.log(direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&fecha_pago="+$("#fecha_pago").val()+"&authorization=JWT "+localStorage.token)
+		window.location = direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&fecha_pago="+$("#fecha_pago").val().replace(/\//g,'-')+"&token="+localStorage.token;
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+}
+
+
+function enviar_archivos_banco(){
+	
+	
+	nota_negativa=""
+	validacampo_auto(["respuesta_banco","file","si"])
+	
+	
+	
+	if(nota_negativa==""){
+		
+	$("#form_form_cargar_respuesta_banco").append('<div class="conter_loader"><div class="loader"></div></div>');
+     
+			 
+			 
+			var files = $("#respuesta_banco").get(0).files;
+			var formData = new FormData();
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				formData.append('files', file, file.name);
+			}
+
+            formData.append('id_tarea',$("#id_tarea").val());
+			 
+			  $.ajax({
+					url: direccion_ws+"cargar_respuesta_banco",
+					type: metodo_peticion,
+					data: formData,
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					processData: false,
+					contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						
+						if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									$("#myModal").modal("hide");
+									load_tareas()
+								}else if(data.estatus=="NO OK"){
+									$('#mensajes_alerta').modal("show");
+									console.log(data.codigo_error);
+									console.log(data.mensaje_error);
+								}
+						}else{
+								$('#mensajes_alerta').modal("show");
+								console.log(data.codigo_error);
+								console.log(data.mensaje_error);
+							
+						}
+						
+						//resolve(data)
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						//reject("NO")
+						//resolve("NO")
+					}
+	
+				});
+				
+	}
+}
+
+
+
+</script>
+
+

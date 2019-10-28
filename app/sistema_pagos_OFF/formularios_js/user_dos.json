@@ -1,0 +1,115 @@
+//console.log(permisos)
+user={
+				"formulario":'Crear Usuario',
+				"contendio":[	
+								{
+									"grupo":"Datos de Registro",
+									"tamanio":[12,6,6],
+									"campos":[	
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Nombre",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"nombre",
+													"tamanio":[12,12,12],
+													"id":"nombre"
+												},
+												{
+													"campo":"Apellido",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"apellido",
+													"tamanio":[12,6,6],
+													"id":"apellido"
+												},
+												{
+													"campo":"correo",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"correo",
+													"tamanio":[12,6,6],
+													"id":"correo"
+												}
+											]
+								},
+								{
+									"grupo":"Datos de sesión",
+									"tamanio":[12,6,6],
+									"campos":[	
+												
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"usuario"
+												},
+												{
+													"campo":"clave",
+													"tipo":"password",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"clave",
+													"tamanio":[12,12,12],
+													"id":"clave"
+												}
+											]
+								}
+								,
+								{
+									"grupo":"Area de Gestión",
+									"tamanio":[12,12,12],
+									"campos":[	
+												
+												{
+													"campo":"Areas",
+													"tipo":"panel_check_multi",
+													"opciones":permisos,
+													"columnas":["Sistema","Modulo","Interfaz-columna", "Funcionalidad"],
+													"obligatorio":"si",
+													"nota":" las columnas en la interfaz",
+													"tamanio":[12,12,12],
+													"id":"permisos"
+												}
+												
+											]
+								}/*,
+								{
+									"grupo":"Area de Gestión_2",
+									"tamanio":[6,6,6],
+									"campos":[	
+												
+												{
+													"campo":"Areas",
+													"tipo":"panel_lista_multi",
+													"opciones":[{"tag":"procesamientos", "lista":["A_Crear", "Ediar", "Anular", "Validar", "Confirmar"]},{"tag":"Pagos", "lista":["B_Crear", "Ediar", "Anular", "Validar", "Confirmar"]},{"tag":"otros", "lista":["C_Crear", "Ediar", "Anular", "Validar", "Confirmar"]},],
+													"columnas":["Columna","Funcionalidas"],
+													"obligatorio":"si",
+													"nota":" las columnas en la interfaz",
+													"tamanio":[12,12,12],
+													"id":"paneles"
+												}
+												
+											]
+								}*/
+				],
+				"opciones":[{
+					"boton":"CREAR USUARIO",
+					"ws":"crear_editar_usuario_kanban",
+					"accion_post_envio":"carga_usuarios()"
+				}]
+				
+}

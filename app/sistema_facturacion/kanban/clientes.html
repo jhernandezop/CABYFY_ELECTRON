@@ -1,0 +1,1366 @@
+<style>
+.navbar-default {
+	/*background:#FFF !important;*/
+}
+.columnna_fija .auto_form {
+    margin-bottom: 130px;
+}
+.lista {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.titulo_kanban .label-primary{
+	background-color: #CCCCCC  !important;
+	
+}
+.mas{
+	display:none;	
+}
+
+.lista .lista_serach > .open > .open {
+	max-height: 200px !important;
+	
+	
+}
+
+.lista_serach .inner{
+	max-height: 250px !important;
+    overflow: auto;
+	    width: 100%;
+}
+.modal_baul{display: none;}
+.seleccion_seccion > input{
+	border:1px solid rgb(204,204,204);
+	padding:5px;
+	border-radius:5px;
+}
+
+#tabla_clientes_detalle .btn-default{
+	    border: 0px;
+    background: none;
+
+}
+
+.kanaban_load > div > .panel {
+    font-weight: bold;
+}
+
+#fomulario_form_formulario_cliente_nuevo, #form_formulario_clientes{
+	    padding-bottom: 150px
+}
+.tabla_clientes .switch, .tabla_clientes .btn {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dataTables_wrapper {
+    overflow: inherit;
+    overflow-x: auto;
+}
+</style>
+<!--<div id="kanaban_load"></div>-->
+<div class="kanaban_load" id="kanaban_cabify_cliente"></div>
+<script type="text/javascript">
+
+
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	/*parametro=parametro.replace('<span class="label label-default">MES: ', '')
+	parametro=parametro.split('</span>  ',2)
+	parametro_filtro=parametro[0];*/
+	parametro_filtro=parametro;
+	load_camban()
+}
+
+function buscar_baul(){
+	
+	clientes_tempral=[]
+	
+	for (i in clientes_madre){
+		
+		console.log(clientes_madre[i]._source)
+		//$("#nombre").val()
+		//$("#grupo").val()
+		//$("#rut").val()
+		//$("#det_facturación").val()
+		
+		if (clientes_madre[i]._source.CLIENT_NAME==$("#nombre").val() ||  clientes_madre[i]._source.GRUPO_ECONOMICO==$("#grupo").val()){
+			
+			clientes_tempral.push()
+			console.log(clientes_madre[i]._source)
+			
+			nuevo_cliente={}
+															
+			nuevo_cliente["accion"]=[]	
+			nuevo_cliente["alarmas"]=[]
+			nuevo_cliente["busqueda"]=[
+										clientes_madre[i]._source.CLIENT_TAX_CODE, 
+										clientes_madre[i]._source.CLIENT_NAME, 
+										clientes_madre[i]._source.GRUPO_ECONOMICO, 
+										clientes_madre[i]._source.CLIENT_ID,
+										clientes_madre[i]._source.CLIENT_ID_MADRE
+										]
+			nuevo_cliente["descripcion"]=""
+			nuevo_cliente["estilo"]="success|habilitada"
+			nuevo_cliente["filtros"]=[]
+			nuevo_cliente["filtros_tarea"]={tabla: ""}
+			nuevo_cliente["id"]= clientes_madre[i]._id
+			nuevo_cliente["indicador"]= "<div class='col-xs-6 col-sm-6 col-md-7'><strong>Nombre:</strong>"+clientes_madre[i]._source.CLIENT_NAME+"<br> <strong>Grupo:</strong>"+clientes_madre[i]._source.GRUPO_ECONOMICO+"</div><div class='col-xs-6 col-sm-6 col-md-5'><strong>R.U.T:</strong>"+clientes_madre[i]._source.CLIENT_TAX_CODE+"<br> <strong>Det. Facturación:</strong>"+clientes_madre[i]._source.DETALLE_CC_FACTURACION+"</div>dddd"
+			nuevo_cliente["posicion"]="CLIENTES"
+			nuevo_cliente["siguiente_accion"]=[{"doc":"formulario_clientes", "ws":""}]
+			nuevo_cliente["tag_historico"]=[]
+			nuevo_cliente["tag_metadata"]=["Generar Facturas"]
+			clientes_tempral.push(nuevo_cliente)
+
+			
+		}
+		
+		
+		
+	}
+	
+}
+
+
+function load_camban(tipo){
+	
+			//session.set("las_ciudades", JSON.stringify(las_ciudades_b), tiempo_cache);
+			let data_requerida = new Promise((resolve, reject) => {
+				//resolve("FIN")	
+				
+				var dato_en_cache = session.get("clientes_madre");
+				if (dato_en_cache) {
+					
+					
+					//SI EXISTE EN CACHE LO IGULO
+					clientes_madre=	JSON.parse(dato_en_cache)
+					console.log(clientes_madre)
+					//FICHAS EN 
+					fichas_clientes=[]
+					//RECORRO CLIENTES MADRE Y ACTUALIZO LAS FICHAS
+					actualizar_fichas(clientes_madre)
+									
+									
+									
+					
+					console.log(fichas_clientes)
+					resolve("FIN")
+					//return false;
+					
+				//SI NO EXISTE LO BUSCO
+				}else{
+					
+					
+					
+					//console.log("B")
+					$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+												   "tx" : "man0",
+												   "usuario" : "op",
+												   "periodo" : "",
+												   "proceso":"cli2admin",
+									   				"destino":constantes.destino
+												   
+												}
+							),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+							},
+							success: function(data) {
+								//console.log(data)
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+										//LLEVO CLIENTES A CACHE
+										session.set("clientes_madre", JSON.stringify(data.data), tiempo_cache);
+										//COMO NO EXISTE EN CACHE LO IGULO A LA DATA DEL AJAX
+										clientes_madre=data.data;
+										console.log(clientes_madre)
+										//FICHAS EN 
+										fichas_clientes=[]
+										//RECORRO CLIENTES MADRE Y ACTUALIZO LAS FICHAS
+										actualizar_fichas(clientes_madre)
+										
+										
+										
+										resolve("FIN")	
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+				}
+			});
+			
+			
+			/*{
+			"tipo_de_filtro": "baul", 
+			"parametros": [
+				{"id":"Nombre",   "tipo":"texto"},
+				{"id":"Grupo",   "tipo":"texto"},
+				{"id":"rut",                "tipo":"rut"}
+				
+			
+			]
+		},*/
+			
+			
+			Promise.all([data_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+					
+					data={  
+   "estatus":"OK",
+   "data":{  
+      "interfaz":"kanban",
+      "nombre":"CLIENTES",
+      "columnas":[  
+         {  
+            "nombre":"CLIENTES|<h4><span class='label label-primary'>&nbsp;</span></h4>",
+            "accion":[  
+               {  
+                  "lista":"Crear cliente",
+                  "ws":"",
+                  "doc":"formulario_cliente_nuevo"
+               },
+               {  
+                  "lista":"Crear clientes Masivos",
+                  "ws":"",
+                  "doc":"formulario_cliente_masivo"
+               }
+            ],
+            "tag_metadata":[  
+
+            ]
+         }
+      ],
+      "filtros":[
+		{
+            "tipo_de_filtro": "input_buscar", "nombre": "BUSCAR", "presholder": "BUSCAR..."
+        }
+      ],
+      "fichas": fichas_clientes
+   }
+}
+			 //console.log(fichas_clientes)
+			  //console.log(data.data.fichas)
+			 								data.data.interfaz="slider"
+											kanban_usuario=data.data;
+											$(".kanaban_load").html("");
+											//construccion(data.fichas, data)
+											construccion_lugar_carga([], data.data, '#kanaban_cabify_cliente')
+											//construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify_cliente')
+											titulo=""
+											nuevaTablaClientes=[]
+											total_clientes=0
+											clientes_madre.forEach(function(value) {
+											//clientes_madre.each(function (index, path, value) {
+												var nuevo_cliente={}
+													if(value._source.estado!="activo"){
+														console.log(value)
+														nuevo_cliente["Estado"]='<label class="switch"><input data-id="'+value._id+'" type="checkbox" /><span class="slider round"></span></label>';
+													}else{
+
+														nuevo_cliente["Estado"]='<label class="switch"><input data-id="'+value._id+'" type="checkbox" checked="checked"/><span class="slider round"></span></label>';
+													}
+													
+													
+
+
+													nuevo_cliente["Editar"]=`<button type="button" onClick="tarea_dblclick_cliente('${value._id}')" class="btn btn-default">
+																			  <i class="fas fa-edit"></i>
+																			</button>`;
+													nuevo_cliente["Empresa"]=value._source.CLIENT_NAME
+													nuevo_cliente["Grupo"]=value._source.GRUPO_ECONOMICO
+													nuevo_cliente["RUT"]=value._source.CLIENT_TAX_CODE
+													nuevo_cliente["Det Facturación"]=value._source.DETALLE_CC_FACTURACION
+													nuevo_cliente["Client ID"]=value._source.CLIENT_ID,
+                                					nuevo_cliente["Client ID MADRE"]=value._source.CLIENT_ID_MADRE
+                                				nuevaTablaClientes.push(nuevo_cliente);
+                                				total_clientes++
+
+											})
+											$("#CLIENTES").append('<div class="tabla_clientes" >'+
+																	'<table id="tabla_clientes_detalle" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+																		'<thead>'+
+																			'<tr class="thead" ></tr>'+
+																		'</thead>'+
+																		'<tbody></tbody>'+
+																	'</table>'+
+																'</div>')
+											generar_tabla("#tabla_clientes_detalle", nuevaTablaClientes, "")
+											$("#tabla_clientes_detalle_filter").find("input").appendTo($(".seleccion_seccion"))
+											$("#filtro_BUSCAR, .dt-buttons").remove();
+											$(".total_colunna").html(total_clientes+" ")
+											//$("#filtro_BUSCAR").closest(".seleccion_seccion").appendTo($("#tabla_clientes_detalle_filter").find("input"))
+											$("#CLIENTES").find(".switch").find("input").on("click",function(){
+												console.log($(this).is())
+												//editar_cliente_estado()
+												if($(this).is(":checked")){
+													console.log("ACTIVO")
+													editar_cliente_estado($(this).data("id"),"activo")
+													
+												}else {
+													console.log("INACTIVO")
+													editar_cliente_estado($(this).data("id"),"inactivo")
+													
+												}
+											})
+						
+		
+			}
+	})
+		
+}
+
+function load_tareas(){
+
+		$.ajax({
+			data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+			url : direccion_ws+"carga_kanban",
+			type : "POST",           
+			dataType: 'json',
+			success: function(data) {
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						columnas=[]
+						for (i in data.data.columnas){
+							datos_columna=data.data.columnas[i].nombre.split("|",2);	
+							columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+						}
+						
+						refrescar_tareas(data.data.fichas, columnas)
+					
+					}else if(data.estatus=="NO OK"){
+						controlar_no_ok_desconocido_error("NO OK", data)
+					}
+				}else{
+					controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+				}
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+			}			
+		});
+		
+
+	}
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+	
+		
+
+
+
+
+
+
+
+
+
+
+function tarea_click_cliente(){
+	
+
+	
+		$(".modal-header").html("")
+		//VER UN DOCUMENTO
+		if(ws=="" && documento_accion!=""){
+
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+				},
+				success: function(data){
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")
+					funciones_campo_especial()
+					$(".ocultar_columna").click()
+	
+
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+			});
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			
+			if(metodo_peticion=="GET"){
+				
+				window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				
+			}else{
+				
+			}
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+			
+				
+				datos_para_formulario="";
+				
+				mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0, mes},
+						url : direccion_ws+ws,
+						type : "POST",
+						headers:{"authorization": "JWT" + " " +localStorage.token },           
+						dataType: 'json',
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						
+						
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+							dataType: "text",
+							beforeSend: function () {},
+							success: function(data){
+								cargo_formulario=eval(data)
+								titulo=cargo_formulario.formulario
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+							},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		}
+}
+
+
+
+
+
+
+function tarea_dblclick_cliente(identificador){
+	
+	documento="formulario_clientes"
+	identificador=identificador
+
+	$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button>");
+	
+	//alert(identificador)
+
+	//VER UN DOCUMENTO
+	if(ws=="" && documento!=""){
+		
+		$.ajax({
+			url : nivel_sistema+"formularios_js/"+documento+".json",
+			dataType: "text",
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+				
+				if(documento=="formulario_clientes"){
+					datos_formulario=""
+					/*console.time('jsA');
+					for(i in clientes_madre){
+						
+						if(clientes_madre[i]._id==identificador){
+							datos_formulario=clientes_madre[i]._source;
+							datos_formulario["ES_idCli"]=clientes_madre[i]._id
+							console.log(clientes_madre[i]._source)
+						}
+						
+					}
+					console.timeEnd('jsA');*/
+					console.time('jsB');
+					var found = clientes_madre.find(function(element) {
+						if(element._id==identificador){
+							//element._source["ES_idCli"]=element._id
+							return element
+						}
+					  //return element > 10;
+					});
+					datos_formulario=found._source
+					datos_formulario["ES_idCli"]=identificador
+					console.timeEnd('jsB');
+					console.log(datos_formulario);
+					//return false;
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_formulario)	
+					funciones_campo_especial()
+					$("#CLIENTES").closest(".panel").find(".ocultar_columna").click();
+				
+				}else{
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, "")	
+				}
+				
+					
+			},
+			error: function (xhr, ajaxOptions, thrownError) {}
+				
+		});
+	
+	//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK				
+	} else if(ws!="" && documento==""){
+	
+	//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+	} else if(ws!="" && documento!=""){
+	
+		
+		datos_para_formulario="";
+		//LAMO DATOS PARA FOMRULARIO
+		let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+		$.ajax({
+			data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0},
+			url : direccion_ws+ws,
+			type : "POST",
+			headers:{"authorization": "JWT" + " " +localStorage.token },           
+			dataType: 'json',
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+			});
+				
+				//LAMO  FOMRULARIO
+			Promise.all([llamar_datos_de_formulario]).then(values => {
+				if(values[0]=="SI"){
+					$.ajax({
+						url : nivel_sistema+"formularios_js/"+documento+".json",
+						dataType: "text",
+						beforeSend: function () {},
+						success: function(data){
+							//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_para_formulario)
+							
+									
+						},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		
+		
+	}
+		
+		
+}
+
+
+function funciones_campo_especial(){
+	
+
+	
+	if($("#especial").val()=="NO"){
+		$("#centro_costo, #orden_compra, #desglose, #hes").closest(".lista").find(".btn").attr("disabled", true)
+	}else if($("#especial").val()=="SI"){
+		$("#centro_costo, #orden_compra, #desglose, #hes").closest(".lista").find(".btn").attr("disabled", false)
+	}
+	
+	
+	$("#especial").closest(".lista").find("a").on("click",function(){
+		//alert($(this).html())
+		if($(this).html()=="NO"){
+			$("#centro_costo, #orden_compra, #desglose, #hes").closest(".lista").find(".btn").attr("disabled", true)
+			
+			$("#centro_costo, #orden_compra, #desglose, #hes").closest(".lista").find("li").each(function(index, element) {
+                if($(this).data("opcion")=="NO"){
+					$(this).click();
+					
+				}
+            });
+			
+			
+		}else if($(this).html()=="SI"){
+			$("#centro_costo, #orden_compra, #desglose, #hes").closest(".lista").find(".btn").attr("disabled", false)
+		}
+			
+		
+		
+	})
+	
+	
+}
+
+//alert(moment("2019-02-26 00:00:00").format("X"))
+function editar_cliente(){
+	
+	$("#enviar_form_001").attr("disabled", true)
+	
+	nota_negativa=""
+
+	validacampo_auto(["client_tax_code","rut","si","RUT"])
+	validacampo_auto(["client_name","texto","si","client name"])
+	//validacampo_auto(["client_id","texto","no"])
+	//validacampo_auto(["categoria","lista","si",""])
+	validacampo_auto(["giro","lista_serach","si","giro"])
+	validacampo_auto(["billing_period","lista","si","billing period"])
+	validacampo_auto(["correos_fac","texto","si","correos fac"])
+	validacampo_auto(["client_address","texto","si","client address"])
+	validacampo_auto(["client_city","lista_serach","si","client city"])
+	validacampo_auto(["ciudad_fac","texto","si","ciudad fac"])
+	validacampo_auto(["especial","lista","si","especial"])
+	validacampo_auto(["centro_costo","lista","si","centro costo"])
+	validacampo_auto(["orden_compra","lista","si","orden compra"])
+	validacampo_auto(["desglose","lista","si","desglose"])
+	validacampo_auto(["hes","lista","si","hes"])
+	validacampo_auto(["metodo_pago","lista","si","metodo pago"])
+	validacampo_auto(["payment_terms","lista","si","payment terms"])
+	validacampo_auto(["collection","lista","si","collection"])
+
+	//validacampo_auto(["sales_rep","lista","si","sales rep"])
+	//validacampo_auto(["soporte","lista","si","soporte"])
+	
+	
+	//alert()
+	//if($("#client_id").val().length<32){
+		//nota_negativa=nota_negativa+"El campo client id es inferior a 32 caracteres"
+		
+	//}
+	
+	if($("#client_id_madre").val().length<32){
+		nota_negativa=nota_negativa+" El campo 'client id madre' es inferior a 32 caracteres"
+		
+	}
+	
+	if(nota_negativa==""){
+		$(".auto_form").append("<div class='loader'></div>");
+		
+		data_envio={}
+				
+				$("#form_form_formulario_clientes").find(".refrescar_validacion").each(function(index, element) {
+					
+					//console.log($(this).attr("id"))
+					if($(this).attr("id")=="es_idcli"){
+						data_envio["ES_idCli"]=$(this).val()
+					}else if($(this).attr("id")=="client_tax_code"){
+						data_envio[$(this).attr("id").toUpperCase()]=$(this).val().replace(/\./g,"")
+					}else if($(this).attr("id")=="estado"){
+						data_envio[$(this).attr("id")]=$(this).val().replace(/\./g,"")
+					}else{
+						data_envio[$(this).attr("id").toUpperCase()]=$(this).val()
+						
+					}
+					
+					
+					
+					
+					
+                });
+				
+				
+				
+				for(i in clientes_madre){
+						
+						if(clientes_madre[i]._id==data_envio.ES_idCli){
+							
+							
+							//console.log(clientes_madre[i])
+							
+							
+							data_envio["USUARIO_ACTUALIZACION"]=usuario_log
+							data_envio["FECHA_ACTUALIZACION"]= moment().format('YYYY-MM-DD HH:mm:ss')
+							data_envio["@timestamp"]=moment(clientes_madre[i]._source.F_CREACION_BS).format('YYYY-MM-DDTHH:mm:ss')
+							//moment("2019-02-26 00:00:00").format("X")
+							
+							data_envio["USUARIO_CREACION_BS"]=clientes_madre[i]._source.USUARIO_CREACION_BS
+							data_envio["F_CREACION_BS"]=clientes_madre[i]._source.F_CREACION_BS
+							//data_envio["ES_idCli"]=clientes_madre[i]._id
+
+							clientes_madre[i]._source=data_envio
+							
+							
+						}
+						
+					}
+					//console.log(data_envio)
+					//console.log(clientes_madre)
+					//return false
+					
+					//return false;
+					
+					$.ajax({
+								url: "https://cf.openpartner.cl",
+								type: "POST",
+								data:JSON.stringify({
+													"tx": "man0",
+													"usuario": "op",
+													"proceso": "updCli",
+													"clientes": [data_envio],
+									   				"destino":constantes.destino
+												}
+								),
+								contentType: "application/json",
+								timeout:1800000,
+								success: function(data) {
+									//console.log(data)
+									data=JSON.parse(data)
+									if(data.estatus){
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											
+											//session.set("clientes_madre", JSON.stringify(clientes_madre), tiempo_cache);
+											sessionStorage.removeItem('clientes_madre')
+											load_camban();
+											$(".eliminar_formulario_auto").click();
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+												}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+										
+								}			
+						});
+		
+		
+	}else{
+			$(".conter_loader").hide();
+			
+			$(".nota_kanban").removeClass("alert-danger");
+			$(".nota_kanban").removeClass("alert-warning");
+			$(".nota_kanban").addClass("alert-warning");
+			$(".nota_kanban").html("");
+			$(".nota_kanban").append("Por favor, defina la información en:<strong>"+ nota_negativa.substring(1)+"</strong>");
+			$(".nota_kanban").show();
+			
+	}
+	
+	
+}
+
+
+function crear_cliente(){
+		
+	$("#enviar_form_001").attr("disabled", true)
+	
+	nota_negativa=""
+
+	validacampo_auto(["client_tax_code","rut","si","Rut"])
+	validacampo_auto(["client_name","texto","si","Razon social"])
+	//validacampo_auto(["client_id","texto","si","client id"])
+	validacampo_auto(["client_id_madre","texto","si","client id madre"])
+	
+	//validacampo_auto(["categoria","lista","si"])
+	validacampo_auto(["giro","lista_serach","si","Giro"])
+	validacampo_auto(["billing_period","lista","si","Billing period"])
+	validacampo_auto(["correos_fac","texto","si","Cor. fac"])
+	validacampo_auto(["client_address","texto","si","Direccion Fac"])
+	validacampo_auto(["client_city","lista_serach","si","Comuna Fac"])
+	validacampo_auto(["ciudad_fac","texto","si","Ciudad Fac"])
+	validacampo_auto(["especial","lista","si","Especial"])
+	validacampo_auto(["centro_costo","lista","si","Centro costo"])
+	validacampo_auto(["orden_compra","lista","si","Orden compra"])
+	validacampo_auto(["desglose","lista","si","Desglose"])
+	validacampo_auto(["hes","lista","si","Hes"])
+	validacampo_auto(["metodo_pago","lista","si","Metodo pago"])
+	validacampo_auto(["payment_terms","lista","si","Payment terms"])
+	validacampo_auto(["collection","lista","si","collection"])
+	//validacampo_auto(["sales_rep","lista","si"])
+	//validacampo_auto(["soporte","lista","si"])
+	
+	/**/validacampo_auto(["recurrente","lista","si","recurrente"])
+	if($("#recurrente").val()=="SI"){
+		validacampo_auto(["numero_oc","texto","si","numero oc"])
+		validacampo_auto(["vencimiento_oc","texto","si","vencimiento oc"])
+	}else{
+
+		$("#numero_oc, #vencimiento_oc").removeClass("fucus_negativo")
+
+	}
+	
+	//alert()
+	if($("#client_id").val()!="" && $("#client_id").val().length<32){
+		nota_negativa=nota_negativa+", El campo client id es inferior a 32 caracteres"
+		
+	}
+	
+	if($("#client_id_madre").val().length<32){
+		nota_negativa=nota_negativa+", El campo client id madre es inferior a 32 caracteres"
+		
+	}
+
+	///VALIDO ID EXISTENTE
+	console.log($("#client_id").val())
+	if($("#client_id").val()!=""){
+		if(buscar_en_cliente_madre($("#client_id").val())==true){
+			console.log("NO ESXISTE")
+
+		}else if(buscar_en_cliente_madre($("#client_id").val())==false){
+			console.log("ESXISTE")
+			nota_negativa=nota_negativa+", El campo client id ya existe"
+			
+		}
+	}
+
+	
+	if(nota_negativa==""){
+		$(".auto_form").append("<div class='loader'></div>");
+		
+				data_envio={}
+				
+				$("#form_form_formulario_cliente_nuevo").find(".refrescar_validacion").each(function(index, element) {
+
+					if($(this).attr("id")=="client_tax_code"){
+						data_envio[$(this).attr("id").toUpperCase()]=$(this).val().replace(/\./g,"")
+					}else if($(this).attr("id")=="estado"){
+						data_envio[$(this).attr("id")]=$(this).val().replace(/\./g,"")
+					}else{
+						data_envio[$(this).attr("id").toUpperCase()]=$(this).val()
+					}
+					
+					
+					
+                });
+				
+
+				data_envio["USUARIO_CREACION_BS"]=usuario_log;
+				data_envio["USUARIO_ACTUALIZACION"]=usuario_log
+				data_envio["F_CREACION_BS"]=moment().format('YYYY-MM-DD HH:mm:ss');
+				data_envio["@timestamp "]=moment().format('YYYY-MM-DD HH:mm:ss');
+				data_envio["FECHA_ACTUALIZACION"]= moment().format('YYYY-MM-DD HH:mm:ss');
+				data_envio["estado"]= "activo";
+
+				
+				
+					//console.log(data_envio)
+					//console.log(clientes_madre)
+					//return false
+					
+					
+					
+					$.ajax({
+								url: "https://cf.openpartner.cl",
+								type: "POST",
+								data:JSON.stringify({
+													"tx": "man0",
+													"usuario": "op",
+													"proceso": "newCli",
+													"clientes":[data_envio],
+									   				"destino":constantes.destino
+												}
+								),
+								contentType: "application/json",
+								timeout:1800000,
+								success: function(data) {
+									//console.log(data)
+									data=JSON.parse(data)
+									if(data.estatus){
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											
+											//session.set("clientes_madre", JSON.stringify(clientes_madre), tiempo_cache);
+											sessionStorage.removeItem('clientes_madre')
+											load_camban();
+											$(".eliminar_formulario_auto").click();
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+												}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+										
+								}			
+						});
+		
+		
+	}else{
+		$(".nota_kanban").show()	
+		$(".nota_kanban").html('<div class="alert alert-warning text-center" role="alert"><strong>Atención con los campos: </strong>'+nota_negativa+'</div>')	
+	}
+	
+	
+}
+
+function buscar_en_cliente_madre(CLIENT_ID){if(clientes_madre.find( x => x._source.CLIENT_ID === CLIENT_ID)){return false;}else{return true;}}
+
+function buscar_en_datos_actuales(CLIENT_ID){
+	console.log(CLIENT_ID.CLIENT_ID);
+	var iguales=true
+	masivo_clientes.forEach(function(element_a, index) {
+			if(element_a.CLIENT_ID == CLIENT_ID.CLIENT_ID){
+				
+				for(i in element_a) {
+					
+					if(element_a[i]!=CLIENT_ID[i]){
+						iguales=false
+						console.log(element_a)
+						
+					}
+					//console.log(element_a[i])
+					//console.log(CLIENT_ID[i])
+				}
+				
+				
+				
+				
+			}
+	})
+	if(iguales==true){
+		return false;
+	}else if(iguales==false){
+		return true;
+	}
+	
+	
+}
+
+
+
+function buscar_en_campos_obligatorio(elemento){
+obligatorios=[
+					"CLIENT_ID_MADRE", 	
+					"CLIENT_NAME", 	
+					"CLIENT_TAX_CODE", 	
+					"PAYMENT_TERMS", 	
+					"CENTRO_COSTO", 	
+					"ORDEN_COMPRA", 	
+					"DESGLOSE", 	
+					"HES", 	
+					"ESPECIAL", 	
+					"CORREOS_FAC", 	
+					"GIRO", 	
+					"CLIENT_ADDRESS", 	
+					"CLIENT_CITY", 	
+					"CIUDAD_FAC",
+					"RECURRENTE",
+				]
+
+
+				var vacio ="NO"
+				for (i in obligatorios){
+					//console.log(elemento)
+					//console.log(obligatorios[i])
+					if(elemento[obligatorios[i]]=="" || elemento[obligatorios[i]]==null){
+						//console.log(elemento)
+						vacio ="SI"
+
+						
+					}
+
+					
+					if(obligatorios[i]=="RECURRENTE" && elemento[obligatorios[i]]=="SI" || elemento[obligatorios[i]]=="si"){
+						if(elemento.N_OC=="" || elemento.N_OC==null || elemento.VENCIMIENTO_OC=="" || elemento.VENCIMIENTO_OC==null){
+							vacio ="SI"
+						}
+					}
+					
+
+				}
+				if(vacio =="NO"){return true;}else if(vacio =="SI"){return false;}
+				
+
+
+
+
+}
+
+
+console.log("MASIVO BLOQUEADO")
+function procesar_masivo(){
+
+	console.log()
+	$(".enviar_form_001").attr("disabled", true)
+//return false;
+	
+	
+
+	cargar_datos_sii=[]	
+	id_enviar="#id_masivo_clientes"
+		
+	//DETERMINO EXCLUSIONES
+	masivo_clientes=array_objetos_tabla
+	masivo_clientes_validos=[];
+	masivo_clientes_invalidos=[];
+
+    //VALIDO CARGA
+    if(masivo_clientes.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+    }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    
+    
+    masivo_clientes.forEach(function(element_a, index) {
+
+	    //VALIDO RUT
+	     if(element_a.CLIENT_TAX_CODE!=null && element_a.CLIENT_TAX_CODE!=""){
+	        element_a.CLIENT_TAX_CODE=element_a.CLIENT_TAX_CODE.toString().replace(/[`~!@#$%^*()|+\=?;.:'",<>\{\}\[\]\\\/]/gi, '');
+	        
+	        if(validacampo_Rut_texto(element_a.CLIENT_TAX_CODE.toString())==true) {
+	         	
+	         	//VALIDO EN CLIENTE MADRE
+	        	if(buscar_en_cliente_madre(element_a.CLIENT_ID)==true){
+	        		
+	        		//VALIDO QUE TENGA TOAS LAS COLUMNAS
+	        		if(buscar_en_campos_obligatorio(element_a)==true){
+
+	        			//VALIDO QUE NO ESTE EN LOS MISMOS DATOS
+	        			if(buscar_en_datos_actuales(element_a, masivo_clientes)==false){	
+
+							//INSERTO CAMPOS ESPECIALES
+		    				element_a["USUARIO_CREACION_BS"]=usuario_log;
+							element_a["USUARIO_ACTUALIZACION"]=usuario_log
+							element_a["F_CREACION_BS"]=moment().format('YYYY-MM-DD HH:mm:ss');
+							element_a["@timestamp "]=moment().format('YYYY-MM-DD HH:mm:ss');
+							element_a["FECHA_ACTUALIZACION"]= moment().format('YYYY-MM-DD HH:mm:ss');
+							element_a["estado"]= "activo";
+		        			masivo_clientes_validos.push(element_a)
+	        			
+	        			}else if(buscar_en_datos_actuales(element_a, masivo_clientes)==true){
+	        				element_a["MOTIVO"]="ID DUPLICADO EN EL DOCUMENTO";
+							masivo_clientes_invalidos.push(element_a)
+
+	        			}
+	        			
+						
+
+	        		}else if(buscar_en_campos_obligatorio(element_a)==false){
+	  					element_a["MOTIVO"]="FALTAN DATOS EN EL CLIENTE";
+						masivo_clientes_invalidos.push(element_a)
+
+	        		}
+
+
+	        	}else if(buscar_en_cliente_madre(element_a.CLIENT_ID)==false){
+	        		//console.log(element_a)
+	        		element_a["MOTIVO"]="CLIENTE YA EXISTE";
+	        		masivo_clientes_invalidos.push(element_a)
+	        	}
+	         			
+
+
+
+	        }else if(validacampo_Rut_texto(element_a.CLIENT_TAX_CODE.toString())==false){
+	        	element_a["MOTIVO"]="RUT DEL CLIENTE INVALIDO";
+ 				masivo_clientes_invalidos.push(element_a)
+ 				//console.log(element_a.CLIENT_TAX_CODE+">"+validacampo_Rut_texto(element_a.CLIENT_TAX_CODE.toString()))
+ 				
+	        }
+	     }
+
+	     
+
+	 })
+
+					
+
+	if	(masivo_clientes_validos.length==0 && masivo_clientes_invalidos.length>=1){
+
+		nuevo_header=nuevo_header+'<th class="">MOTIVO</th>'
+					$("#myModal").modal("show");
+					$("#myModal > .modal-dialog").removeClass('modal-sm');
+					$("#myModal > .modal-dialog").addClass('modal-lg');
+					$("#myModal").find(".modal-header").html('<div class="modal-header"><button type="button" class="salir" data-dismiss="modal">x</button><h4 class="modal-title">TODOS LOS REGISTROS NO SON VALIDOS</h4></div>');
+					$("#myModal").find(".modal-body").html('<div class="col-xs-12 col-sm-12 col-md-12"><br><table id="htmlout_no_validos" class=" table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;"><br></div>'+
+								'<thead><tr>'+nuevo_header+'</tr></thead><tbody></tbody>'+
+							'</table>');
+					masivo_clientes_invalidos_tabla=[]
+				    masivo_clientes_invalidos.forEach(function(element_a) {
+				      masivo_clientes_invalidos_tabla_ROW=[]
+				      for (i in element_a){
+				        masivo_clientes_invalidos_tabla_ROW.push(element_a[i])
+				      }
+				    	masivo_clientes_invalidos_tabla.push(masivo_clientes_invalidos_tabla_ROW)
+				    });
+				    $('#htmlout_no_validos').DataTable( {
+								data:          masivo_clientes_invalidos_tabla,
+								deferRender:    true,
+								scrollX: true,
+								//scrollY:        1000,
+								//scrollCollapse: true,
+								//scroller:       true,
+								ordering: false,
+								order: false,
+							} );
+				    //masivo_clientes_validos=[]
+				    //masivo_clientes_invalidos=[]
+				    $(".enviar_form_001").attr("disabled", false)
+				    return false;
+	
+	}		
+	//console.log(masivo_clientes_validos)
+	masivo_clientes_validos.forEach(function(element_a, index) {
+	    for(b in element_a) {
+	       if(element_a[b]==null){
+	            //console.log(element_a[b])
+	            element_a[b]=""
+	        }
+	    }
+	})
+	console.log(masivo_clientes_validos)
+    //return false;
+    $.ajax({
+		url: "https://cf.openpartner.cl",
+		type: "POST",
+		data:JSON.stringify({
+							"tx": "man0",
+							"usuario": "op",
+							"proceso": "newCli",
+							"clientes":masivo_clientes_validos,
+							"destino":constantes.destino
+							}),
+		contentType: "application/json",
+		timeout:1800000,
+		beforeSend: function () {
+									
+									$(".enviar_form_001").attr("disabled", true)
+									
+							},
+		success: function(data) {
+			data=JSON.parse(data)
+			if(data.estatus){
+			if(data.estatus=="OK" || data.estatus=="FIN"){
+				
+				if(masivo_clientes_invalidos.length>=1){
+
+
+					nuevo_header=nuevo_header+'<th class="">MOTIVO</th>'
+					$("#myModal").modal("show");
+					$("#myModal > .modal-dialog").removeClass('modal-sm');
+					$("#myModal > .modal-dialog").addClass('modal-lg');
+					$("#myModal").find(".modal-header").html('<div class="modal-header"><button type="button" class="salir" data-dismiss="modal">x</button><h4 class="modal-title">SE ENCONTRARON REGISTROS NO VALIDOS</h4></div>');
+					$("#myModal").find(".modal-body").html('<div class="col-xs-12 col-sm-12 col-md-12"><br><table id="htmlout_no_validos" class=" table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;"><br></div>'+
+								'<thead><tr>'+nuevo_header+'</tr></thead><tbody></tbody>'+
+							'</table>');
+					masivo_clientes_invalidos_tabla=[]
+				    masivo_clientes_invalidos.forEach(function(element_a) {
+				      masivo_clientes_invalidos_tabla_ROW=[]
+				      for (i in element_a){
+				        masivo_clientes_invalidos_tabla_ROW.push(element_a[i])
+				      }
+				    	masivo_clientes_invalidos_tabla.push(masivo_clientes_invalidos_tabla_ROW)
+				    });
+				    $('#htmlout_no_validos').DataTable( {
+								data:          masivo_clientes_invalidos_tabla,
+								deferRender:    true,
+								scrollX: true,
+								//scrollY:        1000,
+								//scrollCollapse: true,
+								//scroller:       true,
+								ordering: false,
+								order: false,
+							} );
+				}
+
+					masivo_clientes_validos=[]
+				    masivo_clientes_invalidos=[]
+    				sessionStorage.removeItem('clientes_madre')
+					load_camban();
+
+
+
+												
+			}else if(data.estatus=="NO OK"){
+				controlar_no_ok_desconocido_error("NO OK", data)
+													}
+			}else{
+				controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+			}
+									
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			controlar_no_ok_desconocido_error("ERROR", xhr.status)
+										
+		}			
+	});
+    
+
+
+
+		
+		
+}
+
+
+function editar_cliente_estado(id, estado){
+	
+	console.log(id, estado)
+	
+		
+		data_envio={}
+
+
+				
+		for(i in clientes_madre){
+						
+			if(clientes_madre[i]._id==id){
+				clientes_madre[i]._source.estado=estado
+				data_envio=clientes_madre[i]._source		
+				data_envio["USUARIO_ACTUALIZACION"]=usuario_log
+				data_envio["FECHA_ACTUALIZACION"]= moment().format('YYYY-MM-DD HH:mm:ss')
+				data_envio["@timestamp"]=moment(clientes_madre[i]._source.F_CREACION_BS).format('YYYY-MM-DDTHH:mm:ss')
+				//moment("2019-02-26 00:00:00").format("X")
+							
+				data_envio["USUARIO_CREACION_BS"]=clientes_madre[i]._source.USUARIO_CREACION_BS
+				data_envio["F_CREACION_BS"]=clientes_madre[i]._source.F_CREACION_BS
+				data_envio["ES_idCli"]=clientes_madre[i]._id
+							
+							
+			}
+						
+		}
+
+		
+		console.log(data_envio)
+					//console.log(clientes_madre)
+					//return false
+					
+		//return false;
+					
+		$.ajax({
+								url: "https://cf.openpartner.cl",
+								type: "POST",
+								data:JSON.stringify({
+													"tx": "man0",
+													"usuario": "op",
+													"proceso": "updCli",
+													"clientes": [data_envio],
+									   				"destino":constantes.destino
+												}
+								),
+								contentType: "application/json",
+								timeout:1800000,
+								success: function(data) {
+									//console.log(data)
+									data=JSON.parse(data)
+									if(data.estatus){
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											
+											//session.set("clientes_madre", JSON.stringify(clientes_madre), tiempo_cache);
+											sessionStorage.removeItem('clientes_madre')
+											load_camban();
+											$(".eliminar_formulario_auto").click();
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+												}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+										
+								}			
+						});
+		
+		
+	
+	
+	
+}
+
+
+
+
+</script>
+
+

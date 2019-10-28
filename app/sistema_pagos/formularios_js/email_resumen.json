@@ -1,0 +1,59 @@
+//{ usuario, fecha, identificador, archivo }
+cartola={
+						"formulario":'Enviar Correo',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"plantilla",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"plantilla"
+												},{
+													"campo":"paso_ws",
+													"tipo":"texto",
+													"opciones":[3],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"paso_ws"
+												},
+												
+												
+												
+												{
+													"campo":"fecha",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario.correos,
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"seleccion"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"email_resumen",
+							"funcion":""
+						}]
+				
+}

@@ -1,0 +1,406 @@
+<style>
+.navbar-default {
+	/*background:#FFF !important;*/
+}
+</style>
+<!--<div id="kanaban_load"></div>-->
+<div class="kanaban_load" id="kanaban_cabify_clientes"></div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+nota_negativa="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	/*parametro=parametro.replace('<span class="label label-default">MES: ', '')
+	parametro=parametro.split('</span>  ',2)
+	parametro_filtro=parametro[0];*/
+	parametro_filtro=parametro;
+	load_camban()
+}
+
+
+function load_camban(tipo){
+	
+	
+			let data_requerida = new Promise((resolve, reject) => {
+				resolve("FIN")	
+				/*$.ajax({
+					url: direccion_ws+"meses",
+					type: 'get',
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						if(data.estatus){
+							if(data.estatus=="OK" || data.estatus=="FIN"){
+								meses=data.data;
+								resolve("FIN")			
+											
+							}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+						
+						
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						reject("NO")						
+					}
+								
+				});*/
+			});
+			
+			
+			
+			
+			
+			Promise.all([data_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+			 
+			 	
+						$.ajax({
+								data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+								url : direccion_ws+"carga_kanban_clientes",
+								type : "POST",
+								headers:{"authorization": "JWT" + " " +localStorage.token },       
+								dataType: 'json',
+								beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+								},
+								success: function(data){
+									
+									if(data.estatus){
+									
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											
+											kanban_usuario=data.data;
+											$(".kanaban_load").html("");
+											//construccion(data.fichas, data)
+											las_ciudades=data.data.data.ciudades
+											las_comunas=data.data.data.comunas
+											metodoDePago=data.data.data.metodosDePago
+											paymentsTerms=data.data.data.paymentsTerms
+											
+											construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify_clientes')
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+										}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+												
+									
+									
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+								}
+					
+							});
+		
+			}
+	})
+		
+}
+
+function load_tareas(){
+
+		$.ajax({
+			data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+			url : direccion_ws+"carga_kanban",
+			type : "POST",           
+			dataType: 'json',
+			success: function(data) {
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						columnas=[]
+						for (i in data.data.columnas){
+							datos_columna=data.data.columnas[i].nombre.split("|",2);	
+							columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+						}
+						
+						refrescar_tareas(data.data.fichas, columnas)
+					
+					}else if(data.estatus=="NO OK"){
+						controlar_no_ok_desconocido_error("NO OK", data)
+					}
+				}else{
+					controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+				}
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+			}			
+		});
+		
+
+	}
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+	
+		
+
+
+
+
+
+
+
+
+
+
+function tarea_click_cliente(){
+	
+	
+		$(".modal-header").html("")
+		//VER UN DOCUMENTO
+		if(ws=="" && documento_accion!=""){
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+				},
+				success: function(data){
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")	
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+			});
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			
+			if(metodo_peticion=="GET"){
+				
+				window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				
+			}else{
+				
+			}
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+			
+				
+				datos_para_formulario="";
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0},
+						url : direccion_ws+ws,
+						type : "POST",
+						headers:{"authorization": "JWT" + " " +localStorage.token },           
+						dataType: 'json',
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						
+						
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+							dataType: "text",
+							beforeSend: function () {},
+							success: function(data){
+								cargo_formulario=eval(data)
+								titulo=cargo_formulario.formulario
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+							},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		}
+}
+
+
+
+
+
+
+function tarea_dblclick_cliente(){
+	
+	
+	$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button>");
+	
+	//alert(identificador)
+
+	//VER UN DOCUMENTO
+	if(ws=="" && documento!=""){
+		
+		$.ajax({
+			url : nivel_sistema+"formularios_js/"+documento+".json",
+			dataType: "text",
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+				//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+				mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, "")	
+			},
+			error: function (xhr, ajaxOptions, thrownError) {}
+				
+		});
+	
+	//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK				
+	} else if(ws!="" && documento==""){
+	
+	//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+	} else if(ws!="" && documento!=""){
+	
+		
+		datos_para_formulario="";
+		//LAMO DATOS PARA FOMRULARIO
+		let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+		$.ajax({
+			data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0},
+			url : direccion_ws+ws,
+			type : "POST",
+			headers:{"authorization": "JWT" + " " +localStorage.token },           
+			dataType: 'json',
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							/*if(data=="BLOQUEADO"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_bloqueado+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data=="NO EXISTE"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_cambio+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data!="BLOQUEADO" || data!="NO EXISTE" ){
+								datos_para_formulario=data
+								resolve("SI")
+							}*/
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+			});
+				
+				//LAMO  FOMRULARIO
+			Promise.all([llamar_datos_de_formulario]).then(values => {
+				if(values[0]=="SI"){
+					$.ajax({
+						url : nivel_sistema+"formularios_js/"+documento+".json",
+						dataType: "text",
+						beforeSend: function () {},
+						success: function(data){
+							//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_para_formulario)
+							
+									
+						},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		
+		
+	}
+		
+		
+}
+
+
+
+/////FUNCIONES DEL CLIENTE
+
+
+
+</script>
+
+

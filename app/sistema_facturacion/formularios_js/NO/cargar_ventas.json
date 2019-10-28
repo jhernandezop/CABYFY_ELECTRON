@@ -1,0 +1,57 @@
+descuento={
+						"formulario":'Carga de archivos de ventas',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Documentos Obligatorios",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"CSV de Ventas",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tipo_file":"CSV",
+													"tamanio":[12,12,12],
+													"id":"carga_ventas"
+												}
+												,{
+													"campo":"MES_SELECCIONADO",
+													"tipo":"texto",
+													"opciones":[$("#filtro_Mes").parent(".filtro").find(".seleccion_seccion").find(".label").html()],
+													"obligatorio":"si",
+													"nota":"ID TAREA",
+													"tamanio":[0],
+													"id":"mes_selecionado"
+												},{
+													"campo":"ID TAREA",
+													"tipo":"texto",
+													"opciones":[identificador],
+													"obligatorio":"no",
+													"nota":"ID TAREA",
+													"tamanio":[0],
+													"id":"id_tarea"
+												}
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"cargar_ventas",
+							"funcion":""
+						}]
+				
+}

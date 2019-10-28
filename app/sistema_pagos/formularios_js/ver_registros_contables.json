@@ -1,0 +1,41 @@
+//{ usuario, fecha, identificador, archivo }
+cartola={
+						"formulario":'Contabilidad',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},
+												
+												{
+													"campo":"contabilizar",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario,
+													"ordenamiento":"no",
+													"obligatorio":"",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"contabilizar"
+												}]
+												
+												
+										}
+									
+						]/*,
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}]*/
+				
+}

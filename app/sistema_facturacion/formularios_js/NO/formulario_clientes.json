@@ -1,0 +1,548 @@
+descuento={
+						"formulario":'Detalle de Cliente',
+						"contendio":[	
+										{
+										"grupo":"Datos Empresa",
+										"tamanio":[12,12,7],
+										"campos":[
+													{
+													"campo":"Rut",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"estado":"lectura_envio",
+													"nota":"",
+													"tamanio":[0],
+													"id":"ES_idCli"
+													},{
+													"campo":"Rut",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"estado":"lectura_envio",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"CLIENT_TAX_CODE"
+													},
+													{
+													"campo":"Razon social",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,9],
+													"id":"CLIENT_NAME"
+													},
+													{
+													"campo":"client id",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"estado":"lectura_envio",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CLIENT_ID"
+													},
+													{
+													"campo":"client id madre",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"estado":"lectura_envio",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CLIENT_ID_MADRE"
+													},
+													{
+													"campo":"Grupo economco",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"GRUPO_ECONOMICO"
+													},
+													{
+													"campo":"Gir. giro ",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"GIRO"
+													},{
+													"campo":"Last event type",
+													"tipo":"lista",
+													"opciones":[{"tag": "finisher", "id":"finisher"},
+																{"tag": "farmer", "id":"farmer"},
+																{"tag": "hunter", "id":"hunter"}
+																],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"LAST_EVENT_TYPE"
+													},
+													{
+													"campo":"Categoria",
+													"tipo":"lista",
+													"opciones":[{"tag": "Importante", "id":"Importante"},
+																{"tag": "Resto", "id":"Resto"},
+																{"tag": "VIP", "id":"VIP"}
+																],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"CATEGORIA"
+													},
+													
+													{
+													"campo":"Billing period",
+													"tipo":"lista",
+													"opciones":[{"tag": "monthly", "id":"monthly"},
+																{"tag": "biweekly", "id":"biweekly"},
+																{"tag": "on_receipt", "id":"on_receipt"}
+																],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"BILLING_PERIOD"
+													},
+													{
+													"campo":"Size",
+													"tipo":"lista",
+													"opciones":[{"tag": "employee_1", "id":"employee_1"},
+																{"tag": "employees_2_10", "id":"employees_2_10"},
+																{"tag": "employees_11_50", "id":"employees_11_50"},
+																{"tag": "employees_51_200", "id":"employees_51_200"},
+																{"tag": "employees_more_200", "id":"employees_more_200"},
+																{"tag": "employees_more_500", "id":"employees_more_500"},
+																{"tag": "employees_more_1000", "id":"employees_more_1000"},
+																{"tag": "employees_more_5000", "id":"employees_more_5000"}],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"SIZE"
+												},
+												{
+													"campo":"Sector",
+													"tipo":"lista",
+													"opciones":[{"tag": "advertising_agencies", "id":"advertising_agencies"},
+																{"tag": "apparel", "id":"apparel"},
+																{"tag": "baking_financial_services", "id":"baking_financial_services"},
+																{"tag": "construction", "id":"construction"},
+																{"tag": "consulting", "id":"consulting"},
+																{"tag": "education", "id":"education"},
+																{"tag": "entertainment", "id":"entertainment"},
+																{"tag": "fast_food_and_restaurants", "id":"fast_food_and_restaurants"},
+																{"tag": "food_processing_and_beverage", "id":"food_processing_and_beverage"},
+																{"tag": "gambling", "id":"gambling"},
+																{"tag": "government", "id":"government"},
+																{"tag": "healthcare", "id":"healthcare"},
+																{"tag": "hotels_and_airlines", "id":"hotels_and_airlines"},
+																{"tag": "human_resources_and_recruiting", "id":"human_resources_and_recruiting"},
+																{"tag": "insurance", "id":"insurance"},
+																{"tag": "it_engineering_and_data", "id":"it_engineering_and_data"},
+																{"tag": "legal_services", "id":"legal_services"},
+																{"tag": "mail_package_and_delivery", "id":"mail_package_and_delivery"},
+																{"tag": "mass_media	motor_vehicles", "id":"mass_media	motor_vehicles"},
+																{"tag": "other", "id":"other"},
+																{"tag": "personal_products_and_household", "id":"personal_products_and_household"},
+																{"tag": "pharmaceutical_and_drug_stores", "id":"pharmaceutical_and_drug_stores"},
+																{"tag": "real_estate", "id":"real_estate"},
+																{"tag": "retailers", "id":"retailers"},
+																{"tag": "sports", "id":"sports"},
+																{"tag": "telecommunication", "id":"telecommunication"},
+																{"tag": "travel_services", "id":"travel_services"},
+																{"tag": "wholesalers", "id":"wholesalers"}
+																],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,8],
+													"id":"SECTOR"
+												},
+												{
+													"campo":"City",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CITY"
+												},
+												{
+													"campo":"County",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"COUNTY"
+												},
+												{
+													"campo":"Usuarios registrados",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"REGISTERED_USERS"
+												},
+												{
+													"campo":"Usuarios potenciales",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"POTENTIAL_USERS"
+												},
+												{
+													"campo":"Deal value",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"DEAL_VALUE"
+												},
+										
+											]
+										}
+										,
+										{
+										"grupo":"Datos de Facturacion",
+										"tamanio":[12,12,5],
+										"campos":[
+													{
+													"campo":"Cor. fac",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CORREOS_FAC"
+													},
+													{
+													"campo":"Direccion Fac",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CLIENT_ADDRESS"
+													},
+													{
+													"campo":"Comuna Fac",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CLIENT_CITY"
+													},
+													{
+													"campo":"Ciudad Fac",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"CIUDAD_FAC"
+													},{
+													"campo":"Det. CC. facturacion",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"DETALLE_CC_FACTURACION"
+													}
+										
+										
+											]
+										}
+										,
+										{
+										"grupo":"Detalles de Facturacion",
+										"tamanio":[12,12,5],
+										"campos":[
+													{
+													"campo":"Especial",
+													"tipo":"lista",
+													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,8],
+													"id":"ESPECIAL"
+													}
+													,
+													{
+													"campo":"C. costos",
+													"tipo":"lista",
+													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"CENTRO_COSTO"
+													}
+													,
+													{
+													"campo":"O. compra",
+													"tipo":"lista",
+													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"ORDEN_COMPRA"
+													}
+													,
+													{
+													"campo":"Desglose",
+													"tipo":"lista",
+													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"DESGLOSE"
+													}
+													,
+													{
+													"campo":"Hes",
+													"tipo":"lista",
+													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,4],
+													"id":"HES"
+													},
+													{
+													"campo":"Metodo pago",
+													"tipo":"lista",
+													"opciones":[{"tag": "Deposito", "id":"Deposito"},
+																{"tag": "Tarjeta", "id":"Tarjeta"},
+																{"tag": "Transferencia", "id":"Transferencia"},
+																{"tag": "Vale Vista Banco de Chile", "id":"Vale Vista Banco de Chile"},
+																{"tag": "Vale Vista BCI", "id":"Vale Vista BCI"},
+																{"tag": "Vale Vista Chile-Edwards", "id":"Vale Vista Chile-Edwards"},
+																{"tag": "Vale Vista Corpbanca", "id":"Vale Vista Corpbanca"},
+																{"tag": "Vale Vista Santander", "id":"Vale Vista Santander"}
+																],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"METODO_PAGO"
+													},
+													{
+													"campo":"Payment terms",
+													"tipo":"lista",
+													"opciones":[
+													
+																{"tag": "billing_period", "id":"billing_period"},
+																{"tag": "billing_period_plus_15", "id":"billing_period_plus_15"},
+																{"tag": "billing_period_plus_30", "id":"billing_period_plus_30"},
+																{"tag": "billing_period_plus_45", "id":"billing_period_plus_45"},
+																{"tag": "billing_period_plus_60", "id":"billing_period_plus_60"},
+																{"tag": "billing_period_plus_7", "id":"billing_period_plus_7"},
+																{"tag": "On Receipt", "id":"On Receipt"}
+																
+																],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,6],
+													"id":"PAYMENT_TERMS"
+													}
+										
+										
+											]
+										}
+										,
+										{
+										"grupo":"Contactos",
+										"tamanio":[12,12,9],
+										"campos":[
+													{
+													"campo":"Nom. admin",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"NOMBRE_ADMIN"
+												},
+												{
+													"campo":"Cor. admin",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"CORREO_ADMIN"
+												},
+												{
+													"campo":"Tel. admin 1",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"TELEFONO_ADMIN"
+												},{
+													"campo":"Tel. admin 2",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"TELEFONO_ADMIN2"
+												},{
+													"campo":"Nom. cob 1",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"NOMBRE_COB"
+												},{
+													"campo":"Cor. cob 1",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"CORREO_COB"
+												},{
+													"campo":"Tel. cob 1",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"TELEFONO_COB"
+												},{
+													"campo":"Tel. cob 2",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,12,3],
+													"id":"TELEFONO_COB2"
+												}
+												
+										
+										
+											]
+										}
+										,
+										{
+										"grupo":"Responsables Cabify",
+										"tamanio":[12,12,3],
+										"campos":[
+													{
+													"campo":"Hunter rep",
+													"tipo":"lista",
+													"opciones":[{"tag": "Agustin Sabate", "id":"Agustin Sabate"},
+																{"tag": "Juan Ignacio Garces", "id":"Juan Ignacio Garces"},
+																{"tag": "Constanza Veronica Garcia Garcia", "id":"Constanza Veronica Garcia Garcia"},
+																{"tag": "Felix Sayago", "id":"Felix Sayago"},
+																{"tag": "Jose Tomas Aguirre", "id":"Jose Tomas Aguirre"},
+																{"tag": "Constanza Cifuentes", "id":"Constanza Cifuentes"},
+																{"tag": "Alberto Tognetti", "id":"Alberto Tognetti"},
+																{"tag": "Manuel Ramirez", "id":"Manuel Ramirez"},
+																{"tag": "Sebastian Eyzaguirre", "id":"Sebastian Eyzaguirre"},
+																{"tag": "Jose Domingo Jaramillo Reyes", "id":"Jose Domingo Jaramillo Reyes"},
+																{"tag": "Camila Bijit", "id":"Camila Bijit"},
+																{"tag": "Luis Parra Garrido", "id":"Luis Parra Garrido"},
+																{"tag": "Klaus Pollmann", "id":"Klaus Pollmann"},
+																{"tag": "Constanza  Frauenberg", "id":"Constanza  Frauenberg"},
+																{"tag": "Pia Carrasco", "id":"Pia Carrasco"},
+																{"tag": "Lucas Almeida", "id":"Lucas Almeida"},
+																{"tag": "Rocio Paz Ortiz Guzman", "id":"Rocio Paz Ortiz Guzman"},
+																{"tag": "Ricardo Macchiavello", "id":"Ricardo Macchiavello"},
+																{"tag": "Juan Pablo  Aste", "id":"Juan Pablo  Aste"},
+																{"tag": "Valerio Santana", "id":"Valerio Santana"},
+																{"tag": "Luciana Correa Meyer", "id":"Luciana Correa Meyer"},
+																{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
+																{"tag": "Piero Bosi", "id":"Piero Bosi"},
+																{"tag": "Eva Ibarra", "id":"Eva Ibarra"},
+																{"tag": "Ventas Cabify", "id":"Ventas Cabify"},
+																{"tag": "Camila Andrea", "id":"Camila Andrea"},
+																{"tag": "Toro Calderon", "id":"Toro Calderon"},
+																{"tag": "Agustin Guilisasti", "id":"Agustin Guilisasti"},
+																{"tag": "Gabriela Marcano", "id":"Gabriela Marcano"},
+																{"tag": "Ivan  Seijas", "id":"Ivan  Seijas"},
+																{"tag": "Lucas Barros", "id":"Lucas Barros"},
+																{"tag": "Luis Vindrola Caceres", "id":"Luis Vindrola Caceres"},
+																{"tag": "Javier Ignacio Iturrieta Brath", "id":"Javier Ignacio Iturrieta Brath"},
+																{"tag": "Javiera Duarte Contesse", "id":"Javiera Duarte Contesse"},
+																{"tag": "Sergio Andrés Rodriguez del Canto", "id":"Sergio Andrés Rodriguez del Canto"},
+																{"tag": "Javiera Duarte", "id":"Javiera Duarte"},
+																{"tag": "Jose Domingo Jaramillo", "id":"Jose Domingo Jaramillo"},
+																{"tag": "Luis Vindrola", "id":"Luis Vindrola"},
+																{"tag": "Rocio Ortiz", "id":"Rocio Ortiz"}],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"SALES_REP"
+												},{
+													"campo":"Farmer rep",
+													"tipo":"lista",
+													"opciones":[{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
+																{"tag": "Gabriela Marcano", "id":"Gabriela Marcano"},
+																{"tag": "Luis  Jara", "id":"Luis  Jara"},
+																{"tag": "Klaus Pollmann", "id":"Klaus Pollmann"},
+																{"tag": "Luis Parra Garrido", "id":"Luis Parra Garrido"},
+																{"tag": "Ivan  Seijas", "id":"Ivan  Seijas"},
+																{"tag": "Valerio Santana", "id":"Valerio Santana"},
+																{"tag": "Lucas Almeida", "id":"Lucas Almeida"},
+																{"tag": "Ricardo Macchiavello", "id":"Ricardo Macchiavello"},
+																{"tag": "Vitor Correia", "id":"Vitor Correia"},
+																{"tag": "Juan Pablo  Aste", "id":"Juan Pablo  Aste"},
+																{"tag": "Ana Gabriela Arrieta Vergara", "id":"Ana Gabriela Arrieta Vergara"},
+																{"tag": "Camila Bijit", "id":"Camila Bijit"},
+																{"tag": "Excellence", "id":"Excellence"}
+																],
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"SOPORTE"
+												},
+										
+										
+											]
+										}
+										
+										
+										
+									
+						],
+						"opciones":[{
+							"boton":"GUARDAR",
+							"ws":"",
+							"funcion":"editar_cliente()"
+						}]
+				
+}
+
+												
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

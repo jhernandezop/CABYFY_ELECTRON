@@ -1,0 +1,4417 @@
+<style>
+.navbar-default {
+	/*background:#FFF !important;*/
+}
+.progress {
+    height: 10px;
+    margin-bottom: 0px; 
+}
+.head_ind h4 {
+     padding-left: 0px !important; 
+    
+}
+.desabilitar{
+	/*display:none !important;*/	
+	    height: 100px !important;
+}
+
+#lista_formularios .conter_loader {
+    background: rgba(245,245,245, 0.5) !important;
+	min-height: 160px;
+}
+
+
+.htm_excel{
+	overflow: auto;
+	max-height:300px;
+	
+	
+}
+.htm_excel tbody{
+	border:rgb(0,0,0) 1px solid;
+	
+}
+.htm_excel tr{
+	height: 50px;
+	
+    font-size: 13px;
+	
+
+}
+
+.htm_excel tr:first-child{
+	background:rgb(0,0,0);
+	color:rgb(255,255,255);
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+	
+}
+
+
+.htm_excel td{
+	border-bottom:rgb(0,0,0) 1px solid;
+	border-right:rgb(0,0,0) 1px solid;
+	min-width:100px;
+	padding: 5px;
+}
+
+
+.htm_excel tr:first-child td:hover{
+	background:rgb(153,153,153);
+	cursor:pointer;
+	
+	
+}
+
+	
+.selec_columna_eliminada{
+		background:rgb(204,51,0) !important;
+		color:rgb(255,255,255) !important;
+		cursor:pointer;	
+}
+.selec_columna_seleccionada,.selec_columna_seleccionada_temporal{
+		background:rgb(0,153,51) !important;	
+}	
+	.edit_columna{
+			
+	}
+	
+#link_clientes{
+	/*display:none;*/
+	
+}
+
+
+
+
+
+.tabla_facturas{
+	padding:0px;
+	padding-top:20px;
+}
+.columnna_fija .tabla_facturas {
+    margin-bottom: 130px;
+}
+.sorting_1{
+	padding: 1px 5px !important;
+}
+
+.sorting_1 > .btn-group > .btn-default, .sorting_1 > .btn-group > .btn-default:hover, .sorting_1 > .btn-group > .btn-default:focus {
+    color: #333;
+    background-color: transparent;
+     border-color:transparent; 
+}
+
+#tabla_facturas_filter > label > input{
+	border:1px solid rgb(204,204,204);
+	padding:5px;
+	border-radius:5px;
+}
+
+.sorting_1 > .btn-group > .dropdown-menu > li{
+	padding:5px;
+	
+}
+.sorting_1 > .btn-group > .dropdown-menu > li:hover{
+	cursor:pointer;
+	background:rgb(102,102,102);
+	color:rgb(255,255,255);
+	
+}
+
+
+.sorting_1 > .btn-group > .dropdown-menu > .divider{
+	padding:0px;
+}
+
+.verpdf{
+	height:500px;
+	
+}
+
+.verxml{
+	background:rgb(255,255,255);
+	padding:20px;
+}
+
+#Modal_glosa{
+	z-index:5000;	
+}
+
+
+.filter-panel{
+	display:none !important;
+	
+}
+
+.panel {
+    border-radius: 0px !important;
+	border:0px;
+}
+
+#lista_tareas, #lista_formularios {
+    top: 58px;
+}
+
+#lista_opciones_interz {
+    margin-top: 18px;
+}
+.barra_tareas{
+	display:none;
+	
+}
+.dataTables_scroll{
+	min-height:480px !important;
+	    background: transparent;	
+}
+
+.tabla_facturas .dataTables_scroll{
+	min-height: auto !important;
+	background: transparent;
+	overflow: visible;	
+}
+
+#fomulario_form_refacturar #grupo_0form_refacturar{
+	    max-height: 350px;
+    overflow: auto;
+	
+}
+
+#total_pendiente{
+	font-weight:bold;
+	font-size:20px;
+	text-align:right;
+}
+
+
+.general:hover , .facturadas:hover , .por_facturar:hover , .realizadas:hover , .por_realizar:hover {
+	cursor:pointer;
+	background:#337ab7;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #FFF !important;
+}
+
+
+/*TABULADOR*/
+
+.tabulator {
+   
+    border: 0px solid #e6e6e6;
+   
+}
+
+
+.tabulator .tabulator-header {
+    border-bottom: 1px solid #000;
+	padding:0px;
+	
+	color:rgb(0,0,0);
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content {
+
+	padding-bottom:8px;
+	  padding-top:8px;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+
+     border-right: 0px solid #aaa;
+	 background:#cccccc;
+	 text-align: center;
+	 
+
+}
+
+
+
+.tabulator-cell{
+	padding-bottom:6px;
+	padding-top:6px;
+}
+
+.table-controls .buttons-excel {
+    padding: 10px !important;
+    border-radius: 5px;
+    margin-top: 10px !important;
+    background: #000;
+    color: #FFF;
+    margin-bottom: 5px;
+    border: none;
+}
+
+.tabulator .tabulator-footer .tabulator-page.active {
+    background: #f00;
+    color: #000;
+    border: none;
+}
+.tabulator .tabulator-footer .tabulator-page {
+
+    background: #000;
+    color: #FFF;
+    border: none;
+}
+
+.tabulator-paginator > .tabulator-page{
+	display:none !important;	
+}
+
+.tabulator-header-filter input{
+	padding: 3px;
+    width: 90%;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/*TABULADOR*/
+
+.desabilitar{
+	display: none;
+}
+
+#div_ingresar_glosas .dropdown-menu > li > a {
+	font-size: 11px !important;
+}
+
+</style>
+<!--<div id="kanaban_load"></div>-->
+<div class="kanaban_load" id="kanaban_cabify"></div>
+
+<!--MODAL-->
+    <div id="Modal_glosa" class="modal fade " role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog  modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content" >
+          <div class="modal-header">
+          	<button type="button" class="salir" data-dismiss="modal">x</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div   class="modal-body">
+          	<div id="agregar_glosa" class="col-xs-12 col-sm-12 col-md-12">
+            
+            </div>
+          	
+          </div>
+          <!--<div class="modal-footer"></div>-->
+        </div>
+    
+      </div>
+    </div>
+
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+nota_negativa="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+mes_facturacion_ws=moment().format("MM")
+año_facturacion=moment().format("YYYY")
+
+
+var date_home = new Date();
+var ultimoDia_home = new Date(date_home.getFullYear(), Number(mes_facturacion_ws), 0);
+
+periodo_epoch_in=año_facturacion+"-"+mes_facturacion_ws+"-01"
+periodo_epoch_out=año_facturacion+"-"+mes_facturacion_ws+"-"+compenzar_numero(ultimoDia_home.getDate())
+		
+periodo_selecionado=[moment(periodo_epoch_in).format("X"),moment(periodo_epoch_out).format("X")]
+console.log(periodo_selecionado)
+//GALERIA DE OBJETOS
+nota_accion="";
+//nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+//nota_campo_edicion='<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g='+
+//'(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-1y%2Cmode%3Aquick%2Cto%3Anow))" style="border:0px;" height="600" width="100%"></iframe>'
+
+nota_campo_edicion='<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+periodo_epoch_in+'T03%3A00%3A00.000Z%27%2Cto%3A%27'+periodo_epoch_out+'T02%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>'
+
+//nota_campo_edicion='<iframe src="https://snapshot.raintank.io/dashboard-solo/snapshot/gIGs9zCeq0LrfGBOh1at3G5MXtlnrRd1?orgId=2&kiosk=tv&panelId=2&from=1522685515979&to=1554221515979&var-Filters=NOMINA.keyword%7C!~%7C%22%22&var-Filters=FECHA_PERIODO%7C%3D%7C2019-01" style="border:0px;" height="600" width="100%"></iframe>'
+
+//nota_campo_edicion='<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/visualize/edit/e24b6260-50d8-11e9-9810-f932ebb19a8c?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%272019-03-31T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%272019-04-01T02%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>'
+
+
+
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	/*parametro=parametro.replace('<span class="label label-default">MES: ', '')
+	parametro=parametro.split('</span>  ',2)
+	parametro_filtro=parametro[0];*/
+	parametro_filtro=parametro;
+	load_camban()
+}
+
+function buscar_baul(){
+	//alert("alert")
+	//console.log("ES:"+$("#form_form_baul_buscar").serialize())
+	
+	var nueva_busqueda={}
+	//moment().format('X')
+	if($("#año").val()=="" || $("#mes").val()==""){
+		
+		$("#año, #mes").addClass("fucus_negativo")
+		$(".nota_validacion").html('<div class="alert alert-warning" role="alert"><strong>Selecione</strong>, un rango de fecha valido.</div>')
+	
+	
+	}else if( $("#mes").val()!="" && $("#año").val()!=""){
+		
+		mes_facturacion_ws=$("#mes").val()
+		año_facturacion=$("#año").val()
+		$("#usuario_").html("Período: "+$("#mes").val()+"-"+$("#año").val())
+		load_tareas($("#año").val()+"-"+$("#mes").val())
+		$("#myModal").modal("hide");
+		
+		
+		
+		
+		//DETERMINO ULTIMO DIA DEL MES SELECIONADO
+		
+		var date = new Date();
+		//alert()
+		//var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+		var ultimoDia = new Date(date.getFullYear(), Number($("#mes").val()), 0);
+		//console.log("<br>El primer día es: "+primerDia.getDate());
+		
+		fecha_consulta=$("#año").val()+"-"+$("#mes").val()+"-"+compenzar_numero(ultimoDia.getDate())
+		//PERIODO EPOCH
+		periodo_epoch_in=$("#año").val()+"-"+$("#mes").val()+"-01"
+		periodo_epoch_out=$("#año").val()+"-"+$("#mes").val()+"-"+compenzar_numero(ultimoDia.getDate())
+		
+		//alert(fecha_consulta)
+		$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+periodo_epoch_in+'T03%3A00%3A00.000Z%27%2Cto%3A%27'+periodo_epoch_out+'T02%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+		
+		
+		
+		periodo_selecionado=[moment(periodo_epoch_in).format("X"),moment(periodo_epoch_out).format("X")]
+		console.log(periodo_selecionado)
+	
+	}
+}
+
+
+
+function load_camban(tipo){
+	
+	
+			
+			
+			let clientes_requerida = new Promise((resolve, reject) => {
+				//resolve("FIN")	
+				$.ajax({
+						url: constantes.direccion_base,
+						type: "POST",
+						data:JSON.stringify({
+											   "tx" : "F0",
+											   "usuario" : "op",
+											   "periodo" : "",
+											   "proceso":"dnData",
+									   			"destino":constantes.destino
+											   
+											}
+						),
+						contentType: "text",
+						timeout:2800000,
+						beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+								},
+						success: function(data) {
+							//console.log(data)
+							data=JSON.parse(data)
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									clientes_madre_facturacion=data.data;
+									console.log(clientes_madre_facturacion)
+									resolve("FIN")	
+								
+								}else if(data.estatus=="NO OK"){
+									controlar_no_ok_desconocido_error("NO OK", data)
+										}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)
+								
+						}			
+				});
+			
+			
+			
+			
+			
+			
+			
+			});
+			
+			
+			
+			
+			
+			Promise.all([clientes_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+			 	//console.log(clientes_madre_facturacion)
+				
+						$.ajax({
+								url: constantes.direccion_base,
+								type: "POST",
+								data:JSON.stringify({
+													   "tx" : "F0",
+													   "usuario" : "op",
+													   "periodo" : moment().format("YYYY-MM"),
+													   "proceso":"stats",
+									   					"destino":constantes.destino
+													   
+													}
+								),
+								contentType: "application/json",
+								timeout:1800000,
+								
+								success: function(data){
+									data=JSON.parse(data)
+									if(data.estatus){
+									
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											data.data.interfaz="lista"
+											/*data.data.columnas[0].nombre=data.data.columnas[0].nombre+`|<br><div class="btn-group btn-group-xs" role="group" aria-label="...">
+														  <button type="button" class="btn btn-success">Ejecutados: 205</button>
+														  <button type="button" class="btn btn-warning">Pendientes: 50</button>
+														  <button type="button" class="btn btn-danger">Dispobibles: 4</button>
+														</div><br>`*/
+											data.data.columnas=[data.data.columnas[0]]
+											kanban_usuario=data.data;
+											
+											//ACTUALIZO FILTROS
+											filtros_kanban_actual=[]
+											for(i in data.data.filtros){
+												
+												filtros_kanban_actual.push({"id":data.data.filtros[i].nombre, "tipo":"lista", "parametros":[]})
+												if(data.data.filtros[i].nombre!="MES"){
+														new_anios=[]
+														
+														for(b in data.data.filtros[i].opciones){
+															console.log(Number(data.data.filtros[i].opciones[b])+"/"+2019)
+															if(Number(data.data.filtros[i].opciones[b])>=2019){
+																new_anios.push(data.data.filtros[i].opciones[b])
+															}
+														}
+														
+													data.data.filtros[i].opciones=new_anios
+													
+												}
+												for(b in data.data.filtros[i].opciones){
+													
+													
+													
+													
+													if(data.data.filtros[i].nombre=="MES"){
+														
+														if(b==0){var id="01"}
+														else if(b==1){var id="02"}
+														else if(b==2){var id="03"}
+														else if(b==3){var id="04"}
+														else if(b==4){var id="05"}
+														else if(b==5){var id="06"}
+														else if(b==6){var id="07"}
+														else if(b==7){var id="08"}
+														else if(b==8){var id="09"}
+														else if(b==9){var id="10"}
+														else if(b==10){var id="11"}
+														else if(b==11){var id="12"} 
+													}else{
+														var id=data.data.filtros[i].opciones[b]
+													}
+													
+													filtros_kanban_actual[i].parametros.push({"tag":data.data.filtros[i].opciones[b],"id":id.toString()})
+												}
+												
+											}
+											//,
+											data.data.columnas[0].accion[0].lista="Cargar Archivo 15 Días";
+											data.data.columnas[0].accion[0].doc="detalle_requerimiento_15";
+											data.data.columnas[0].accion.push(	
+																				{lista: "Cargar Archivo 30 Días", ws: "", doc: "detalle_requerimiento"}, 
+																				{lista: "Documentos Emitidos", ws: "iF_periodo", doc: ""}, 
+																				{lista: "Diferencias Docs y O. facturación", ws: "iF_periodo", doc: ""}
+
+																			)
+											
+											data.data.filtros=[{
+																"tipo_de_filtro": "baul", 
+																"parametros": filtros_kanban_actual
+															}]
+											
+											//ACTUALIZO FICHAS
+											
+											for(i in data.data.fichas){
+												
+												if(data.data.fichas[i].id=="Desglose"){
+													data.data.fichas[i].accion.push({"lista": "Facturar 1x1", "ws": "F_especial", "doc": "tabla_doc_disponibles"})	
+												}
+												
+												
+											}
+											
+											
+											
+											
+											$("#kanaban_cabify").html("");
+											//construccion(data.fichas, data)
+											construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify')
+											
+											//$("#filtro_Mes").closest(".filtro").remove()
+											$("#conter_search_GRUPOS").html("&nbsp;")
+											
+											$("#usuario_").html("Período: "+moment().format("MM-YYYY"))
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+										}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+												
+									
+									
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+								}
+					
+							});
+				
+				
+						
+			 	
+						/*$.ajax({
+								data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+								url : direccion_ws+"carga_kanban",
+								type : "POST",
+								headers:{"authorization": "JWT" + " " +localStorage.token },       
+								dataType: 'json',
+								beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+								},
+								success: function(data){
+									
+									if(data.estatus){
+									
+										if(data.estatus=="OK" || data.estatus=="FIN"){
+											data.data.interfaz="lista"
+											data.data.columnas=[data.data.columnas[0]]
+											kanban_usuario=data.data;
+											$(".kanaban_load").html("");
+											//construccion(data.fichas, data)
+											construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify')
+											
+											$("#filtro_Mes").closest(".filtro").remove()
+											
+											
+										}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+										}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+												
+									
+									
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+								}
+					
+							});*/
+							
+											
+		
+			}
+	})
+		
+}
+
+function load_tareas(periodo){
+
+		$.ajax({
+				url: constantes.direccion_base,
+				type: "POST",
+				data:JSON.stringify({
+									"tx" : "F0",
+									"usuario" : "op",
+									"periodo" : periodo,
+									"proceso":"stats",
+									"destino":constantes.destino
+													   
+									}
+								),
+				contentType: "application/json",
+				timeout:1800000,
+				success: function(data) {
+					data=JSON.parse(data)	
+					if(data.estatus){
+						
+						if(data.estatus=="OK" || data.estatus=="FIN"){
+							columnas=[]
+							for (i in data.data.columnas){
+								datos_columna=data.data.columnas[i].nombre.split("|",2);	
+								columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+							}
+							
+							for(i in data.data.fichas){
+												
+												if(data.data.fichas[i].id=="Desglose"){
+													data.data.fichas[i].accion.push({"lista": "Facturar 1x1", "ws": "F_especial", "doc": "tabla_doc_disponibles"})	
+												}
+												
+												
+											}
+							
+							refrescar_tareas(data.data.fichas, columnas)
+						
+						}else if(data.estatus=="NO OK"){
+							controlar_no_ok_desconocido_error("NO OK", data)
+						}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+				
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						
+				}			
+			});
+		
+
+	}
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 60000);	
+		
+	
+		
+
+
+
+
+
+
+
+mes_facturacion="";
+anio_facturacion="";
+
+function tarea_click_cliente(){
+	
+		if(ws=="iF_periodo"){
+			
+			new_tarea_click_cliente();
+			return false;
+			
+		}
+		
+	
+		$(".modal-header").html('<button type="button" class="salir" data-dismiss="modal">x</button><h4 class="modal-title"></h4>')
+		//VER UN DOCUMENTO
+		//determinar perido
+		if(ws=="" && documento_accion!=""){
+			//alert("a")
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+				dataType: "text",
+				beforeSend: function () {
+					
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+				},
+				success: function(data){
+
+					
+					
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")
+					$("#cargar_gmv_viuw, .enviar_form_001").attr("disabled", true)
+					
+					$("#select_mes").find("li").click(function(){
+						console.log("click")
+						if(documento_accion=="detalle_requerimiento"){
+							descuento.contendio[2].campos[4].columnas_obligatorias=["Defauld_1", $(this).data("opcion")]
+							mes_facturacion=$(this).data("opcion")
+							$("#cargar_gmv_viuw").attr("disabled", false)
+							$("#grupo_2paso_3").find(".obligatorio").val('["Defauld_0","'+$(this).data("opcion")+'"]')
+							
+							if(anio_facturacion!="" && mes_facturacion!="" && $("#back_cargar_exclusion").val()!=""){
+								$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+							}
+						}else if(documento_accion=="detalle_requerimiento_15"){
+							mes_facturacion=$(this).data("opcion")
+							if(anio_facturacion!="" && mes_facturacion!="" && $("#back_cargar_exclusion_viuw").val()!=""){
+								$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+							}
+							
+						}
+					
+					})
+					$("#select_anio").find("li").click(function(){
+						anio_facturacion=$(this).data("opcion")
+						console.log("click")
+						if(documento_accion=="detalle_requerimiento"){
+							if(anio_facturacion!="" && mes_facturacion!="" && $("#back_cargar_exclusion").val()!=""){
+								$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+
+								
+							}
+						}else if(documento_accion=="detalle_requerimiento_15"){
+							anio_facturacion=$(this).data("opcion")
+							if(anio_facturacion!="" && mes_facturacion!="" && $("#back_cargar_exclusion_viuw").val()!=""){
+								$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+							}
+						}
+						
+					})
+					
+					
+					$(".file").change(function(){
+						if(mes_facturacion!="" && anio_facturacion!=""){
+							$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+						}
+						
+					})
+					
+					
+					$("#cargar_no_invoiceables").change(function(){
+						if($(this).val()>=Number(0)){
+							$(this).closest(".tab-pane").find(".enviar_form_001").attr("disabled", false)
+						}
+					})
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+			});
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			
+			//alert(identificador)
+			//alert($("#filtro_AÑO").closest(".filtro").find(".seleccion_seccion").html().replace('<span class="caret"></span>','')+"-"+$("#filtro_MES").closest(".filtro").find(".seleccion_seccion").html().replace('<span class="caret"></span>',''))
+			//alert(ws)
+			//return false
+			
+			mes_facturacion_ws=mes_facturacion_ws
+			año_facturacion=año_facturacion
+			numero_mes_ws="";
+			/*if(mes_facturacion_ws=="ENERO"){numero_mes_ws="01"}
+			else if(mes_facturacion_ws=="FEBRERO"){numero_mes_ws="02"}
+			else if(mes_facturacion_ws=="MARZO"){numero_mes_ws="03"}
+			else if(mes_facturacion_ws=="ABRIL"){numero_mes_ws="04"}
+			else if(mes_facturacion_ws=="MAYO"){numero_mes_ws="05"}
+			else if(mes_facturacion_ws=="JUNIO"){numero_mes_ws="06"}
+			else if(mes_facturacion_ws=="JULIO"){numero_mes_ws="07"}
+			else if(mes_facturacion_ws=="AGOSTO"){numero_mes_ws="08"}
+			else if(mes_facturacion_ws=="SEPTIEMBRE"){numero_mes_ws="09"}
+			else if(mes_facturacion_ws=="OCTUBRE"){numero_mes_ws="10"}
+			else if(mes_facturacion_ws=="NOVIEMBRE"){numero_mes_ws="11"}
+			else if(mes_facturacion_ws=="DICIEMBRE"){numero_mes_ws="12"} */
+			numero_mes_ws=mes_facturacion_ws
+			
+			
+			//alert("B")
+			//return false;
+			$.ajax({
+				url: constantes.direccion_base,
+				type: "POST",
+				data:JSON.stringify({
+									   "tx" : "F0",
+									   "usuario" : "op",
+									   "proceso": ws,
+									   "nomina":identificador,
+									   "periodo" : año_facturacion+"-"+numero_mes_ws,
+									   "destino":constantes.destino
+									}
+								),
+				contentType: "application/json",
+				timeout:1800000,
+				beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+				},
+				success: function(data) {
+					data=JSON.parse(data)	
+					if(data.estatus){
+						
+						if(data.estatus=="OK" || data.estatus=="FIN"){
+							
+							
+							
+							if(ws=="do_dump"){
+								load_tareas(año_facturacion+"-"+mes_facturacion_ws)
+								/*for (i in data.data){
+									console.log(i)
+									new_row={}
+									//console.log(conteos.hits.hits[i])
+									
+									new_row["number"]=conteos[i]._source.number
+									new_row["code"]=conteos[i]._source.code
+									new_row["company"]=conteos[i]._source.company
+									new_row["state"]=conteos[i]._source.state
+									new_row["totalAmount"]=conteos[i]._source.totalAmount
+									new_row["emissionDate"]=moment.unix(conteos[i]._source.emissionDate).format('DD-MM-YYYY')
+									new_row["expirationDate"]=moment.unix(conteos[i]._source.expirationDate).format('DD-MM-YYYY')
+									new_row["generationDate"]=moment.unix(conteos[i]._source.generationDate).format('DD-MM-YYYY')
+									
+									datos_tabla.push(new_row)
+									
+									
+									
+								}
+								titulo="identificador";
+								
+								
+								$("#lista_formularios").html('<div class="tabla_facturas" >'+
+																				'<table id="tabla_facturas" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+																					'<thead>'+
+																						'<tr class="thead" ></tr>'+
+																					'</thead>'+
+																					'<tbody></tbody>'+
+																				'</table>'+
+																				'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'+
+																			
+																			'</div>')
+								
+								
+								generar_tabla("#tabla_facturas", datos_tabla, "")*/
+								
+							}else{
+								load_tareas(año_facturacion+"-"+mes_facturacion_ws)
+							}
+							
+							
+							var date = new Date();
+							var ultimoDia = new Date(date.getFullYear(), Number(mes_facturacion_ws), 0);
+							
+							fecha_consulta=año_facturacion+"-"+mes_facturacion_ws+"-"+compenzar_numero(ultimoDia.getDate())
+							
+							
+							if(identificador=="Desglose"){
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b6a58cf0-55c2-11e9-bbd8-313262a2a404?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_consulta+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))"  style="border:0px;" height="600" width="100%"></iframe>')
+							}else if(identificador=="Internacionales"){
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/f3aba6c0-55c2-11e9-bbd8-313262a2a404?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_consulta+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))"  style="border:0px;" height="600" width="100%"></iframe>')
+								
+							}else if(identificador=="Normales"){
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/e1570bc0-55c4-11e9-bbd8-313262a2a404?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_consulta+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))"  style="border:0px;" height="600" width="100%"></iframe>')
+							
+							}else if(identificador=="On receipt"){
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/0ecf3690-55c5-11e9-bbd8-313262a2a404?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_consulta+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))"  style="border:0px;" height="600" width="100%"></iframe>')
+							
+							}else if(identificador=="Por resolver"){
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/1e250c50-55ca-11e9-bbd8-313262a2a404?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_consulta+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))"  style="border:0px;" height="600" width="100%"></iframe>');
+								
+							}else{
+								$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha_consulta+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+							}
+							
+							
+							//
+						
+						}else if(data.estatus=="NO OK"){
+							controlar_no_ok_desconocido_error("NO OK", data)
+							var date = new Date();
+							var ultimoDia = new Date(date.getFullYear(), Number(mes_facturacion_ws), 0);
+							fecha_consulta=año_facturacion+"-"+mes_facturacion_ws+"-"+compenzar_numero(ultimoDia.getDate())
+							$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha_consulta+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_consulta+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+						}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+				
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						
+				}			
+			});
+			
+			
+			
+			
+			/*if(metodo_peticion=="GET"){
+				
+				window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				
+			}else{
+				
+			}*/
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+				
+				mes_facturacion_ws=mes_facturacion_ws
+				año_facturacion=año_facturacion
+				numero_mes_ws=mes_facturacion_ws
+				
+				datos_para_formulario="";
+				
+				//mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						url: constantes.direccion_base,
+						type: "POST",
+						data:JSON.stringify({
+											   "tx" : "F1",
+											   "usuario" : "op",
+											   "operacion":ws,
+											    "nomina":identificador,
+												"periodo" : año_facturacion+"-"+numero_mes_ws,
+												"destino":constantes.destino
+											}
+								   
+						),
+						contentType: "application/json",
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							data=JSON.parse(data)
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									console.log(data.data)
+									if(ws=="F_especial"){
+										construir_tabala_resultado(data.data)
+										return false;
+									}
+									
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						
+						
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+							dataType: "text",
+							beforeSend: function () {},
+							success: function(data){
+								cargo_formulario=eval(data)
+								titulo=cargo_formulario.formulario
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+							},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+		}
+}
+
+function new_tarea_click_cliente(){
+					
+				//alert(titulo)
+				
+				mes_facturacion_ws=mes_facturacion_ws
+				año_facturacion=año_facturacion
+				numero_mes_ws=mes_facturacion_ws
+				
+				datos_para_formulario="";
+				
+				//mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						url: constantes.direccion_base,
+						type: "POST",
+						data:JSON.stringify( { "tx": "iF",
+											  "usuario": "op",
+											  "operacion": ws,
+											  "data2Query": {
+												"fecha_de_desde": año_facturacion+"-"+numero_mes_ws,
+												"fecha_de_hasta": año_facturacion+"-"+numero_mes_ws
+												  },
+											  "destino": constantes.destino
+								   
+						}),
+						contentType: "application/json",
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							data=JSON.parse(data)
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									console.log(data.data)
+									
+									//({lista: "Documentos Emitidos", ws: "iF_periodo", doc: ""}, {lista: "Diferencias Docs y O. facturación", ws: "iF_periodo", doc: ""})
+									var jsonQ=require("jsonq");
+									if(titulo=="Documentos Emitidos"){
+										titulo="sdfsd";
+
+
+$("#lista_formularios").html('<div class="row header_formularios"><div class="col-xs-8 col-sm-8 col-md-8 text-left"><h2>Documentos Emitidos en el '+$("#usuario_").html()+'</h2></div><div class="col-xs-4 col-sm-4 col-md-4 "><ul id="lista_opciones_interz" class="nav nav-tabs"><li role="presentation" class="eliminar_formulario_auto" style="float: right; display: block;"><a><i class="fas fa fa-times-circle" aria-hidden="true"></i></a></li></ul></div></div><div class="tabla_facturas" >'+
+												'<table id="doc_emitidos" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+													'<thead>'+
+														'<tr class="thead" ></tr>'+
+													'</thead>'+
+													'<tbody></tbody>'+
+												'</table>'+
+												'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'+
+											
+											'</div>')
+
+
+
+										
+										//jsonQ.sort(data.data)
+										
+										new_tabla=[]
+										console.time('js');
+										/*for (i in data.data){
+											new_ROW={
+												 	"DOCUMENT TYPE ID":retornar_codigo_bsale(data.data[i].id_documentType),
+													"EMISSIONDATE":data.data[i].emissionDate,
+													"CODE":data.data[i].code,
+													"CLIENT ID":data.data[i].client_id,
+											        "CLIENT ID MADRE":data.data[i].client_id_madre,
+													"COMPANY":data.data[i].company,
+													"FOLIO":data.data[i].number,
+													"FC FOLIO":data.data[i].fc_Folio,
+													"ORDEN DE FACTURA":data.data[i].MONTO_FACTURA,
+													"TOTALAMOUNT":data.data[i].totalAmount,
+													"MONTO NOTA CREDITO":data.data[i].MONTO_NOTA_CREDITO,
+													"ESPECIAL":data.data[i].especial,
+													"CENTRO COSTO":data.data[i].centro_costo,
+													"ORDEN COMPRA":data.data[i].orden_compra,
+													"DESGLOSE":data.data[i].desglose,
+													"HES":data.data[i].hes,
+													"CIUDAD FAC":data.data[i].CIUDAD_FAC,
+													"CLIENTE CITY":data.data[i].CLIENTE_CITY,
+													"PAYMENT TERMS":data.data[i].PAYMENT_TERMS,
+													"METODO PAGO":data.data[i].metodo_pago,
+													"GIROS":data.data[i].GIROS,
+													"GRUPO ECONOMICO":data.data[i].grupo_economico,
+													"CLIENT ADDRESS":data.data[i].CLIENT_ADDRESS,
+													"NOMBRE ADMIN":data.data[i].nombre_admin,
+													"CORREO ADMIN":data.data[i].correo_admin,
+													"TELEFONO ADMIN":data.data[i].telefono_admin,
+													"NOMBRE COB":data.data[i].nombre_cob,
+													"CORREO COB":data.data[i].correo_cob,
+													"TELEFONO COB":data.data[i].telefono_cob,
+													"CORREOS FAC":data.data[i].CORREOS_FAC,
+													"SALES REP":data.data[i].sales_rep,
+													"SOPORTE":data.data[i].soporte,
+													"NOMINA":data.data[i].NOMINA,
+													"MONTO TOTAL":data.data[i].MONTO_TOTAL,
+													"CLIENTE NAME":data.data[i].CLIENTE_NAME,
+													"CATEGORIA":data.data[i].categoria,
+													"DETALLE CC FACTURACION":data.data[i].Detalle_CC_Facturacion
+											}
+											new_tabla.push(new_ROW)
+											
+											
+										}
+										*/
+										console.timeEnd('js');
+										var family = jsonQ(data.data);
+										var husband = family.find('ES_id_of').parent();
+										console.time('js_Q');
+										new_taba_Q=[]
+										husband.each(function (index, path, value) {
+											//console.log(value);
+											new_ROW={
+												 	"DOCUMENT TYPE ID":retornar_codigo_bsale(value.id_documentType),
+													"EMISSIONDATE":moment.unix(value.emissionDate).utc().format('DD-MM-YYYY'),
+													"EXPIRATIONDATE":moment.unix(value.expirationDate).utc().format('DD-MM-YYYY'),
+													"CODE":value.code,
+													"CLIENT ID":value.client_id,
+											        "CLIENT ID MADRE":value.client_id_madre,
+													"COMPANY":value.company,
+													"FOLIO":value.number,
+													"FC FOLIO":value.fc_Folio,
+													"ORDEN DE FACTURA":value.MONTO_FACTURA,
+													"TOTALAMOUNT": formatNumber(value.totalAmount, "$"),
+													"MONTO NOTA CREDITO":formatNumber(value.MONTO_NOTA_CREDITO, "$"),
+													"ESPECIAL":value.especial,
+													"CENTRO COSTO":value.centro_costo,
+													"ORDEN COMPRA":value.orden_compra,
+													"DESGLOSE":value.desglose,
+													"HES":value.hes,
+													"CIUDAD FAC":value.CIUDAD_FAC,
+													"CLIENTE CITY":value.CLIENTE_CITY,
+													"PAYMENT TERMS":value.PAYMENT_TERMS,
+													"METODO PAGO":value.metodo_pago,
+													"GIROS":value.GIROS,
+													"GRUPO ECONOMICO":value.grupo_economico,
+													"CLIENT ADDRESS":value.CLIENT_ADDRESS,
+													"NOMBRE ADMIN":value.nombre_admin,
+													"CORREO ADMIN":value.correo_admin,
+													"TELEFONO ADMIN":value.telefono_admin,
+													"NOMBRE COB":value.nombre_cob,
+													"CORREO COB":value.correo_cob,
+													"TELEFONO COB":value.telefono_cob,
+													"CORREOS FAC":value.CORREOS_FAC,
+													"SALES REP":value.sales_rep,
+													"SOPORTE":value.soporte,
+													"NOMINA":value.NOMINA,
+													"MONTO TOTAL":formatNumber(value.MONTO_TOTAL, "$"),
+													"CLIENTE NAME":value.CLIENTE_NAME,
+													"CATEGORIA":value.categoria,
+													"DETALLE CC FACTURACION":value.Detalle_CC_Facturacion
+											}
+											new_taba_Q.push(new_ROW)
+										
+										
+										});
+										console.timeEnd('js_Q');
+										
+										generar_tabla("#doc_emitidos", new_taba_Q, "")
+
+										//$(".dataTables_scroll").attr("style", "DDD")
+
+										
+										return false;
+									}else if(titulo=="Diferencias Docs y O. facturación"){
+											
+											
+											var registros = jsonQ(data.data);
+											
+											var registros_in = registros.find('ES_id_of').parent();
+											new_taba_Q=[]
+											registros_in.each(function (index, path, value) {
+												//console.log(index + ' : ' + value.ES_id_of);
+												if(value.ES_id_of=="e5cBgGoBrnVQBSxEb0bZ"){
+													console.log(value)
+												}
+												
+												if(value.id_documentType=="2"){
+														monto_operar=-value.totalAmount
+													}else{
+														monto_operar=value.totalAmount
+												}
+												
+												
+												
+												new_ROW={
+													
+													"ES_id_of":value.ES_id_of,
+													"CLIENTE_NAME":value.CLIENTE_NAME,
+													"code":value.code,
+													"TIPO DE DOCUMENTO":retornar_codigo_bsale(value.id_documentType),
+													"number":value.number,
+													"grupo_economico":value.grupo_economico,
+													"totalAmount":monto_operar,
+													"MONTO_FACTURA":value.MONTO_FACTURA,
+													"MONTO_NOTA_CREDITO":value.MONTO_NOTA_CREDITO,
+													"MONTO_TOTAL":value.MONTO_TOTAL,
+													"DIFERENCIA":0
+													
+												}
+												new_taba_Q.push(new_ROW)
+											});
+										//e5cBgGoBrnVQBSxEb0bZ
+
+										//return false;
+										//LUGAR, DATOS, IDE ANIDACION, TITULO, TOTAL A SUMARIZAR
+										  generar_tabla_anidada('#lista_formularios',new_taba_Q, "ES_id_of", "Orden de facturacion y documentos", ["totalAmount"],["CLIENTE_NAME","grupo_economico","MONTO_FACTURA","MONTO_NOTA_CREDITO","MONTO_TOTAL"],[{"COLUMNA":"DIFERENCIA", "OPERACION":"RESTAR","COLUMNAS":["MONTO_TOTAL", "totalAmount"]}])
+										
+										return false;
+										
+										
+										
+										
+									}
+									
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						
+						
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+							dataType: "text",
+							beforeSend: function () {},
+							success: function(data){
+								cargo_formulario=eval(data)
+								titulo=cargo_formulario.formulario
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								//mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+							},
+							error: function (xhr, ajaxOptions, thrownError) {}
+						});
+						
+					}
+
+				})
+	
+	
+}
+
+
+
+
+function tarea_dblclick_cliente(){
+	console.log(moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD"))
+	console.log(moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD"))
+	//alert(identificador)
+	
+	$("#lista_formularios").html("<div class='row'><div id='lista_a' class='col-xs-12 col-sm-12 col-md-12'><h4>"+
+										  '<span class="label label-primary">Desglose: </span>&nbsp;'+
+										  "<span class='label label-default label-success general'>General</span>&nbsp;"+
+										  "<span class='label label-default facturadas'>Ordenes Facturadas</span>&nbsp;"+
+										  "<span class='label label-default por_facturar'>Ordenes Por Facturar</span>&nbsp;"+
+										  "<span class='label label-default realizadas'>Ordenes NC Realizadas</span>&nbsp;"+
+										  "<span class='label label-default por_realizar'>Ordenes NC Por Realizar</span>&nbsp;"+
+										
+									 "</h4></div>"+
+									 "<div id='lista_b' class='col-xs-12 col-sm-12 col-md-12'></div></div>")
+		
+	$(".label").on("click", function(){
+		$("#lista_a").find(".label").each(function(index, element) {$(this).removeClass("label-success")});
+		$(this).addClass("label-success")
+	})
+	
+	
+	if(identificador=="Desglose"){
+		
+		
+		$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/052ad0c0-612f-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		
+		$(".general").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/052ad0c0-612f-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+
+		$(".facturadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/bcd5dfe0-61ec-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		$(".por_facturar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/356c1fe0-61ee-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		$(".realizadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/28ec2cd0-61f1-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		$(".por_realizar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/a577a330-61ef-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		
+		
+	}else if(identificador=="Internacionales"){
+		
+		$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/39a1a7b0-61f8-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		
+		$(".general").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/39a1a7b0-61f8-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+
+		$(".facturadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/17f98410-61f9-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_facturar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/9d017460-61f9-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".realizadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/fa553570-61f9-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_realizar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/7fa55250-61fa-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+	}else if(identificador=="Normales"){
+		
+		$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/1076ba20-61fc-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		
+		$(".general").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/1076ba20-61fc-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+
+		$(".facturadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/94656050-61fe-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_facturar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/e41f8850-61fe-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".realizadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/36a4b730-61ff-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_realizar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/8fbbe000-61ff-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+	}else if(identificador=="On receipt"){
+		
+		$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/2e494080-6202-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		
+		$(".general").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/2e494080-6202-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+
+		$(".facturadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/5a183d40-6204-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_facturar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/a92b76e0-6204-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".realizadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/02087ce0-6205-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_realizar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/51e5e450-6205-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+	} else if(identificador=="Por resolver"){
+		
+		$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/dc59da40-6207-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		
+		$(".general").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/dc59da40-6207-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+
+		$(".facturadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/7fc25590-620d-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval:(pause:!t,value:0),time:(from:'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03:00:00.000Z',mode:quick,to:'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02:59:59.999Z'))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(darkTheme:!f,hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'8',w:9,x:0,y:0),id:'2c2c3340-620a-11e9-9d22-8bb331243d10',panelIndex:'8',type:visualization,version:'6.7.1'),(embeddableConfig:(),gridData:(h:17,i:'9',w:39,x:9,y:0),id:a7305410-620d-11e9-9d22-8bb331243d10,panelIndex:'9',type:visualization,version:'6.7.1')),query:(language:kuery,query:''),timeRestore:!f,title:'POR+RESOLVER+FACTURADO',viewMode:view)" height="600" width="800"></iframe>`)
+		})
+		
+		$(".por_facturar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/dc2bddb0-620d-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".realizadas").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/2f1832d0-620e-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+		
+		$(".por_realizar").on("click", function(){
+				$("#lista_b").html(`<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/7fbb3430-620e-11e9-9d22-8bb331243d10?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A'`+moment.unix(periodo_selecionado[0]).format("YYYY-MM-DD")+`T03%3A00%3A00.000Z'%2Cmode%3Aquick%2Cto%3A'`+moment.unix(periodo_selecionado[1]).format("YYYY-MM-DD")+`T02%3A59%3A59.999Z'))" style="border:0px;" height="600" width="100%"></iframe>`)
+		})
+	
+	
+	} 
+	
+	
+	
+	
+	
+		
+}
+
+
+/////FUNCIONES DEL CLIENTE
+function enviar_archivos(){}
+
+
+function descargar(documento){
+	
+	
+	
+		//window.onfocus = finalizada;
+		//console.log(direccion_ws+"generar_facturas?id_tarea="+documento+"&fecha_pago="+$("#fecha_pago").val()+"&authorization=JWT "+localStorage.token)
+		window.location = direccion_ws+"generar_facturas?id_tarea="+documento+"&token="+localStorage.token;
+		$("#myModal").modal("hide");
+		load_tareas();
+	
+	
+}
+
+
+function enviar_archivos_banco(){}
+function carga_ventas(){}
+function enviar_archivos_procesoX(paso){}
+
+
+//resultado de Toda la operacion
+facturacion=""
+//resultado del cruce entre exclusiones y FN Facturas			
+facturables_nofacturables=[];
+	
+	
+function compenzar_numero(numero){
+	//console.log(numero)
+	if(Number(numero)<10){
+		numero="0"+numero
+	}
+	
+	return numero;
+}
+
+function evaluarFechaVencimiento(periodo, fecha_facturacion){
+	console.log( fecha_facturacion)
+	fecha_facturacion=moment.unix(fecha_facturacion).format("YYYY-MM-DD")
+	console.log( fecha_facturacion)
+	if(periodo=="" || periodo=="null" || periodo==null){ return  moment(fecha_facturacion).unix();//igual a la fecha de emision
+	}else if(periodo=="billing_period"){ 		 return  moment(fecha_facturacion).unix();//igual a la fecha de emision
+	}else if(periodo=="manual"){                 return  moment(fecha_facturacion).unix();//igual a la fecha de emision
+	}else if(periodo=="billing_period_plus_7") { return  moment(fecha_facturacion).add(7, 'days').unix();//7 dias  mas
+	}else if(periodo=="billing_period_plus_15"){ return  moment(fecha_facturacion).add(15, 'days').unix();//15 dias  mas
+	}else if(periodo=="billing_period_plus_30"){ return  moment(fecha_facturacion).add(30, 'days').unix();//30 dias mas
+	}else if(periodo=="billing_period_plus_45"){ return  moment(fecha_facturacion).add(45, 'days').unix();//45 dias  mas
+	}else if(periodo=="billing_period_plus_60"){ return  moment(fecha_facturacion).add(60, 'days').unix();//60 dias mas
+	}else if(periodo=="billing_period_plus_75"){ return  moment(fecha_facturacion).add(75, 'days').unix();//75 dias mas
+	}else if(periodo=="billing_period_plus_90"){ return  moment(fecha_facturacion).add(90, 'days').unix();//90 dias  mas
+
+	}
+
+
+}
+	
+//TABLAS BASE EN []
+array_objetos_tabla=[]
+array_array_tabla=[]
+
+tabla_Exclusiones=[]
+tabla_FN_Facturas=[]
+tabla_GMV=[]
+tabla_No_Invoiceables=[]
+tabla_Skip_Invoicing=[]
+invoiceables=[]
+	
+//variables necesarias		
+exclusiones=[]
+exclusiones_billing_period=[]
+total_FN_Facturas=0 //ESTA VALIDADO
+total_GMV=0 //ESTA VALIDADO
+total_Not_Invoiceables=0//ESTA VALIDADO 
+total_Skip_Invoicing=0//ESTA VALIDADO
+total_Invoicing=0//ESTA VALIDADO
+
+//total_GMV===Invoiceables
+//total_GMV===total_Not_Invoiceables+total_Skip_Invoicing=total_Invoicing
+
+invoiceables=""
+fecha_periodo_facturacion=""
+function enviar_archivos_proceso(paso){
+	
+	//mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+	var jsonQ=require("jsonq");
+	if (paso==1){
+		exclusiones=[]	
+		id_enviar="#cargar_exclusion"
+		tx="exclusiones"
+		//DETERMINO EXCLUSIONES
+		cargo_exclusiones=array_objetos_tabla
+		console.log(array_objetos_tabla)
+		
+		/*for (a in cargo_exclusiones){
+				
+				exclusiones.push(cargo_exclusiones[a].client_id)
+				
+			}*/
+		
+		exclusiones = jsonQ(cargo_exclusiones).find("client_id").value();
+		console.log(exclusiones)
+		//DETERMINO ULTIMO DIA DEL MES SELECIONADO
+		numero_mes="01"
+		fecha_definitiva_facturacion=""
+		fecha_creacion_facturacion=""
+		if(mes_facturacion=="enero"){numero_mes="01"}
+		else if(mes_facturacion=="febrero"){numero_mes="02"}
+		else if(mes_facturacion=="marzo"){numero_mes="03"}
+		else if(mes_facturacion=="abril"){numero_mes="04"}
+		else if(mes_facturacion=="mayo"){numero_mes="05"}
+		else if(mes_facturacion=="junio"){numero_mes="06"}
+		else if(mes_facturacion=="julio"){numero_mes="07"}
+		else if(mes_facturacion=="agosto"){numero_mes="08"}
+		else if(mes_facturacion=="septiembre"){numero_mes="09"}
+		else if(mes_facturacion=="octubre"){numero_mes="10"}
+		else if(mes_facturacion=="nombiembre"){numero_mes="11"}
+		else if(mes_facturacion=="diciembre"){numero_mes="12"} 
+		
+		var date = new Date();
+		//alert()
+		//var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+		var ultimoDia = new Date(date.getFullYear(), Number(numero_mes), 0);
+		//console.log("<br>El primer día es: "+primerDia.getDate());
+		fecha_periodo_facturacion=anio_facturacion+"-"+numero_mes
+		fecha_definitiva_facturacion=anio_facturacion+"-"+numero_mes+"-"+compenzar_numero(ultimoDia.getDate())
+		fecha_creacion_facturacion=date.getFullYear()+"-"+compenzar_numero(Number(Number(date.getMonth())+Number(1)))+"-"+compenzar_numero(date.getDate())
+		//if(numero_mes.length)
+		console.log("PERIODO: "+fecha_periodo_facturacion);
+		console.log("CREACION: "+fecha_creacion_facturacion);
+		console.log("EMISION: "+fecha_definitiva_facturacion);
+		
+
+		/*exclusiones_billing_period=[]
+		for (i in clientes_madre_facturacion){
+			if(clientes_madre_facturacion[i].billing_period!="biweekly"){
+				exclusiones_billing_period.push(clientes_madre_facturacion[i].client_id)
+			}
+		}*/
+		
+		
+		$(".tabs_archivos").find("a").each(function(index, element) {			
+			if($(this).html()==Number(paso+1)){
+				$(this).click();	
+				$(".conter_loader").remove()
+			}
+								
+		});
+		
+		
+		
+		
+	}else if(paso==2){
+		total_FN_Facturas=0
+		id_enviar="#cargar_fn_facturas"
+		tx="fn_facturas"
+		
+		fn_facturas=array_objetos_tabla.splice(0, array_objetos_tabla.length-1)
+		verificar_ids_cliente=[]
+		
+		console.log(fn_facturas)
+		//total_Invoicing
+		//DETERMINO SI SON FACTURABLES O ON
+		for (a in fn_facturas){
+			console.log(fn_facturas[a].Mes_Día_Año_de_value_date)
+			console.log(mes_facturacion)
+			//obtengo el total del mes en curso
+			if(fn_facturas[a].Mes_Día_Año_de_value_date.indexOf(mes_facturacion)>0){
+				//total_FN_Facturas=total_FN_Facturas+Number(parseFloat(fn_facturas[a].Total_Amount_Invoice.replace(/\,/g,'').replace(/\,00/g,'')))
+				total_FN_Facturas=total_FN_Facturas+Number(fn_facturas[a].Total_Amount_Invoice)
+				console.log(fn_facturas[a].Total_Amount_Invoice)
+				console.log(total_FN_Facturas)
+				// parseFloat(current.Total_Amount_Invoice.replace(/\,/g,'').replace(/\,00/g,''));
+			}
+
+			var dia=fn_facturas[a].date.split(" ", 5)
+			fn_facturas[a]["dia"]=Number(dia[0])
+			fn_facturas[a]["mes"]=dia[2]
+			
+			//FACTURABLES O ON FACTURABLES
+			if(exclusiones.indexOf(fn_facturas[a].client_id)<0){
+				//INSETO MARCA
+				key="facturable"
+				fn_facturas[a][key]="SI";
+				
+				//INSERTO RUT EN ARRAY
+			}else{
+				//INSETO MARCA
+				key="facturable"
+				fn_facturas[a][key]="NO";
+			}
+			
+			
+			
+		}
+		
+		console.log(total_FN_Facturas)
+		facturables_nofacturables=fn_facturas;
+		temporal=[]
+		let result = facturables_nofacturables.reduce((prev, current, index, arr) => {
+		  // Compruebo si ya existe el elemento
+		  let exists = prev.find(x => x.CLIENTE_ID === current.client_id );
+		  // Si no existe lo creo con un array vacío en VALOR
+
+		  //
+		  if (!exists /*&& exclusiones_billing_period.indexOf(current.client_id)>=0*/) {
+			exists = {
+					TXS:[],
+					CLIENTE_ID: current.client_id,
+					PAYMENT_TERMS:current.payment_terms, 
+					CLIENTE_COUNTRY:current.client_country,
+					MONTO_TOTAL: [], 
+					DETALLE:[], 
+					MONTO_FACTURA:[], 
+					MONTO_NOTA_CREDITO:[], 
+					FACTURABLE:current.facturable, 
+					RESUELTO:"NO",
+					CODESII:"34",
+					NOMINA:"",
+					FECHA_VENCIMIENTO: evaluarFechaVencimiento(current.payment_terms, moment(fecha_definitiva_facturacion).unix()),
+					FECHA_PERIODO: fecha_periodo_facturacion,//AÑO MES
+					FECHA_EMISION: fecha_definitiva_facturacion,  //AÑO MES ULTIMO DIA
+					FECHA_CREACION: fecha_creacion_facturacion, // AÑO MES DIA CARGA
+					fl_facturado:0,
+					fl_ncEmitida:0,
+					tipo_of:"monthly",
+					};
+			prev.push(exists);
+		  }/*else if(!exists && exclusiones_billing_period.indexOf(current.client_id)<0 && current.dia<=2 && current.dia>=17){
+		  	exists = {
+					CLIENTE_ID: current.client_id,
+					PAYMENT_TERMS:current.payment_terms, 
+					CLIENTE_COUNTRY:current.client_country,
+					MONTO_TOTAL: [], 
+					DETALLE:[], 
+					MONTO_FACTURA:[], 
+					MONTO_NOTA_CREDITO:[], 
+					FACTURABLE:current.facturable, 
+					RESUELTO:"NO",
+					CODESII:"34",
+					NOMINA:"",
+					FECHA_VENCIMIENTO: evaluarFechaVencimiento(current.payment_terms, moment(fecha_definitiva_facturacion).unix()),
+					FECHA_PERIODO: fecha_periodo_facturacion,//AÑO MES
+					FECHA_EMISION: fecha_definitiva_facturacion,  //AÑO MES ULTIMO DIA
+					FECHA_CREACION: fecha_creacion_facturacion, // AÑO MES DIA CARGA
+					fl_facturado:0,
+					fl_ncEmitida:0,
+					tipo_of:"monthly",
+					};
+			prev.push(exists);
+		  }*/
+		  // Si el elemento actual tiene VALOR lo añado al array del
+		  // elemento existente
+		  //console.log(current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)+" / "+current.Mes_Día_Año_de_value_date)
+		  if (current.Total_Amount_Invoice != null  && current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)>0 /*&& exclusiones_billing_period.indexOf(current.client_id)>=0*/){
+			// Convierto el valor a numérico reemplazando el carácter separador
+			//let val = parseFloat(current.Total_Amount_Invoice.replace(/\,/g,'').replace(/\,00/g,''));
+			let val = parseFloat(current.Total_Amount_Invoice);
+			//console.log(, )
+			temporal.push({id:current.client_id,val:val}) 
+
+			// Si es un valor numérico válido lo añado al resultado
+			if (!isNaN(val)){
+				 exists.MONTO_TOTAL=Number(exists.MONTO_TOTAL)+Number(val)
+				 //exists.VALOR=Number(exists.VALOR[0])+Number(val)
+			     exists.DETALLE.push(val);
+
+				 if(Number(val)<0){
+					exists.MONTO_NOTA_CREDITO=Number(exists.MONTO_NOTA_CREDITO)+Number(val); 
+					exists.TXS.push({monto: current.Total_Amount_Invoice, dia:current.dia, tipo:"NC", mes:current.mes});
+					//exists.MONTO_FACTURA=0;
+					//exists.CODESII="61"
+				 }else if(Number(val)>=0){ 
+					 exists.MONTO_FACTURA=Number(exists.MONTO_FACTURA)+Number(val);
+					 exists.TXS.push({monto: current.Total_Amount_Invoice, dia:current.dia, tipo:"NORMAL", mes:current.mes});
+					// exists.CODESII="34" 
+				 }
+			}
+				 
+			
+		  }/*else if(current.Total_Amount_Invoice != null  && current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)>0 && exclusiones_billing_period.indexOf(current.client_id)<0 && current.dia<=2 && current.dia>=17){
+
+		  	let val = parseFloat(current.Total_Amount_Invoice);
+			//console.log(, )
+			temporal.push({id:current.client_id,val:val})
+			// Si es un valor numérico válido lo añado al resultado
+			if (!isNaN(val)){
+				 exists.MONTO_TOTAL=Number(exists.MONTO_TOTAL)+Number(val)
+				 //exists.VALOR=Number(exists.VALOR[0])+Number(val)
+			     exists.DETALLE.push(val);
+				 if(Number(val)<0){
+					exists.MONTO_NOTA_CREDITO=Number(exists.MONTO_NOTA_CREDITO)+Number(val); 
+					//exists.MONTO_FACTURA=0;
+					//exists.CODESII="61"
+				 }else if(Number(val)>=0){ 
+					 exists.MONTO_FACTURA=Number(exists.MONTO_FACTURA)+Number(val);
+					// exists.CODESII="34" 
+				 }
+			}
+
+		  }*/
+		  
+		  // Devuelvo el array resultado para la nueva iteración
+		  return prev;
+		}, []);
+		facturacion=result
+		
+		for (i in facturacion){
+			if(facturacion[i].MONTO_TOTAL<0){
+				facturacion[i].CODESII="61"
+					
+			}
+		}
+		//console.log(result);
+		console.log(JSON.stringify(temporal))
+		console.log(JSON.stringify(facturacion))
+		//console.log(monto_por_id_cliente)
+		
+		//$(id_enviar).val(JSON.stringify(fn_facturas))
+		
+		
+		$(".tabs_archivos").find("a").each(function(index, element) {			
+			if($(this).html()==Number(paso+1)){
+				$(this).click();	
+				$(".conter_loader").remove()
+			}
+								
+		});
+	 
+	}else if(paso==3){
+		total_GMV=0
+		id_enviar="#cargar_gmv"
+		tx="";
+		cargar_gmv=array_objetos_tabla
+		console.log(cargar_gmv)
+		gmv_Discount=[]
+		//BUSCO TODODS LOS GMV DICOUN EN COLUMNA DEFAUL
+		for (a in cargar_gmv){
+			console.log(cargar_gmv[a])
+			for(b in cargar_gmv[a]){
+				console.log(cargar_gmv[a][b])
+				if(cargar_gmv[a][b]== "undefined" || cargar_gmv[a][b]=="" || cargar_gmv[a][b]==null){
+					cargar_gmv[a][b]=0;
+				}
+			}
+			
+			if(cargar_gmv[a].Defauld_1=="GMV - Discount"){
+				gmv_Discount.push(cargar_gmv[a])
+			}
+		}
+		
+		//LA ULTIMA FILA ES EL TOTAL
+		gmv_Discount_total=0;
+			for (b in gmv_Discount[gmv_Discount.length-1]){
+				if(gmv_Discount[gmv_Discount.length-1][b]!="GMV - Discount"){
+					gmv_Discount_total=Number(gmv_Discount[gmv_Discount.length-1][b])
+				}
+			}
+		//RECORRO TODODS MENOS EL ULTIMO
+		acumulado_gmv=0
+		for (i = 0; i < (gmv_Discount.length-1); i++) { 
+			for (b in gmv_Discount[i]){	
+				if(gmv_Discount[i][b]!="GMV - Discount"){
+					acumulado_gmv=acumulado_gmv+Number(gmv_Discount[i][b])
+				}
+			}
+		}
+		//VALIDO GMV E IGUALO
+		console.log(Number(acumulado_gmv)+"/"+Number(gmv_Discount_total))
+		if(Number(acumulado_gmv)==Number(gmv_Discount_total)){
+			total_GMV=gmv_Discount_total;
+			$(".tabs_archivos").find("a").each(function(index, element) {			
+				if($(this).html()==Number(paso+1)){
+					$(this).click();	
+					$(".conter_loader").remove()
+				}
+									
+			});
+			
+		}else if(Number(acumulado_gmv)!=Number(gmv_Discount_total)){
+			mensaje_gmv={"mensaje_error":"El detalle del GMV no concuerda con el total"}
+			controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+		}
+		
+		console.log(total_GMV)
+		
+		
+	}else if(paso==4){
+		total_Not_Invoiceables=0
+		id_enviar="#cargar_no_invoiceables";
+		
+		//cargar_gmv=array_objetos_tabla
+		
+		/*if(array_objetos_tabla.length>=1){
+			total_Not_Invoiceables=array_objetos_tabla
+			if(total_Not_Invoiceables.length==1){
+				total_Not_Invoiceables=Number(total_Not_Invoiceables[0].Neto.replace(/\./g,'').replace(/\,00/g,''));
+				$(".tabs_archivos").find("a").each(function(index, element) {			
+						if($(this).html()==Number(paso+1)){
+							$(this).click();	
+							$(".conter_loader").remove()
+						}
+											
+				});
+			}else{
+				mensaje_gmv={"mensaje_error":"El Archivo contiene mas registros de lo esperado"}
+				controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+			}
+			
+			
+		}*/
+		
+		if($("#cargar_no_invoiceables").val()!=""){
+			total_Not_Invoiceables=Number($("#cargar_no_invoiceables").val());
+			$(".tabs_archivos").find("a").each(function(index, element) {			
+						if($(this).html()==Number(paso+1)){
+							$(this).click();	
+							$(".conter_loader").remove()
+						}
+											
+			});
+		}else if($("#cargar_no_invoiceables").val()==""){
+			
+			mensaje_gmv={"mensaje_error":"Indique un monto valido"}
+			controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+			
+		}
+		
+		
+		console.log(total_Not_Invoiceables)
+		
+	}else if(paso==5){
+		total_Skip_Invoicing=0
+		id_enviar="#cargar_skip_invoicing"
+		
+		
+		if(array_objetos_tabla.length>=1){
+			
+			var_Skip_Invoicing=array_objetos_tabla
+			
+			
+			//JS
+			/*for (i in var_Skip_Invoicing)
+				if(var_Skip_Invoicing[i].Neto){
+					if(var_Skip_Invoicing[i].Neto== "undefined" || var_Skip_Invoicing[i].Neto=="" || var_Skip_Invoicing[i].Neto==null){
+						var_Skip_Invoicing[i].Neto=0
+					}
+					total_Skip_Invoicing=total_Skip_Invoicing+Number(var_Skip_Invoicing[i].Neto.replace(/\./g,'').replace(/\,00/g,''))
+				}
+			}
+			
+			console.log(var_Skip_Invoicing)*/
+			
+			//JSONpath
+			jsonQ(var_Skip_Invoicing).find('Neto').value(function (data) {
+				if(data== "undefined" || data=="" || data==null){
+					return data =0;
+				}else{
+					total_Skip_Invoicing=total_Skip_Invoicing+Number(data)
+					return data =data;
+				}
+			});
+			
+			
+			console.log(var_Skip_Invoicing)	
+			console.log(total_Skip_Invoicing)	
+			//amily.find('husband').find('age').value(30);
+			
+			
+			$(".tabs_archivos").find("a").each(function(index, element) {			
+					if($(this).html()==Number(paso+1)){
+						$(this).click();	
+						$(".conter_loader").remove()
+					}
+										
+			});
+		}
+		
+		//console.log(total_Skip_Invoicing)
+	}else if(paso==6){
+		total_Invoicing=0
+		id_enviar="#cargar_invoiceables"
+		tx=""
+		
+		
+		
+				
+		
+		//console.log(array_objetos_tabla)
+		//.splice(0, array_objetos_tabla.length-1)
+		
+		
+		let result = array_objetos_tabla.reduce((prev, current, index, arr) => {
+		  // Compruebo si ya existe el elemento
+		  let exists = prev.find(x => x.CLIENTE_ID === current.client_id );
+		  // Si no existe lo creo con un array vacío en VALOR
+		  if (!exists) {
+			exists = {
+						CLIENTE_ID: current.client_id, 
+						NETO_TOTAL: [], 
+						CLIENTE_TAX_CODE: 
+						current.client_tax_code, 
+						CLIENTE_NAME:current.client_name, 
+						P_SLUG:current.p_slug,
+						REGION:current.Region,
+						CLIENT_ADDRESS:current.client_address,
+						CLIENTE_CITY:current.client_city,
+						CIUDAD_FAC:"",
+						CORREOS_FAC:"",
+						GIROS:""
+						
+						
+						/*, DETALLE:[], FACTURA:[], NOTA_CREDITO:[], FACTURABLE:current.facturable*/};
+			prev.push(exists);
+		  }
+		  // Si el elemento actual tiene VALOR lo añado al array del
+		  // elemento existente
+		  //console.log(current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)+" / "+current.Mes_Día_Año_de_value_date)
+		  if (current.Neto != null ){
+			// Convierto el valor a numérico reemplazando el carácter separador
+			let val = parseFloat(current.Neto);
+			// Si es un valor numérico válido lo añado al resultado
+			if (!isNaN(val)){
+				 exists.NETO_TOTAL=Number(exists.NETO_TOTAL)+Number(val)
+				 //exists.VALOR=Number(exists.VALOR[0])+Number(val)
+			     /*exists.DETALLE.push(val);
+				 if(Number(val)<0){
+					exists.NOTA_CREDITO=Number(exists.NOTA_CREDITO)+Number(val); 
+				 }else if(Number(val)>=0){ 
+					 exists.FACTURA=Number(exists.FACTURA)+Number(val); 
+					 
+				 }*/
+			}
+		  }
+		  // Devuelvo el array resultado para la nueva iteración
+		  return prev;
+		}, []);
+		//console.log(result);
+		invoiceables=result
+		console.log(JSON.stringify(invoiceables))
+		//facturacion
+		tabla_emergente=[]
+		for (a in facturacion){
+			
+			for (b in invoiceables){
+				
+				
+				
+				//anido el objeto a dacturacion
+				
+				if(invoiceables[b].CLIENTE_ID==facturacion[a].CLIENTE_ID){
+					//console.log(facturacion[a].MONTO_TOTAL+"/"+invoiceables[b].NETO_TOTAL)
+					
+					//facturacion[a]push(invoiceables[b])
+					//console.log(invoiceables[b])
+					for(c in invoiceables[b]){
+						//console.log(invoiceables[b][c])
+						key=c;
+						facturacion[a][key]=invoiceables[b][c];
+						
+					}
+					//Optengo total total_Invoicing
+					total_Invoicing=total_Invoicing+Number(invoiceables[b].NETO_TOTAL)
+					
+					if(facturacion[a].MONTO_TOTAL==invoiceables[b].NETO_TOTAL){
+						facturacion[a].RESUELTO="SI"
+						//console.log(facturacion[a].CLIENTE_ID)
+						
+						//if( facturacion[a].CLIENTE_ID=="792762349f3aaa16a552b561db1691ee"){
+									
+									
+								//console.log(facturacion[a].CLIENTE_ID+"///")
+								//console.log(facturacion[a].MONTO_TOTAL+"/"+invoiceables[b].NETO_TOTAL)
+								//console.log(facturacion[a].RESUELTO)
+								
+						//}
+						
+					}else{
+						//console.log(facturacion[a].MONTO_TOTAL)
+						//console.log(invoiceables[b].NETO_TOTAL)
+						tabla_emergente_row={"EMPRESA":invoiceables[b].CLIENTE_NAME, "ID":invoiceables[b].CLIENTE_ID,"MONTO FN":facturacion[a].MONTO_TOTAL,"MONTO INVOICE":invoiceables[b].NETO_TOTAL,"DIFERENCIA":(Number(facturacion[a].MONTO_TOTAL)-Number(invoiceables[b].NETO_TOTAL))}
+						tabla_emergente.push(tabla_emergente_row)
+					}
+					//console.log(tabla_emergente)
+					
+					
+					
+					facturacion[a].CLIENTE_COUNTRY
+					//MATRIS
+					if(facturacion[a].CLIENTE_COUNTRY=="CO"){
+							facturacion[a].CIUDAD_FAC="Colombia";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.co@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="PE"){
+							facturacion[a].CIUDAD_FAC="Peru";
+							facturacion[a].CORREOS_FAC="vanessa.falcon@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="AR"){
+							facturacion[a].CIUDAD_FAC="Argentina";
+							facturacion[a].CORREOS_FAC="zaida.depalma@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="ES"){
+							facturacion[a].CIUDAD_FAC="España";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.es@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="BR"){
+							facturacion[a].CIUDAD_FAC="Brazil";
+							facturacion[a].CORREOS_FAC="esther.nam@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="MX"){
+							facturacion[a].CIUDAD_FAC="Mexico";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.mx@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="CL"){
+							facturacion[a].CIUDAD_FAC="";
+							facturacion[a].CORREOS_FAC="";
+							facturacion[a].GIROS="";
+							
+							RESUELTO_actual=facturacion[a].RESUELTO
+							for (d in clientes_madre_facturacion){
+								/*if(clientes_madre_facturacion[d].client_id=="792762349f3aaa16a552b561db1691ee" && facturacion[a].CLIENTE_ID=="792762349f3aaa16a552b561db1691ee"){
+									
+									
+								console.log(facturacion[a].CLIENTE_ID+"///"+clientes_madre_facturacion[d].client_id)
+								
+								}*/
+								
+								if(facturacion[a].CLIENTE_ID!=clientes_madre_facturacion[d].client_id){
+									
+									
+									if(RESUELTO_actual=="SI"){
+										facturacion[a].RESUELTO="NO"
+									}else if(RESUELTO_actual=="NO"){
+										facturacion[a].RESUELTO="NO"
+									}
+							
+								}else if(facturacion[a].CLIENTE_ID==clientes_madre_facturacion[d].client_id){
+									
+									if(RESUELTO_actual=="SI"){
+										facturacion[a].RESUELTO="SI"
+									}
+									
+									//IGUALO
+									facturacion[a].CIUDAD_FAC=clientes_madre_facturacion[d].ciudad_fac
+									facturacion[a].CLIENTE_CITY=clientes_madre_facturacion[d].client_city
+									facturacion[a].CLIENTE_NAME=clientes_madre_facturacion[d].client_name
+									facturacion[a].CLIENTE_TAX_CODE=clientes_madre_facturacion[d].client_tax_code
+									facturacion[a].CLIENT_ADDRESS=clientes_madre_facturacion[d].client_address
+									facturacion[a].GIROS=clientes_madre_facturacion[d].giro
+									facturacion[a].CORREOS_FAC=clientes_madre_facturacion[d].correos_fac
+									
+									
+									//AGREGO
+									facturacion[a]["Detalle_CC_Facturacion"]=clientes_madre_facturacion[d].Detalle_CC_Facturacion
+									facturacion[a]["categoria"]=clientes_madre_facturacion[d].categoria
+									facturacion[a]["centro_costo"]=clientes_madre_facturacion[d].centro_costo
+									facturacion[a]["client_id_madre"]=clientes_madre_facturacion[d].client_id_madre
+									facturacion[a]["correo_admin"]=clientes_madre_facturacion[d].correo_admin
+									facturacion[a]["correo_cob"]=clientes_madre_facturacion[d].correo_cob
+									facturacion[a]["deal_value"]=clientes_madre_facturacion[d].deal_value
+									facturacion[a]["desglose"]=clientes_madre_facturacion[d].desglose
+									facturacion[a]["especial"]=clientes_madre_facturacion[d].especial
+									facturacion[a]["grupo_economico"]=clientes_madre_facturacion[d].grupo_economico
+									facturacion[a]["hes"]=clientes_madre_facturacion[d].hes
+									facturacion[a]["metodo_pago"]=clientes_madre_facturacion[d].metodo_pago
+									facturacion[a]["nombre_admin"]=clientes_madre_facturacion[d].nombre_admin
+									facturacion[a]["nombre_cob"]=clientes_madre_facturacion[d].nombre_cob
+									facturacion[a]["orden_compra"]=clientes_madre_facturacion[d].orden_compra
+									facturacion[a]["sales_rep"]=clientes_madre_facturacion[d].sales_rep
+									facturacion[a]["soporte"]=clientes_madre_facturacion[d].soporte
+									facturacion[a]["telefono_admin"]=clientes_madre_facturacion[d].telefono_admin
+									facturacion[a]["telefono_cob"]=clientes_madre_facturacion[d].telefono_cob
+									facturacion[a]["recurrente"]=clientes_madre_facturacion[d].recurrente
+									facturacion[a]["n_oc"]=clientes_madre_facturacion[d].n_oc
+									facturacion[a]["vencimiento_oc"]=clientes_madre_facturacion[d].vencimiento_oc
+									
+									break;
+									
+									
+								}
+								
+							}
+							
+							
+					}else if(facturacion[a].CLIENTE_COUNTRY=="OTRO"){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY==""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY!="CO" && facturacion[a].CLIENTE_COUNTRY!="PE" && facturacion[a].CLIENTE_COUNTRY!="AR" && facturacion[a].CLIENTE_COUNTRY!="ES" && facturacion[a].CLIENTE_COUNTRY!="BR" && facturacion[a].CLIENTE_COUNTRY!="MX" && facturacion[a].CLIENTE_COUNTRY!="CL" && facturacion[a].CLIENTE_COUNTRY!="OTRO" && facturacion[a].CLIENTE_COUNTRY!=""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}
+					
+					
+					if(facturacion[a].CLIENTE_COUNTRY!="CL"){
+						
+						if(facturacion[a].CLIENT_ADDRESS=="" || facturacion[a].CLIENTE_CITY==""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+						}
+							
+						
+					}
+					
+					
+					
+					//MARCA NOMINA COMO INTERNACIONALES,  Desglose,  Normales y ON RECEIPT
+					
+					 //Resuelto:si  y  CLIENTE_COUNTRY es diferente de CL se deben marcar como INTERNACIONALES
+					if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY!="CL" && facturacion[a].FACTURABLE=="SI"){
+						facturacion[a].NOMINA="INTERNACIONALES"
+						
+					//Los que dicen RESUELTO:SI AND FACTURABLE:SI AND CLIENTE_COUNTRY:CL AND especial:SI  eson son Desglose	
+					}else if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY=="CL" && facturacion[a].FACTURABLE=="SI" && facturacion[a].especial=="SI" ){
+						facturacion[a].NOMINA="DESGLOSE"
+					
+					//RESUELTO:SI AND 
+					//FACTURABLE:SI AND 
+					//CLIENTE_COUNTRY:CL 
+					//AND especial:NO 
+					
+					}else if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY=="CL" && facturacion[a].FACTURABLE=="SI" && facturacion[a].especial=="NO"){
+						//AND (PAYMENT_TERMS:billing_period_plus_7 OR PAYMENT_TERMS:billing_period_plus_15 OR PAYMENT_TERMS:billing_period_plus_30 OR PAYMENT_TERMS:billing_period_plus_45 OR PAYMENT_TERMS:billing_period_plus_60 OR PAYMENT_TERMS:billing_period_plus_90)   esos se marcan como Normales  
+						if(facturacion[a].PAYMENT_TERMS=="billing_period_plus_7" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_15" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_30" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_45" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_60" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_90"){
+							facturacion[a].NOMINA="NORMALES"
+						
+						
+						}else if(facturacion[a].PAYMENT_TERMS=="billing_period" || facturacion[a].PAYMENT_TERMS=="" || facturacion[a].PAYMENT_TERMS==null){
+							facturacion[a].NOMINA="ON RECEIPT"
+						}
+					}
+					
+					//key=invoiceables[b];
+					//facturacion[a][key]=invoiceables[b][a];
+				}
+			}
+			
+		}
+		//return false;
+		
+		//vlacidaciones
+		
+		console.log("FN_Facturas: "+total_FN_Facturas) //ESTA VALIDADO
+		console.log("GMV: "+total_GMV) //ESTA VALIDADO
+		console.log("Not_Invoiceables: "+total_Not_Invoiceables)//ESTA VALIDADO 
+		console.log("Skip_Invoicing: "+total_Skip_Invoicing)//ESTA VALIDADO
+		console.log("Invoiceables: "+total_Invoicing)
+		
+		
+		//Total_invoicing= Total_FN
+		
+		if(total_Invoicing==total_FN_Facturas){
+			console.log("Total_invoicing= Total_FN      IGUAL")
+			
+		}else{
+			console.log("Total_invoicing= Total_FN      DISTINTO")
+		}
+		
+		//Total_GMV= total_Not_Invoiceables+total_Skip_Invoicing+total_Invoicing
+		suma_validacion=total_Not_Invoiceables+total_Skip_Invoicing+total_Invoicing
+		if(total_GMV==suma_validacion){
+			console.log("total_GMV= (no+sky+invo)      IGUAL")
+		}else{
+			console.log("total_GMV= (no+sky+invo)      DISTINTO")
+		}
+		
+		console.log(total_Invoicing)
+		console.log(facturacion)
+		
+		
+		
+		
+		//MENSAJES DE VALIDACION
+		
+		if(total_Invoicing!=total_FN_Facturas && total_GMV!=suma_validacion){
+			mensaje_gmv={"mensaje_error":"Monto total del Invoiceable  es diferente al FN facturas y El monto total del GMV es diferente a la facturación indicada en el Skip, No invoiceable y FN facturas"+
+		 "<br>FN_Facturas: "+total_FN_Facturas+
+		 "<br>GMV: "+total_GMV+
+		 "<br>Not_Invoiceables: "+total_Not_Invoiceables+
+		 "<br>Skip_Invoicing: "+total_Skip_Invoicing+
+		 "<br>Invoiceables: "+total_Invoicing}
+			controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+			//$("#lista_formularios").html(nota_campo_edicion)
+			$("#lista_formularios").html('<div class="tabla_facturas" >'+
+												'<h1>Diferencia FN e Invoiceable</h1>'+
+												'<table id="tabla_fn" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+													'<thead>'+
+														'<tr class="thead" ></tr>'+
+													'</thead>'+
+													'<tbody></tbody>'+
+												'</table>'+
+											'</div>')
+			generar_tabla("#tabla_fn", tabla_emergente, "")
+		}else if (total_Invoicing==total_FN_Facturas && total_GMV!=suma_validacion){
+			mensaje_gmv={"mensaje_error":"El monto total del GMV es diferente a la facturación indicada en el Skip, No invoiceable y FN facturas"}
+			controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+			$("#lista_formularios").html(nota_campo_edicion)
+		}else if(total_Invoicing!=total_FN_Facturas && total_GMV==suma_validacion){
+			mensaje_gmv={"mensaje_error":"Monto total del Invoiceable  es diferente al FN facturas"}
+			controlar_no_ok_desconocido_error("NO OK", mensaje_gmv)
+			//$("#lista_formularios").html(nota_campo_edicion)
+			$("#lista_formularios").html('<div class="tabla_facturas" >'+
+												'<h1>Diferencia FN e Invoiceable</h1>'+
+												'<table id="tabla_fn" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+													'<thead>'+
+														'<tr class="thead" ></tr>'+
+													'</thead>'+
+													'<tbody></tbody>'+
+												'</table>'+
+											'</div>')
+			generar_tabla("#tabla_fn", tabla_emergente, "")
+		}else if(total_Invoicing==total_FN_Facturas && total_GMV==suma_validacion){
+			
+			$("#grupo_6paso_7").find(".enviar_form_001").attr("disabled", false)
+			$(".tabs_archivos").find("a").each(function(index, element) {			
+					if($(this).html()==Number(paso+1)){
+						$(this).click();	
+						$(".conter_loader").remove()
+					}
+										
+			});
+		}
+		
+		
+		
+		
+	}
+
+	
+	if (paso==7){
+
+		exclusiones_billing_period=[]
+		for (i in clientes_madre_facturacion){
+			if(clientes_madre_facturacion[i].billing_period=="biweekly" && clientes_madre_facturacion[i].client_id!=""){
+				exclusiones_billing_period.push(clientes_madre_facturacion[i].client_id)
+			}
+		}
+
+		new_facturacion=[]
+		//RRECORRO LAS FACTURAS	
+		for (a in facturacion){
+			//SI NO ES biweekly LO INCLUYO
+			if(exclusiones_billing_period.indexOf(facturacion[a].CLIENTE_ID)<0){
+				new_facturacion.push(facturacion[a])
+			
+			//SI ES biweekly ENTONCO EVALUO LAS CONDICONES
+			}else if(exclusiones_billing_period.indexOf(facturacion[a].CLIENTE_ID)>0){
+
+				// SI CONTIENE SOLO UN REGISTRO LO EVALUO
+				if(facturacion[a].TXS.length==1){
+					if(facturacion[a].TXS[0].dia>=17){
+						new_facturacion.push(facturacion[a])
+					}else if(facturacion[a].TXS[0].dia==1 && facturacion[a].TXS[0].mes==messiguiente(mes_facturacion) ){
+						new_facturacion.push(facturacion[a])
+					}else if(facturacion[a].TXS[0].dia<=16){}
+
+
+				//SI CONTIENE AS DE UN REGISTRO LOS RRECORRO
+				}else if(facturacion[a].TXS.length>1){
+					var normal_temporal=0
+					var nc_temporal=0
+					facturacion[a].DETALLE=[]
+					for(i in facturacion[a].TXS){
+						if(facturacion[a].TXS[i].dia>=17 && facturacion[a].TXS[i].mes==mes_facturacion ){
+							if(facturacion[a].TXS[i].tipo=="NORMAL"){
+								normal_temporal=normal_temporal+facturacion[a].TXS[i].monto
+								facturacion[a].DETALLE.push(facturacion[a].TXS[i].monto)
+							}else if(facturacion[a].TXS[i].tipo=="NC"){
+								nc_temporal=nc_temporal+facturacion[a].TXS[i].monto
+								facturacion[a].DETALLE.push(facturacion[a].TXS[i].monto)
+							}
+						}else if(facturacion[a].TXS[i].dia==1 && facturacion[a].TXS[i].mes==messiguiente(mes_facturacion) ){
+							if(facturacion[a].TXS[i].tipo=="NORMAL"){
+								normal_temporal=normal_temporal+facturacion[a].TXS[i].monto
+								facturacion[a].DETALLE.push(facturacion[a].TXS[i].monto)
+							}else if(facturacion[a].TXS[i].tipo=="NC"){
+								nc_temporal=nc_temporal+facturacion[a].TXS[i].monto
+								facturacion[a].DETALLE.push(facturacion[a].TXS[i].monto)
+							}
+						}else if( facturacion[a].TXS[i].dia<=16){}
+					}
+					facturacion[a].MONTO_TOTAL=normal_temporal
+					facturacion[a].MONTO_FACTURA=normal_temporal
+					facturacion[a].MONTO_NOTA_CREDITO=nc_temporal
+					if(facturacion[a].DETALLE.length>0){
+						new_facturacion.push(facturacion[a])
+					}	
+				}
+			}
+		}
+	
+		console.log(facturacion)
+		console.log(new_facturacion)
+		//return false;
+		$.ajax({
+				
+				url: constantes.direccion_base,
+				type: "POST",
+				data:JSON.stringify({
+									   "tx" : "F0",
+									   "usuario" : "op",
+									   "periodo" : fecha_periodo_facturacion,
+									   "proceso":"upData",
+									   "data":new_facturacion,
+									   "destino":constantes.destino
+									}
+				),
+				contentType: "application/json",
+				timeout:1800000,
+				beforeSend: function() {
+					$("#grupo_6paso_7").find(".well-sm").prepend("<br><div class='loader'></div>"); 
+					$("#grupo_6paso_7").find(".enviar_form_001").attr("disabled", true)
+				
+				},
+				success: function(data) {
+					console.log(data)
+					data=JSON.parse(data)
+					if(data.estatus){
+						if(data.estatus=="OK" || data.estatus=="FIN"){
+							
+							$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha_periodo_facturacion+'01'+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_definitiva_facturacion+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+							
+							
+							//$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/visualize/edit/e24b6260-50d8-11e9-9810-f932ebb19a8c?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_definitiva_facturacion+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_definitiva_facturacion+'T02%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>');
+							
+							//$(".tabs_archivos").find("a").each(function(index, element) {	
+							//});
+							load_tareas(fecha_periodo_facturacion)
+						
+						}else if(data.estatus=="NO OK"){
+							controlar_no_ok_desconocido_error("NO OK", data)
+								}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+					
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						
+				}			
+		});
+	}
+}
+
+function messiguiente(mes_facturacion){
+
+	if(mes_facturacion=="enero"){return "febrero"}
+	else if(mes_facturacion=="febrero"){return "marzo"}
+	else if(mes_facturacion=="marzo"){return "abril"}
+	else if(mes_facturacion=="abril"){return "mayo"}
+	else if(mes_facturacion=="mayo"){return "junio"}
+	else if(mes_facturacion=="junio"){return "julio"}
+	else if(mes_facturacion=="julio"){return "agosto"}
+	else if(mes_facturacion=="agosto"){return "septiembre"}
+	else if(mes_facturacion=="septiembre"){return "octubre"}
+	else if(mes_facturacion=="octubre"){return "nomviembre"}
+	else if(mes_facturacion=="nomviembre"){return "diciembre"}
+	else if(mes_facturacion=="diciembre"){return "enero"} 
+
+}
+//PROCESO DE ARCHIVO A 15 DIAS
+function enviar_archivos_proceso_quince_dias(paso){
+	
+	//mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+	if (paso==1){	
+		numero_mes="01"
+		fecha_definitiva_facturacion=""
+		fecha_creacion_facturacion=""
+		if(mes_facturacion=="enero"){numero_mes="01"}
+		else if(mes_facturacion=="febrero"){numero_mes="02"}
+		else if(mes_facturacion=="marzo"){numero_mes="03"}
+		else if(mes_facturacion=="abril"){numero_mes="04"}
+		else if(mes_facturacion=="mayo"){numero_mes="05"}
+		else if(mes_facturacion=="junio"){numero_mes="06"}
+		else if(mes_facturacion=="julio"){numero_mes="07"}
+		else if(mes_facturacion=="agosto"){numero_mes="08"}
+		else if(mes_facturacion=="septiembre"){numero_mes="09"}
+		else if(mes_facturacion=="octubre"){numero_mes="10"}
+		else if(mes_facturacion=="nomviembre"){numero_mes="11"}
+		else if(mes_facturacion=="diciembre"){numero_mes="12"} 
+		
+		var date = new Date();
+		//alert()
+		//var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+		var ultimoDia = new Date(date.getFullYear(), Number(numero_mes), 0);
+		//console.log("<br>El primer día es: "+primerDia.getDate());
+		fecha_periodo_facturacion=anio_facturacion+"-"+numero_mes
+		fecha_definitiva_facturacion=anio_facturacion+"-"+numero_mes+"-16"
+		fecha_creacion_facturacion=date.getFullYear()+"-"+compenzar_numero(Number(Number(date.getMonth())+Number(1)))+"-"+compenzar_numero(date.getDate())
+		//if(numero_mes.length)
+		//console.log("PERIODO: "+fecha_periodo_facturacion);
+		//console.log("CREACION: "+fecha_creacion_facturacion);
+		//console.log("EMISION: "+fecha_definitiva_facturacion);
+
+
+
+	//LAS EXCLUSIONES SERA TODOS LOS DISTINTOS A billing_period==biweekly en clientes_madre_facturacion
+	exclusiones=[]
+	for (i in clientes_madre_facturacion){
+		if(clientes_madre_facturacion[i].billing_period=="biweekly"){
+			exclusiones.push(clientes_madre_facturacion[i].client_id)
+		}
+	}
+	facturables_nofacturables=[];
+	var jsonQ=require("jsonq");
+	
+		total_FN_Facturas=0
+		id_enviar="#cargar_fn_facturas"
+		tx="fn_facturas"
+		
+		fn_facturas=array_objetos_tabla.splice(0, array_objetos_tabla.length-1)
+		verificar_ids_cliente=[]
+		
+		//console.log(fn_facturas)
+		//total_Invoicing
+		//DETERMINO SI SON FACTURABLES O ON
+		for (a in fn_facturas){
+			//console.log(fn_facturas[a].Mes_Día_Año_de_value_date)
+			//console.log(mes_facturacion)
+			var dia=fn_facturas[a].date.split(" ", 5)
+			fn_facturas[a]["dia"]=Number(dia[0]);
+			fn_facturas[a]["mes"]=dia[2];
+			//FACTURABLES O ON FACTURABLES
+			//console.log(exclusiones.indexOf(fn_facturas[a].client_id))
+			if(exclusiones.indexOf(fn_facturas[a].client_id)>=0){
+				//INSETO MARCA
+				key="facturable"
+				fn_facturas[a][key]="SI";
+
+				//console.log("SIIII")
+				//INSERTO RUT EN ARRAY
+			}else{
+				//INSETO MARCA
+				key="facturable"
+				fn_facturas[a][key]="NO";
+				//console.log("NOOOO")
+			}
+			
+			
+			
+		}
+		
+		//console.log(total_FN_Facturas)
+		facturables_nofacturables=fn_facturas;
+		temporal=[]
+		let result = facturables_nofacturables.reduce((prev, current, index, arr) => {
+		  // Compruebo si ya existe el elemento
+		  //console.log(prev)
+		  let exists = prev.find(x => x.CLIENTE_ID === current.client_id );
+		  // Si no existe lo creo con un array vacío en VALOR
+		  if (!exists && current.facturable=="SI" && current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)>0 && current.dia>=1 && current.dia<=16 && current.mes==mes_facturacion) {
+			exists = {
+					CLIENTE_ID: current.client_id,
+					PAYMENT_TERMS:current.payment_terms, 
+					CLIENTE_COUNTRY:current.client_country,
+					MONTO_TOTAL: [], 
+					DETALLE:[], 
+					MONTO_FACTURA:[], 
+					MONTO_NOTA_CREDITO:[], 
+					FACTURABLE:current.facturable, 
+					RESUELTO:"SI",
+					CODESII:"34",
+					NOMINA:"",
+					FECHA_VENCIMIENTO: evaluarFechaVencimiento(current.payment_terms, moment(fecha_definitiva_facturacion).unix()),
+					FECHA_PERIODO: fecha_periodo_facturacion,//AÑO MES
+					FECHA_EMISION: fecha_definitiva_facturacion,  //AÑO MES ULTIMO DIA
+					FECHA_CREACION: fecha_creacion_facturacion, // AÑO MES DIA CARGA
+					fl_facturado:0,
+					fl_ncEmitida:0,
+					tipo_of:"biweekly",
+					CIUDAD_FAC: "", // MADRE
+					CLIENTE_CITY: "", // MADRE
+					CLIENTE_NAME: "", // MADRE
+					CLIENTE_TAX_CODE: "", // MADRE
+					CLIENT_ADDRESS: "", // MADRE
+					CORREOS_FAC: "", // MADRE
+					GIROS: "", // MADRE
+					MONTO_TOTAL: 0,
+					NETO_TOTAL: 0,
+					P_SLUG: "",
+					REGION: "",
+
+
+					};
+			prev.push(exists);
+		  }
+		  // Si el elemento actual tiene VALOR lo añado al array del
+		  // elemento existente
+		  //console.log(current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)+" / "+current.Mes_Día_Año_de_value_date)
+		 /* console.log(current)*/
+		  if (current.Total_Amount_Invoice != null && current.facturable=="SI" && current.Mes_Día_Año_de_value_date.indexOf(mes_facturacion)>0 && current.dia>=1 && current.dia<=16 && current.mes==mes_facturacion){
+			// Convierto el valor a numérico reemplazando el carácter separador
+			//let val = parseFloat(current.Total_Amount_Invoice.replace(/\,/g,'').replace(/\,00/g,''));
+			let val = parseFloat(current.Total_Amount_Invoice);
+			//console.log(, )
+			temporal.push({id:current.client_id,val:val})
+			// Si es un valor numérico válido lo añado al resultado
+			if (!isNaN(val)){
+				 exists.MONTO_TOTAL=Number(exists.MONTO_TOTAL)+Number(val)
+				 //exists.VALOR=Number(exists.VALOR[0])+Number(val)
+			     exists.DETALLE.push(val);
+				 if(Number(val)<0){
+					exists.MONTO_NOTA_CREDITO=Number(exists.MONTO_NOTA_CREDITO)+Number(val); 
+					//exists.MONTO_FACTURA=0;
+					//exists.CODESII="61"
+				 }else if(Number(val)>=0){ 
+					 exists.MONTO_FACTURA=Number(exists.MONTO_FACTURA)+Number(val);
+					// exists.CODESII="34" 
+				 }
+			}
+				 
+			
+		  }
+		  
+		  // Devuelvo el array resultado para la nueva iteración
+		  return prev;
+		}, []);
+		facturacion=result
+		
+		for (i in facturacion){
+			if(facturacion[i].MONTO_TOTAL<0){
+				facturacion[i].CODESII="61"
+					
+			}
+		}
+
+
+		for (a in facturacion){
+					
+					//facturacion[a].CLIENTE_COUNTRY
+					//MATRIS
+					if(facturacion[a].CLIENTE_COUNTRY=="CO"){
+							facturacion[a].CIUDAD_FAC="Colombia";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.co@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="PE"){
+							facturacion[a].CIUDAD_FAC="Peru";
+							facturacion[a].CORREOS_FAC="vanessa.falcon@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="AR"){
+							facturacion[a].CIUDAD_FAC="Argentina";
+							facturacion[a].CORREOS_FAC="zaida.depalma@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="ES"){
+							facturacion[a].CIUDAD_FAC="España";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.es@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="BR"){
+							facturacion[a].CIUDAD_FAC="Brazil";
+							facturacion[a].CORREOS_FAC="esther.nam@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="MX"){
+							facturacion[a].CIUDAD_FAC="Mexico";
+							facturacion[a].CORREOS_FAC="facturacion.clientes.mx@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY=="CL"){
+							facturacion[a].CIUDAD_FAC="";
+							facturacion[a].CORREOS_FAC="";
+							facturacion[a].GIROS="";
+							
+							RESUELTO_actual=facturacion[a].RESUELTO
+							for (d in clientes_madre_facturacion){
+
+								if(facturacion[a].CLIENTE_ID==clientes_madre_facturacion[d].client_id){
+									
+									//IGUALO
+									facturacion[a].CIUDAD_FAC=clientes_madre_facturacion[d].ciudad_fac
+									facturacion[a].CLIENTE_CITY=clientes_madre_facturacion[d].client_city
+									facturacion[a].CLIENTE_NAME=clientes_madre_facturacion[d].client_name
+									facturacion[a].CLIENTE_TAX_CODE=clientes_madre_facturacion[d].client_tax_code
+									facturacion[a].CLIENT_ADDRESS=clientes_madre_facturacion[d].client_address
+									facturacion[a].GIROS=clientes_madre_facturacion[d].giro
+									facturacion[a].CORREOS_FAC=clientes_madre_facturacion[d].correos_fac
+									//AGREGO
+									facturacion[a]["Detalle_CC_Facturacion"]=clientes_madre_facturacion[d].Detalle_CC_Facturacion
+									facturacion[a]["categoria"]=clientes_madre_facturacion[d].categoria
+									facturacion[a]["centro_costo"]=clientes_madre_facturacion[d].centro_costo
+									facturacion[a]["client_id_madre"]=clientes_madre_facturacion[d].client_id_madre
+									facturacion[a]["correo_admin"]=clientes_madre_facturacion[d].correo_admin
+									facturacion[a]["correo_cob"]=clientes_madre_facturacion[d].correo_cob
+									facturacion[a]["deal_value"]=clientes_madre_facturacion[d].deal_value
+									facturacion[a]["desglose"]=clientes_madre_facturacion[d].desglose
+									facturacion[a]["especial"]=clientes_madre_facturacion[d].especial
+									facturacion[a]["grupo_economico"]=clientes_madre_facturacion[d].grupo_economico
+									facturacion[a]["hes"]=clientes_madre_facturacion[d].hes
+									facturacion[a]["metodo_pago"]=clientes_madre_facturacion[d].metodo_pago
+									facturacion[a]["nombre_admin"]=clientes_madre_facturacion[d].nombre_admin
+									facturacion[a]["nombre_cob"]=clientes_madre_facturacion[d].nombre_cob
+									facturacion[a]["orden_compra"]=clientes_madre_facturacion[d].orden_compra
+									facturacion[a]["sales_rep"]=clientes_madre_facturacion[d].sales_rep
+									facturacion[a]["soporte"]=clientes_madre_facturacion[d].soporte
+									facturacion[a]["telefono_admin"]=clientes_madre_facturacion[d].telefono_admin
+									facturacion[a]["telefono_cob"]=clientes_madre_facturacion[d].telefono_cob
+									facturacion[a]["recurrente"]=clientes_madre_facturacion[d].recurrente
+									facturacion[a]["n_oc"]=clientes_madre_facturacion[d].n_oc
+									facturacion[a]["vencimiento_oc"]=clientes_madre_facturacion[d].vencimiento_oc
+									
+									break;
+									
+								}
+								
+							}
+					}else if(facturacion[a].CLIENTE_COUNTRY=="OTRO"){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY==""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}else if(facturacion[a].CLIENTE_COUNTRY!="CO" && facturacion[a].CLIENTE_COUNTRY!="PE" && facturacion[a].CLIENTE_COUNTRY!="AR" && facturacion[a].CLIENTE_COUNTRY!="ES" && facturacion[a].CLIENTE_COUNTRY!="BR" && facturacion[a].CLIENTE_COUNTRY!="MX" && facturacion[a].CLIENTE_COUNTRY!="CL" && facturacion[a].CLIENTE_COUNTRY!="OTRO" && facturacion[a].CLIENTE_COUNTRY!=""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+					}
+					if(facturacion[a].CLIENTE_COUNTRY!="CL"){
+						if(facturacion[a].CLIENT_ADDRESS=="" || facturacion[a].CLIENTE_CITY==""){
+							facturacion[a].CIUDAD_FAC="Santiago";
+							facturacion[a].CORREOS_FAC="manuel.valencia@cabify.com";
+							facturacion[a].GIROS="Otros";
+						}
+					}
+					
+					
+					
+					//MARCA NOMINA COMO INTERNACIONALES,  Desglose,  Normales y ON RECEIPT
+					
+					 //Resuelto:si  y  CLIENTE_COUNTRY es diferente de CL se deben marcar como INTERNACIONALES
+					if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY!="CL" && facturacion[a].FACTURABLE=="SI"){
+						facturacion[a].NOMINA="INTERNACIONALES"
+						
+					//Los que dicen RESUELTO:SI AND FACTURABLE:SI AND CLIENTE_COUNTRY:CL AND especial:SI  eson son Desglose	
+					}else if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY=="CL" && facturacion[a].FACTURABLE=="SI" && facturacion[a].especial=="SI" ){
+						facturacion[a].NOMINA="DESGLOSE"
+					
+					//RESUELTO:SI AND 
+					//FACTURABLE:SI AND 
+					//CLIENTE_COUNTRY:CL 
+					//AND especial:NO 
+					
+					}else if(facturacion[a].RESUELTO=="SI" && facturacion[a].CLIENTE_COUNTRY=="CL" && facturacion[a].FACTURABLE=="SI" && facturacion[a].especial=="NO"){
+						//AND (PAYMENT_TERMS:billing_period_plus_7 OR PAYMENT_TERMS:billing_period_plus_15 OR PAYMENT_TERMS:billing_period_plus_30 OR PAYMENT_TERMS:billing_period_plus_45 OR PAYMENT_TERMS:billing_period_plus_60 OR PAYMENT_TERMS:billing_period_plus_90)   esos se marcan como Normales  
+						if(facturacion[a].PAYMENT_TERMS=="billing_period_plus_7" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_15" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_30" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_45" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_60" || facturacion[a].PAYMENT_TERMS=="billing_period_plus_90"){
+							facturacion[a].NOMINA="NORMALES"
+						
+						
+						}else if(facturacion[a].PAYMENT_TERMS=="billing_period" || facturacion[a].PAYMENT_TERMS=="" || facturacion[a].PAYMENT_TERMS==null){
+							facturacion[a].NOMINA="ON RECEIPT"
+						}
+					}
+					
+					//key=invoiceables[b];
+					//facturacion[a][key]=invoiceables[b][a];
+				
+			
+			
+		}
+
+		//console.log(result);
+		//console.log(JSON.stringify(temporal))
+		//console.log(JSON.stringify(facturacion))
+		//console.log(monto_por_id_cliente)
+		
+		//$(id_enviar).val(JSON.stringify(fn_facturas))
+		
+		
+		$(".tabs_archivos").find("a").each(function(index, element) {			
+			if($(this).html()==Number(paso+1)){
+				$(this).click();	
+				$(".conter_loader").remove();
+				$(".enviar_form_001").attr("disabled", false)
+			}
+								
+		});
+	 
+	}else if (paso==2){	
+	
+		console.log(JSON.stringify(facturacion))
+		//return false;
+		$.ajax({
+				
+				url: constantes.direccion_base,
+				type: "POST",
+				data:JSON.stringify({
+									   "tx" : "F0",
+									   "usuario" : "op",
+									   "periodo" : fecha_periodo_facturacion,
+									   "proceso":"upData",
+									   "data":facturacion,
+									   "destino":constantes.destino
+									}
+				),
+				contentType: "application/json",
+				timeout:1800000,
+				beforeSend: function() {
+					$("#grupo_1paso_2").find(".well-sm").prepend("<br><div class='loader'></div>"); 
+					$("#grupo_1paso_2").find(".enviar_form_001").attr("disabled", true)
+				
+				},
+				success: function(data) {
+					console.log(data)
+					data=JSON.parse(data)
+					if(data.estatus){
+						if(data.estatus=="OK" || data.estatus=="FIN"){
+							
+							$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha_periodo_facturacion+'01'+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_definitiva_facturacion+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+							
+							
+							//$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/visualize/edit/e24b6260-50d8-11e9-9810-f932ebb19a8c?embed=true&_g=(refreshInterval%3A(pause%3A!f%2Cvalue%3A5000)%2Ctime%3A(from%3A%27'+fecha_definitiva_facturacion+'T03%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha_definitiva_facturacion+'T02%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>');
+							
+							//$(".tabs_archivos").find("a").each(function(index, element) {	
+							//});
+							load_tareas(fecha_periodo_facturacion)
+						
+						}else if(data.estatus=="NO OK"){
+							controlar_no_ok_desconocido_error("NO OK", data)
+								}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+					
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						
+				}			
+		});
+	}
+}
+
+		
+	
+		
+
+
+function enviar_facturar(id){
+	visualizar_control(id, "IN")
+	$("#tarea_"+id).find(".progress_div").remove();
+	$("#tarea_"+id).find(".panel-footer").append('<div class="progress_div"><div class="progress">'+
+  								'<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">'+
+    								'<span class="sr-only">45% Complete</span>'+
+  								'</div>'+
+							'</div>'+
+							'<span class="label label-default">150</span>&nbsp;'+
+							'<span class="label label-primary">50</span>&nbsp;'+
+							'<span class="label label-danger">62</span>'+
+							'</div>')
+	
+	
+	/*mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+	
+	$.ajax({
+    url: "http://cf.openpartner.cl",
+    type: "POST",
+
+    data: JSON.stringify({
+      "tx" : "f0",
+      "usuario" : usuario_log,
+      "período" : {
+           "indice": id,
+           "mes": mes
+      }
+   }),
+    contentType: "application/json",
+
+    beforeSend: function() {$("#kanaban_load").html("<div class='loader'></div>");},
+    success: function(data) {
+        //data=JSON.stringify(data)
+        data = JSON.parse(data)
+            //alert(typeof(data))
+        if (data.estatus) {
+            if (data.estatus == "OK" || data.estatus == "FIN") {
+				
+				visualizar_control(id)
+				
+            } else if (data.estatus == "NO OK") {
+                controlar_no_ok_desconocido_error("NO OK", data)
+            }
+        } else {
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)
+        }
+
+    },
+    error: function(xhr, ajaxOptions, thrownError) {controlar_no_ok_desconocido_error("ERROR", xhr.status)}
+
+});*/
+	
+}
+
+//ids_en_cache=[]
+function visualizar_control(id, accion){
+	
+	if(accion=="IN"){
+		var ids_en_cache = session.get("ids_en_cache");
+		console.log(ids_en_cache)
+		//SI EXISTE LO RELLENO
+		if (ids_en_cache ) {
+			
+			 if(JSON.parse("[" +session.get("ids_en_cache")+ "]").indexOf(id)<0 ){
+				ids_en_cache=ids_en_cache+',"'+id+'"';
+			 }
+			 console.log(ids_en_cache)
+			 session.set("ids_en_cache",ids_en_cache, tiempo_cache); // GUARDO EN CACHE	
+			
+		//SI NO EXISTE LO CREO
+		}else{
+			session.set("ids_en_cache",'"'+id+'"', tiempo_cache); // GUARDO EN CACHE	
+		}
+		console.log(JSON.parse("[" +session.get("ids_en_cache")+ "]"))
+	}else if(accion=="OUT"){
+		console.log(session.get("ids_en_cache"))
+		var ids_en_cache = JSON.parse("[" +session.get("ids_en_cache")+ "]")
+		var new_ids=""
+		for (i in ids_en_cache){
+			
+			console.log(ids_en_cache[i]+"/"+id)
+			if(ids_en_cache[i]==id){
+				console.log(i+" ELIMINO: "+ids_en_cache[i])
+				//ids_en_cache.splice(i, 1);
+			}else{
+				if(new_ids==""){
+					new_ids='"'+ids_en_cache[i]+'"'
+				}else if(new_ids!=""){
+					new_ids=new_ids+', "'+ids_en_cache[i]+'"'
+				}
+				
+				
+			}
+		}
+		
+		//console.log(ids_en_cache.toString())
+		
+		session.set("ids_en_cache",new_ids, tiempo_cache); // GUARDO EN CACHE	
+		
+		
+	}
+}
+
+
+
+function control_carga(){
+	
+	var ids_en_cache = session.get("ids_en_cache");
+	//console.log("VEO: "+ids_en_cache)
+	if ( ids_en_cache ){
+	 	//console.log("EXISTE")
+		//console.log(JSON.parse("[" +session.get("ids_en_cache")+ "]"))
+		verificar_esatdor=JSON.parse("[" +session.get("ids_en_cache")+ "]")
+		for (i in verificar_esatdor){
+			console.log(verificar_esatdor[i])
+			estado_defacturacion(verificar_esatdor[i])
+		}
+	}else{
+		//console.log("NO EXISTE")
+	}
+	
+}
+
+setInterval(function(){ control_carga() }, 6000);	
+
+function  estado_defacturacion(id){
+	
+	
+	visualizar_control(id, "OUT")
+	/*mes= $("#filtro_Mes").parent(".filtro").find(".btn-default").find('.label-default').html().replace("MES: ","")
+	$.ajax({
+    url: "http://cf.openpartner.cl",
+    type: "POST",
+
+    data: JSON.stringify({
+      "tx" : "FQ,",
+      "usuario" : usuario_log,
+      "período" : {
+           "indice": id,
+           "mes": mes
+      }
+   }),
+    contentType: "application/json",
+
+    beforeSend: function() {$("#kanaban_load").html("<div class='loader'></div>");},
+    success: function(data) {
+        //data=JSON.stringify(data)
+        data = JSON.parse(data)
+            //alert(typeof(data))
+        if (data.estatus) {
+            if (data.estatus == "OK" || data.estatus == "FIN") {
+				console.log(data)
+				//visualizar_control(id)
+				
+            } else if (data.estatus == "NO OK") {
+                controlar_no_ok_desconocido_error("NO OK", data)
+            }
+        } else {
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)
+        }
+
+    },
+    error: function(xhr, ajaxOptions, thrownError) {controlar_no_ok_desconocido_error("ERROR", xhr.status)}
+
+});*/
+	
+}
+registros_tabla="";
+function construir_tabala_resultado(conteos){
+registros_tabla=conteos;	
+	$("#myModal").modal("hide")
+$(".ocultar_columna").click();
+
+
+		/*conteos= {"hits" : {
+    "total" : 6,
+    "max_score" : 6.0,
+    "hits"*/
+
+
+datos_tabla=[]
+for (i in conteos){
+	console.log(i)
+	new_row={}
+	
+	//SI ES IFACTURES
+	
+		
+		opcion_menu="";
+		
+		opcion_menu=`<li onClick="generar_fa('${conteos[i].client_tax_code}', '${conteos[i].monto_factura}', '${conteos[i].ES_id_of}','${conteos[i].client_id}','${conteos[i].client_name}')">Generar Factura</li>`
+		
+	
+		new_row["opciones"]=`<div class="btn-group">
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Action <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu">
+								
+								${opcion_menu}
+								
+							  </ul>
+							</div>`
+		
+		
+		
+	
+		//new_row["opciones"]="-"
+		new_row["categoria"]=conteos[i].categoria
+		new_row["client_id"]=conteos[i].client_id
+		new_row["client_id_madre"]=conteos[i].client_id_madre
+		new_row["client_name"]=conteos[i].client_name
+		new_row["client_tax_code"]=conteos[i].client_tax_code
+		new_row["grupo_economico"]=conteos[i].grupo_economico
+		new_row["monto_factura"]=conteos[i].monto_factura
+		new_row["sales_rep"]=conteos[i].sales_rep
+		new_row["soporte"]=conteos[i].soporte
+		
+		/*
+		categoria: "VIP"
+client_id: "3cfc34c9c7342d4e67a9a4398048eaa5"
+client_id_madre: "3cfc34c9c7342d4e67a9a4398048eaa5"
+client_name: "VISA INTERNATIONAL SERVICE ASSOCIATION"
+client_tax_code: "59040090-4"
+grupo_economico: "Visa"
+monto_factura: 177134
+sales_rep: "Agustin Guilisasti"
+soporte: "Carlos Martinez"
+		
+		*/
+		
+		datos_tabla.push(new_row)
+		
+		
+		
+	
+	
+	
+}
+titulo="sdfsd";
+
+
+$("#lista_formularios").html('<div class="row header_formularios"><div class="col-xs-8 col-sm-8 col-md-8 text-left"><h2>Documentos Disponibles para '+$("#usuario_").html()+'</h2></div><div class="col-xs-4 col-sm-4 col-md-4 "><ul id="lista_opciones_interz" class="nav nav-tabs"><li role="presentation" class="eliminar_formulario_auto" style="float: right; display: block;"><a><i class="fas fa fa-times-circle" aria-hidden="true"></i></a></li></ul></div></div><div class="tabla_facturas" >'+
+												'<table id="tabla_facturas" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+													'<thead>'+
+														'<tr class="thead" ></tr>'+
+													'</thead>'+
+													'<tbody></tbody>'+
+												'</table>'+
+												'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'+
+											
+											'</div>')
+
+
+generar_tabla("#tabla_facturas", datos_tabla, "")
+
+console.log(datos_tabla)
+
+$(".eliminar_formulario_auto").on("click", function(){$("#lista_formularios").html(nota_campo_edicion)})
+
+	
+}
+
+
+
+const easypdf = require('easypdf');
+
+function ver_pdf(filePath, empresa){
+	
+	
+	
+	$("#myModal").modal("show");
+	
+	
+	// example pdf file
+	console.log(filePath)
+	$("#myModal").find(".modal-dialog").removeClass("modal-sm");
+
+	$("#myModal").find(".modal-dialog").addClass("modal-lg");
+	$("#myModal").find(".modal-body").html("<div class='verpdf'><div>")
+	$("#myModal").find(".modal-title").html(empresa);
+	filePath=filePath.split("?",2)
+	let pdf_file = filePath[0];
+	
+	// load the pdf file and set the container
+	let container = easypdf(pdf_file).setContainer('#myModal .verpdf');
+	
+	// render the pdf
+	container.render();
+		
+	
+	
+	
+}
+
+
+function  generar_nc(datos){console.log(datos)}
+
+function  generar_co(datos){console.log(datos)}
+
+
+
+function  generar_fa(rut, monto_factura, folio, id_base, nombre_empresa){
+	
+	
+	
+	
+	
+	arreglo_refacturacion=[]
+	
+	monto_factura=monto_factura
+	//DETERMINO CLEINETES A REFACTURAR	
+	//clientes_a_facturar=[]
+	/*for (i in clientes_madre_facturacion){
+		
+		if (clientes_madre_facturacion[i]._source.CLIENT_TAX_CODE==rut){
+			
+			console.log(clientes_madre_facturacion[i]._source)
+			clientes_a_facturar.push(clientes_madre_facturacion[i]._source)
+			
+		}
+		
+		
+		
+	}*/
+	
+	/**/
+	nota_negativa="";
+	//NOTA DE REFACTURACION
+	var formulario_refacturar={
+						"formulario":'Refactrurar',
+						"contendio":[	
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[]
+										},
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+														"campo":  "Total Desglose",
+														"tipo": "numero",
+														"opciones":"0",
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"total_desglose"
+													},{
+														"campo":  "Total Folio: "+folio,
+														"tipo": "numero",
+														"opciones":monto_factura,
+														"obligatorio":"no",
+														"estado":"lectura",
+														"nota":"",
+														"tamanio":[12,12,12],
+														"id":"total_folio"
+													},{
+														"campo":  "Total Pendiente",
+														"tipo": "numero",
+														"opciones":monto_factura,
+														"obligatorio":"no",
+														"estado":"lectura",
+														"nota":"",
+														"tamanio":[12,12,12],
+														"id":"total_pendiente"
+													}]
+										}
+									
+						],
+						"opciones":[{
+							"boton":"REFACTURAR",
+							"ws":"",
+							"funcion":"generar_refacturacion('"+folio+"')"
+						}]
+				
+			}
+			
+			
+			
+	$.ajax({
+							url: constantes.direccion_base,
+							type: "POST",
+							data:JSON.stringify({
+													"tx":"D0",
+													"operacion":"clientTree",
+													"usuario":"op",
+													"cliente":{
+															"CLIENT_TAX_CODE":rut
+														},
+									  				 "destino":constantes.destino
+												
+												}),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									//$(".kanaban_load").html("<div class='loader'></div>");
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+										/*if(data.data.treeType=="ClienteCC"){
+											
+											
+										}else if(data.data.treeType=="client_GE"){
+											
+											
+										}*/
+										clientes_a_facturar=data.data
+										
+										for (i in clientes_a_facturar){
+											
+											cliente_recuperado=clientes_a_facturar[i]
+											for (b in clientes_madre_facturacion){
+												if(clientes_madre_facturacion[b].ES_ClientID==clientes_a_facturar[i]._id){
+													console.log(clientes_madre_facturacion[b].Detalle_CC_Facturacion)
+													clientes_a_facturar[i]._source.CLIENT_NAME=clientes_a_facturar[i]._source.CLIENT_NAME+"&nbsp;"+clientes_madre_facturacion[b].Detalle_CC_Facturacion
+													//viendo_al_cliente=clientes_madre_facturacion[i]
+												}
+											}
+											
+											
+										}
+										
+										
+										
+										for (i in clientes_a_facturar){
+													
+													var new_tag={
+																	"campo":  clientes_a_facturar[i]._source.CLIENT_NAME,
+																	"tipo": "numero",
+																	"opciones":"",
+																	"obligatorio":"no",
+																	"nota":"Ingresar Monto",
+																	"tamanio":[12,12,12],
+																	"estado":"lectura_envio",
+																	"botones":[{"nombre":"+Agregar","funcion":"agregar_referencias_glosas(`"+clientes_a_facturar[i]._id+"`,`"+clientes_a_facturar[i]._source.CLIENT_TAX_CODE+"`,`"+clientes_a_facturar[i]._source.CLIENT_NAME+"`)"}],   //'${conteos[i]._id}'
+																	"duplicar":"si",
+																	"id":clientes_a_facturar[i]._id
+																}
+													formulario_refacturar.contendio[0].campos.push(new_tag)	
+													
+												
+											}
+	
+		
+		//console.log( new_tag_formulario)	
+		//FUNCIONES INTEGRADAS CON KANBAN INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+		 mostrar_modal_formulario_de_formulario_json("kanban", "refacturar", formulario_refacturar, "")
+		 $(".enviar_form_001").attr("disabled", true);
+		 $("#myModal").find(".modal-dialog").removeClass("modal-sm");
+		 $("#myModal").find(".modal-dialog").addClass("modal-lg")
+		$("#myModal").find(".modal-title").html("REFACTURACION DE FOLIO:"+ folio)
+		$("#grupo_0form_refacturar").prepend('<br><div class="col-xs-12 col-sm-12 col-md-12"><div class="alert alert-info" role="alert"><strong>Ingrese los Montos por cada R.U.T</strong>, asociados a la empresa matriz, al cual desea cargar el monto total o parcial de la factura original. </div></div>')
+		
+		
+		
+		
+ 
+
+		
+		/*$("#grupo_0form_refacturar").find(".numero").keyup(function(){
+			
+			total_acumulado=0
+			
+			$("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+                total_acumulado=Number(total_acumulado)+Number($(this).val())
+            });
+			
+			$("#total_desglose").val(total_acumulado)
+			
+			if(total_acumulado!=$("#total_base").val()){
+				$(".enviar_form_001").attr("disabled", true);
+			}else if(total_acumulado==$("#total_base").val()){
+				$(".enviar_form_001").attr("disabled", false);
+			}
+			
+		
+		})
+		*/
+		
+										
+										
+										
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+
+
+}
+
+function agregar_referencias_glosas(id, rut_empresa, nombre_empresa){
+
+console.log(id.toLowerCase())	
+//console.log(arreglo_refacturacion)
+
+	//INCONCLUSO
+	data_rescatada="";
+	if($("#"+id.toLowerCase()).val()!=""){
+		data_rescatada=JSON.parse($("#"+id.toLowerCase()).attr("arreglo_factura"));	
+	}
+	console.log(data_rescatada)	
+	//INCONCLUSO
+	
+	viendo_al_cliente={}
+	for (i in clientes_madre_facturacion){
+		if(clientes_madre_facturacion[i].ES_ClientID==id){
+			console.log(clientes_madre_facturacion[i])
+			viendo_al_cliente=clientes_madre_facturacion[i]
+		}
+	}
+	
+	
+	
+	
+	
+
+	$("#Modal_glosa").modal("show");
+	$("#Modal_glosa .modal-title").html("AGREGAR GLOSA Y REFERENCIAS");
+	
+	//NOTA DE REFACTURACION
+	var formulario_agregar_referencias_glosas={
+						"formulario":'AGREGAR GLOSA Y REFERENCIAS',
+						"contendio":[	
+										{
+										"grupo":"Fecha de Emisión",
+										"tamanio":[6,6,6],
+										"campos":[{
+														"campo":  "Fecha de Emisión",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"fecha_emision"
+													}]
+										}/*,
+										{
+										"grupo":"Seleciona las Referencias",
+										"tamanio":[12,12,12],
+										"campos":[{
+														"campo":  "Referencia",
+														"tipo": "lista_multi",
+														"opciones":referencias_duro,
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"referencias"
+													}]
+										}*/,
+										{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_referencia" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_referencia" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_referencias"
+													}
+												]
+										},
+										{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_glosa" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_glosa" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_glosas"
+													}
+												]
+										}
+									
+						],
+						"opciones":[{
+							"boton":"AGREGAR",
+							"ws":"",
+							"funcion":"cargar_glosa('"+id+"')"
+						}]
+				
+			}
+		
+	cosntruir_formularios(formulario_agregar_referencias_glosas, "agregar_glosa", "")
+	$("#agregar_glosa .header_formularios").remove()
+	$("#div_ingresar_glosas, #div_ingresar_referencias").attr("class","")
+	//return false();
+	//AGREGAR NOTA  
+	if(viendo_al_cliente.Detalle_CC_Facturacion!=""){
+		Detalle_CC_Facturacion='<br>C.C: '+viendo_al_cliente.Detalle_CC_Facturacion
+		
+	}else{
+		Detalle_CC_Facturacion="";
+	}
+	$("#fomulario_agregar_glosa").prepend('<div class="col-xs-6 col-sm-6 col-md-6">'+
+											'<div class="page-header text-left">'+
+												'<small>'+
+													'<strong>Facturar a:</strong>'+
+												'</small>'+
+											'</div>'+
+											'<h3>'+
+												nombre_empresa+'<br>'+
+												'R.U.T: '+rut_empresa+Detalle_CC_Facturacion+
+											'</h3>'+
+												'<span class="label label-default">O.C: '+viendo_al_cliente.orden_compra+'</span>&nbsp;'+
+												'<span class="label label-default">DESGLOSE: '+viendo_al_cliente.desglose+'</span>&nbsp;'+
+												'<span class="label label-default">HES: '+viendo_al_cliente.hes+'</span>&nbsp;'+
+												'<span class="label label-default">C.C: '+viendo_al_cliente.centro_costo+'</span>&nbsp;'+
+											
+										'</div>')
+	
+	//AGREGAR REFERENCIAS
+	$(".multiselect-container").find(".checkbox").on("change", function(){
+		console.log($(this).find("input").val())
+		id_elemento=$(this).find("input").val()
+		
+		if($(this).find("input").is(":checked") ){
+			
+			
+			
+			$("#grupo_1agregar_glosa").append('<div id="referencia_'+id_elemento+'" class="col-xs-6 col-sm-6 col-md-6 referencia">'+
+											  '<div class="page-header text-left"><small><strong>Referencia:</strong>'+$(this).html().replace('<input type="checkbox" value="'+id_elemento+'">','')+'</small></div>'+
+											  '<div class="row">'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">N°</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_numero">'+
+															'<input hidden value="'+id_elemento+'"  type="text" class="refrescar_validacion referencia_id">'+
+														'</div>'+
+												  '</div>'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">Fecha</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_fecha calendario_002">'+
+														'</div>'+
+												  '</div>'+
+												'</div>'+ 
+											'</div>'
+										  );							
+			
+		}else{
+			$("#referencia_"+id_elemento).remove();
+		}
+		$( ".calendario_002").datepicker({
+							format: "dd/mm/yyyy",
+							changeMonth:true,
+							changeYear:true,
+						})
+		
+	})
+	//AGREGAR REFERENCIAS DOSSS
+	total_referencia=0
+	$("#sumar_referencia").on("click",function(){
+		
+		total_referencia++;
+		$("#div_ingresar_referencias").append("<div class='referencia' id='referencias_"+total_referencia+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		
+			/*for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}*/
+			
+			for (i in campos_del_las_referencias){
+				id_temporal=campos_del_las_referencias[i].id
+				campos_del_las_referencias[i].id=campos_del_las_referencias[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_referencias[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				$(".lista").find(".select_item").on("click", function(){
+					$("#"+$(this).data("destino")).val($(this).data("opcion"))
+					$(this).parent("ul").parent("div").find(".btn").html($(this).parent("ul").parent("div").find(".btn").data("base")+': '+$(this).find("a").html()+" <span class='caret'></span>")
+				})
+				campos_del_las_referencias[i].id=id_temporal
+				
+			}
+		/*
+		nombre_referencias_
+numero_referencias_
+fecha_referencias_
+		*/
+		
+		if(total_referencia>=20){
+			$("#sumar_referencia").attr("disabled", true);
+		}
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled", true);
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		console.log(total_referencia)
+		
+		$(".referencia").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".referencia").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_referencia").on("click", function(){
+		console.log(total_referencia)
+		$("#referencias_"+total_referencia).remove();
+		total_referencia--;
+		if(total_referencia<=20){
+			$("#sumar_referencia").attr("disabled", false);
+		}
+		
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled",true );
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_referencia").click()
+	
+	//AGREGAR GLOSAS
+	total_glosas=0
+	$("#sumar_glosa").on("click",function(){
+		
+		total_glosas++;
+		$("#div_ingresar_glosas").append("<div class='glosa' id='glosa_"+total_glosas+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		//if(data_rescatada==""){
+			for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}
+		//SI ESXISTE DATA RESCATADA
+		/*}else if(data_rescatada!=""){
+			console.log(total_glosas)
+			console.log(data_rescatada.glosas.length)
+			if(total_glosas<=data_rescatada.glosas.length){
+				console.log("A")
+				for(a in data_rescatada.glosas){
+					for (b in campos_del_las_glosas){
+						id_temporal=campos_del_las_glosas[b].id
+						campos_del_las_glosas[b].id=campos_del_las_glosas[b].id+total_glosas
+						if(campos_del_las_glosas[b].campo=="Glosa"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].descripcion
+						}else if(campos_del_las_glosas[b].campo=="Monto"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].monto
+						}
+						construir_campos_de_formulario(campos_del_las_glosas[b], "#glosa_"+total_glosas)
+						$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+						campos_del_las_glosas[b].id=id_temporal
+					}
+					
+				}
+
+			}else if(total_glosas>data_rescatada.glosas.length){
+				console.log("B")
+				for (i in campos_del_las_glosas){
+					id_temporal=campos_del_las_glosas[i].id
+					campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+					if(campos_del_las_glosas[i].campo=="Glosa"){
+							campos_del_las_glosas[i].opciones=""
+					}else if(campos_del_las_glosas[i].campo=="Monto"){
+							campos_del_las_glosas[i].opciones=""
+					}
+					construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+					$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+					campos_del_las_glosas[i].id=id_temporal
+				}
+			}
+		}*/
+		
+		if(total_glosas>=20){
+			$("#sumar_glosa").attr("disabled", true);
+		}
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled", true);
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		console.log(total_glosas)
+		
+		$(".glosa").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".glosa").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_glosa").on("click", function(){
+		console.log(total_glosas)
+		$("#glosa_"+total_glosas).remove();
+		total_glosas--;
+		if(total_glosas<=20){
+			$("#sumar_glosa").attr("disabled", false);
+		}
+		
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled",true );
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_glosa").click()
+		
+	
+	
+	
+	
+}
+
+
+function cargar_glosa(id){
+	nota_negativa=""
+	
+	
+	//VALIDACIONES
+	$("#grupo_0agregar_glosa").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	
+	$("#div_ingresar_glosas").find(".col-md-6, .col-md-4").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	//TOTAL
+	total_factura=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+		
+        total_factura=total_factura+Number($(this).val())
+    });
+	
+	//CONSTRULLO ARREGLO DE FACTURA
+	id_temporal=id
+	if(id_temporal.indexOf("__")<0){
+			id_temporal=id_temporal+"__"
+	}
+	id_temporal=id_temporal.split("__",2);
+		
+	arreglo_temporal={"_id":id_temporal[0], "total_fac":total_factura, "glosas":[], "referencias":[], "fecha_emision":moment($("#fecha_emision").val()).format('X')}
+	//GLOSA
+	$("#div_ingresar_glosas").find(".glosa").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.glosas.push({"comment":$(this).find(".col-md-6").find(".form-control").val(),"netUnitValue":$(this).find(".col-md-4").find(".form-control").val(),"quantity":1})
+    });
+	
+	//REFERENCIA
+	/*$("#grupo_1agregar_glosa").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.referencias.push({"id":$(this).find(".referencia_id").val(),"fecha":moment($(this).find(".referencia_fecha").val()).format("X"),"numero":$(this).find(".referencia_numero").val()})
+    });*/
+	$("#div_ingresar_referencias").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		console.log("#numero_referencias_"+index)
+		if($(this).find(".col-md-3").find(".refrescar_validacion").val()!=""){
+			//NUMERO
+			if($(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).val()==""){$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).removeClass("fucus_negativo");}
+			//FECHA
+			if($(this).find(".col-md-2").find(".calendario_002").val()==""){$(this).find(".col-md-2").find(".calendario_002").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find(".calendario_002").removeClass("fucus_negativo");}
+			//COMENTARIO
+			//if($(this).find(".col-md-5").find(".form-control").val()==""){$(this).find(".col-md-5").find(".form-control").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			//}else{$(this).find(".col-md-5").find(".form-control").removeClass("fucus_negativo");}
+			
+			
+			//AGERO SI ESTA LLENAS
+			if(nota_negativa==""){
+				arreglo_temporal.referencias.push({"codeSii":$(this).find(".col-md-3").find(".refrescar_validacion").val(),"referenceDate":moment($(this).find(".col-md-2").find(".calendario_002").val()).format('X'),"number":$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).val(), "reason":$(this).find(".col-md-5").find(".form-control").val()})
+			}
+			
+		}
+		
+		
+    });
+	
+	
+	
+	console.log( JSON.stringify(arreglo_temporal))
+	
+	//return false;
+	
+	
+	
+	//TOTALIZO GENERALES MODAL INFERIOR
+	//TOTAL EN LA PANTALLA DE DETALLE
+	total_a_cargar=0
+	total_acumulado=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+	
+        total_a_cargar=Number(total_a_cargar)+Number($(this).val());
+    });
+	$("#"+id.toLowerCase()).val(total_a_cargar);	
+	//TOTAL EN LA PANTALLA GENERAL
+	$("#fomulario_form_refacturar").find("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+          total_acumulado=Number(total_acumulado)+Number($(this).val())
+    });
+		
+	$("#total_desglose").val(total_acumulado)
+	$("#total_pendiente").val(Number($("#total_folio").val())-Number($("#total_desglose").val()))		
+	//if(total_acumulado!=$("#total_folio").val()){
+	if(total_acumulado==0){
+		$(".enviar_form_001").attr("disabled", true);
+		$(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>Monto no facturable</strong></div>');
+	}else if(total_acumulado>0){
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	//OCULTO MODAL
+	if(nota_negativa==""){
+		//INSERTO ARREGLO EN EL OBJETO MADRE
+		$("#"+id.toLowerCase()).attr("arreglo_factura", JSON.stringify(arreglo_temporal))
+		$("#Modal_glosa").modal("hide");
+	}else{
+		$("#Modal_glosa").find(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>'+nota_negativa+'</strong></div>')
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	
+}
+
+function generar_refacturacion(folio){
+	//console.log(clientes_a_facturar)
+	//SELECIONO EN LOS REGISTROS EL SELECIONADO
+	
+	glosa_client=""
+	for (i in registros_tabla){
+		
+		if(registros_tabla[i].ES_id_of==folio){
+			glosa_cliente=registros_tabla[i]
+			console.log(glosa_cliente)
+			break;
+		}
+		
+		
+	}
+	console.log(glosa_cliente)
+	
+	//VERIFICO OPERACION
+	total_a_cargar=0
+	total_acumulado=0
+		
+	//TOTAL EN LA PANTALLA GENERAL
+	$("#fomulario_form_refacturar").find("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+		console.log($(this).val())
+          total_acumulado=Number(total_acumulado)+Number($(this).val())
+    });
+		
+	$("#total_desglose").val(total_acumulado)
+			
+	if(total_acumulado==0){
+		$(".enviar_form_001").attr("disabled", true);
+		$(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>Monto no facturable</strong></div>');
+		
+	}else if(total_acumulado>0){
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	//CONSTRYYO EL OBEJTO A ENVIAR
+	
+	/*
+	
+	*/
+	data_envio={
+		"tx":"f1",
+		"usuario":"op",
+		"operacion":"dte_fc",
+		"destino":constantes.destino,
+		"doc_original":glosa_cliente,
+		"docs_nuevos":[],
+		"ES_id_of":folio,
+	};
+	$("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+        if($(this).val()!=""){
+			//OBTENGO EL ARREGLO DEL OBJETO
+			factura_x=JSON.parse($(this).attr("arreglo_factura"))
+			factura_x["folio"]=folio;
+			//CREO EL ARREGLO DEFINITIVO
+			factura_a={}
+			//BUSCO LA EMPRESA
+			id_clien_o_madre="";
+			periodo_pago=""
+			for(x in clientes_a_facturar){
+				if(factura_x._id==clientes_a_facturar[x]._id){
+					factura_a["cliente"]=clientes_a_facturar[x];
+					periodo_pago=clientes_a_facturar[x]._source.PAYMENT_TERMS
+					if(clientes_a_facturar[x]._source.CLIENT_ID==""){
+						id_clien_o_madre=clientes_a_facturar[x]._source.CLIENT_ID_MADRE
+					}else{
+						id_clien_o_madre=clientes_a_facturar[x]._source.CLIENT_ID
+					}
+				}
+			}
+			//INGRESO id_clien_o_madre EN LA GLOSA
+			for(a in factura_x.glosas){
+				factura_x.glosas[a].comment=factura_x.glosas[a].comment+" [[ "+id_clien_o_madre+" ]]"
+
+			}
+
+            factura_a["ES_id_of"]=folio;
+			factura_a["emissionDate"]=factura_x.fecha_emision;
+			factura_a["expirationDate"]=evaluarFechaVencimiento(periodo_pago, factura_x.fecha_emision);
+			factura_a["references"]=factura_x.referencias;
+			factura_a["details"]=factura_x.glosas;
+			factura_a["total_fac"]=factura_x.total_fac;
+			
+			//INSERTO EN ARRGELO ORIGINAL
+			data_envio.docs_nuevos.push(factura_a)
+		}
+    });
+	console.log(JSON.stringify(data_envio))
+	//return false;
+	$.ajax({
+							url: constantes.direccion_base,
+							type: "POST",
+							data:JSON.stringify(data_envio),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$("#form_refacturar").append('<div class="conter_loader"><div class="loader"></div></div>');
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+										
+										var date = new Date();
+										//alert()
+										//var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+										var ultimoDia = new Date(date.getFullYear(), Number(mes_facturacion_ws), 0);
+										
+										fecha=año_facturacion+"-"+mes_facturacion_ws+"-"+ultimoDia;
+										
+										
+										$("#lista_formularios").html('<iframe src="https://s2.openpartner.cl/kibana/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+										$("#myModal").modal("hide");
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+	
+	
+	
+}
+
+referencias_duro=[{
+      "href": "https://api.bsale.cl/v1/dte_codes/28.json",
+      //"id": 28,
+      "tag": "AWB (Air Will Bill)",
+      "id": "809",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/27.json",
+      //"id": 27,
+      "tag": "B/L (Conocimiento de embarque)",
+      "id": "808",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/35.json",
+      //"id": 35,
+      "tag": "Boleta",
+      "id": "35",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/10.json",
+      //"id": 10,
+      "tag": "Boleta Electrónica",
+      "id": "39",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/1.json",
+      //"id": 1,
+      "tag": "Boleta Exenta",
+      "id": "38",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/11.json",
+      //"id": 11,
+      "tag": "Boleta Exenta Electrónica",
+      "id": "41",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/30.json",
+      //"id": 30,
+      "tag": "Carta de Porte",
+      "id": "811",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/33.json",
+      //"id": 33,
+      "tag": "Certificado de Depósito Bolsa Prod. Chile",
+      "id": "814",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/22.json",
+      //"id": 22,
+      "tag": "Contrato",
+      "id": "803",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/38.json",
+      //"id": 38,
+      "tag": "Declaración de Ingreso (DIN)",
+      "id": "914",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/26.json",
+      //"id": 26,
+      "tag": "DUS",
+      "id": "807",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/36.json",
+      //"id": 36,
+      "tag": "Factura",
+      "id": "30",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/2.json",
+      //"id": 2,
+      "tag": "Factura de Compra",
+      "id": "45",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/12.json",
+      //"id": 12,
+      "tag": "Factura de Compra Electrónica",
+      "id": "46",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/39.json",
+      //"id": 39,
+      "tag": "Factura de exportación",
+      "id": "101",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/17.json",
+      //"id": 17,
+      "tag": "Factura de Exportación Electrónica",
+      "id": "110",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/8.json",
+      //"id": 8,
+      "tag": "Factura Electrónica",
+      "id": "33",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/37.json",
+      //"id": 37,
+      "tag": "Factura Exenta",
+      "id": "32",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/9.json",
+      //"id": 9,
+      "tag": "Factura No Afecta o Exenta Electrónica",
+      "id": "34",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/25.json",
+      //"id": 25,
+      "tag": "Ficha ChileCompra",
+      "id": "806",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/15.json",
+      //"id": 15,
+      "tag": "Guía de Despacho",
+      "id": "50",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/16.json",
+      //"id": 16,
+      "tag": "Guía de Despacho Electrónica",
+      "id": "52",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/44.json",
+      //"id": 44,
+      "tag": "HEM",
+      "id": "HEM",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/43.json",
+      //"id": 43,
+      "tag": "HES",
+      "id": "HES",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/5.json",
+      //"id": 5,
+      "tag": "Liquidación",
+      "id": "103",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/6.json",
+      //"id": 6,
+      "tag": "Liquidación Factura",
+      "id": "40",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/7.json",
+      //"id": 7,
+      "tag": "Liquidación-Factura Electrónica",
+      "id": "43",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/29.json",
+      //"id": 29,
+      "tag": "MIC/DTA",
+      "id": "810",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/4.json",
+      //"id": 4,
+      "tag": "Nota de Crédito",
+      "id": "60",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/41.json",
+      //"id": 41,
+      "tag": "Nota de Crédito de exportación",
+      "id": "106",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/19.json",
+      //"id": 19,
+      "tag": "Nota de Crédito de Exportación Electrónica",
+      "id": "112",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/14.json",
+      //"id": 14,
+      "tag": "Nota de Crédito Electrónica",
+      "id": "61",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/3.json",
+      //"id": 3,
+      "tag": "Nota de Débito",
+      "id": "55",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/40.json",
+      //"id": 40,
+      "tag": "Nota de débito de exportación",
+      "id": "104",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/18.json",
+      //"id": 18,
+      "tag": "Nota de Débito de Exportación Electrónica",
+      "id": "111",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/13.json",
+      //"id": 13,
+      "tag": "Nota de Débito Electrónica",
+      "id": "56",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/21.json",
+      //"id": 21,
+      "tag": "Nota de pedido",
+      "id": "802",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/20.json",
+      //"id": 20,
+      "tag": "Orden de Compra",
+      "id": "801",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/32.json",
+      //"id": 32,
+      "tag": "Pasaporte",
+      "id": "813",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/24.json",
+      //"id": 24,
+      "tag": "Proceso ChileCompra",
+      "id": "805",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/23.json",
+      //"id": 23,
+      "tag": "Resolución",
+      "id": "804",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/31.json",
+      //"id": 31,
+      "tag": "Resolución del SNA donde califica Servicios de Exportación",
+      "id": "812",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/34.json",
+      //"id": 34,
+      "tag": "Vale de Prenda Bolsa Prod. Chile",
+      "id": "815",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/42.json",
+      //"id": 42,
+      "tag": "Vales comprobantes de Pago Medios Electrónicos (Transbank)",
+      "id": "48",
+      "state": 1
+    }	]
+
+
+/*
+glosa_duro=[
+	{
+	  "id": 2360,
+      "tag": "Servicio de transporte 2018 Diciembre",
+	}
+	,
+	{
+	  "id": 2261,
+      "tag": "Servicio de transporte 2019 Enero",
+	  }
+	,
+	{
+	  "id": 2262,
+      "tag": "Servicio de transporte 2019 Febrero",
+	 }
+	,
+	{
+	  "id": 2363,
+      "tag": "Servicio de transporte 2019 Marzo"
+	}
+	,
+	{
+	  "id": 2364,
+      "tag": "Servicio de transporte 2019 Abril"
+	}
+	,
+	{
+	  "id": 2365,
+      "tag": "Servicio de transporte 2019 Mayo"
+	}
+	,
+	{
+	  "id": 2366,
+      "tag": "Servicio de transporte 2019 junio"
+	}
+	
+]*/
+glosa_duro=[];
+meses_aniao=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+mes_partida=1;
+anio_partida=2019;
+mes_actual=Number(moment().format("MM"));
+anio_actual=Number(moment().format("YYYY"));
+for(A=anio_partida; A<anio_actual+1; A++){
+	console.log(A)
+	for(B in meses_aniao){
+		if((Number(B)+1)>=mes_partida && A==anio_partida){
+			console.log("Servicio de transporte "+A+" "+meses_aniao[B])
+			glosa_duro.push({"id": A+""+moment(B).format("MM"),"tag": "Servicio de transporte -- -- "+A+"-"+moment(B).format("MM")})
+		}else if(A>anio_partida){
+			console.log("Servicio de transporte "+A+" "+meses_aniao[B])
+			glosa_duro.push({"id": A+""+moment(B).format("MM"),"tag": "Servicio de transporte -- -- "+A+"-"+moment(B).format("MM")})
+			if(A==anio_actual && mes_actual==(Number(B)+1)){
+				break;
+			}
+		}
+	}
+}
+
+
+campos_del_las_glosas=[{
+														"campo":  "Glosa de Ref.",
+														"tipo": "lista",
+														"opciones":glosa_duro,
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[2,2,2],
+														"id":"referencias_"
+													},
+													{
+														"campo":  "Glosa",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar o Selecione Glosa",
+														"tamanio":[6,6,6],
+														"id":"glosa_descriptiva_"
+													}
+													
+													,
+													{
+														"campo":  "Monto",
+														"tipo": "numero",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[4,4,4],
+														"id":"monto_"
+													}
+]
+
+campos_del_las_referencias=[{
+														"campo":  "Referencia",
+														"tipo": "lista",
+														"opciones":referencias_duro,
+														"obligatorio":"no",
+														"nota":"Selecione Referencia",
+														"tamanio":[3,3,3],
+														"id":"nombre_referencias_"
+													},
+													{
+														"campo":  "N°",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar N°",
+														"tamanio":[2,2,2],
+														"id":"numero_referencias_"
+													}
+													
+													,
+													{
+														"campo":  "Fecha",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Fecha",
+														"tamanio":[2,2,2],
+														"id":"fecha_referencias_"
+													},
+													{
+														"campo":  "Comentario",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Comentario",
+														"tamanio":[5,5,5],
+														"id":"comentario_"
+													}
+]
+
+
+
+
+
+
+ 
+
+
+
+
+//myFunction(0)
+
+</script>
+
+

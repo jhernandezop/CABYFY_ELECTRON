@@ -1,0 +1,1977 @@
+<style>
+
+
+ 
+	
+
+
+
+  * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  html {
+    font-size: 10px;
+  
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  /*body {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 8px;
+    
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+  }*/
+  input,
+  button,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  
+  
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-justify {
+    text-align: justify;
+  }
+  
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    float: left;
+  }
+  .col-xs-12 {
+    width: 100%;
+  }
+  .col-xs-11 {
+    width: 91.66666667%;
+  }
+  .col-xs-10 {
+    width: 83.33333333%;
+  }
+  .col-xs-9 {
+    width: 75%;
+  }
+  .col-xs-8 {
+    width: 66.66666667%;
+  }
+  .col-xs-7 {
+    width: 58.33333333%;
+  }
+  .col-xs-6 {
+    width: 50%;
+  }
+  .col-xs-5 {
+    width: 41.66666667%;
+  }
+  .col-xs-4 {
+    width: 33.33333333%;
+  }
+  .col-xs-3 {
+    width: 25%;
+  }
+  .col-xs-2 {
+    width: 16.66666667%;
+  }
+  .col-xs-1 {
+    width: 8.33333333%;
+  }
+  
+  @media (min-width: 768px) {
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+      float: left;
+    }
+    .col-sm-12 {
+      width: 100%;
+    }
+    .col-sm-11 {
+      width: 91.66666667%;
+    }
+    .col-sm-10 {
+      width: 83.33333333%;
+    }
+    .col-sm-9 {
+      width: 75%;
+    }
+    .col-sm-8 {
+      width: 66.66666667%;
+    }
+    .col-sm-7 {
+      width: 58.33333333%;
+    }
+    .col-sm-6 {
+      width: 50%;
+    }
+    .col-sm-5 {
+      width: 41.66666667%;
+    }
+    .col-sm-4 {
+      width: 33.33333333%;
+    }
+    .col-sm-3 {
+      width: 25%;
+    }
+    .col-sm-2 {
+      width: 16.66666667%;
+    }
+    .col-sm-1 {
+      width: 8.33333333%;
+    }
+   
+  }
+  @media (min-width: 992px) {
+    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+      float: left;
+    }
+    .col-md-12 {
+      width: 100%;
+    }
+    .col-md-11 {
+      width: 91.66666667%;
+    }
+    .col-md-10 {
+      width: 83.33333333%;
+    }
+    .col-md-9 {
+      width: 75%;
+    }
+    .col-md-8 {
+      width: 66.66666667%;
+    }
+    .col-md-7 {
+      width: 58.33333333%;
+    }
+    .col-md-6 {
+      width: 50%;
+    }
+    .col-md-5 {
+      width: 41.66666667%;
+    }
+    .col-md-4 {
+      width: 33.33333333%;
+    }
+    .col-md-3 {
+      width: 25%;
+    }
+    .col-md-2 {
+      width: 16.66666667%;
+    }
+    .col-md-1 {
+      width: 8.33333333%;
+    }
+    
+  }
+  @media (min-width: 1200px) {
+    .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+      float: left;
+    }
+    .col-lg-12 {
+      width: 100%;
+    }
+    .col-lg-11 {
+      width: 91.66666667%;
+    }
+    .col-lg-10 {
+      width: 83.33333333%;
+    }
+    .col-lg-9 {
+      width: 75%;
+    }
+    .col-lg-8 {
+      width: 66.66666667%;
+    }
+    .col-lg-7 {
+      width: 58.33333333%;
+    }
+    .col-lg-6 {
+      width: 50%;
+    }
+    .col-lg-5 {
+      width: 41.66666667%;
+    }
+    .col-lg-4 {
+      width: 33.33333333%;
+    }
+    .col-lg-3 {
+      width: 25%;
+    }
+    .col-lg-2 {
+      width: 16.66666667%;
+    }
+    .col-lg-1 {
+      width: 8.33333333%;
+    }
+    
+  }
+  
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+  
+  
+  .btn-group,
+  .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .btn-group > .btn,
+  .btn-group-vertical > .btn {
+    position: relative;
+    float: left;
+  }
+  
+  
+  
+  .btn-group-justified {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+  }
+  .btn-group-justified > .btn,
+  .btn-group-justified > .btn-group {
+    display: table-cell;
+    float: none;
+    width: 1%;
+  }
+  .btn-group-justified > .btn-group .btn {
+    width: 100%;
+  }
+  .btn-group-justified > .btn-group .dropdown-menu {
+    left: auto;
+  }
+  
+  .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+   
+  }
+  
+  .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .input-group .form-control:focus {
+    z-index: 3;
+  }
+  
+  .input-group-addon,
+  .input-group-btn,
+  .input-group .form-control {
+    display: table-cell;
+  }
+  
+  .input-group-addon,
+  .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .input-group-addon.input-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+  .input-group-addon.input-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+  
+  .input-group .form-control:first-child,
+  .input-group-addon:first-child,
+  .input-group-btn:first-child > .btn,
+  .input-group-btn:first-child > .btn-group > .btn,
+  .input-group-btn:first-child > .dropdown-toggle,
+  .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+  .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .input-group-addon:first-child {
+    border-right: 0;
+  }
+  .input-group .form-control:last-child,
+  .input-group-addon:last-child,
+  .input-group-btn:last-child > .btn,
+  .input-group-btn:last-child > .btn-group > .btn,
+  .input-group-btn:last-child > .dropdown-toggle,
+  .input-group-btn:first-child > .btn:not(:first-child),
+  .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .input-group-addon:last-child {
+    border-left: 0;
+  }
+  .input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+  }
+  
+  
+  
+  
+  
+  
+  
+  #contrato .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  }
+  #contrato .panel-body {
+    padding: 15px;
+  }
+  #contrato .panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  
+  #contrato .panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+  }
+  
+  #contrato .panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  
+  #contrato .panel-group {
+    margin-bottom: 20px;
+  }
+  #contrato .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px;
+  }
+  .panel-group .panel + .panel {
+    margin-top: 5px;
+  }
+  .panel-group .panel-heading {
+    border-bottom: 0;
+  }
+  .panel-group .panel-heading + .panel-collapse > .panel-body,
+  .panel-group .panel-heading + .panel-collapse > .list-group {
+    border-top: 1px solid #ddd;
+  }
+  .panel-group .panel-footer {
+    border-top: 0;
+  }
+  .panel-group .panel-footer + .panel-collapse .panel-body {
+    border-bottom: 1px solid #ddd;
+  }
+  .panel-default {
+    border-color: #ddd;
+  }
+  .panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+  }
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #ddd;
+  }
+  .panel-default > .panel-heading .badge {
+    color: #f5f5f5;
+    background-color: #333;
+  }
+  .panel-default > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #ddd;
+  }
+  
+  
+  #contrato .well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  }
+  
+  
+  #contrato .well-sm {
+    padding: 9px;
+    border-radius: 3px;
+  }
+  
+  
+  
+  .clearfix:before,
+  .clearfix:after,
+  .dl-horizontal dd:before,
+  .dl-horizontal dd:after,
+  .container:before,
+  .container:after,
+  .container-fluid:before,
+  .container-fluid:after,
+  .row:before,
+  .row:after,
+  .form-horizontal .form-group:before,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:before,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:before,
+  .btn-group-vertical > .btn-group:after,
+  .nav:before,
+  .nav:after,
+  .navbar:before,
+  .navbar:after,
+  .navbar-header:before,
+  .navbar-header:after,
+  .navbar-collapse:before,
+  .navbar-collapse:after,
+  .pager:before,
+  .pager:after,
+  .panel-body:before,
+  .panel-body:after,
+  .modal-header:before,
+  .modal-header:after,
+  .modal-footer:before,
+  .modal-footer:after {
+    display: table;
+    content:"";
+  }
+  .clearfix:after,
+  .dl-horizontal dd:after,
+  .container:after,
+  .container-fluid:after,
+  .row:after,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:after,
+  .nav:after,
+  .navbar:after,
+  .navbar-header:after,
+  .navbar-collapse:after,
+  .pager:after,
+  .panel-body:after,
+  .modal-header:after,
+  .modal-footer:after {
+    clear: both;
+  }
+  
+  .media-body, .media-left, .media-right {
+      display: table-cell;
+      vertical-align: top;
+  }
+  .media-left, .media > .pull-left {
+      padding-right: 10px;
+  }
+  
+  /*# sourceMappingURL=bootstrap.css.map */
+  
+  
+  }
+  </style>
+  
+  
+  <style>
+  
+  #contrato, .para_hoja_2{
+    font-family:Arial, Helvetica, sans-serif !important;	
+  }
+  
+  
+  #contrato .input-group {
+      margin-bottom: 10px !important;
+  }
+  #contrato > div{
+    padding:20px;}
+  input{
+    color:#000	;
+  }
+  
+  .white{
+    background:#FFF;
+    
+  }
+  
+   #menu_mi_autos > .linea >.seleccionado{
+    background:#FFF;
+      border-radius:5px;
+      -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.05);
+      -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.05);
+      box-shadow: 0px 0px 10px 3px rgba(0,0,255,0.2);
+      
+    }
+    
+  .formularios>.panel >.columna_vertical{
+    min-height:900px;
+    margin-bottom:0px;
+  }
+  
+  /*CONTRATO*/
+  
+  
+  
+  
+  .logo_selman_contrato{
+    /*background-image:url(assets/ima/logo.png);
+    background-repeat:no-repeat;
+    background-size:150px;*/
+    height:100px;
+    /*padding-top: 55px;*/
+    
+  }
+  
+  #contrato .logo_selman_contrato > span > p{
+    font-size:10px;
+    font-weight:bold;
+    color:#999;
+    margin: 0 0 0px !important;
+    font-style: italic;
+    
+  }
+  
+  #contrato .logo_selman_contrato > span > h3, #contrato .logo_selman_contrato > span > h4{
+    padding:0px !important;
+    margin: 0 0 0px !important;
+    font-weight:bold;
+    font-style: italic;
+    
+  }
+  
+  
+  
+  
+  #contrato .form-control{
+    /*margin-bottom:10px;*/
+      
+  }
+  
+  #contrato .input-group-addon {
+      /*padding: 10px 1px;*/
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1;
+      color: #555;
+      text-align: center;
+      background-color: #eee !important;
+      border: 1px solid #ccc !important;
+      border-top-left-radius:5px !important;
+  
+    border-bottom-left-radius:5px !important;
+    min-width: 70px;
+    text-align:right;
+     
+  }
+  
+  
+  #contrato .input-group-addon-min{
+    min-width: 55px !important;
+  }
+  #contrato .input-group {
+      
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+  }
+  
+  #contrato .panel-heading {
+      padding: 5px 5px !important;
+      border-bottom: 1px solid transparent !important;
+      border-top-left-radius: 3px !important;
+      border-top-right-radius: 3px !important;
+    font-size:14px;
+    font-weight:bold;
+    text-align:center;
+  }
+  
+  #contrato .panel-casa  > .panel-heading{
+    background:#CCC !important;
+    /*color:#FFF;*/
+    
+  }
+  
+  #contrato .panel-reserva > .panel-heading{
+    background:#666 !important;
+    color:#FFF;
+    
+  }
+  
+  #contrato .panel-reserva{
+    border:#666 !important;
+    
+  }
+  
+  #contrato .panel-casa  > .panel-body > p{
+    font-size:12px !important;
+    
+    
+  }
+  
+  #contrato .panel {
+      margin-bottom: 10px !important;
+      background-color: #fff !important;
+      border: 1px solid #CCC !important;
+          
+      border-radius: 4px !important;
+      -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05)!important;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05) !important;
+  }
+  
+  #contrato .well {
+      font-size:12px;
+       margin-bottom: 0px !important;
+    
+  }
+  
+  
+  #contrato p {
+      margin: 0 0 9px;
+  }
+  
+  #contrato h5 {
+    font-weight:bold;
+    border-bottom:1px solid #CCC;
+    padding:5px;
+  }
+  #contrato h2 {
+    padding-top:0px;
+    border-bottom:1px solid #CCC;
+    
+    text-align:center;
+  }
+  
+  .input-group .form-control:last-child{
+    height: 25px;
+    padding: 3px 10px;
+    font-size: 12px;
+  }
+  #contrato   label {
+    font-size:12px !important;	
+  }
+  
+  .mantencion{
+    font-size:10px !important;	
+  }
+  
+  
+  .panel-footer .input-group{
+    margin-bottom: 0px !important;
+  }
+  
+  
+  
+  
+  
+  
+  .para_hoja_2{
+    display:none;
+    color:#000;
+    background:#FFF;
+    font-size:7.6px !important;
+    text-align:justify;
+    
+  
+  }
+  
+  .para_hoja_2 > p, .para_hoja_2  blockquote, .para_hoja_2  strong{ 
+    color:#000 !important;
+    font-size:7px !important;
+    border:0px;
+    font-family:Arial, Helvetica, sans-serif;
+    /*padding:0px;
+    margin:0px;*/
+  
+  }
+  .para_hoja_2  blockquote{
+    padding: 0px 0px 0px 20px !important;
+    margin: 0 0 1px;
+  }
+  
+  .para_hoja_2 p {
+      margin: 0 0 1px !important;
+  }
+  
+  .para_hoja_2  h5{
+    border:0px !important;
+    margin:0px !important;
+    padding:0px !important;	
+    padding-bottom:10px !important;
+  }
+  .para_hoja_2 strong{
+    font-size:10px !important;
+    font-weight:bolder;
+    font-family:Arial, Helvetica, sans-serif;
+    
+  }
+  
+  
+  
+  
+  .total {
+    border: 1px solid #CCC;
+    border-bottom-left-radius:5px !important;
+    border-bottom-right-radius:5px !important;
+    padding:3px !important;
+    ont-size:10px !important;
+    
+    
+  }
+  
+  #contrato .media{
+    border:1px solid #CCC;
+    border-radius:5px;
+    color:#0F3 !important;
+    text-align:center !important;
+  }
+  
+  .media .fa{
+    font-size:50px;
+    color:#000 !important;
+    padding:10px;
+  }
+  
+  .media h1, .media h5{
+    margin:0px;
+    border:0px !important;
+    color:#000;
+    
+  }
+  
+  
+  .combinado > input{
+    height: 25px;
+    padding: 3px 10px;
+    font-size: 12px;
+    
+    display:inline-block;
+    
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+  
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    
+  }
+  
+  .combinado > .fin{
+    border-bottom-right-radius:4px;
+    border-top-right-radius:4px;	
+  }
+  
+  @media all {
+     div.saltopagina{
+        /*display: none;*/
+     }
+  }
+     
+  
+  
+  @media print {
+    
+    body * { visibility: hidden; }
+   /*.no_imprimir{ visibility: hidden; }*/
+     #lista_formularios { visibility: visible;  }
+    #contrato  * { visibility: visible;  }
+    
+    #lista_formularios{
+      width:100%;
+          position:absolute;
+          left: 0;
+          top: 0px;
+          margin: 0px;
+          padding: 0;
+          overflow: visible!important;
+      }
+    
+     #lista_formularios #contrato > div, #lista_formularios #contrato  { 
+      padding-top:0px !important;
+      margin-top:-70px !important;
+      padding-bottom:0px !important;
+      margin-bottom:0px !important;
+    }
+    
+    #lista_formularios .para_hoja_2{
+      visibility: visible;
+      display: block;
+      color:#000;
+      padding-top:40px !important;
+    }
+    
+    
+  }
+  
+  @media print{
+    
+  /*SETEO DE MODAL BOSTRAP*/
+      .modal{
+          position:inherit;
+          left: 0;
+          top: 0;
+          margin: 0px;
+          padding: 0;
+          overflow: visible!important;
+      }
+    
+    
+    
+    
+    #contrato > div  { 
+      padding-top:0px !important;
+      margin-top:0px !important;
+      padding-bottom:0px !important;
+      margin-bottom:0px !important;
+    }
+    
+    
+     .modal #contrato > div  { 
+      padding-top:0px !important;
+      margin-top:-100px !important;
+      padding-bottom:0px !important;
+      margin-bottom:0px !important;
+    }
+    
+    
+    /*SQALTO DE PAGINA*/
+    div.saltopagina{ 
+        display:block;
+      page-break-before:always;
+     }
+     
+     
+     /*HOJA 2*/
+     .para_hoja_2{
+       
+    visibility: visible;
+    display: block;
+    color:#000;
+    padding-top:40px !important;
+    }
+    .para_hoja_2 p,  .para_hoja_2  blockquote, .para_hoja_2  strong, .para_hoja_2  h5{
+      visibility: visible;
+    }
+        
+  /*CUERPO DE LA IMPRESION*/
+  body * { visibility: hidden; }
+   /*.no_imprimir{ visibility: hidden; }*/
+  #contrato * { visibility: visible;  }
+  
+  /*#contrato { position: absolute; }*/
+  
+  #contrato .media-body h1{
+    font-size:18px !important;
+    
+  }
+  #contrato media-body{
+    background:#FFF !important;	
+  }
+  .escalar .input-group,  .form-control {
+    
+    /*padding:0px!important;
+    margin:0px!important;
+    -ms-transform: scale(1,1); 
+      -webkit-transform: scale(1,1); 
+      transform: scale(1.5,1);
+    padding:0px;
+    margin:0px;*/
+    
+  }
+  .escalar, #contrato {
+    padding:0px!important;
+    margin:0px!important;
+    margin-top:-40px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+    
+    
+  }
+  
+  .h1, h2,h3,h4,h5{
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:3px;
+    margin-top:5px;
+    border-bottom:1px solid #CCC !important;
+    padding-bottom:2px !important;
+    padding-top:2px !important;
+  
+    
+  }
+  
+  h2{
+    font-size:15px;
+    
+    
+  }
+  
+  .logo_selman_contrato h4, .logo_selman_contrato h3{
+    border-bottom:0px solid #FFF !important;
+    
+  }
+  
+  #contrato .input-group .form-control:last-child{
+    height: 15px;
+    padding: 2px 5px;
+    font-size: 10px !important;
+    margin-bottom: 0px !important;
+  
+  }
+  
+  #contrato .input-group-addon{
+    font-size:8px !important;
+    min-width: 50px !important;
+    padding: 2px 5px;
+  }
+  
+  .escalar .input-group {
+      margin-bottom: 5px !important;
+    padding:0px!important;
+    
+  }
+  
+  
+  #contrato .panel-heading{
+    padding: 0px 0px !important;
+    
+  }
+  
+  #contrato .panel-casa > .panel-body > p {
+      font-size: 7px !important;
+    margin: 0 0 2px;
+  }
+  
+  #contrato .panel-reserva > .panel-body  p {
+      font-size: 10px !important;
+    margin: 2px 0 2px;
+  }
+  
+  
+  #contrato .panel-casa  {
+    text-align:center;
+  }
+  
+  #contrato .list-group{
+    font-size:10px !important;
+  }
+  
+  #contrato .panel-body> p > label{
+    font-size:9px;
+    
+  }
+  
+  #contrato .well p {
+      font-size: 7px;
+    margin:0px;
+    
+  }
+  
+  #contrato .panel {
+      margin-bottom: 10px !important;
+    
+  }
+  
+  #contrato .firma {
+    border-bottom:1px solid #333 !important;
+    font-size:8px;
+    padding-bottom:2px;
+  }
+  
+  #contrato .logo_selman_contrato > span > p {
+      font-size: 7px;
+      font-weight:100;
+  
+  }
+  
+  #contrato  .input-group-addon-min{
+    min-width: 30px !important;
+  }
+  
+  #contrato   label {
+    font-size:8px !important;	
+  }
+  
+  .total {
+    font-size:10px !important;	
+  }
+  
+  .media{
+    background:#666 !important;
+    border-radius:5px;
+    color:#FFF !important;
+    text-align:center !important; 
+  }
+  
+  .media .fa{
+    font-size:30px !important;
+    padding:5px !important;
+  }
+  
+  .media h1{
+    margin:0px;
+    border:0px !important;
+    font-size:25px;
+    
+  }
+  .media h5{
+    margin:0px;
+    border:0px !important;
+    font-size:8px;
+    
+  }
+  
+  
+  .reglas_contrato{
+    
+    /*visibility: visible;
+    page-break-before: always;*/
+    
+  }
+  
+  
+  #contrato .input-group {
+      margin-bottom: 5px !important;
+  }
+  
+  
+  .no_imprimir{
+    /*display:none;*/	
+  }
+  .combinado > input{
+    height: 15px;
+    padding: 2px 5px;
+    font-size: 10px !important;
+    margin-bottom: 0px !important;
+    
+    
+    display:inline-block;
+    
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+  
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    
+  }
+  
+  #contrato .panel-body {
+      padding: 5px;
+  }
+  #contrato .panel {
+      margin-bottom: 5px !important;
+  }
+  
+  
+  #contrato .label{
+    font-size:8px !important;
+    
+  }
+  #contrato ul {
+    padding:0px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+    
+  
+    list-style-type: none;
+    
+  }
+  
+  #contrato .descripcion{
+    padding:0px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+  
+  }
+  
+  #contrato ul > li{
+    font-size:9px !important;
+  }
+  
+  }
+  
+  
+  
+  <!---->
+  
+  </style>
+  
+  
+  
+  
+          
+  
+  <!--DATOS DE FORMULARIO-->
+  <div  class="col-xs-12 col-sm-12 col-md-12 no_imprimir">
+        
+            
+                        <div class="row">
+                            
+                               
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                 <div class="page-header">
+                                      <h6><strong>&nbsp;</strong></h6>
+                                  </div>
+                                  <div class="">
+                                      <div class="btn-group btn-group-justified"role="group"aria-label="...">
+                                          <div class="btn-group"role="group">
+                                              <button type="button"id="enviar_formulario"class="btn btn-success confirma_intencion">ACTUALIZAR</button>
+                                          </div>
+                                          <!--<div class="btn-group"role="group">
+                                              <button type="button"id="imprimir"class="btn btn-primary">IMPRIMIR</button>
+                                          </div>-->
+                                          <div class="btn-group"role="group">
+                                              <button type="button"id="editar_formulario"class="btn btn-warning">EDITAR RESERVA</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            
+                             
+                             
+                              
+                      </div>
+  
+          
+     
+  </div>
+  
+  
+  
+  <form method="post"id="contrato">
+  
+  <div style="display:none">
+    <input name="id_tarea"id="id_tarea"type="text"value=""/>
+      <input class="filtros_tarea"name="filtros_tarea"id="filtros_tarea"type="text"/>
+      <input name="paso_ws"id="paso_ws"type="text"value="1"/>
+      <input name="usuario"id="usuario"type="text"/>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div  class="col-xs-12 col-sm-12 col-md-12 escalar">
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 logo_selman_contrato">
+              <!--<img src="assets/ima/logo.png"/>-->
+              <img   src="data:image/png;base64,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") width="200" height="83" />
+              <!--<img src="../img/correo_cliente/logo.png"/>-->
+              <span>
+              <br />
+                  
+                  <p>SEELMANN Y CIA.LTDA., RUT:78.633.200-1</p>
+                  
+                  
+              </span>
+            
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+              
+              <div class="media">
+                <div class="media-left">
+                  
+                    
+                    <img src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAABSCAYAAAFf6dgzAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDRBN0Y3REEzMUYyMTFFODgyNTk4RURDRUM5RjlBOUUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDRBN0Y3REIzMUYyMTFFODgyNTk4RURDRUM5RjlBOUUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpENEE3RjdEODMxRjIxMUU4ODI1OThFRENFQzlGOUE5RSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpENEE3RjdEOTMxRjIxMUU4ODI1OThFRENFQzlGOUE5RSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps1HpM0AAAhPSURBVHjaYvz//z8D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" width="50" height="50"  style="margin: 5px;"/>
+                 
+                </div>
+                <div class="media-body">
+                  <h5>El vehículo que necesitas a un solo número de distancia</h5>
+                  <h1>56 223 463500</h1>
+                </div>
+              </div>
+            
+          </div>
+          
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="panel panel-default panel-reserva">
+                <div id="la_reserva"class="panel-heading"><%= datos.nro_reserva.toUpperCase() %></div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                          <span class="label label-default col-md-12">ENTREGA</span>
+                          <p id="">Fecha:</p>
+                          <p id="">Hora:</p>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <span class="label label-default col-md-12">DEVOLUCION</span>
+                          <p id="">Fecha:</p> 
+                          <p id="">Hora:</p>
+                      </div>
+                  </div>
+                  
+                  
+                  
+                </div>
+              </div>
+          </div>
+          
+    
+    
+    
+  
+          
+      </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="panel panel-default panel-casa">
+                <div class="panel-heading">Casa Matriz</div>
+                <div class="panel-body">
+                  <p>Duble Almeyda 1506 Ñuñoa</p>
+          <p>Fono:(+56 2) 93310591, Fono Ingles: (+56 9) 68327241</p>
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="panel panel-default panel-casa">
+                <div class="panel-heading">Sucursal Puerto Montt</div>
+                <div class="panel-body">
+                  <p>Camino a tepual Km.3 lote 15 / Centro Empresarial Husamontt</p>	
+          <p>Fono: (+56 9)96431405, Ingles: (+56 9) 68327241</p>	
+  
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="panel panel-default panel-casa">
+                <div class="panel-heading">Sucursal Punta Arenas</div>
+                <div class="panel-body">
+          <p>Maipu 1169</p>
+                  <p>Fono:(+56 9) 51972157, Fono Ingles: (+56 9) 68327241</p>
+                </div>
+              </div>
+          </div>
+    </div>
+  
+  </div>
+  
+  
+  </div>
+  
+  
+  
+  <h2>CONTRATO DE ARRIENDO</h2>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6">
+         <h5>ARRENDATARIO</h5>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-5">
+				  <div class="input-group">
+					<span class="input-group-addon"id="basic-addon1">NOMBRE</span>
+					
+					<input class="form-control refrescar_validacion"  name="nombre_arr" value="<%= datos.nombres_cliente.toUpperCase() %>" id="nombre_arr"type="text" placeholder=""aria-describedby="basic-addon1"/>
+				  </div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-5">
+				  <div class="input-group">
+					<span class="input-group-addon"id="basic-addon1">APELLIDO</span>
+					
+					<input class="form-control refrescar_validacion"name="apellido_arr" value="<%= datos.apellidos_cliente.toUpperCase() %>" id="apellido_arr" type="text" placeholder=""aria-describedby="basic-addon1"/>
+				  </div>
+			</div>
+		  </div>
+		  
+          
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-5">
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">RUT/PASAPORTE</span>
+                    
+                    <input class="form-control refrescar_validacion"name="rut_arr"id="rut_arr" value="<%= datos.rut_pasaporte.toUpperCase() %>" maxlength="20" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-7">
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">PAIS</span>
+                    
+                    <input class="form-control refrescar_validacion"name="pais_arr" value="<%= datos.pais_cliente.pais.toUpperCase() %>" id="pais_arr"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+          </div>
+          <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">DIRECCION</span>
+                    
+                    <input class="form-control refrescar_validacion"name="direccion_arr"id="direccion_arr" value="<%= datos.direccion_cliente.toUpperCase() %>" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+           <div class="row">
+            
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-min"id="basic-addon1">EMAIL</span>
+                    
+                    <input class="form-control refrescar_validacion correo"name="mail_arr" value="<%= datos.correo.toUpperCase() %>" id="mail_arr"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+		  	<div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="input-group combinado">
+                    <span class="input-group-addon"id="basic-addon1">TELEFONO</span>
+                    
+                    <input class="refrescar_validacion col-xs-4 col-sm-4 col-md-4"name="cod_telefono_arr"id="cod_telefono_arr"maxlength="3" value="<%= datos.telefono[0] %>" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                   <input class="refrescar_validacion col-xs-8 col-sm-8 col-md-8 fin numero" maxlength="8" name="telefono_arr"id="telefono_arr"type="text" value="<%= datos.telefono[1] %>" placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">LICENCIA</span>
+                    
+                    <input class="form-control refrescar_validacion"name="licencia_arr"maxlength="20" value="<%= datos.licencia.toUpperCase() %>" id="licencia_arr"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+              
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-min"id="basic-addon1">VENCE</span>
+                    
+                    <input class="form-control  calendario"name="fecha_vence_arr"id="fecha_vence_arr" value="<%= getDatesMongo.maskDate_DD(datos.licencia_vence) %>" type="text"placeholder=""aria-describedby="basic-addon1" />
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-min"id="basic-addon1">CLASE</span>
+                    
+                    <input class="form-control refrescar_validacion"maxlength="2" name="clase_arr"id="clase_arr" value="<%= datos.licencia_clase.toUpperCase() %>" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+          </div> 
+      </div>
+      
+      
+      <div class="col-xs-6 col-sm-6 col-md-6">
+           <h5>CONDUCTOR ADICIONAL</h5>
+      
+               <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">NOMBRE</span>
+                    
+                    <input class="form-control refrescar_validacion"name="nombre_adi" value="<%= datos.conductor_nombre.toUpperCase() %>" id="nombre_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+         
+          
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">APELLIDO</span>
+                    
+                    <input class="form-control refrescar_validacion"name="apellido_adi" value="<%= datos.conductor_apellido.toUpperCase() %>" id="apellido_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+          
+          <div class="row">
+             <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">RUT/PASAPORTE</span>
+                    
+                    <input class="form-control refrescar_validacion"name="rut_adi"maxlength="20" value="<%= datos.conductor_rut_pasaporte.toUpperCase() %>" id="rut_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+            </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">       
+                  <div class="input-group combinado">
+                    <span class="input-group-addon"id="basic-addon1">TELEFONO</span>
+                   <input class="refrescar_validacion col-xs-4 col-sm-4 col-md-4"name="cod_telefono_adi" value="<%= datos.conductor_telefono[0] %>" id="cod_telefono_adi"maxlength="3"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                   <input class="refrescar_validacion col-xs-8 col-sm-8 col-md-8 fin numero" maxlength="8" value="<%= datos.conductor_telefono[1] %>" name="telefono_adi"id="telefono_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                        
+                   
+                    
+                     
+                  </div>
+              </div>
+          
+          </div>
+          <div class="row">
+            <div class="col-xs-5 col-sm-5 col-md-5">
+                  <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">LICENCIA</span>
+                    
+                    <input class="form-control refrescar_validacion"name="licencia_adi" maxlength="20" value="<%= datos.conductor_licencia.toUpperCase() %>" id="licencia_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4">
+                  <div class="row input-group">
+                    <span class="input-group-addon input-group-addon-min"id="basic-addon1">VENCE</span>
+                    
+                    <input class="form-control refrescar_validacion calendario" value="<%= getDatesMongo.maskDateBlank(datos.conductor_vence) %>" name="fecha_vence_adi"id="fecha_vence_adi"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="input-group">
+                    <span class="input-group-addon input-group-addon-min"id="basic-addon1">CLASE</span>
+                    
+                    
+                    <input class="form-control refrescar_validacion"  value="<%= datos.conductor_licencia_clase.toUpperCase() %>" name="clase_adi"id="clase_adi"maxlength="2" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              
+          
+          </div>
+                  
+                  
+          
+      </div>
+  </div>
+  
+  
+  <h5>VEHICULO</h5>
+  
+  <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">PATENTE</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.vehiculo.patente.toUpperCase() %>" name="patente"id="patente"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">CATEGORIA</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.categoria.categoria.toUpperCase() %>" name="categoria"id="categoria"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">MODELO</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.categoria.des_categoria.toUpperCase() %>" name="modelo"id="modelo"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+  </div>
+  <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">ENTREGA</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.lugar_entrega.toUpperCase() %> <%=getDatesMongo.maskDateTime(datos.fecha_arriendo_desde)  %>" name="fecha_lugar_entrega"id="fecha_lugar_entrega"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">DEVOLUCION</span>
+                    
+                    <input class="form-control refrescar_validacion"  value="<%= datos.lugar_devolucion.toUpperCase() %> <%=getDatesMongo.maskDateTime(datos.fecha_arriendo_hasta)  %>" name="fecha_lugar_devolucion"id="fecha_lugar_devolucion"type="text"placeholder=""aria-describedby="basic-addon1"readonly/>
+                  </div>
+              </div>
+  </div>
+  
+  
+  <h5>DESCRIPCION DEL SERVICIO</h5>
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading descripcion">
+      <div class="row">
+          <div class="col-xs-2 col-sm-2 col-md-2 text-left">ITEM</div>
+          <div class="col-xs-6 col-sm-6 col-md-6 text-left">DESCRIPCION</div>
+          <div class="col-xs-2 col-sm-2 col-md-2 text-right">CANTIDAD</div>
+          <div class="col-xs-2 col-sm-2 col-md-2 text-right">MONTO&nbsp;&nbsp;</div>
+      </div>
+    </div>
+    <ul class="list-group articulos">
+      
+      <% datos.items[0].items.forEach(function(item) { %>
+        
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 text-left"><%= item[0] %></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-left"><%= item[1] %></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 text-right"><%= item[2] %></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 text-right"><%= item[3] %></div>
+            </div>
+        </li>
+      <% }); %>
+
+     </ul> 
+     
+     <div class="col-xs-7 col-sm-7 col-md-7"></div>
+     <div class="col-xs-5 col-sm-5 col-md-5">
+         <div class="row">
+          <div class="total">
+            <div class="row">
+             <div class="col-xs-6 col-sm-6 col-md-6 text-left">TOTAL A PAGAR:</div>
+                  <div id="total_pagar"class="col-xs-6 col-sm-6 col-md-6 text-right"><%= datos.items[0].total_pagar %></div>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  
+  
+  <div class="row">
+     <div class="col-xs-12 col-sm-12 col-md-12">
+       <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <h5>GARANTIA</h5>
+              <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">TIPO</div>
+                    <div class="panel-body text-center">
+                       
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                              <input  type="radio"name="forma_gar"  <% if(datos.forma_garantia == 1){ %> checked="checked" <% } %>  value="1"id="garantia_0"/>
+                              O.COMPRA
+                          </div>
+                        </label>
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                              <input type="radio"name="forma_gar" <% if(datos.forma_garantia == 2){ %> checked="checked" <% } %> value="2"id="garantia_1"/>
+                              TARJETA
+                        </div>
+                        </label>
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                              <input type="radio"name="forma_gar" <% if(datos.forma_garantia == 3){ %> checked="checked" <% } %> value="3"id="garantia_2"/>
+                              CHEQUE
+                         </div>
+                        </label>
+                      
+                  
+                    </div>
+                  </div>
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8">
+                  <div class="row">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">N°</span>
+                            
+                            <input class="form-control refrescar_validacion numero"maxlength="20" value="<%= datos.nro_forma_garantia.toUpperCase() %>" name="numero_gar"id="numero_gar"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">VENCE</span>
+                            
+                            <input class="form-control refrescar_validacion calendario" value="<%= getDatesMongo.maskDate_DD(datos.vence_garantia) %>" name="vence_gar"id="vence_gar"type="text"placeholder=""aria-describedby="basic-addon1" />
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">VALOR</span>
+                            
+                            <input class="form-control refrescar_validacion numero"maxlength="20" value="<%= datos.valor_garantia.toUpperCase() %>" name="valor_gar"id="valor_gar"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">CODIGO</span>
+                            
+                            <input class="form-control refrescar_validacion"name="codigo_gar"maxlength="20" value="<%= datos.nro_transaccion_garantia.toUpperCase() %>" id="codigo_gar"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                          </div>
+                      </div>
+                   </div>
+              </div>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <h5>CANCELADO</h5>
+              <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">FORMA</div>
+                    <div class="panel-body text-center">
+
+                    
+                      
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                          <input  type="radio"name="forma_can"value="1" <% if(datos.cancelado_forma == 1){ %> checked="checked" <% } %> id="cancelado_0"/>
+                          E
+                          </div>
+                        </label>
+                        
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                          <input   type="radio"name="forma_can" <% if(datos.cancelado_forma == 2){ %> checked="checked" <% } %> value="2"id="cancelado_1"/>
+                          CH
+                          </div>
+                        </label>
+                        
+                        <label class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="row">
+                          <input    type="radio"name="forma_can" <% if(datos.cancelado_forma == 3){ %> checked="checked" <% } %> value="3"id="cancelado_2"/>
+                          T
+                          </div>
+                        </label>
+                        
+                      
+                    </div>
+                  </div>
+              </div>
+              
+              <div class="col-xs-8 col-sm-8 col-md-8">
+                  <div class="row">
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">BN°</span>
+                            
+                            <input class="form-control refrescar_validacion numero"maxlength="20" value="<%= datos.cancelado_numero.toUpperCase() %>" name="numero_can"id="numero_can"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                          <div class="input-group">
+                            <span class="input-group-addon input-group-addon-min"id="basic-addon1">FACT N</span>
+                            
+                            <input class="form-control refrescar_validacion numero"maxlength="20" value="<%= datos.cancelado_factura.toUpperCase() %>" name="factura__can"id="factura_can"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+    </div>
+  </div>
+  
+  <div class="col-xs-8 col-sm-8 col-md-8">
+      <h5>FACTURAR A</h5>
+      <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">NOMBRE</span>
+
+     
+                    
+                    <input class="form-control refrescar_validacion"name="nombre_fac" value="<%= datos.factura_nombre.toUpperCase() %>" id="nombre_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">RUT/PASAPORTE</span>
+                    
+                    <input class="form-control refrescar_validacion"name="rut_fac"id="rut_fac" value="<%= datos.factura_rut.toUpperCase() %>" maxlength="20" type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">GIRO</span>
+                    
+                    <input class="form-control refrescar_validacion"maxlength="150" value="<%= datos.factura_giro.toUpperCase() %>" name="giro_fac"id="giro_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+            </div>
+              <!--<div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">APELLIDO</span>
+                    
+                    <input class="form-control refrescar_validacion"name=""  id=""type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>-->
+              
+      </div>
+      <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">DIRECCION</span>
+
+  
+                    
+                    <input class="form-control refrescar_validacion"maxlength="150" value="<%= datos.factura_direccion.toUpperCase() %>" name="direccion_fac"id="direccion_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">CIUDAD</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.factura_ciudad.toUpperCase() %>" name="ciudad_fac"maxlength="100" id="ciudad_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">COMUNA</span>
+                    
+                    <input class="form-control refrescar_validacion" value="<%= datos.factura_comuna.toUpperCase() %>" name="comuna_fac"maxlength="100" id="comuna_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+      </div>
+          
+          
+          
+                
+          
+          <div class="row">
+            <div class="col-xs-5 col-sm-5 col-md-5">
+                <div class="input-group combinado">
+                    <span class="input-group-addon"id="basic-addon1">FONO</span>
+                    
+                    <input class="refrescar_validacion col-xs-3 col-sm-3 col-md-3" value="<%= datos.factura_telefono[0] %>" name="cod_fono_fac"maxlength="3"id="cod_fono_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                   <input class="refrescar_validacion col-xs-9 col-sm-9 col-md-9 fin numero" value="<%= datos.factura_telefono[1] %>" maxlength="8" name="fono_fac"id="fono_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                    
+                    
+                    
+                  </div>
+              </div>
+              
+              <div class="col-xs-7 col-sm-7 col-md-7">
+                <div class="input-group">
+                    <span class="input-group-addon"id="basic-addon1">EMAIL</span>
+                    
+                    <input maxlength="100" class="form-control refrescar_validacion correo" value="<%= datos.factura_correo.toUpperCase() %>" name="correo_fac"id="correo_fac"type="text"placeholder=""aria-describedby="basic-addon1"/>
+                  </div>
+              </div>
+      </div>
+  </div>
+  <div class="col-xs-4 col-sm-4 col-md-4">
+      <!--<div class="panel panel-default">
+        <div class="panel-heading">OBSRVACIONES:</div>
+        <div class="panel-body">
+          <textarea name=""rows="3"class="form-control refrescar_validacion" value id=""placeholder=""></textarea>
+        </div>
+      </div>-->
+      <h5>OBSERVACIONES:</h5>
+      <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <textarea name="observaciones"  id="observaciones"rows="4"class="form-control refrescar_validacion"placeholder=""><%= datos.factura_observaciones.toUpperCase() %></textarea>
+              </div>
+      </div>
+  
+  </div>
+  </div>
+  
+  
+  
+  
+  <div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6">
+  <div class="well well-sm">
+      <P>En caso de Accidente, el seguro tiene un deducible de 20 U.F + IVA., siendo de  30 U.F + IVA.en caso de minibuses.</P>
+      <P>No cubre daños por maltrato o uso indebido del vehiculo.</P>                           
+      <P>El arrendatario es responsable de todas las infracciones de transito en las que incurriera durante la vigencia de este contrato de arrendamiento.</P>
+      <P>Declara haber leido los terminos y condiciones contenidad en ambos lados de este contrato de arrendamiento.Asi mismo acepta en caso de morosidad en el pago del arriendo la publicacion en la pagina DICOM</P>
+  </div>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">ARRENDATARIO</div>
+    <div class="panel-body">
+      <h5 class="firma">NOMBRE:</h5>
+      <h5 class="firma">RUT:</h5>
+      <h5 class="firma">FIRMA:</h5>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  <!--<div class="well well-sm text-center">
+  <div class="text-center mantencion">
+    <strong>Talle de Mentencion:</strong> Los Guindos N° 5980 Peñalolen, Fono:(+56 2)27693276	
+  </div>-->
+  
+  
+  
+  
+    
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  </div>
+            
+   </form>           
+    <div class="panel panel-default">
+      <div class="panel-body">
+            <div class="col-xs-12 col-sm-12 col-md-12"> 
+              <div class="row">      
+                    
+                   </div>
+               </div>
+          </div>
+     </div>  
+     
+     
+     
+     <div class="para_hoja_2 saltopagina">
+     
+         <strong><h5 class="text-center">CONTRATO DE ARRENDAMIENTO</h5></strong>
+          <div class="">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                          <p>En Santiago, entre SEELMANN Y CIA LTDA, rol único tributario número 8.633.200-1, representado legalmente por don David Federico Seelmann Grunpeter ambos con domicilio en Monseñor Edwards 1279 La Reina.En adelante denominado LA ARRENDADORA el cliente identificado en el Anverso, en adelante denominado EL ARRENDATARIO.Se ha convenido el presente contrato que se regirá por las siguientes cláusulas.</p>
+                          <p><strong>Primero:</strong> El ARRENDADOR  es dueño del vehículo marca ___________________, cuyas características y estado se detallan en hoja anexa al Contrato, firmada por las partes, pasa a formar parte integral del presente Contrato.</p>
+                          
+                          <p><strong>Segundo:</strong> Por el presente instrumento, El ARRENDADOR da en arrendamiento al arrendatario, quien acepta para sí el vehículo aludió en la cláusula anterior.El vehículo se destinará,  exclusivamente, para el transporte de un número no superior a _____ personas, y sólo podrá ser conducido por el arrendador y las siguientes personas:_____________________________________________________________________.</p>
+                          
+                          <p><strong>Tercero:</strong> El arrendatario declara haber recibido el vehículo en perfecto estado, de acuerdo a las condiciones indicadas en hoja anexa al contrato, la cual declara haber revisado, reflejando ella fielmente el estado en que se encuentra.</p>
+                          
+                          <p><strong>Cuarto:</strong> EL Arrendatario se obliga a pagar a la arrendadora el valor total especificado en la liquidación del anverso y que sean imputables a los conceptos de tiempo, kilometraje y/o cualquier otro liquidado por la Arrendadora, con las tarifas allí especificadas, en el momento de la terminación de este contrato.</p>
+                          
+                          <p><strong>Quinto:</strong> Para garantizar el cumplimiento de este contrato y las obligaciones contraídas, el Arrendatario deja los depósitos de garantía señalados en el anverso, las cuales se regirán:</p>
+                              <blockquote>
+                              <p><strong>a)</strong>	Si el Arrendatario deja como depósito de garantía un comprobante de cargo firmado en blanco correspondiente a una tarjeta de crédito, autoriza expresamente a la Arrendadora para llenarlo y cobrarlo en cualquier momento y sin previo aviso, por los valores que la Arrendadora liquide por cuenta y cargo del Arrendatario de conformidad con las clausulas del presente contrato.</p>
+                              
+                              <p><strong>b)</strong>	Si el Arrendatario deja como depósito de garantía titulo de valores, la Arrendadora podrá cobrarlos en cualquier momento y sin previo aviso, para cancelar las sumas a cargo del Arrendatario que liquide la Arrendadora de acuerdo a lo estipulado en este contrato, sin configurarse en ninguno de los dos casos el delito de abuso de confianza, de firma en blanco u otra figura penal semejante, ya que  el Arrendatario acepta expresamente las liquidaciones, avaluos y cargos que efectúe la Arrendadora en cumplimiento de este contrato y les asigna el carácter de clausula penal  o evaluación anticipada de los perjuicios.</p>
+                              
+                              <p><strong>c)</strong>	El Arrendatario se obliga a pagar de inmediato a la Arrendadora el monto total acusado por este contrato y si no lo hiciere la Arrendadora podrá exigir su pago por la vía judicial, para lo cual este contrato este  prestará merito ejecutivo sin necesidad de requerimiento ni privado ni judicial,  a los cuales renuncia expresamente el Arrendatario.El incumplimiento en el pago de las obligación, ocasionara el pago de intereses moratorios, así como los costos de cualquier suma que el Arrendatario adeudare al Arrendador por el presente instrumento, el Arrendatario otorga mandato irrevocable, en los términos indicados en el artículo 241 del Código de Comercio, al representante legal del Arrendador, para que, actuando en su nombre y representación proceda a suscribir pagarés a la vista y/o a la orden EXCLUSIVAMENTE a favor del Arrendador por todas las sumas adeudas por el Arrendatario, más reajustes, intereses y costos, del momento que cualquiera de éstas se encuentre devengada, con mora o retardo en el pago.El pagaré podrá ser suscrito ante Notario Público con el objeto de constituir un título ejecutivo a favor del Arrendador.El mandato se otorga en beneficio e interés mutuo del Arrendador y el Arrendatario.Todos los gastos, derechos notariales, impuestos y desembolsos que se deban efectuar con motivo de la suscripción de los pagarés, serán de cargo del Arrendatario.El mandato no se extinguirá por le fallecimiento del Arrendatario, pudiendo hacerse efectivo respecto a cualquiera de sus herederos a título singular o universal.El Mandatario deberá proceder a ejecutar el mandato de acuerdo a las instrucciones que imparta el Arrendador, en cuanto al monto adeudado.Así mismo, el Arrendatario, de conformidad a lo establecido en la Ley 19.628, sobre Protección de Vida privada publicada en el Diario Oficial de fecha  28 de agosto de 1999, autoriza expresamente la publicación de sus antecedentes  personales y/o de Empresas en los boletines o registros públicos o privados existentes, en caso de incurrir el Arrendatario en morosidad o atraso en la forma de pago acordada.A su turno, el Arrendatario faculta al Arrendador o a quien designe para que, conjuntamente o separadamente, se den por notificados de cualquier acción relacionada con el cumplimiento o pago forzado de el o los pagarés que se suscriban o acepten en  su representación, y para cualquier otro tipo  de acción que el Arrendador deduzca en su contra para el pago integro de las obligaciones que adeude por cualquier concepto.</p>
+                          </blockquote>
+                          <p><strong>Sexto:</strong> El Arrendatario se abstendrá  de conducir en las siguientes circunstancias:</p>
+                          
+                              <blockquote>
+                              <strong>a)</strong>	Bajo la influencia de estupefacientes o en estado embriaguez.</br>
+                              <strong>b)</strong>	Transportando personas cobrando pasajes o fletes o prestamos funciones de servicio público o privado de pasajeros.</br>
+                              <strong>c)</strong>	En cualquier prueba de velocidad o carrera de competencia</br>
+                              <strong>d)</strong>	Remolcando otro vehículo</br>
+                              <strong>e)</strong>	En cualquier actividad ilícita</br>
+                              <strong>f)</strong>	Transportando más pasajeros de los establecidos para la clase de vehículo alquilado.</br>
+                              <strong>g)</strong>	Durante la duración del presente contrato, el Arrendatario queda amparado por la Póliza de Seguros suscrita ante la Arrendadora y la protección efectivas siempre y cuando la Compañía Aseguradora y la Arrendadora admitan la reclamación, siendo de todas maneras por cuenta exclusiva del Arrendatario el deducible y el cargo mínimo fijados por la correspondiente Póliza de Seguros.También será por cuenta exclusiva del Arrendatario la totalidad de la indemnización a que hubiere  lugar.En caso de accidente, el Arrendatario se compromete a:
+                                  <blockquote>
+                                      <strong>1.</strong>	Solicitar intervención de las autoridades de transito</br>
+                                      <strong>2.</strong>	Dar un informe pormenorizado del accidente a la Arrendadora</br>
+                                      <strong>3.</strong>	No Aceptar culpabilidad en el mismo, ni hacer ningún tipo de arreglo con los terceros.</br>
+                                      <strong>4.</strong>	Prestar toda la  colaboración necesaria a la arrendadora y a la compañía de  Seguros en el  manejo e investigación del accidente.</br>
+                                  </blockquote>
+                              
+                              
+                              
+                              </blockquote>
+              </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                                      <p><strong>Séptimo:</strong> El Arrendatario no podrá dar término unilateralmente este contrato.Solo podrá ponerse término al presente contrato por parte del arrendador cuando se produjera alguna de la situación siguiente:</p>
+                          
+                                  <blockquote><strong>a)</strong>	Con la llega del vencimiento del plazo pactado y no sea entregado el vehículo por el Arrendatario.Este será sometido a las sanciones establecidas en el Código Civil y Mercantil tales como abuso de confianza, robo o hurto etc., y la de pagar tanto los perjuicios moratorios como los indemnizados.</blockquote>
+                              
+                                      <p><strong>Octavo:</strong> La Arrendadora no se hace responsable por pérdida o daño de cualquier objeto que el Arrendatario o algún pasajero dejase o transportarse en el vehículo durante el tiempo de este contrato o después de su expiración.Por lo tanto, el Arrendatario asume todos los riesgos de pérdidas o daños y renuncia  a cualquier reclamo contra la Arrendadora, y está de acuerdo en mantener LA ARRENDADORA libre y sin culpa.</p>
+                                      
+                                      <p>El Arrendatario declara haber recibido el vehículo con todos los equipos e instrumentos de control en perfecto estado de funcionamiento.Por lo tanto el Arrendador pagará a la arrendadora el valor de todo daño mecánico que a juicio de la Arrendadora haya ocasionado el Arrendatario al vehículo por mal trato o descuido en el manejo, así como todo robo parcial y las averías por accidente que no sean cubiertos por la protección contra choque, producidas durante el tiempo que lo haya tenido en su poder y los que sucedan en cualquier momento de abandono del vehículo sin que este hubiese sido recibido por la Arrendadora.A tal efecto, en forma específica hace extensiva a la presente clausula la aplicación del mandato otorgado en la letra C del número cinco del presente contrato.</p>
+                                      
+                                      <p><strong>Noveno:</strong> Las reparaciones de los daños o averías que por cualquier circunstancia sufra el vehículo, se harán en la forma y el taller que indique la Arrendadora.</p>
+                                      
+                                      <p><strong>Decimo:</strong> Si hubiera pérdida total del vehículo por accidente y la Arrendadora no aceptare la reclamación de la protección contra choque, o en caso de pérdida del vehículo por robo, hurto u otra causa la Compañía Aseguradora se negare a pagarlo, el Arrendatario se obliga a paga de inmediato a la Arrendadora el valor comercial del vehículo fijado por esta.</p>
+                                      
+                                      <p>Si ocurrida la pérdida del vehículo por robo, hurto u otra causa, la Compañía de Aseguradora acepta pagar el riesgo, será por cuenta del Arrendatario el deducible que la misma Compañía Aseguradora pague y la indemnización por lucro cesante que cause hasta la fecha en que la Compañía Aseguradora cancele su valor a la arrendadora.Ocurrida la pérdida total del vehículo por accidente, será por cuenta del Arrendatario el saldo del valor del vehículo que no cubra la protección, el deducible fijado para la Arrendadora y la indemnización por lucro cesante que se acuse hasta la fecha en que el Arrendatario cancele su valor total.<p><strong>Decimo Primero:</strong> El Arrendatario será responsable de los daños causados con el vehículo en cosa ajena o a terceras personas que no cubra la Póliza de Seguros, siendo también de su cargo el valor de las indemnizaciones por los perjuicios ocasionados.</p>
+                                      
+                                      <p><strong>Decimo Segundo:</strong> El Arrendatario queda obligado a pagar a la Arrendadora la indemnización por lucro cesante que se ocasione por los días que dure el vehículo en reparación debido a daños mecánicos por mal trato o de descuido en el manejo ocasionado por el Arrendatario, a juicio de la Arrendadora, o debido a averías por accidentes sufridos por el vehículo con o sin culpa del Arrendatario durante el periodo de tiempo que permanezca bajo su responsabilidad, lo mismo que la indemnización por lucro cesante que se cause por la demora en su pago total, ya sea por la Compañía Aseguradora o parte del Arrendatario mismo, si hubiese pérdida total del vehículo y la indemnización del lucro cesante que se cause por cualquier inmovilización del vehículo debido a motivos imputables al Arrendatario o por incumplimiento de estipulado en el presente contrato.La indemnización por lucro cesante se cobrará de acuerdo con las tarifas de arrendamiento estipulados en este contrato y se garantizará, además, con el mandato establecido en la clausula número cinco letra c del presente contrato.</p>
+                                      
+                                      <p><strong>Decimo Tercero:</strong> En caso de ser retenido el vehículo por cualquier autoridad competente y debido a causas imputables al Arrendatario, será de su cargo los servicios de grúas, multas y las gestiones necesarias para lograr la devolución del vehículo.</p>
+                                      
+                                      <P><strong>Decimo Cuarto:</strong> El arrendatario se hace responsable de las multas, penas y sanciones por violación de la ley o disposiciones de tránsito que recaigan sobre el vehículo o su conductor y cometidos durante el periodo que lo tuvo bajo su responsabilidad, y correrán por su cuenta los daños y perjuicios a que pueda haber lugar al ser retenido por las autoridades el vehículo después de haber sido recibido por la Arrendadora.</P>
+                                      
+                                      <p><strong>Decimo Quinto:</strong> La Arrendadora proporciona servicio mecánico y mantenimiento mientras el vehículo se encuentre en la ciudad donde el vehículo fue alquilado.Cuando  el vehículo es alquilado para viajar a otra ciudad y estando fuera de la ciudad donde se alquilo requiera una reparación urgente, el Arrendatario puede previa autorización de la Arrendadora, ordenar dicho arreglo y presentar facturas y el repuesto para su reembolso total por parte de la Arrendadora.</p>
+                                      
+                                      <p><strong>Decimo Sexto:</strong> La violación por parte del Arrendatario de cualquiera de las cláusulas de este contrato, autoriza a la Arrendadora para retirar el vehículo del lugar donde encuentre, por intermedio de cualquiera de sus empleados y mediante los duplicados de las llaves que tiene en su poder.Sin perjuicio de lo anterior, el arrendatario responderá por el vehículo hasta la Arrendadora lo de por percibido y haga la liquidación correspondiente, renunciando el Arrendatario a todo requerimiento judicial o privado.</p>
+                                      
+                                      <p><strong>Decimo Séptimo:</strong> Si después de recibido el vehículo por la Arrendadora y liquidado el contrato surgiese alguna reclamación del vehículo por parte de las autoridades, el Arrendatario prepondera ante las mismas por la violación que pese sobre el vehículo, cometida durante el tiempo que lo tuvo bajo su responsabilidad.Para tal efecto el arrendatario declara desde ya, que es responsable de cualquier evento relacionado con el vehículo durante el periodo que medie entre la recepción y entrega del mismo.</p>
+                                      <p><strong>Decimo Octavo:</strong> Para todos los efectos legales, las partes fijan su domicilio en la ciudad de Santiago, prorrogando su competencia antes sus tribunales de Justicia.</p>
+                                      <br /><br /><br />
+                                      <p><strong>En señal de aceptación firma:_____________________________</strong></p>
+              </div>
+          </div>
+          
+         
+  
+  
+  
+  </div>
+  
+     
+    
+  </script>         
+                
+          
+  
+  
+  
+                         
+  
+  

@@ -1,0 +1,419 @@
+
+<script>
+
+
+</script>
+
+      <div class="seccion-head row">
+      	  <div class="col-xs-12 col-sm-6 col-md-12 text-left">
+          	<h2>Reporte de pagos a socios conductores</h2>
+          </div>
+          <div class="col-xs-12 col-sm-7 col-md-7">
+          	<form id="rango_fanel">
+            	<div class="row">
+                	<!--<div class="col-xs-12 col-sm-6 col-md-4">
+                        
+                            <div class="row input-group">
+                          <span class="input-group-addon" id="basic-addon1">
+                          		<i class="fa fa-calendar" aria-hidden="true"></i>
+                                &nbsp;DESDE:
+                         </span>
+                          <input type="text" id="desde" class="form-control calendario" placeholder="DESDE" aria-describedby="basic-addon1" readonly>
+                          </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="row input-group">
+                          <span class="input-group-addon" id="basic-addon1">
+                          		<i class="fa fa-calendar" aria-hidden="true"></i>
+                            	&nbsp;HASTA:
+                          </span>
+                          <input type="text" id="hasta" class="form-control calendario" placeholder="HASTA" aria-describedby="basic-addon1" readonly>
+                        </div>
+                    </div>-->
+                     <div class="col-xs-12 col-sm-11 col-md-11">
+                     	<div id="filtro"></div>
+                     </div>
+                     
+                     <div class="col-xs-12 col-sm-1 col-md-1 text-left">
+                     	<button class="btn btn-success dropdown-toggle refrescar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-sync-alt"></i>
+                        </button>
+                       
+                            <!---->
+                            <!--LOCAL / EXTRANGERO-->
+                            <!--<div id="filtro_a_select" class="btn-group">
+                                
+                              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Todas las Sucursales <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a data-filtro_a='todas' href="#">Todas las Sucursales</a></li>
+                                <li><a data-filtro_a='Santiago' href="#">Santiago</a></li>
+                                <li><a data-filtro_a='Puerto Montt' href="#">Puerto Montt</a></li>
+                                <li><a data-filtro_a='Punta Arenas' href="#">Punta Arenas</a></li>
+                              </ul>
+                              
+                            </div>
+                            <input type="text" id="filtro_a" class="" value="todas"  aria-describedby="basic-addon1" readonly hidden>-->
+                     </div>
+                 
+                 </div>
+                      
+              </form>
+			</div> 
+            <div class="col-xs-12 col-sm-5 col-md-5  text-right">
+            	<i id="max" class="fa fa-window-maximize max" aria-hidden="true"></i>
+            </div>
+       </div>
+ 
+    
+<div id="tabla" class="container-fluid">
+    <div class="row">
+       <div class="">&nbsp;</div>
+       <div class="col-xs-12 col-sm-4 col-md-12">
+           <!--BARRA-->
+           <div class="row">
+           	   <div class="col-xs-12 col-sm-12 col-md-4">
+               	<div class="row">
+                   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                          <div  class="panel panel-default">
+                              <div class="panel-heading text-center"><h5 class="promo_titulo">PAGO A SOCIOS SEMANA ACTUAL</h5><span class="resumen"></span></div>
+                              <div id="venta_total" class="panel-body text-center" style="height:475px">
+                              </div>
+                          </div>
+                   </div>
+                   
+                   <!--<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                          <div class="panel panel-default">
+                              <div class="panel-heading text-center"><h5 class="promo_titulo">% DE CIERRE DE NEGOCIOS</h5><span class="resumen"></span></div>
+                              <div id="cierre_negocios" class="panel-body text-center" style="height:220px">
+                              </div>
+                          </div>
+                   </div>-->
+                 </div>
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-8 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading text-center"><h5 class="promo_titulo">RESUMEN DE PAGOS Vs CONDUCTORES</h5><span class="resumen"></span></div>
+                          <div id="venta_monto" class="panel-body text-center" style="height:490px">
+                          </div>
+                      </div>
+               </div>
+               <!--<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading"><h5 class="promo_titulo">DETALLE DE VENTA POR MONTO ENTRE SUCURSAL</h5></div>
+                          <div id="venta_monto" class="panel-body text-center" style="height:180px">
+                          </div>
+                      </div>
+               </div>
+               
+               <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading"><h5 class="promo_titulo">DETALLE DE VENTA POR CANTIDAD DE RESERVAS ENTRE SUCURSAL</h5></div>
+                          <div id="venta_cantidad" class="panel-body text-center" style="height:180px">
+                          </div>
+                      </div>
+               </div>-->
+ 
+               
+               
+               
+               
+       		</div>
+            
+               
+       		</div>
+       </div>
+       
+    </div>
+</div>
+
+
+<div id="display" style="display:none">
+	<div class="panel panel-default text-center" style="position: absolute; left: 50px;right: 50px;top: 50px;bottom: 50px;">
+		<div class="panel-heading"><h5 class="promo_titulo"></h5></div>
+		<div id="display_contenedor" class="panel text-center" style="position:absolute; left: 50px;right: 50px;top: 70px;bottom: 50px;"></div>
+	</div>
+</div>
+<!--<iframe src="https://kibana.openpartner.cl/app/kibana#/dashboard/5278d920-bb8b-11e8-9997-0dcb18a4ae9e?embed=true&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ee137d40-b53c-11e8-9997-0dcb18a4ae9e,key:n_operacion,negate:!f,params:(query:304835,type:phrase),type:phrase,value:'304,835'),query:(match:(n_operacion:(query:304835,type:phrase)))),('$state':(store:appState),meta:(alias:!n,disabled:!t,index:ee137d40-b53c-11e8-9997-0dcb18a4ae9e,key:id_cliente,negate:!f,params:(query:46922572,type:phrase),type:phrase,value:'46,922,572'),query:(match:(id_cliente:(query:46922572,type:phrase))))),fullScreenMode:!f,options:(darkTheme:!f,hidePanelTitles:!f,useMargins:!f),panels:!((embeddableConfig:(),gridData:(h:8,i:'1',w:32,x:0,y:0),id:e7602940-bb8a-11e8-9997-0dcb18a4ae9e,panelIndex:'1',type:visualization,version:'6.4.0'),(embeddableConfig:(),gridData:(h:20,i:'2',w:25,x:0,y:8),id:'27b23cf0-bb8f-11e8-9997-0dcb18a4ae9e',panelIndex:'2',type:visualization,version:'6.4.0'),(embeddableConfig:(),gridData:(h:8,i:'4',w:16,x:32,y:0),id:'4088a200-bc4d-11e8-9997-0dcb18a4ae9e',panelIndex:'4',type:visualization,version:'6.4.0'),(embeddableConfig:(),gridData:(h:20,i:'6',w:23,x:25,y:8),id:'06be11e0-bc52-11e8-9997-0dcb18a4ae9e',panelIndex:'6',type:visualization,version:'6.4.0')),query:(language:lucene,query:'n_operacion:304835'),timeRestore:!t,title:'Evaluacion+V1',viewMode:edit)&_g=(refreshInterval:(pause:!t,value:0),time:(from:now-2y,mode:quick,to:now))" height="600" width="800"></iframe>-->
+<script>
+	
+	//los_graficos()
+	
+	
+	$(document).ready(function() {
+		/*$.ajax({
+					url: direccion_ws+"semanas",
+					type: 'get',
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						if(data.estatus){
+							if(data.estatus=="OK" || data.estatus=="FIN"){
+								las_semanas=data.data;
+								
+								
+								
+								descuento={
+											"formulario":'Carga de Archivos',
+											"contendio":[	
+															
+															{
+															"grupo":"Semana del Año",
+															"tamanio":[12,12,12],
+															"campos":[{
+																		"campo":"Desda la Semana:",
+																		"tipo":"panel_colapsable",
+																		"opciones":las_semanas,
+																		"obligatorio":"si",
+																		"nota":"Dia de Devolución",
+																		"tamanio":[12,6,6],
+																		"id":"desde"
+																	},
+																	{
+																		"campo":"Hasta la Semana",
+																		"tipo":"panel_colapsable",
+																		"opciones":las_semanas,
+																		"obligatorio":"si",
+																		"nota":"Dia de Devolución",
+																		"tamanio":[12,6,6],
+																		"id":"hasta"
+																	}]
+															},
+															
+														
+											]
+											
+									
+								}
+								
+								//FRMULARIO, LUGAR, DATOS DEL FORMUALRIO
+								cosntruir_formularios(descuento, "filtro", "")	
+								
+								$(".header_formularios").remove();
+								
+								$(".page-header").remove();
+								
+								console.log(las_semanas)
+								
+											
+							}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+						
+						
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						controlar_no_ok_desconocido_error("ERROR", xhr.status)
+												
+					}
+								
+				});*/
+				query={
+  "aggs": {
+    "4": {
+      "terms": {
+        "field": "id_deudor",
+        "size": 50,
+        "order": {
+          "_count": "desc"
+        }
+      },
+      "aggs": {
+        "2": {
+          "sum": {
+            "field": "monto_oper"
+          }
+        },
+        "3": {
+          "max": {
+            "field": "deadline_timestamp"
+          }
+        }
+      }
+    }
+  },
+  "size": 0,
+  "_source": {
+    "excludes": []
+  },
+  "stored_fields": [
+    "*"
+  ],
+  "script_fields": {
+    "diff_day": {
+      "script": {
+        "inline": "if (doc['real_deadline_timestamp'].size() !== 0) {\n        (doc['date'].value.getMillis() - doc['real_deadline_timestamp'].value.getMillis()) / 1000 / 60 / 60 / 24;\n      }",
+        "lang": "painless"
+      }
+    }
+  },
+  "docvalue_fields": [
+    {
+      "field": "date",
+      "format": "date_time"
+    },
+    {
+      "field": "date_oto2_timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "date_oto_timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "date_pay",
+      "format": "date_time"
+    },
+    {
+      "field": "deadline_timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "fecha_pago_final",
+      "format": "date_time"
+    },
+    {
+      "field": "real_deadline2_timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "real_deadline_timestamp",
+      "format": "date_time"
+    }
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "n_operacion:304835",
+            "analyze_wildcard": true,
+            "default_field": "*"
+          }
+        },
+        {
+          "match_all": {}
+        },
+        {
+          "match_phrase": {
+            "n_operacion": {
+              "query": 304835
+            }
+          }
+        },
+        {
+          "range": {
+            "date": {
+              "gte": 1474842875788,
+              "lte": 1537914875789,
+              "format": "epoch_millis"
+            }
+          }
+        }
+      ],
+      "filter": [],
+      "should": [],
+      "must_not": []
+    }
+  }
+}
+				
+				/*$.ajax({
+					url: "https://kibana.openpartner.cl:9200/",
+					type: 'GET',
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					data : JSON.stringify(query),
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						
+						console.log(data)
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						
+							console.log(xhr, ajaxOptions, thrownError)					
+					}
+								
+				});*/
+				/*$.ajax({
+	  				type: "POST",
+					xhrFields: {withCredentials: true},
+					data:JSON.stringify(query),
+					//headers:{"authorization": "Basic YWRtaW46a29wMjAxOA=="},
+					contentType: "application/x-www-form-urlencoded",
+					crossDomain: true,
+					headers: {
+						'Access-Control-Allow-Credentials':true,
+						'Access-Control-Allow-Origin': '*',
+						'Access-control-allow-credentials': true,
+						'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+						'Access-Control-Allow-Headers':'X-Requested-With,content-type,Authorization',
+						'Access-Control-Max-Age': '1728000'
+					},
+					url :"http://kibana.openpartner.cl:9200/test/_search",
+					dataType: "json",
+					// jsonpCallback: "ajaxSuccess",
+					beforeSend : function(xhr) {},
+					success: function(data){console.log(data)},
+					error: function (xhr, ajaxOptions, thrownError) {console.log(xhr, ajaxOptions, thrownError)}
+				});*/
+				
+				$.ajax({
+					type: "GET",
+					url : "http://kibana.openpartner.cl:9200/test/_search",
+					dataType: "text",
+					//crossDomain: true,
+					headers: {
+						'Access-Control-Allow-Credentials':true,
+						'Access-Control-Allow-Origin': '*',
+					},
+					beforeSend: function () {					
+						//$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+					},
+					success: function(data){
+						console.log(data)
+						//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+						//mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")	
+					},
+					error: function (xhr, ajaxOptions, thrownError) {}
+				});
+				
+				$.ajax({
+					type: "POST",
+					url : "https://s2test.openpartner.cl",
+					dataType: "text",
+					//crossDomain: true,
+					headers: {
+						'Access-Control-Allow-Credentials':true,
+						'Access-Control-Allow-Origin': '*',
+					},
+					beforeSend: function () {					
+						//$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+					},
+					success: function(data){
+						console.log(data)
+						//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+						//mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")	
+					},
+					error: function (xhr, ajaxOptions, thrownError) {}
+				});
+						
+});
+	
+	
+	/*EVENTO FULSCREEN*/
+	
+		
+	
+
+	//myVar = setInterval(function(){ los_graficos() }, 60000);
+</script>
+
+<!--<script src="http://52.38.152.47/kanban/002/js/fullscreen.min.js"></script>-->

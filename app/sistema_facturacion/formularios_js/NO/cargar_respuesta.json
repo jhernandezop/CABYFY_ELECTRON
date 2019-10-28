@@ -1,0 +1,47 @@
+descuento={
+						"formulario":'Carga de archivos de respuesta del banco, nómina '+identificador,
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Documentos Obligatorios",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"CSV de respuesta",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"id":"respuesta_banco"
+												},{
+													"campo":"ID TAREA",
+													"tipo":"texto",
+													"opciones":[identificador],
+													"obligatorio":"si",
+													"nota":"ID TAREA",
+													"tamanio":[0],
+													"id":"id_tarea"
+												}
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos_banco('"+identificador+"')"
+						}]
+				
+}

@@ -1,0 +1,48 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+correo={
+						"formulario":'Enviar correo',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario_kanban"
+												},
+												{
+													"campo":"filtro_semana",
+													"tipo":"texto",
+													"opciones":[filtro_semana],
+													"obligatorio":"si",
+													"nota":"paso_ws",
+													"tamanio":[0],
+													"id":"filtro_semana"
+												},
+												{
+													"campo":"fecha",
+													"tipo":"div",
+													"opciones":['<br><div class="alert alert-info text-center" role="alert"><h3 style="margin:0px;">¿Desea Enviar correo motivos de NO PAGO?</h3></div>'],
+													"obligatorio":"",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"nota_conciliacion"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"SI, ENVIAR",
+							"ws":"correo_motivo_no_pago",
+							"funcion":""
+						}]
+				
+}

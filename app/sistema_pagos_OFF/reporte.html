@@ -1,0 +1,471 @@
+
+<script>
+
+
+
+/*
+color_b=[ '#6f82ab','#ff9900' ]
+color_c=[ '#ff9900','#ffcc33', '#ffff33' ]
+*/
+color_d=[ '#090','#ff0000','#000','#2543da']
+color_x=[ '#ff0000','#090','#000','#2543da']
+color_e=[ '#090']
+color_e=[ '#6f82ab','#738a96','#78937c','#7d9c63','#82a54a','#86ad32','#8bb619','#90bf01' ]
+color_a=[ '#ff6600', '#6f82ab', '#ff931e', '#7ac943','#ff1d25','#090','#000','#2543da' ]
+/*
+
+color_f=[ '#ff9900','#90bf01' ]
+*/
+
+$( function() {	
+	$(".calendario").datepicker({
+		language: "es"
+	}).datepicker("setDate", new Date());
+
+	$( "#desde, #hasta" ).datepicker( "option", "maxDate", new Date() );
+				  
+} );
+$( "#desde, #hasta" ).datepicker( "option", "maxDate", new Date() );
+  
+  $( "#rango_fanel" ).on("change", function(){
+		$( "#hasta" ).datepicker( "option", "minDate", $( "#desde" ).val() );
+		
+		
+		
+		////los_graficos()
+
+  })
+
+//grafico, origen_del_dato, filtro de origen, lugar, color, origen_de_reporte, tipo_grafico_de_reporte 
+function los_graficos(){
+
+	//filtro_satiago = 
+	
+	
+	//TOTAL
+	
+	generar_graficos(
+		'torta', 
+		direccion_ws+"estadistica_porc_pagos", 
+		'',
+		//'{"parametro_1":"'+$("#filtro_a").val()+'","parametro_2":""}', 
+		'venta_total' , 
+		color_x, 
+		'' , 
+		''
+	)
+	
+	
+	generar_graficos(
+		'barra_linea', 
+		direccion_ws+"estadistica_pagos_conductores",
+		'', 
+		//'{"parametro_1":"","parametro_2":""}', 
+		'venta_monto' , 
+		color_d, 
+		'',
+		''
+		//direccion_ws+"estadistica_porc_pagos",
+		//'torta'
+	)
+	
+	
+	generar_graficos(
+	 
+		'torta', 
+		direccion_ws+"estadistica_porc_desglose_pagado", 
+		'',
+		//'{"parametro_1":"'+$("#filtro_a").val()+'","parametro_2":""}', 
+		'desglose_pagados' , 
+		color_e, 
+		'' , 
+		''
+	)
+	generar_graficos(
+		'torta', 
+		direccion_ws+"estadistica_porc_desglose_no_pagado", 
+		'',
+		//'{"parametro_1":"'+$("#filtro_a").val()+'","parametro_2":""}', 
+		'desglose_no_pagados' , 
+		color_a, 
+		'' , 
+		''
+	)
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+.panel_colapsable {
+
+    width: 95%;
+}
+.panel_colapsable .select_item {
+	text-align:left;
+}
+.open>.dropdown-menu {
+    height: 300px;
+    overflow: auto;
+	margin-left: 15px;
+    width: 90%;
+}
+
+#filtro .desabilitar {
+    background: 0 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 501;
+}
+
+#filtro .select_item{
+	overflow:hidden !important;
+	
+}
+</style>
+
+      <div class="seccion-head row">
+      	  <div class="col-xs-12 col-sm-6 col-md-12 text-left">
+          	<h2>Reporte de pagos a socios conductores</h2>
+          </div>
+          <div class="col-xs-12 col-sm-7 col-md-7">
+          	<form id="rango_fanel">
+            	<div class="row">
+                	<!--<div class="col-xs-12 col-sm-6 col-md-4">
+                        
+                            <div class="row input-group">
+                          <span class="input-group-addon" id="basic-addon1">
+                          		<i class="fa fa-calendar" aria-hidden="true"></i>
+                                &nbsp;DESDE:
+                         </span>
+                          <input type="text" id="desde" class="form-control calendario" placeholder="DESDE" aria-describedby="basic-addon1" readonly>
+                          </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="row input-group">
+                          <span class="input-group-addon" id="basic-addon1">
+                          		<i class="fa fa-calendar" aria-hidden="true"></i>
+                            	&nbsp;HASTA:
+                          </span>
+                          <input type="text" id="hasta" class="form-control calendario" placeholder="HASTA" aria-describedby="basic-addon1" readonly>
+                        </div>
+                    </div>-->
+                     <div class="col-xs-12 col-sm-11 col-md-11">
+                     	<div id="filtro"></div>
+                     </div>
+                     
+                     <div class="col-xs-12 col-sm-1 col-md-1 text-left">
+                     	<button class="btn btn-success dropdown-toggle refrescar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-sync-alt"></i>
+                        </button>
+                       
+                            <!---->
+                            <!--LOCAL / EXTRANGERO-->
+                            <!--<div id="filtro_a_select" class="btn-group">
+                                
+                              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Todas las Sucursales <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a data-filtro_a='todas' href="#">Todas las Sucursales</a></li>
+                                <li><a data-filtro_a='Santiago' href="#">Santiago</a></li>
+                                <li><a data-filtro_a='Puerto Montt' href="#">Puerto Montt</a></li>
+                                <li><a data-filtro_a='Punta Arenas' href="#">Punta Arenas</a></li>
+                              </ul>
+                              
+                            </div>
+                            <input type="text" id="filtro_a" class="" value="todas"  aria-describedby="basic-addon1" readonly hidden>-->
+                     </div>
+                 
+                 </div>
+                      
+              </form>
+			</div> 
+            <div class="col-xs-12 col-sm-5 col-md-5  text-right">
+            	<i id="max" class="fa fa-window-maximize max" aria-hidden="true"></i>
+            </div>
+       </div>
+ 
+    
+<div id="tabla" class="container-fluid">
+    <div class="row">
+       <div class="">&nbsp;</div>
+       <div class="col-xs-12 col-sm-4 col-md-12">
+           <!--BARRA-->
+           <div class="row">
+           	   
+               <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading text-center"><h5 class="promo_titulo">RESUMEN DE PAGOS Vs CONDUCTORES</h5><span class="resumen"></span></div>
+                          <div id="venta_monto" class="panel-body text-center" style="height:490px">
+                          </div>
+                      </div>
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-12">
+               	<div class="">
+                   <div class="col-xs-12 col-sm-12 col-md-4 text-center">
+                          <div  class="row panel panel-default">
+                              <div class="panel-heading text-center"><h5 class="promo_titulo">PAGO A SOCIOS</h5><span class="resumen"></span></div>
+                              <div id="venta_total" class="panel-body text-center" style="height:475px">
+                              </div>
+                          </div>
+                   </div>
+                   
+                   <div class="col-xs-12 col-sm-12 col-md-4 text-center">
+                          <div class="row panel panel-default">
+                              <div class="panel-heading text-center"><h5 class="promo_titulo">DESGLOSE DE PAGADO</h5><span class="resumen"></span></div>
+                              <div id="desglose_pagados" class="panel-body text-center" style="height:475px">
+                              </div>
+                          </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-12 col-md-4 text-center">
+                          <div class="row panel panel-default">
+                              <div class="panel-heading text-center"><h5 class="promo_titulo">DESGLOSE NO PAGADO</h5><span class="resumen"></span></div>
+                              <div id="desglose_no_pagados" class="panel-body text-center" style="height:475px">
+                              </div>
+                          </div>
+                   </div>
+                   
+                 </div>
+               </div>
+               <!--<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading"><h5 class="promo_titulo">DETALLE DE VENTA POR MONTO ENTRE SUCURSAL</h5></div>
+                          <div id="venta_monto" class="panel-body text-center" style="height:180px">
+                          </div>
+                      </div>
+               </div>
+               
+               <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <div class="panel panel-default">
+                          <div class="panel-heading"><h5 class="promo_titulo">DETALLE DE VENTA POR CANTIDAD DE RESERVAS ENTRE SUCURSAL</h5></div>
+                          <div id="venta_cantidad" class="panel-body text-center" style="height:180px">
+                          </div>
+                      </div>
+               </div>-->
+ 
+               
+               
+               
+               
+       		</div>
+            
+               
+       		</div>
+       </div>
+       
+    </div>
+</div>
+
+
+<div id="display" style="display:none">
+	<div class="panel panel-default text-center" style="position: absolute; left: 50px;right: 50px;top: 50px;bottom: 50px;">
+		<div class="panel-heading"><h5 class="promo_titulo"></h5></div>
+		<div id="display_contenedor" class="panel text-center" style="position:absolute; left: 50px;right: 50px;top: 70px;bottom: 50px;"></div>
+	</div>
+</div>
+
+<script>
+	
+	////los_graficos()
+	
+	/*EVENTO FULSCREEN*/
+	$(".refrescar").on("click", function(){
+		los_graficos();
+	});
+	
+	/*$("#filtro_a_select > .dropdown-menu > li > a").on("click", function(){
+		$("#filtro_a").attr("value", $(this).data("filtro_a"));
+		$("#filtro_a_select > .btn-default").html($(this).html()+"<span class='caret'></span>");
+		//los_graficos();
+	});*/	
+	
+	$(document).ready(function() {
+		$.ajax({
+					url: direccion_ws+"semanas",
+					type: 'POST',
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						if(data.estatus){
+							if(data.estatus=="OK" || data.estatus=="FIN"){
+								las_semanas=data.data.opciones;
+								
+								
+								
+								descuento={
+											"formulario":'Carga de Archivos',
+											"contendio":[	
+															
+															{
+															"grupo":"Semana del Año",
+															"tamanio":[12,12,12],
+															"campos":[{
+																		"campo":"Desde:",
+																		"tipo":"lista",
+																		"opciones":las_semanas,
+																		"obligatorio":"si",
+																		"nota":"Dia de Devolución",
+																		"tamanio":[12,6,6],
+																		"id":"desde"
+																	},
+																	{
+																		"campo":"Hasta:",
+																		"tipo":"lista",
+																		"opciones":las_semanas,
+																		"obligatorio":"si",
+																		"nota":"Dia de Devolución",
+																		"tamanio":[12,6,6],
+																		"id":"hasta"
+																	},
+																	/*{
+																		"campo":"Hasta la Semana",
+																		"tipo":"lista",
+																		"opciones":las_semanas,
+																		"obligatorio":"si",
+																		"nota":"Dia de Devolución",
+																		"tamanio":[12,6,6],
+																		"id":"lista_hasta"
+																	}*/]
+															},
+															
+														
+											]
+											
+									
+								}
+								
+								
+								
+								//FRMULARIO, LUGAR, DATOS DEL FORMUALRIO
+								cosntruir_formularios(descuento, "filtro", "")	
+									
+								$(".header_formularios").remove();
+								
+								$(".page-header").remove();
+								
+								nivel_seleccion_a=100;
+								nivel_seleccion_b=0;
+								$("#select_hasta").find(".select_item").each(function(index, element) {
+                                        //console.log($(this).data("opcion")+" / "+data.data.primera_semana)
+										
+										if($(this).data("opcion")==data.data.primera_semana){
+											$(this).click()
+											
+										}
+                                });
+								
+								$("#select_desde").find(".select_item").each(function(index, element) {
+                                       // console.log($(this).data("opcion")+" / "+data.data.primera_semana)
+										if($(this).data("opcion")==data.data.primera_semana){
+											$(this).click()
+										}
+                                });
+								
+								
+								
+								//DESDE
+								$("#select_desde").find(".select_item").click( function(){
+									select_desde=$(this).data("opcion").split("|")
+									
+									$("#select_hasta").find(".select_item").each(function(index, element) {
+                                        select_hasta=$(this).data("opcion").split("|")
+										
+										if(select_desde[0] ==  select_hasta[0] ){
+											//alert(index)
+											nivel_seleccion_a=index
+											
+										}
+										$(this).hide()
+                                    });
+									
+									$("#select_hasta").find(".select_item").each(function(index, element) {
+										if(Number(nivel_seleccion_a) >= Number(index)){
+											$(this).show()
+										}
+                                    });
+									
+									
+									
+									
+								})
+								
+								//HASTA
+								$("#select_hasta").find(".select_item").click( function(){
+									select_hasta=$(this).data("opcion").split("|")
+									/*$("#select_desde").find(".select_item").each(function(index, element) {
+                                        select_desde=$(this).data("opcion").split("|")
+										if(select_desde[0]>select_hasta[0]){
+											$(this).hide()
+										}else if(select_desde[0]<=select_hasta[0]){
+											$(this).show()
+										}
+                                    });*/
+									$("#select_desde").find(".select_item").each(function(index, element) {
+										select_desde=$(this).data("opcion").split("|")
+										if(select_hasta[0] ==  select_desde[0] ){
+											//alert(index)
+											nivel_seleccion_b=index
+											
+										}
+                                        $(this).hide()
+                                    });
+									
+									$("#select_desde").find(".select_item").each(function(index, element) {
+                                        if(Number(nivel_seleccion_b) <= Number(index)){
+											$(this).show()
+										}
+                                    });
+									
+								})
+								
+								$("#desde").val(data.data.primera_semana)
+								$("#hasta").val(data.data.primera_semana)
+								
+								los_graficos()
+											
+							}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+						
+						
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						controlar_no_ok_desconocido_error("ERROR", xhr.status)
+												
+					}
+								
+				});
+				
+				
+						
+});
+	
+	
+	/*EVENTO FULSCREEN*/
+	
+	
+	
+
+	//myVar = setInterval(function(){ //los_graficos() }, 60000);
+</script>
+
+<script src="https://cabify.openpartner.cl/openpartner/002/js/fullscreen.min.js"></script>

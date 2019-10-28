@@ -1,0 +1,469 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+
+//$("#myModal").find(".modal-dialog").addClass("modal-sm");
+descuento={
+						"formulario":'Carga de Archivo',
+						"contendio":[	 
+										
+							{
+								"grupo":"Paso 1",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[{
+											"campo":"usuario",
+											"tipo":"texto",
+											"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[0],
+											"id":"usuario"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>Mes del Año, N° ID4 Factura y N° ID1 Internacional (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> Selecciona e ingresa la información</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"Mes Año",
+											"tipo":"lista",
+											"opciones":meses,
+											"obligatorio":"si",
+											"nota":"Dia de Devolución",
+											"tamanio":[12,12,12],
+											"id":"mes"
+										},{
+											"campo":"N° correlativo ID4 Factura",
+											"tipo":"numero",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"N° Correlativo Factura",
+											"tamanio":[12,12,12],
+											"id":"correlativo_factura"
+										},
+										{
+											"campo":"N° correlativo ID1 Internacional",
+											"tipo":"numero",
+											"opciones":[],
+											"obligatorio":"no",
+											"nota":"N° Correlativo Internacional",
+											"tamanio":[12,12,12],
+											"id":"correlativo_internacional"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(1)"
+								}]
+							},
+		
+							{
+								"grupo":"Paso 2",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>CSV GMV (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>CSV GMV</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/GMV_local_currency_per_sales_region_crosstab.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"CSV GMV",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"csv",
+											"id":"cargar_gmv"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(2)"
+								}],
+										
+										
+							},
+		
+							{
+								"grupo":"Paso 3",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>CSV No Invoiceables (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>CSV No Invoiceables</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/Sales_Not_Invoiceables_crosstab.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"CSV No Invoiceables",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"csv",
+											"id":"cargar_no_invoiceables"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(3)"
+								}],
+										
+										
+							}
+							,
+							{
+								"grupo":"Paso 4",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>XLSX Invoiceables (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>XLSX Invoiceables</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/Sales_Invoiceables_crosstab.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"XLSX Invoiceables",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"xlsx",
+											"id":"cargar_invoiceables"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(4)"
+								}],
+										
+										
+							}
+							
+							
+							
+							
+							
+							
+							,
+							{
+								"grupo":"Paso 5",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>CSV Skip Invoicing (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>CSV Skip Invoicing</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/Sales_Invoiceables_Skip_Invoicing_crosstab.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},{
+											"campo":"CSV Skip Invoicing",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"csv",
+											"id":"cargar_skip_invoicing"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(5)"
+								}],
+										
+										
+							},
+							{
+								"grupo":"Paso 6",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>XLSX FN Facturas (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>XLSX FN Facturas</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/FN_FACTURAS_EMITIDAS_crosstab.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},{
+											"campo":"XLSX FN Facturas",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"xlsx",
+											"id":"cargar_fn_facturas"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(6)"
+								}],
+										
+										
+							},
+							{
+								"grupo":"Paso 7",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm"><strong></strong>CSV Exclusiones (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>CSV Exclusiones</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/Exclusiones.csv"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},{
+											"campo":"CSV Exclusiones",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"csv",
+											"id":"cargar_exclusion"
+										}],
+								"opciones":[{
+									"boton":"CARGAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(7)"
+								}],
+										
+										
+							},
+							{
+								"grupo":"Paso 8",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										{
+											"campo":"usuario",
+											"tipo":"div",
+											"opciones":['<br><div class="well well-sm text-center"><strong>Listo</strong></div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										}],
+								"opciones":[{
+									"boton":"SALIR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso(8)"
+								}],
+										
+										
+							}
+							
+									
+						],
+						"opciones":[/*{
+							"boton":"CARGAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}*/]
+				
+}

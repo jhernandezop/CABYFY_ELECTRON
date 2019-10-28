@@ -1,0 +1,83 @@
+descuento={
+						"formulario":'Rechazados',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Detalle",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Nomina",
+													"tipo":"texto",
+													"opciones":"",
+													"obligatorio":"si",
+													"nota":"Nomina",
+													"tamanio":[12,12,6],
+													"id":"nomina"
+												},{
+													"campo":"Cliente",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cliente",
+													"tamanio":[12,12,6],
+													"id":"id_cliente"
+												},{
+													"campo":"nombre",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"nombre",
+													"tamanio":[12,12,6],
+													"id":"nombre"
+												},{
+													"campo":"Cantidad de Viajes",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cantidad de Viajes",
+													"tamanio":[12,12,6],
+													"id":"cant_viajes"
+												},{
+													"campo":"Total Pagar",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Total Pagar",
+													"tamanio":[12,12,6],
+													"id":"total_pagar"
+												}
+												
+												]
+												
+												
+										},{
+										"grupo":"Historico de Nomina",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario.tabla,
+													"obligatorio":"",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":""
+												}]
+										}
+									
+						]/*,
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos_banco('"+identificador+"')"
+						}]*/
+				
+}

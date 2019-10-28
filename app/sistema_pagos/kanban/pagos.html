@@ -1,0 +1,306 @@
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+#tabla_facturas_filter > label > input {
+    border: 1px solid rgb(204,204,204);
+    padding: 5px;
+    border-radius: 5px;
+}
+#filtro_SEMANA{
+	width:250px;	
+}
+#para_tabla_pagos{
+	overflow: auto;
+    position: absolute;
+    padding-bottom: 100px;
+    padding-top: 10px;
+    height: 100%;
+
+}
+
+</style>
+<div class="kanaban_load" id="kanaban_pagos"></div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+//tipo_filtro="";
+//parametro_filtro="";
+/*	*/	
+//s2.openpartner.cl:3000/d/NnNfts6ik/nominas-de-pago-a-socios?orgId=1&from=1491352388675&to=1554424388675&var-Filters=week_order.keyword%7C%3D%7C1908
+												//`
+$("#kanaban_pagos").html(`<div class="seccion-head row">
+							<div class="col-xs-12 col-sm-6 col-md-6 text-left">
+								<h2>PAGOS
+									<span class="label">
+										<span class="badge" id="usuario_"></span>&nbsp;
+										<span class="badge" id="cedente"></span>&nbsp;
+										<span class="badge" id="campania"></span>&nbsp;
+										<span class="badge" id="ani"></span>
+									</span>
+								</h2>
+							</div>
+							<div class="btn-group filtro" data-tipo="input_fecha_rango">
+								<span type="button" class="btn btn-default">
+									<div class="titular_seccion">Semana:</div>
+									<div class="seleccion_seccion">
+										<input autocomplete="off" id="filtro_SEMANA" type="text" class="form-control input_fecha " placeholder="SEMANA DE PAGO" aria-describedby="sizing-addon3">
+									</div>
+								</span>
+							</div>
+						</div>
+						<div id="filtros_camban_lugar" class="col-xs-12 col-sm-6 col-md-6 text-right"></div>					
+						<div id="para_tabla_pagos" class="col-xs-12 col-sm-12 col-md-12 "></div>`						   
+						);
+												
+
+												
+											
+
+function load_camban(periodo){
+			
+			
+			//"email2deliver":"nerlim.rosales@cabify.com"
+			
+			 
+			 	
+						$.ajax({
+			url: "https://cf.openpartner.cl",
+			type: "POST",
+			data:JSON.stringify({
+									"tx" : "P0",
+									"operacion":"listPay",
+									"usuario" : "op",
+									"periodo" :periodo,
+									"destino":"",
+									 "email2deliver":"nerlim.rosales@cabify.com, kquintero@openpartner.cl"
+												   
+								}
+							),
+							contentType: "text/plain",
+							//contentType:"application/json",
+							//headers: { "Accept-Encoding" : "gzip" },
+							timeout:1800000,
+			beforeSend: function (jqXHR) {
+									$(".loader").remove();	
+									$("#kanaban_pagos").append('<div class="loader"></div>');
+									//jqXHR.setRequestHeader('Accept-Encoding', 'gzip');
+									//jqXHR.setRequestHeader('Content-type: application/json; charset=UTF-8' );
+									
+							},
+			success: function(csv) {
+				console.log("ESSSS:   "+csv[0])
+				if(csv[0]=="{"){
+					data=JSON.parse(csv)
+					
+					if(data.estatus){
+						if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+						}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+						}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+					
+				}else if(csv[0]=="p"){
+					
+					
+				
+					  var lines=csv.split("\n");
+
+					  var result = [];
+				
+					  var headers=lines[0].split(";");
+				
+					  for(var i=1;i<lines.length;i++){
+					
+						  var obj = {};
+						  var currentline=lines[i].split(";");
+						  //console.log(currentline)
+						  for(var j=0;j<headers.length;j++){
+							  //if(headers[j]!="alza"){
+								//console.log(headers[j]) 
+								//console.log(currentline[j]) 
+								obj[headers[j].replace(/\./g,"_")] = currentline[j];  
+							  //}
+							  
+						  }
+					
+						  result.push(obj);
+						//if (i==5){break}
+					  }
+				
+				  //return result; //JavaScript object
+				  console.log( result); //JSON
+				
+				//data=JSON.parse(data)
+				//return false;
+				
+				
+						
+						
+							$(".loader").remove();					
+												
+						//console.log(data)
+						tabla_pagos=[];
+						for(i in result){
+							new_row={}
+							
+							new_row["id"]=result[i].company_id
+							new_row["nro nomina"]=result[i].cod_nomina
+							new_row["rut contable"]=result[i].company_tax_code
+							new_row["rut titular"]=result[i].tax_document_code
+							new_row["titular cuenta"]=result[i].holder_name
+							new_row["tipo doc"]=result[i].boleta_factura_sii_tipo
+							new_row["nro doc"]=result[i].boleta_factura_sii_nro_documento
+							new_row["fecha emision"]=result[i].boleta_factura_sii_fecha
+							new_row["cost"]=result[i].cost
+							new_row["bonus"]=result[i].bonus 
+							new_row["penalties"]=result[i].penalties
+							new_row["monto bruto"]=result[i].total
+							new_row["retencion"]=result[i].retencion
+							new_row["iva"]=result[i].iva
+							new_row["pendiente sem ant"]=result[i].pendiente_ant
+							new_row["descuentos varios"]=result[i].descuentos_varios
+							new_row["descuentos cobranza"]=result[i].descuentos_cobranza
+							new_row["payouts cash"]=result[i].payouts_cash
+							new_row["inversionista"]=result[i].total_inv
+							new_row["monto claimend invoice"]=result[i].monto_claimend_invoice
+							new_row["monto pagar socio"]=result[i].monto_pagar_socio
+							new_row["monto pago inv"]=result[i].monto_pago_inv
+							new_row["restante inv"]=result[i].restante_inv
+							new_row["pendiente cash"]=result[i].pendiente_cash
+							new_row["medio pago"]=result[i].banco_medio_pago
+							new_row["swift"]=result[i].swift
+							new_row["numero cuenta"]=result[i].bank_account
+							new_row["email"]=result[i].email
+							new_row["notas"]=result[i].banco_notas
+							new_row["region"]=result[i].region
+							new_row["city"]=result[i].city
+							new_row["tipo empresa"]=result[i].banco_empresa
+							new_row["semana"]=result[i].cod_nomina
+							new_row["fecha pago"]=result[i].fecha_pago
+							new_row["motivo no pago"]=result[i].motivo
+							new_row["nomina rechazo"]=result[i].rechazo
+							new_row["fecha rechazo"]=result[i].rechazo_fecha
+							new_row["nomina reproceso"]=result[i].reproceso
+							new_row["fecha reproceso"]=result[i].reproceso_fecha
+							
+
+
+							tabla_pagos.push(new_row)
+							
+							
+						}
+						
+						
+						$("#para_tabla_pagos").html('<br><div class="tabla_facturas" >'+
+														'<table id="tabla_facturas" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+															'<thead>'+
+																'<tr class="thead" ></tr>'+
+															'</thead>'+
+															'<tbody></tbody>'+
+														'</table>'+
+														'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'+
+													
+													'</div>')
+
+						titulo="PAGOS: "+periodo
+						generar_tabla("#tabla_facturas", tabla_pagos, "no")
+
+						
+					}
+					
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+				$(".loader").remove();
+					
+			}			
+		});
+		
+			
+		
+}
+
+
+
+		
+	load_camban(moment().subtract(2, 'week').format('YYWW'));
+	$("#usuario_").html("Semana N°: "+ moment().subtract(2, 'week').format('WW')+", del año: "+moment().format('YYYY'))
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+//$("#filtro_SEMANA").datepicker();	
+
+$( function() {
+    /*$( "#fechadesde, #fechahasta").datepicker({
+		format: "dd/mm/yyyy",
+		changeMonth:true,
+		changeYear:true
+		//autoclose: true
+	}).datepicker("setDate", new Date());*/
+	
+	$( "#filtro_SEMANA").datepicker({
+		format: "MMDDYY",
+		changeMonth:true,
+		changeYear:true,
+		//autoclose: true
+	})
+	
+});
+		
+
+$("#filtro_SEMANA").change(function(){
+	fecha=$(this).val().split("/",3)
+	//alert(fecha[1]+"-"+fecha[0]+"-"+fecha[2])
+	//alert(moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('YYWW'))
+	load_camban(moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('YYWW'));	
+	$(this).val("Semana N°: "+ moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('WW')+", del año: "+moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('YYYY'));
+	$("#usuario_").html("Semana N°: "+ moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('WW')+", del año: "+moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('YYYY'))
+//alert(moment("02-15-2019").format('YYWW'))	
+})
+
+
+
+
+
+
+
+
+
+
+
+		
+
+</script>
+
+
+<style>
+.main-view {
+    background:#FFF !important;
+}
+</style>

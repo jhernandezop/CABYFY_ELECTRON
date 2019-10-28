@@ -1,0 +1,59 @@
+//{ usuario, fecha, identificador, archivo }
+
+cartola={
+						"formulario":'Generar Registros Contables',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},
+												{
+													"campo":"paso_ws",
+													"tipo":"texto",
+													"opciones":[1],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"paso_ws"
+												},
+												{
+													"campo":"semana",
+													"tipo":"texto",
+													"opciones":[filtro_semana],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"semana"
+												},
+												
+												{
+													"campo":"contabilizar",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario.data,
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"registros_seleccionados"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"GENERAR",
+							"ws":"generar_registros_contables",
+							"funcion":""
+						}]
+				
+}

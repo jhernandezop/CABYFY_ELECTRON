@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DTE version="1.0" xmlns="http://www.sii.cl/SiiDte">
+    <Documento ID="T61F7820">
+        <Encabezado>
+            <IdDoc>
+                <TipoDTE>61</TipoDTE>
+                <Folio>7820</Folio>
+                <FchEmis>2019-02-26</FchEmis>
+                <FmaPago>1</FmaPago>
+                <FchVenc>2019-02-26</FchVenc>
+            </IdDoc>
+            <Emisor>
+                <RUTEmisor>76237019-0</RUTEmisor>
+                <RznSoc>MAXI MOBILITY CHILE II SPA</RznSoc>
+                <GiroEmis>SERVICIO DE TRANSPORTE DE PASAJEROS</GiroEmis>
+                <Telefono>4842400</Telefono>
+                <CorreoEmisor>cabify@ifacture.cl</CorreoEmisor>
+                <Acteco>602130</Acteco>
+                <DirOrigen>Avenida Nueva Costanera 3420, Depto. 102</DirOrigen>
+                <CmnaOrigen>VITACURA</CmnaOrigen>
+                <CiudadOrigen>Santiago</CiudadOrigen>
+                <CdgVendedor>admin</CdgVendedor>
+            </Emisor>
+            <Receptor>
+                <RUTRecep>96799250-K</RUTRecep>
+                <RznSocRecep>CLARO CHILE S.A</RznSocRecep>
+                <GiroRecep>TELECOMUNICACIONES</GiroRecep>
+                <CorreoRecep>dte96899250k@calrochiledte.cl;carmen.aravena@clarochile.cl</CorreoRecep>
+                <DirRecep>Av el salto 5450</DirRecep>
+                <CmnaRecep>SANTIAGO</CmnaRecep>
+                <CiudadRecep>SANTIAGO</CiudadRecep>
+            </Receptor>
+            <Totales>
+                <MntExe>33496214</MntExe>
+                <TasaIVA>19</TasaIVA>
+                <MntTotal>33496214</MntTotal>
+            </Totales>
+        </Encabezado>
+        <Detalle>
+            <NroLinDet>1</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT</TpoCodigo>
+                <VlrCodigo>1</VlrCodigo>
+            </CdgItem>
+            <IndExe>1</IndExe>
+            <NmbItem>Servicio de transporte</NmbItem>
+            <DscItem>Septiembre 2018</DscItem>
+            <QtyItem>1</QtyItem>
+            <PrcItem>33496214</PrcItem>
+            <MontoItem>33496214</MontoItem>
+        </Detalle>
+        <Referencia>
+            <NroLinRef>1</NroLinRef>
+            <TpoDocRef>34</TpoDocRef>
+            <FolioRef>53145</FolioRef>
+            <FchRef>2018-09-30</FchRef>
+            <CodRef>1</CodRef>
+            <RazonRef>Anula documento en referencia</RazonRef>
+        </Referencia>
+        <TED version="1.0">
+            <DD>
+                <RE>76237019-0</RE>
+                <TD>61</TD>
+                <F>7820</F>
+                <FE>2019-02-26</FE>
+                <RR>96799250-K</RR>
+                <RSR>CLARO CHILE S.A</RSR>
+                <MNT>33496214</MNT>
+                <IT1>Servicio de transporte</IT1>
+                <CAF version="1.0">
+                    <DA>
+                        <RE>76237019-0</RE>
+                        <RS>MAXI MOBILITY CHILE II SPA</RS>
+                        <TD>61</TD>
+                        <RNG>
+                            <D>7432</D>
+                            <H>7931</H>
+                        </RNG>
+                        <FA>2018-11-16</FA>
+                        <RSAPK>
+                            <M>ur60354H/Kak20JXHvTrChwYToOrjB2mqqcJUkeii+cxMNaE71ZL8oqUJ0fqRP7kJ6YScZBuVdb3R7EZliLHnw==</M>
+                            <E>Aw==</E>
+                        </RSAPK>
+                        <IDK>300</IDK>
+                    </DA>
+                    <FRMA algoritmo="SHA1withRSA">FfKfvWlMtEwokz/xMMzer3PGxUnnkXzNWcnCbbdG9uPAdudHP7ZRL2UcE8lf9G8nxEyE/vUxjhtC2lOaWPSGnA==</FRMA>
+                </CAF>
+                <TSTED>2019-02-26T18:20:53</TSTED>
+            </DD>
+            <FRMT algoritmo="SHA1withRSA">fYK6tHXnaIbzgiQSnXOIlX69zcTrvloB7cEHe3x5TpWskyiIyLHmhFwg6rla/ual4806Ipx82+iDH1g8vHL83A==</FRMT>
+        </TED>
+        <TmstFirma>2019-02-26T18:20:53</TmstFirma>
+    </Documento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+            <Reference URI="#T61F7820">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <DigestValue>mZtBj57/FAsXP83Gj+zaQdZli0k=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue xmlns="http://www.w3.org/2000/09/xmldsig#">
+Afzkt0HCyZAg2VkaTf9IVgCMSTAEmi2o/dYviNnC0wxDO/hWplJEbbJtZDQ6BjzwQsq154USDi0C
+26VJxuSEy0F/chlMQYQVXggFslc71G3LSfXovfIUue+QIlQTmX2jTxZOHabBhn11MBHu/MzITwE6
+REJak3eMKgBEzTVow1A=
+</SignatureValue>
+        <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <KeyValue>
+                <RSAKeyValue>
+                    <Modulus>
+is0CiHrQj0LGLDcpumjiUHoSm/1hzRvhK2tNP7npGThCKPE2xvEQcyPn8OpQM2W/NGfDA9qZOXkB
+FcWjEFXHg8VIl5qaA+cAlkIwyYuoy3XtHYyKGjuPZvkjdP+SI+uuey4FVm5dGhxrgd783b9aNCj8
+2lqfm0jcTZnBtXT1el8=
+</Modulus>
+                    <Exponent>AQAB</Exponent>
+                </RSAKeyValue>
+            </KeyValue>
+            <X509Data>
+                <X509Certificate>
+MIIGUzCCBTugAwIBAgIKGlEFWAAAAAUjmzANBgkqhkiG9w0BAQUFADCB0jELMAkGA1UEBhMCQ0wx
+HTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQHEwhTYW50aWFnbzEUMBIGA1UE
+ChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9yaWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQD
+EydFLUNFUlRDSElMRSBDQSBGSVJNQSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEW
+GHNjbGllbnRlc0BlLWNlcnRjaGlsZS5jbDAeFw0xNjA4MjkxMjI2MDJaFw0xOTA4MjkxMjI2MDJa
+MIHWMQswCQYDVQQGEwJDTDEjMCEGA1UECBMaTUVUUk9QT0xJVEFOQSBERSBTQU5USUFHTyAxETAP
+BgNVBAcTCFNhbnRpYWdvMSMwIQYDVQQKExpNYXhpIE1vYmlsaXR5IENoaWxlIElJIFNwYTEbMBkG
+A1UECxMSVHJhbnNwb3J0ZSBwcml2YWRvMSQwIgYDVQQDExtBZ3VzdGluICBHdWlsaXNhc3RpIFVy
+cnV0aWExJzAlBgkqhkiG9w0BCQEWGG1hcmlzb2wuYW1pZ29AY2FiaWZ5LmNvbTCBnzANBgkqhkiG
+9w0BAQEFAAOBjQAwgYkCgYEAis0CiHrQj0LGLDcpumjiUHoSm/1hzRvhK2tNP7npGThCKPE2xvEQ
+cyPn8OpQM2W/NGfDA9qZOXkBFcWjEFXHg8VIl5qaA+cAlkIwyYuoy3XtHYyKGjuPZvkjdP+SI+uu
+ey4FVm5dGhxrgd783b9aNCj82lqfm0jcTZnBtXT1el8CAwEAAaOCAqcwggKjMD0GCSsGAQQBgjcV
+BwQwMC4GJisGAQQBgjcVCILcgy+Fk4xmhdWdF4Li3CeB7+w8YYGa5xWGr+AVAgFkAgEEMB0GA1Ud
+DgQWBBTqCi5LiJUsdq7Ubkuhdw4tTL9dSDALBgNVHQ8EBAMCBPAwHwYDVR0jBBgwFoAUeOE+n9IS
+s3o8jc0wDlOzQykHs1UwPgYDVR0fBDcwNTAzoDGgL4YtaHR0cDovL2NybC5lLWNlcnRjaGlsZS5j
+bC9lY2VydGNoaWxlY2FGRVMuY3JsMDoGCCsGAQUFBwEBBC4wLDAqBggrBgEFBQcwAYYeaHR0cDov
+L29jc3AuZWNlcnRjaGlsZS5jbC9vY3NwMCMGA1UdEQQcMBqgGAYIKwYBBAHBAQGgDBYKMTYwMTY2
+MzgtSzAjBgNVHRIEHDAaoBgGCCsGAQQBwQECoAwWCjk2OTI4MTgwLTUwggFNBgNVHSAEggFEMIIB
+QDCCATwGCCsGAQQBw1IFMIIBLjAtBggrBgEFBQcCARYhaHR0cDovL3d3dy5lLWNlcnRjaGlsZS5j
+bC9DUFMuaHRtMIH8BggrBgEFBQcCAjCB7x6B7ABDAGUAcgB0AGkAZgBpAGMAYQBkAG8AIABGAGkA
+cgBtAGEAIABTAGkAbQBwAGwAZQAuACAASABhACAAcwBpAGQAbwAgAHYAYQBsAGkAZABhAGQAbwAg
+AGUAbgAgAGYAbwByAG0AYQAgAHAAcgBlAHMAZQBuAGMAaQBhAGwALAAgAHEAdQBlAGQAYQBuAGQA
+bwAgAGgAYQBiAGkAbABpAHQAYQBkAG8AIABlAGwAIABDAGUAcgB0AGkAZgBpAGMAYQBkAG8AIABw
+AGEAcgBhACAAdQBzAG8AIAB0AHIAaQBiAHUAdABhAHIAaQBvMA0GCSqGSIb3DQEBBQUAA4IBAQCF
+glHKg8n1aj/YeOTVVfOyRCS6Mhc7zC9gc9tP7PQ1qqluMM6dsP1LpcmM7io19oWFRmS8eSQoK3TW
+TJx82pH/Sb9nz4S3YVGXba/aVMAwYpoaYJrH/O505y8XhUVTGQVn1F9ME7vL9Gaahn8IQw6qIWGf
+ZReD/KJxIobtKwDCKSgrajS4tS1dG+vWCa1srmXPOY5WvR/moz4h88KrbPUYLQvdR+Hrq+YWR1Y9
+vf/oFPdqu6+lireeBteQlYnoYsSgXh1LOnpeL3kWMizyQ82602QcuZHl5BuaCqxFdOvRp162mNc+
+Ibh1o3i3qGTCGHmeAnUdzEd0bi7o7frhcVTf
+</X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+</DTE>

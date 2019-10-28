@@ -1,0 +1,65 @@
+{
+  "name": "CABIFY",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . ",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "OpenPartner",
+  "license": "CC0-1.0",
+  "build": {
+    "appId": "enupal-electronv1",
+    "asar": true,
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "devDependencies": {
+    "electron": "^4.0.6",
+    "electron-builder": "^20.43.0",
+    "xlsx": "^0.14.1"
+  },
+  "dependencies": {
+    "array-compressor": "^1.0.4",
+    "debug-menu": "^0.6.1",
+    "easypdf": "^1.3.1",
+    "electron-pdf-window": "^1.0.12",
+    "jsonq": "^1.2.0",
+    "nodemailer": "^6.0.0",
+    "showdown": "^1.9.0",
+    "sizeof": "^1.0.0",
+    "xlsx": "^0.14.1"
+  }
+}

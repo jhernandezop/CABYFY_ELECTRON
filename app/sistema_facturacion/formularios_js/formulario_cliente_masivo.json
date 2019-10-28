@@ -1,0 +1,109 @@
+descuento={
+						"formulario":"Cargar Masivo de Clientes",
+						"contendio":[	
+										{
+										"grupo":"Cargar Archivo",
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":"XLSX Clientes",
+														"tipo":"buscar_columnas_excel",
+														"columnas_obligatorias":[
+																					"LAST_EVENT_TYPE",
+																					"SOPORTE",
+																					"SALES_REP",
+																					"CLIENT_TYPE",
+																					"CLIENT_KIND",
+																					"CLIENT_ID",
+																					"CLIENT_ID_MADRE",
+																					"CLIENT_NAME",
+																					"CLIENT_TAX_CODE",
+																					"BILLING_PERIOD",
+																					"PAYMENT_TERMS",
+																					"SIZE",
+																					"SECTOR",
+																					"STARRED",
+																					"CITY",
+																					"COUNTY",
+																					"COUNTRY",
+																					"REGISTERED_USERS",
+																					"POTENTIAL_USERS",
+																					"CHARGE_CODE_FORMAT",
+																					"CHARGE_CODE_REQUIRED",
+																					"METODO_PAGO",
+																					"USING_LABELS",
+																					"DEAL_VALUE",
+																					"CATEGORIA",
+																					"GRUPO_ECONOMICO",
+																					"CENTRO_COSTO",
+																					"ORDEN_COMPRA",
+																					"DESGLOSE",
+																					"HES",
+																					"ESPECIAL",
+																					"NOMBRE_ADMIN",
+																					"CORREO_ADMIN",
+																					"TELEFONO_ADMIN",
+																					"TELEFONO_ADMIN2",
+																					"NOMBRE_COB",
+																					"CORREO_COB",
+																					"TELEFONO_COB",
+																					"TELEFONO_COB2",
+																					"CORREOS_FAC",
+																					"GIRO",
+																					"CLIENT_ADDRESS",
+																					"CLIENT_CITY",
+																					"CIUDAD_FAC",
+																					"DETALLE_CC_FACTURACION",
+																					"COLLECTION",
+																					"RECURRENTE",
+																					"N_OC",
+																					"VENCIMIENTO_OC"
+																				],
+														"cordenadas":[{"x":"0","y":"0"}],
+														"opciones":[],
+														"obligatorio":"si",
+														"nota":"Cargar Archivo...",
+														"tamanio":[12,12,12],
+														"tipo_file":"xlsx",
+														"id":"id_masivo_clientes"
+													}
+										
+										
+											]
+										}
+										
+										
+										
+									
+						],
+						"opciones":[{
+							"boton":"GUARDAR",
+							"ws":"",
+							"funcion":"procesar_masivo()"
+						}]
+				
+}
+
+												
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

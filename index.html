@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script lang="javascript" src="dist/js-xlsx-master/xlsx.full.min.js.descarga"></script>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <br />
+    <button id="readf">Click here to select a file from your computer</button><br />
+    <div id="drop">Drop a spreadsheet file here to see sheet data</div>
+    <input type="file" name="xlfile" id="xlf" /> ... or click here to select a file
+    
+    </pre>
+    <p><input type="submit" value="Export Data!" id="xport" onclick="export_xlsx();" disabled="true"></p>
+    <div id="htmlout"></div>
+    <br />
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,632 @@
+<!--<!DOCTYPE html>-->
+<html xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Business’sync | Tecnología y Negocios</title>
+   <!-- <link rel="icon" type="image/png" href="https://cabify.openpartner.cl/openpartner/img/favicon.png">-->
+	<meta name="Resource-type" content="Document" />
+    <!--ICONOS-->
+    <!--<link rel="stylesheet" href="assets_publica/font-awesome-4.7.0/css/font-awesome.min.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cabify.openpartner.cl/openpartner/libs/fontawesome-free-5.1.0/css/fontawesome.css">
+    <script src="https://cabify.openpartner.cl/openpartner/libs/fontawesome-free-5.1.0/js/fontawesome.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/fontawesome-free-5.1.0/js/all.js"></script>
+    <!--<script src="assets/custom/constantes.js?10042018"></script>-->
+    <!--JQRY-->
+    <script src="https://cabify.openpartner.cl/openpartner/libs/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cabify.openpartner.cl/openpartner/libs/jquery-ui-1.12.1/jquery-ui.css">
+    <!--BOSSTRAP-->
+    <link rel="stylesheet" type="text/css" href="https://cabify.openpartner.cl/openpartner/libs/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cabify.openpartner.cl/openpartner/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://cabify.openpartner.cl/openpartner/libs/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cabify.openpartner.cl/openpartner/libs/bootstrap-multiselect/css/bootstrap-multiselect.css">
+    <!--DATA RANGE-->
+    <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>-->
+	<script type="text/javascript" src="https://cabify.openpartner.cl/openpartner/libs/daterangepicker/js/moment.min.js"></script>
+    <script type="text/javascript" src="https://cabify.openpartner.cl/openpartner/libs/daterangepicker/js/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cabify.openpartner.cl/openpartner/libs/daterangepicker/css/daterangepicker.css" />
+    <!--DATAPICKER-->
+    <script src="https://cabify.openpartner.cl/openpartner/002/js/datapicker.min.js"></script>
+    <!--DATATABLE-->
+    <link rel="stylesheet" href="https://cabify.openpartner.cl/openpartner/libs/datatables/css/jquery.dataTables.min.css" type="text/css" charset="utf-8">
+    <script src="https://cabify.openpartner.cl/openpartner/libs/datatables/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/datatables/js/jszip.min.js"></script>
+	<script src="https://cabify.openpartner.cl/openpartner/libs/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/datatables/js/buttons.html5.min.js"></script>
+    <!--KANBAN CUSTOM-->
+    <!--<script src="assets/custom/custom.js?15052018"></script>-->
+   <!--KANBAN IMGEN-->
+    <link rel="stylesheet" type="text/css" href="https://cabify.openpartner.cl/openpartner/002/css/style.min.css?14052018" />
+    <!--<link rel="stylesheet" type="text/css" href="../kanban_public_g/css/kanban_002.css" />
+    <link rel="stylesheet" type="text/css" href="../kanban_public_g/css/op_reportes.css" />-->
+    <!--KANBAN-->
+	<!----><script src="https://cabify.openpartner.cl/openpartner/002/js/graficos.min.js?15052018"></script>
+    <!--<script src="../kanban_public_g/js/graficos.js"></script>-->
+    <!--<script src="https://cabify.openpartner.cl/openpartner/002/js/validaciones.min.js?15052018"></script>
+    <script src="../kanban_public_g/js/validaciones.js"></script>-->
+    <script src="https://cabify.openpartner.cl/openpartner/002/js/notas_kamban.min.js?15052018"></script>
+    <!-- 
+    <script src="formularios_002.js"></script>-->
+  	<!--<script src="https://cabify.openpartner.cl/openpartner/002/js/kanban.min.js?15052018"></script>-->
+    <!--<script src="../kanban_public_g/js/kanban_002.js"></script>-->
+    <script src="https://cabify.openpartner.cl/openpartner/002/js/formularios.min.js?15052018"></script>
+     
+    <!--<script src="../kanban_public_g/js/formularios_002.js"></script>
+     <script src="../kanban_public_g/js/kanban_002.js"></script>-->
+	 
+    <style>
+    	.navbar-default {
+	background:#FFF !important;
+}
+</style>
+    </style>
+</head>
+<body> 
+	<div id="log" class="fondo">
+      <div class="inicio">
+         	<div class="logoini"></div>
+            <form name="login">
+            	<span id="div_login">
+                    <div>PRUEBA DE CONEXION</div>
+                    <div class="ir_recuperar">...</div>
+                    <div class="ir_recuperar_proxi">...</div>
+                    <div class="ir_recuperar_localhost">...</div>
+                    
+                    
+                </span>
+                
+            </form>
+       </div>
+       
+    </div>
+    
+    
+	
+<script>
+
+
+	$(document).ready(function() {
+		consultas_kibana()
+				/*$.ajax({
+					url : "http://52.39.116.210/hc/stats_v1.json",
+					dataType: "text",
+					beforeSend: function () {},
+					success: function(data){
+						//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+						//console.log(data)
+						consultas_kibana(data)
+					},
+					error: function (xhr, ajaxOptions, thrownError) {}
+				});
+				*/
+				
+				
+				
+						
+});
+
+function consultas_kibana(filtro){
+				
+
+	/*$.ajax({
+		type: "POST",
+		url : "http://52.39.116.210:9200/test/_search",
+		//data: filtro,
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){$(".ir_recuperar").html( "EN IP: CONECTADO");console.log(data)},
+		error: function (xhr, ajaxOptions, thrownError) {$(".ir_recuperar").html( "EN IP: "+ajaxOptions+"/"+thrownError)}
+	});
+	*/
+	/*$.ajax({
+		type: "POST",
+		url : "http://desarep.openparter.cl:9200/test/_search",
+		//data: filtro,
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){$(".ir_recuperar_proxi").html( "EN PROXI: CONECTADO");console.log(data)},
+		error: function (xhr, ajaxOptions, thrownError) {$(".ir_recuperar_proxi").html( "EN PROXI: "+ajaxOptions+"/"+thrownError)}
+	});
+	
+	$.ajax({
+		type: "POST",
+		url : "http://http://localhost:9200/test/_search",
+		//data: filtro,
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){$(".ir_recuperar_localhost").html( "EN LOCALHOST: CONECTADO");console.log(data)},
+		error: function (xhr, ajaxOptions, thrownError) {$(".ir_recuperar_localhost").html( "EN LOCALHOST: "+ajaxOptions+"/"+thrownError)}
+	});*/
+	
+query ={ "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "id_deudor": "97697755"
+          }
+        },
+        {
+          "exists": {
+            "field": "date"
+          }
+        },
+        {
+          "exists": {
+            "field": "date_pay"
+          }
+        }
+      ]
+    }
+  },
+  "_source" : ["monto_oper", "date"],
+  "size": 10,
+  "aggs": {
+    "monto_oper_stats": {
+      "extended_stats": {
+        "field": "monto_oper"
+      }
+    },
+    "en_fecha": {
+      "filter": {
+        "script": {
+          "script": {
+            "source": "((doc['date_pay'].value.getMillis() - doc['real_deadline_timestamp'].value.getMillis()) / 1000 / 60 / 60 / 24) < 1",
+            "lang": "painless"
+          }
+        }
+      }
+    },
+    "pay_by_deudor": {
+      "filter": {
+        "match_phrase": {
+          "origen": {
+            "query": "DEUDOR"
+          }
+        }
+      }
+    },
+    "pay_by_cliente": {
+      "filter": {
+        "match_phrase": {
+          "origen": {
+            "query": "CLIENTE"
+          }
+        }
+      }
+    },
+    "group_by_deudor": {
+      "terms": {
+        "field": "id_deudor"
+      },
+      "aggs": {
+        "monto_oper_stats_by_deudor": {
+          "extended_stats": {
+            "field": "monto_oper"
+          }
+        },
+        "plazo_stats_by_deudor": {
+          "stats": {
+            "field": "plazo"
+          }
+        },
+        "max_deadline": {
+          "max": {
+            "field": "real_deadline_timestamp"
+          }
+        }
+      }
+    },
+    "group_deudor_pagado": {
+      "filter": {
+        "exists": {
+          "field": "date_pay"
+        }
+      },
+      "aggs": {
+        "group_by_deudor": {
+          "terms": {
+            "field": "id_deudor"
+          },
+          "aggs": {
+            "monto_oper_stats_by_deudor": {
+              "extended_stats": {
+                "field": "monto_oper"
+              }
+            },
+            "plazo_stats_by_deudor": {
+              "stats": {
+                "field": "plazo"
+              }
+            },
+            "max_deadline": {
+              "max": {
+                "field": "real_deadline_timestamp"
+              }
+            }
+          }
+        }
+      }
+    },
+    "total_gestionado": {
+      "sum": {
+        "field": "monto_oper"
+      }
+    },
+    "total_pagado": {
+      "filter": {
+        "exists": {
+          "field": "date_pay"
+        }
+      },
+      "aggs": {
+        "sum_price": {
+          "sum": {
+            "field": "monto_oper"
+          }
+        }
+      }
+    },
+    "total_verif_1": {
+      "filter": {
+        "bool": {
+          "must_not": [
+            {
+              "match_phrase": {
+                "verif_status_1": {
+                  "query": "RECHAZADO"
+                }
+              }
+            }
+          ],
+          "filter": [
+            {
+              "exists": {
+                "field": "date_pay"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "sum_price": {
+          "sum": {
+            "field": "monto_oper"
+          }
+        },
+        "en_fecha": {
+          "filter": {
+            "script": {
+              "script": {
+                "source": "((doc['date_pay'].value.getMillis() - doc['real_deadline_timestamp'].value.getMillis()) / 1000 / 60 / 60 / 24) < 1",
+                "lang": "painless"
+              }
+            }
+          }
+        }
+      }
+    },
+    "total_verif_2": {
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "match_phrase": {
+                "verif_status_1": {
+                  "query": "RECHAZADO"
+                }
+              }
+            }
+          ],
+          "filter": [
+            {
+              "exists": {
+                "field": "date_pay"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "sum_price": {
+          "sum": {
+            "field": "monto_oper"
+          }
+        },
+        "en_fecha": {
+          "filter": {
+            "script": {
+              "script": {
+                "source": "((doc['date_pay'].value.getMillis() - doc['real_deadline_timestamp'].value.getMillis()) / 1000 / 60 / 60 / 24) < 1",
+                "lang": "painless"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+	query_si = {
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "id_deudor": "97697755"
+          }
+        },
+        {
+          "exists": {
+            "field": "date"
+          }
+        },
+        {
+          "exists": {
+            "field": "date_pay"
+          }
+        },
+        {
+          "range": {
+            "DateTime": {
+              "from": "2017-01-01T00:00:00",
+              "to": "2017-01-31T23:59:59"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "monto_oper",
+    "date"
+  ],
+  "size": 0,
+  "aggs": {
+    "time_buckets": {
+      "date_histogram": {
+        "field": "date",
+        "interval": "1d",
+        "min_doc_count": 0,
+        "extended_bounds": {
+          "min": 1483228800000,
+          "max": 1485907200000
+        }
+      }
+    }
+  }
+};
+	
+	//CON QRY
+	/*$.ajax({
+		type: "POST",
+		url : "http://52.39.116.210:9200/test/_search",
+		data: JSON.stringify(query),
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){},
+		error: function (xhr, ajaxOptions, thrownError) {}
+	});*/
+	/*$.ajax({
+		type: "POST",
+		url : "http://52.39.116.210:9200/test/_search",
+		data: JSON.stringify(query_si),
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){},
+		error: function (xhr, ajaxOptions, thrownError) {}
+	});*/
+	
+	/*$.ajax({
+		type: "POST",
+		url : "https://s2test.openpartner.cl",
+		data: JSON.stringify({
+     "tx": "getT",
+     "ts_o": "2018-12-27T10:08:30:050",
+     "user": "3001",
+     "origen":"face",
+     "unassigned": "true"
+  }),
+		dataType: "json",
+		crossDomain: true,
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){},
+		error: function (xhr, ajaxOptions, thrownError) {}
+	});*/
+	
+	
+	
+	
+	/*$.ajax({
+		type: "POST",
+		url : "https://s2test.openpartner.cl",
+		data: JSON.stringify({
+				 "tx": "getT",
+				 "ts_o": "2018-12-27T17:36:45.827",
+				 "user": "3001",
+				 "origen":"face",
+				 "unassigned": "true"
+			  }),
+		//processData: false,
+		dataType: "json",
+		contentType: 'application/json',
+		//crossDomain: true,
+		crossorigin: "anonymous",
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){
+		$(".ir_recuperar_localhost").html(data)
+			
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			$(".ir_recuperar_localhost").html(JSON.stringify(xhr.statusText))	
+			console.log(xhr, ajaxOptions, thrownError)
+		}
+	});*/
+	
+	 $.ajax({
+					url: "http://s2test.openpartner.cl",
+					type: "POST",
+					data: JSON.stringify({
+						 "tx": "getT",
+						 "ts_o": "2018-12-27T17:36:45.827",
+						 "user": "3001",
+						 "origen":"face",
+						 "unassigned": "true"
+					  }),
+					//headers:{"authorization": "JWT" + " " +localStorage.token },
+					//processData: false,
+					//contentType: false,
+					beforeSend: function (){
+		
+					},
+					success: function(data){
+						
+						$(".ir_recuperar_localhost").html(data)
+						
+						
+						
+						//resolve(data)
+		
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						
+						
+					}
+	
+				});
+	
+	/*$.ajax({
+		type: "POST",
+		url : "http://s2test.openpartner.cl",
+		data: JSON.stringify({
+				 "tx": "getT",
+				 "ts_o": "2018-12-27T17:36:45.827",
+				 "user": "3001",
+				 "origen":"face",
+				 "unassigned": "true"
+			  }),
+		//processData: false,
+		dataType: "json",
+		contentType: 'application/json',
+		//crossDomain: true,
+		crossorigin: "anonymous",
+		headers: {"Content-Type": "application/json",},
+						
+		beforeSend: function () {},
+		success: function(data){
+		$(".ir_recuperar_localhost").html(data)
+			
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			$(".ir_recuperar_localhost").html(JSON.stringify(xhr.statusText))	
+			console.log(xhr, ajaxOptions, thrownError)
+		}
+	});*/
+	/*$.ajax({
+		type: "POST",
+		url : "http://s2test.openpartner.cl",
+		data: {
+				 "tx": "getT",
+				 "ts_o": "2018-12-27T17:36:45.827",
+				 "user": "3001",
+				 "origen":"face",
+				 "unassigned": "true"
+			  },
+		dataType: "json",
+		contentType: 'application/json',
+		crossorigin: "anonymous",
+		accepts:"/",
+		cache:"no-cache",		
+		beforeSend: function () {},
+		success: function(data){
+		$(".ir_recuperar_localhost").html(data)
+			
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			$(".ir_recuperar_localhost").html(JSON.stringify(xhr.statusText))	
+			console.log(xhr, ajaxOptions, thrownError)
+		}
+	});*/
+
+
+
+
+}
+
+
+</script>
+    
+</body>
+</html>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+    
+    
+    HIECHARDTS-->
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/highstock.js"></script>
+	<script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/highcharts-more.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/map.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/data.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/exporting.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/cl-all.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/funnel.js"></script>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+

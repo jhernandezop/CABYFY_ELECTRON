@@ -1,0 +1,2046 @@
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+/*.tabs_archivos{display:none}*/
+
+
+/*#fomulario_form_carga_de_archivos .nav-tabs>li.visto > a {
+
+	color:#3c763d !important;
+	
+}*/
+
+
+
+.htm_excel{
+	overflow: auto;
+	max-height:300px;
+	
+	
+}
+.htm_excel tbody{
+	border:rgb(0,0,0) 1px solid;
+	
+}
+.htm_excel tr{
+	height: 50px;
+	
+    font-size: 13px;
+	
+
+}
+
+.htm_excel tr:first-child{
+	background:rgb(0,0,0);
+	color:rgb(255,255,255);
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+	
+}
+
+
+.htm_excel td{
+	border-bottom:rgb(0,0,0) 1px solid;
+	border-right:rgb(0,0,0) 1px solid;
+	min-width:100px;
+	padding: 5px;
+}
+
+
+.htm_excel tr:first-child td:hover{
+	background:rgb(153,153,153);
+	cursor:pointer;
+	
+	
+}
+
+	
+.selec_columna_eliminada{
+		background:rgb(204,51,0) !important;
+		color:rgb(255,255,255) !important;
+		cursor:pointer;	
+}
+.selec_columna_seleccionada,.selec_columna_seleccionada_temporal{
+		background:rgb(0,153,51) !important;	
+}	
+	.edit_columna{
+			
+	}
+	
+#link_clientes{
+	/*display:none;*/
+	
+}
+
+.ui-datepicker-calendar > tbody > tr:hover > td > .ui-state-default{
+  background: #90BF01 !important;
+  color: #777620 !important;
+} 
+
+
+
+.desabilitar{
+	display:none;	
+}
+
+#lista_formularios .conter_loader {
+    background: #ffffffab !important;
+}
+
+</style>
+<div class="kanaban_load" id="kanaban_cabify"></div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+semanas_cargado={
+  "estatus": "OK",
+  "data": [
+    {
+      "tag": "grupo",
+      "grupo": "MAY"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 1919 </span>&nbsp;06/05/2019 | 12/05/2019",
+      "id": "1919 | 06/05/2019 | 12/05/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2019 </span>&nbsp;13/05/2019 | 19/05/2019",
+      "id": "2019 | 13/05/2019 | 19/05/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2119 </span>&nbsp;20/05/2019 | 26/05/2019",
+      "id": "2119 | 20/05/2019 | 26/05/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2219 </span>&nbsp;27/05/2019 | 02/06/2019",
+      "id": "2219 | 27/05/2019 | 02/06/2019"
+    },
+    {
+      "tag": "grupo",
+      "grupo": "JUN"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2319 </span>&nbsp;03/06/2019 | 09/06/2019",
+      "id": "2319 | 03/06/2019 | 09/06/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2419 </span>&nbsp;10/06/2019 | 16/06/2019",
+      "id": "2419 | 10/06/2019 | 16/06/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2519 </span>&nbsp;17/06/2019 | 23/06/2019",
+      "id": "2519 | 17/06/2019 | 23/06/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2619 </span>&nbsp;24/06/2019 | 30/06/2019",
+      "id": "2619 | 24/06/2019 | 30/06/2019"
+    },
+    {
+      "tag": "grupo",
+      "grupo": "JUL"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2719 </span>&nbsp;01/07/2019 | 07/07/2019",
+      "id": "2719 | 01/07/2019 | 07/07/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2819 </span>&nbsp;08/07/2019 | 14/07/2019",
+      "id": "2819 | 08/07/2019 | 14/07/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 2919 </span>&nbsp;15/07/2019 | 21/07/2019",
+      "id": "2919 | 15/07/2019 | 21/07/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 3019 </span>&nbsp;22/07/2019 | 28/07/2019",
+      "id": "3019 | 22/07/2019 | 28/07/2019"
+    },
+    {
+      "tag": "<span class=\"label label-success\">SEMANA N°: 3119 </span>&nbsp;29/07/2019 | 04/08/2019",
+      "id": "3119 | 29/07/2019 | 04/08/2019"
+    }
+  ]
+}
+
+kanban_cargado={
+  "data": {
+    "fichas": [
+		{
+        "id": "N-S1419",
+        "posicion": "PROCESAMIENTOS",
+        "indicador": "<i class=\"fa fa-user\" style=\"font-size:16px !important;\" aria-hidden=\"true\"></i>&nbsp;N-S1419 <br><h4  style=\"padding-left: 15px;\"> <span class=\"label label-success\" >$ 61.984.527</span> </h4>",
+        "busqueda": [
+          "N-S1419",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "siguiente_accion": [
+          {
+            "titulo": "GENERAR PAGOS",
+            "ws": "genera_pago_nomina",
+            "doc": "genera_pago_nomina"
+          }
+        ],
+        "accion": [
+          {
+            "lista": "Ver Nomina",
+            "ws": "genera_resumen",
+            "doc": "genera_resumen"
+          }
+        ],
+        "tag_metadata": [
+          "Cotizar"
+        ],
+        "alarmas": [],
+        "descripcion": "<div><b>Cant. Viajes: </b>9795</div> \n                       <div><b>Total Bruto: </b><span class=\"total_bruto\">$ 64.850.713 </span></div>  \n                       <div><b>Total Pagar: </b>$ 61.984.527</div>\n                       \n                       <div><b>Total Conduc: </b>364</div> ",
+        "filtros_tarea": {
+          "tabla": ""
+        },
+        "tag_historico": [],
+        "estilo": "success|habilitada",
+        "filtros": [],
+        "semana": "1419",
+        "monto_pagar_socio": 61984527,
+        "monto_bruto": 64850713
+      },
+      {
+        "id": "NP-S1419",
+        "posicion": "PROCESAMIENTOS",
+        "indicador": "<i class=\"fa fa-user\" style=\"font-size:16px !important;\" aria-hidden=\"true\"></i>&nbsp;NP-S1419 <br><h4  style=\"padding-left: 15px;\"> <span class=\"label label-danger\" >$ 7.269.129</span> </h4>",
+        "busqueda": [
+          "NP-S1419",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "siguiente_accion": [
+          {
+            "titulo": "GENERAR PAGOS",
+            "ws": "genera_pago_nomina",
+            "doc": "genera_pago_nomina"
+          }
+        ],
+        "accion": [
+          {
+            "lista": "Ver Nomina",
+            "ws": "genera_resumen",
+            "doc": "genera_resumen"
+          }
+        ],
+        "tag_metadata": [
+          "Cotizar"
+        ],
+        "alarmas": [],
+        "descripcion": "<div><b>Cant. Viajes: </b>2571</div> \n                       <div><b>Total Bruto: </b><span class=\"total_bruto\">$ 10.375.446 </span></div>  \n                       <div><b>Total Pagar: </b>$ 7.269.129</div>\n                       \n                       <div><b>Total Conduc: </b>287</div> ",
+        "filtros_tarea": {
+          "tabla": ""
+        },
+        "tag_historico": [],
+        "estilo": "danger|deshabilitada",
+        "filtros": [],
+        "semana": "1419",
+        "monto_pagar_socio": 7269129,
+        "monto_bruto": 10375446
+      }
+	],
+    "columnas": [
+      {
+        "nombre": "PROCESAMIENTOS|<h4><span class='label label-primary'>$ 79.525.659</span></h4>",
+        "accion": [
+          {
+            "lista": "Carga de Archivos",
+            "ws": "",
+            "doc": "carga_de_archivos"
+          },
+          {
+            "lista": "Enviar correo motivos de NO PAGO",
+            "ws": "",
+            "doc": "correo_motivo_no_pago"
+          },
+          {
+            "lista": "Listar clientes con boleta",
+            "ws": "clientes_boleta",
+            "doc": "clientes_boleta"
+          }
+        ],
+        "tag_metadata": []
+      },
+      {
+        "nombre": "PAGOS|<h4><span class='label label-primary'>$ 184.433.965</span></h4>",
+        "accion": [
+          {
+            "lista": "Generar registros contables",
+            "ws": "generar_registros_contables",
+            "doc": "generar_registros_contables"
+          }
+        ],
+        "tag_metadata": []
+      }
+    ],
+    "interfaz": "lista",
+    "filtros": [
+      {
+        "tipo_de_filtro": "input_buscar",
+        "nombre": "BUSCAR",
+        "presholder": "BUSCAR..."
+      },
+      {
+        "tipo_de_filtro": "input_select",
+        "baul": "baul",
+        "nombre": "Semana",
+        "opciones": [
+          "<span class=\"label label-default\">SEMANA: 1419</span>   01/04/2019  |  07/04/2019",
+          "<span class=\"label label-default\">SEMANA: 0219</span>   07/01/2019  |  13/01/2019",
+          "<span class=\"label label-default\">SEMANA: 0119</span>   31/12/2018  |  06/01/2019",
+          "<span class=\"label label-default\">SEMANA: 5218</span>   24/12/2018  |  30/12/2018",
+          "<span class=\"label label-default\">SEMANA: 5118</span>   17/12/2018  |  23/12/2018",
+          "<span class=\"label label-default\">SEMANA: 5018</span>   10/12/2018  |  16/12/2018",
+          "<span class=\"label label-default\">SEMANA: 4918</span>   03/12/2018  |  09/12/2018",
+          "<span class=\"label label-default\">SEMANA: 4818</span>   26/11/2018  |  02/12/2018",
+          "<span class=\"label label-default\">SEMANA: 4718</span>   19/11/2018  |  25/11/2018",
+          "<span class=\"label label-default\">SEMANA: 4618</span>   12/11/2018  |  18/11/2018",
+          "<span class=\"label label-default\">SEMANA: 4518</span>   05/11/2018  |  11/11/2018",
+          "<span class=\"label label-default\">SEMANA: 4418</span>   29/10/2018  |  04/11/2018",
+          "<span class=\"label label-default\">SEMANA: 4318</span>   22/10/2018  |  28/10/2018",
+          "<span class=\"label label-default\">SEMANA: 4218</span>   15/10/2018  |  21/10/2018",
+          "<span class=\"label label-default\">SEMANA: 4118</span>   08/10/2018  |  14/10/2018",
+          "<span class=\"label label-default\">SEMANA: 4018</span>   01/10/2018  |  07/10/2018",
+          "<span class=\"label label-default\">SEMANA: 3918</span>   24/09/2018  |  30/09/2018",
+          "<span class=\"label label-default\">SEMANA: 3818</span>   17/09/2018  |  23/09/2018",
+          "<span class=\"label label-default\">SEMANA: 3718</span>   10/09/2018  |  16/09/2018",
+          "<span class=\"label label-default\">SEMANA: 3618</span>   03/09/2018  |  09/09/2018",
+          "<span class=\"label label-default\">SEMANA: 3518</span>   27/08/2018  |  02/09/2018",
+          "<span class=\"label label-default\">SEMANA: 3418</span>   20/08/2018  |  26/08/2018",
+          "<span class=\"label label-default\">SEMANA: 3318</span>   14/08/2018  |  20/08/2018",
+          "<span class=\"label label-default\">SEMANA: 3218</span>   07/08/2018  |  13/08/2018",
+          "<span class=\"label label-default\">SEMANA: 3118</span>   31/07/2018  |  06/08/2018",
+          "<span class=\"label label-default\">SEMANA: 3018</span>   24/07/2018  |  30/07/2018",
+          "<span class=\"label label-default\">SEMANA: 2918</span>   17/07/2018  |  23/07/2018",
+          "<span class=\"label label-default\">SEMANA: 2818</span>   10/07/2018  |  16/07/2018",
+          "<span class=\"label label-default\">SEMANA: 2718</span>   03/07/2018  |  09/07/2018",
+          "<span class=\"label label-default\">SEMANA: 2618</span>   26/06/2018  |  02/07/2018",
+          "<span class=\"label label-default\">SEMANA: 2518</span>   19/06/2018  |  25/06/2018",
+          "<span class=\"label label-default\">SEMANA: 2418</span>   12/06/2018  |  18/06/2018",
+          "<span class=\"label label-default\">SEMANA: 2318</span>   05/06/2018  |  11/06/2018",
+          "<span class=\"label label-default\">SEMANA: 2218</span>   29/05/2018  |  04/06/2018",
+          "<span class=\"label label-default\">SEMANA: 2118</span>   22/05/2018  |  28/05/2018",
+          "<span class=\"label label-default\">SEMANA: 2018</span>   15/05/2018  |  21/05/2018",
+          "<span class=\"label label-default\">SEMANA: 1918</span>   08/05/2018  |  14/05/2018",
+          "<span class=\"label label-default\">SEMANA: 1818</span>   01/05/2018  |  07/05/2018",
+          "<span class=\"label label-default\">SEMANA: 1718</span>   24/04/2018  |  30/04/2018",
+          "<span class=\"label label-default\">SEMANA: 1618</span>   17/04/2018  |  23/04/2018",
+          "<span class=\"label label-default\">SEMANA: 1518</span>   10/04/2018  |  16/04/2018",
+          "<span class=\"label label-default\">SEMANA: 1418</span>   03/04/2018  |  09/04/2018",
+          "<span class=\"label label-default\">SEMANA: 1318</span>   27/03/2018  |  02/04/2018",
+          "<span class=\"label label-default\">SEMANA: 1218</span>   20/03/2018  |  26/03/2018",
+          "<span class=\"label label-default\">SEMANA: 1118</span>   13/03/2018  |  19/03/2018",
+          "<span class=\"label label-default\">SEMANA: 1018</span>   06/03/2018  |  12/03/2018",
+          "<span class=\"label label-default\">SEMANA: 0918</span>   27/02/2018  |  05/03/2018",
+          "<span class=\"label label-default\">SEMANA: 0818</span>   20/02/2018  |  26/02/2018",
+          "<span class=\"label label-default\">SEMANA: 0718</span>   13/02/2018  |  19/02/2018",
+          "<span class=\"label label-default\">SEMANA: 0618</span>   06/02/2018  |  12/02/2018",
+          "<span class=\"label label-default\">SEMANA: 0518</span>   30/01/2018  |  05/02/2018",
+          "<span class=\"label label-default\">SEMANA: 0418</span>   23/01/2018  |  29/01/2018",
+          "<span class=\"label label-default\">SEMANA: 0318</span>   16/01/2018  |  22/01/2018",
+          "<span class=\"label label-default\">SEMANA: 0218</span>   09/01/2018  |  15/01/2018",
+          "<span class=\"label label-default\">SEMANA: 0118</span>   01/01/2018  |  08/01/2018"
+        ]
+      }
+    ],
+    "nombre": "PAGOS"
+  },
+  "estatus": "OK"
+}
+
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	parametro_filtro=parametro;
+	//load_tareas()
+	load_camban()
+}
+
+
+function load_camban(tipo){
+	
+	
+			let data_requerida = new Promise((resolve, reject) => {
+				
+				las_semanas=semanas_cargado
+				resolve("FIN")	
+				/*$.ajax({
+					url: direccion_ws+"semanas",
+					type: 'get',
+					headers:{"authorization": "JWT" + " " +localStorage.token },
+					dataType: "json",
+					beforeSend: function () {},
+					success: function(data){
+						if(data.estatus){
+							if(data.estatus=="OK" || data.estatus=="FIN"){
+								las_semanas=data.data;
+										
+								//parametro_filtro=parametro;			
+							}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+							}
+						}else{
+							controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+						}
+						
+						
+											
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						reject("NO")						
+					}
+								
+				});*/
+			});
+			
+			
+			
+			
+			
+			Promise.all([data_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+			 
+			 	/*
+						$.ajax({
+								data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+								url : direccion_ws+"carga_kanban",
+								type : "POST",
+								headers:{"authorization": "JWT" + " " +localStorage.token },       
+								dataType: 'json',
+								cache:false,
+								beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+								},
+								success: function(data){
+									
+									if(data.estatus){
+									
+										if(data.estatus=="OK" || data.estatus=="FIN"){*/
+											data=kanban_cargado
+											data.data.columnas[0].accion.push({lista: "Des. No Pagos(Acum.)", ws: "descarga_no_pagos?password=1q2w3e.,", doc: "", metodo: "GET"})
+											data.data.columnas[0].accion.push({lista: "Des. Descuentos(Acum.)", ws: "descarga_descuentos?password=1q2w3e.,", doc: "", metodo: "GET"})
+											kanban_usuario=data.data;
+											
+											$(".kanaban_load").html("");
+											//construccion(data.fichas, data)
+											construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_cabify')
+											
+											
+											setTimeout(function(){ totales_clientes(data.data.total_invoiceable) }, 500);
+											
+											
+											
+											
+										/*}else if(data.estatus=="NO OK"){
+											controlar_no_ok_desconocido_error("NO OK", data)
+										}
+									}else{
+										controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+									}
+									
+									
+									
+									
+								},
+								error: function (xhr, ajaxOptions, thrownError) {
+									controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+								}
+					
+							});*/
+		
+			}
+	})
+		
+}
+
+
+function load_tareas(){
+
+		$.ajax({
+			data:{ 'interfaz':'lista',"usuario":usuario_log, "clave":clave_log, "tipo_filtro":tipo_filtro, "parametro_filtro":parametro_filtro},
+			url : direccion_ws+"carga_kanban",
+			type : "POST",           
+			dataType: 'json',
+			success: function(data) {
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						columnas=[]
+						for (i in data.data.columnas){
+							datos_columna=data.data.columnas[i].nombre.split("|",2);	
+							columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+						}
+						
+						refrescar_tareas(data.data.fichas, columnas)
+						setTimeout(function(){ totales_clientes(data.data.total_invoiceable) }, 500);
+						
+					
+					}else if(data.estatus=="NO OK"){
+						controlar_no_ok_desconocido_error("NO OK", data)
+							}
+				}else{
+					controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+				}
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+			}			
+		});
+		
+
+	}
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+	
+		
+
+
+
+
+
+
+
+
+
+
+function tarea_click_cliente(){
+
+	filtro_semana= $("#filtro_Semana").parent(".filtro").find(".btn-default").find('.label-default').html().replace("SEMANA: ","")
+	
+		$(".modal-header").html("")
+		//VER UN DOCUMENTO
+		if(ws=="" && documento_accion!=""){
+			//VERIFICO SI EXISTE EN CACHE
+			/*var formulario_en_cache = session.get(documento_accion);
+			if (formulario_en_cache) {
+				mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, formulario_en_cache, "")
+				return false;
+			//SI NO EXISTE LO BUSCO
+			}else{*/
+			
+				$.ajax({
+					url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+					dataType: "text",
+					cache: false,
+					beforeSend: function () {
+						
+						$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+					},
+					success: function(data){
+						session.set(documento_accion, data, tiempo_cache); // GUARDO EN CACHE
+						//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+            //alert("AQUI")
+						mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")
+            acciones_interfaz()
+            
+					},
+					error: function (xhr, ajaxOptions, thrownError) {}
+				
+				});
+			
+			//}
+			
+			
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			
+			
+			if(metodo_peticion=="GET"){
+				
+				if(ws=="descarga_no_pagos?password=1q2w3e.," || ws=="descarga_descuentos?password=1q2w3e.,"){
+					window.location = direccion_ws+ws;
+					$("#myModal").modal("hide");
+					load_tareas();
+				}else{
+					window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				}
+				
+				
+				
+			}else{
+				
+			}
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+			
+				
+				datos_para_formulario="";
+				//filtro_semana="";
+				//if(documento_accion=="ver_registros_contables"){
+					
+				//}
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0, filtro_semana},
+						url : direccion_ws+ws,
+						type : "POST",
+						headers:{"authorization": "JWT" + " " +localStorage.token },           
+						dataType: 'json',
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						//alert("AQUI_b/"+ws+"/"+documento_accion)
+						//VERIFICO SI EXISTE EN CACHE
+						var formulario_en_cache = session.get(documento_accion);
+						if (formulario_en_cache) {
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, formulario_en_cache, datos_para_formulario)
+							return false;
+						//SI NO EXISTE LO BUSCO
+						}else{
+						
+							$.ajax({
+								url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+								dataType: "text",
+								cache: false,
+								beforeSend: function () {},
+								success: function(data){
+									session.set(documento_accion, data, tiempo_cache); // GUARDO EN CACHE
+									cargo_formulario=eval(data)
+									titulo=cargo_formulario.formulario
+									<!--console.log(datos_para_formulario)
+									//alert("AQUI")-->
+									//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+									mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+								},
+								error: function (xhr, ajaxOptions, thrownError) {}
+							});
+						
+						}
+						
+					}
+
+				})
+		}
+
+
+
+
+
+}
+
+
+
+
+
+
+function tarea_dblclick_cliente(){
+	
+	filtro_semana= $("#filtro_Semana").parent(".filtro").find(".btn-default").find('.label-default').html().replace("SEMANA: ","")
+	
+	$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button>");
+	
+	//alert(identificador)
+
+	//VER UN DOCUMENTO
+	if(ws=="" && documento!=""){
+		
+		
+		//VERIFICO SI EXISTE EN CACHE
+		var formulario_en_cache = session.get(documento);
+			if (formulario_en_cache) {
+				mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, formulario_en_cache, "")
+				return false;
+		//SI NO EXISTE LO BUSCO
+		}else{
+						
+		
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento+".json",
+				dataType: "text",
+				cache: false,
+				beforeSend: function () {
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+				},
+				success: function(data){
+					session.set(documento, data, tiempo_cache); // GUARDO EN CACHE
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, "")	
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+					
+			});
+		}
+	
+	//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK				
+	} else if(ws!="" && documento==""){
+	
+	//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+	} else if(ws!="" && documento!=""){
+	
+		
+		datos_para_formulario="";
+		//LAMO DATOS PARA FOMRULARIO
+		let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+		$.ajax({
+			data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0, filtro_semana},
+			url : direccion_ws+ws,
+			type : "POST",
+			headers:{"authorization": "JWT" + " " +localStorage.token },           
+			dataType: 'json',
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+									controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							/*if(data=="BLOQUEADO"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_bloqueado+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data=="NO EXISTE"){
+								$("#myModal").modal('show');
+								$(".modal-body").html("<div class='col-xs-12 col-sm-12 col-md-12'><div class='row'>"+nota_registro_cambio+"</div></div>");
+								$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button><h4 class='modal-title'>"+titulo+"</h4>")
+								load_tareas();
+								resolve("NO");
+							}else if(data!="BLOQUEADO" || data!="NO EXISTE" ){
+								datos_para_formulario=data
+								resolve("SI")
+							}*/
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						}
+						
+					});
+			});
+				
+				//LAMO  FOMRULARIO
+			Promise.all([llamar_datos_de_formulario]).then(values => {
+				if(values[0]=="SI"){
+					//VERIFICO SI EXISTE EN CACHE
+					var formulario_en_cache = session.get(documento);
+						if (formulario_en_cache) {
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, formulario_en_cache, datos_para_formulario)
+							return false;
+					//SI NO EXISTE LO BUSCO
+					}else{
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento+".json",
+							dataType: "text",
+							cache: false,
+							beforeSend: function () {},
+							success: function(data){
+								session.set(documento, data, tiempo_cache); // GUARDO EN CACHE
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_para_formulario)
+								
+										
+							},
+								error: function (xhr, ajaxOptions, thrownError) {}
+							});
+							
+						}
+					}
+
+				})
+		
+		
+	}
+		
+		
+}
+
+
+
+/////FUNCIONES DEL CLIENTE
+
+
+function descargar(documento){
+	
+	nota_negativa="";
+	validacampo_auto(["fecha_pago","fecha","si"]);
+	validacampo_auto(["formato","lista","si"]);
+	if(nota_negativa==""){
+		//console.log(direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&fecha_pago="+$("#fecha_pago").val()+"&authorization=JWT "+localStorage.token)
+		window.location = direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&formato="+$("#formato").val()+"&fecha_pago="+$("#fecha_pago").val().replace(/\//g,'-')+"&token="+localStorage.token;
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+}
+
+
+function enviar_archivos_banco(){}
+
+//PORCENTAJES
+function totales_clientes(total_invoiceable){
+	//alert(total_invoiceable)
+	total_cliente=0
+	total_bruto=0
+	$(".kanaban_load").find(".columnna").each(function(index, element) {
+        //console.log($(this).find(".label-primary").html().replace(/\$ /g, ""))
+		total_cliente=total_cliente+Number($(this).find(".label-primary").html().replace(/\$ /g, "").replace(/\./g, ""))
+		
+		
+    });
+	
+	
+	$(".kanaban_load").find(".columnna").each(function(index, element) {
+        
+		total_columna=$(this).find(".label-primary").html().replace(/\$ /g, "").replace(/\./g, "")
+		
+		porcentual_colunan=(Number(total_columna)/Number(total_cliente)*100).toFixed(2)
+		
+		//console.log($(this).find(".label-primary").html().replace(/\$ /g, "").replace(/\./g, "")+"/"+porcentual_colunan)
+		//console.log(" es: "+$(this).attr("id"))
+		$(this).find(".tarea").each(function(index, element) {
+			//label
+			if($(this).find(".total_bruto").html() && $(this).find(".total_bruto").html()!=""){
+				//console.log(index+" es: "+$(this).find(".total_bruto").html())
+				//$(this).closest(".tarea").hide();
+				total_bruto=total_bruto+Number($(this).find(".total_bruto").html().replace(/\$ /g, "").replace(/\./g, ""))
+			}
+			
+			total_items=$(this).find(".label").html().replace(/\$ /g, "").replace(/\./g, "")
+			//console.log(Number(total_items)+"/"+Number(total_columna))
+			
+			porcentual_items_c=Math.round(Number(total_items)/Number(total_columna)*100).toFixed(2)
+			porcentual_items=Number(Number(total_items)/Number(total_cliente)*100).toFixed(2)
+			//$(this).find("h4").append(' <span class="label label label-primary">'+porcentual_items_c+'%</span>')
+			$(this).find(".descripcion").append('<span class="label label-default">'+porcentual_items+'%</span>')
+            
+        });
+		$("#t_p_"+index).remove();
+		$(this).find(".titulo_kanban").find("h4").append('<span id="t_p_'+index+'" class="label label-default">'+porcentual_colunan+'%</span>')
+		
+    });
+	
+	$("#t_s, #t_b").remove();
+	
+	$(".kanaban_load > .seccion-head > .text-left > h2").append('  <span id="t_s"  title="Total a pagar semana" class="label label-default">$ '+format(total_cliente)+'</span>')
+	//cuando estés calculando ese monto.. al tener el numero.. tendrás que consultar enviando la semana que este activa en el kanban a un ws que yo voy a crear..  que te retornara un numero.    Si tu total y el numero que yo te retorno son iguales queda gris..   si es diferente.. pues lo pones rojo (el fondo)
+	//alert(total_invoiceable+" / "+total_bruto)
+	if(total_invoiceable==total_bruto){
+		estilo_invo="label-default"
+	}else {
+		estilo_invo="label-danger"
+	}
+	$(".kanaban_load > .seccion-head > .text-left > h2").append('  <span id="t_b" style="font-size:18px;" title="Total Bruto sin  nomina de Rechazado (R-ssaa)" class="label '+estilo_invo+'">T.B.:$ '+format(total_bruto)+'</span>')
+	
+}
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+function format(input){
+	var num = input
+	
+	num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+	num = num.split('').reverse().join('').replace(/^[\.]/,'');
+	input.value = num;
+
+	return  num;
+}											
+	
+	
+
+
+function descargar_formato(id){
+	
+	nota_negativa=""
+	validacampo_auto(["formato","lista","si"])
+	if(nota_negativa==""){
+		window.location = direccion_ws+"descargar_pago_nomina?id_tarea="+id+"&formato="+$("#formato").val();
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+	
+	
+}
+
+
+
+anio_periodo_facturacion="";
+fecha_periodo_facturacion_in="";
+fecha_periodo_facturacion_out="";
+function acciones_interfaz(){
+  
+  $("#semana").change(function(){
+    //alert(fecha[1]+"-"+fecha[0]+"-"+fecha[2])
+    //alert(moment(fecha[1]+"-"+fecha[0]+"-"+fecha[2]).format('YYWW')
+    anio_periodo_facturacion=moment($(this).val()).format('YYWW');
+    fecha_periodo_facturacion_in=moment($(this).val()).isoWeekday("Monday").format('DD-MM-YYYY');
+    fecha_periodo_facturacion_out=moment($(this).val()).isoWeekday("Sunday").format('DD-MM-YYYY');
+
+    $("#fomulario_form_carga_de_archivos").find(".well-sm").find("strong").html("Semana N°: "+ moment($(this).val()).format('WW')+", año: "+moment($(this).val()).format('YYYY')+", desde el "+fecha_periodo_facturacion_in+" hasta el "+fecha_periodo_facturacion_out+".")
+    $(this).val("Semana N°: "+ moment($(this).val()).format('WW')+", del año: "+moment($(this).val()).format('YYYY'));
+    
+  //alert(moment("02-15-2019").format('YYWW'))  
+  })
+
+}
+
+
+
+
+
+function validar_swift_en_lista(metodo, swift_bank_id_a_validar, forma_pago){
+
+  swift_validos=[
+  {
+    "Nombre_banco": "BANCO BILBAO VISCAYA ARGENTARIA (BBVA)",
+    "swift": "504",
+    "banck_id": "174f8733c0a204dd984a056ddd88a5b1",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+
+  },
+  {
+    "Nombre_banco": "BANCO DEL ESTADO DE CHILE (BANCOESTADO)",
+    "swift": "012",
+    "banck_id": "174f8733c0a204dd984a056ddd897766",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO CONSORCIO",
+    "swift": "055",
+    "banck_id": "174f8733c0a204dd984a056ddd897766",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO PENTA",
+    "swift": "056",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO SANTANDER",
+    "swift": "037",
+    "banck_id": "174f8733c0a204dd984a056ddd894cdc",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO RIPLEY",
+    "swift": "053",
+    "banck_id": "174f8733c0a204dd984a056ddd895e2d",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO PARIS",
+    "swift": "057",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO INTERNACIONAL",
+    "swift": "009",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO FALABELLA",
+    "swift": "051",
+    "banck_id": "174f8733c0a204dd984a056ddd898121",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO BICE",
+    "swift": "028",
+    "banck_id": "174f8733c0a204dd984a056ddd8987ca",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO SECURITY",
+    "swift": "049",
+    "banck_id": "174f8733c0a204dd984a056ddd898bcb",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO DE CHILE",
+    "swift": "001",
+    "banck_id": "174f8733c0a204dd984a056ddd88a7c7",
+    "savings_account":"11",
+    "current_account":"1",
+    "distinto_account":"1"
+  },
+  {
+    "Nombre_banco": "BANCO BTG PACTUAL",
+    "swift": "249",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO DO BRASIL",
+    "swift": "017",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO DE LA NACION ARGENTINA",
+    "swift": "043",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "BANCO DE CREDITO E INVERSIONES (BCI)",
+    "swift": "016",
+    "banck_id": "174f8733c0a204dd984a056ddd89047d",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "HSBC BANK",
+    "swift": "031",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "ITAU CORPBANCA",
+    "swift": "027",
+    "banck_id": "174f8733c0a204dd984a056ddd891a1a",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "DEUTSCHE BANK",
+    "swift": "052",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "JPMORGAN CHASE BANK",
+    "swift": "041",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "CHINA CONSTRUCTION BANK",
+    "swift": "060",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C Y SERVICIOS FINANCIEROS (AHORROCOOP)",
+    "swift": "676",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C UNION AEREA LIMITADA (CAPUAL)",
+    "swift": "674",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C ORIENTE (ORIENCOOP)",
+    "swift": "673",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C TALAGANTE (COOCRETAL)",
+    "swift": "671",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C EL DETALLISTA (DETACOOP)",
+    "swift": "675",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP A&C LAUTARO ROSAS",
+    "swift": "677",
+    "banck_id": "",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "COOP DEL PERSONAL DE LA UNIVERSIDAD (COOPEUCH)",
+    "swift": "672",
+    "banck_id": "174f8733c0a204dd984a056ddd88d76c",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  },
+  {
+    "Nombre_banco": "SCOTIABANK",
+    "swift": "014",
+    "banck_id": "174f8733c0a204dd984a056ddd8958b6",
+    "savings_account":"7",
+    "current_account":"7",
+    "distinto_account":"7"
+  }
+]
+  if(forma_pago!=null || forma_pago==""){
+   // console.log(forma_pago)
+    forma_pago=forma_pago.replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '')
+    //console.log(forma_pago)
+  }
+  if(metodo=="swift"){
+    swift_estatus={"swift":swift_bank_id_a_validar,"BANCO":"BANCO", "FORMA_PAGO":""};
+    swift_validos.forEach(function(element_a) {
+      if(element_a.swift==swift_bank_id_a_validar){
+        var tem_forma_pago=""
+        if(forma_pago=="savings_account" || forma_pago=="current_account" ){
+          for(i in element_a){
+            if(i==forma_pago){
+                tem_forma_pago=element_a[i]
+            }
+          }
+        }else{
+          tem_forma_pago=element_a.distinto_account
+        }
+
+        swift_estatus={"swift":swift_bank_id_a_validar,"BANCO":element_a.Nombre_banco, "FORMA_PAGO":tem_forma_pago};
+      }
+    });
+  }else if(metodo=="bank_id"){
+    swift_estatus={"swift":"","BANCO":"BANCO", "FORMA_PAGO":""};
+    swift_validos.forEach(function(element_a) {
+      if(element_a.banck_id==swift_bank_id_a_validar){
+        var tem_forma_pago=""
+        if(forma_pago=="savings_account" || forma_pago=="current_account" ){
+          for(i in element_a){
+            if(i==forma_pago){
+                tem_forma_pago=element_a[i]
+            }
+          }
+        }else{
+          tem_forma_pago=element_a.distinto_account
+        }
+
+        swift_estatus={"swift":element_a.swift,"BANCO":element_a.Nombre_banco, "FORMA_PAGO":tem_forma_pago};
+      }
+    });
+  }
+  return swift_estatus;
+
+}
+
+function convertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+
+            line += array[i][index];
+        }
+
+        str += line + '\r\n';
+    }
+
+    return str;
+}
+
+function formato_rut(rut){
+
+  rut_x=rut.toString().replace(/[`~!@#$%^*()|+\-=?;.:'",<>\{\}\[\]\\\/]/gi, '');
+  rut_x_in=rut_x.slice(0, rut_x.length-1)
+  rut_x_out=rut_x.slice(-1)
+  rut_def=rut_x_in+"-"+rut_x_out
+  return rut_def;
+}
+
+
+
+array_objetos_tabla=[]
+invoice=[]
+cargar_datos_bancarios=[]
+cargar_datos_sii=[]	
+cargar_socios=[]
+descuentos_varios=[]	
+claimed_invoice=[]
+nomina_rechazados=[]	
+function procesar_archivos_pago(paso, obligatorio){
+
+  if($("#semana").val()==""){
+
+    $("#semana").addClass("fucus_negativo");
+    return false;
+   
+  }else{
+    
+     $("#semana").removeClass("fucus_negativo");
+    
+
+  }
+	//alert(anio_periodo_facturacion)
+//  compressor = require("array-compressor");
+  sizeof = require('sizeof'); 
+	if (paso==1){
+
+    $("#grupo_01").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+
+    cargar_datos_bancarios=[] 
+    id_enviar="#cargar_datos_bancarios"
+    tx="cargar_datos_bancarios"
+    //DETERMINO EXCLUSIONES
+    cargar_datos_bancarios=array_objetos_tabla
+    //VALIDO CARGA
+    if(cargar_datos_bancarios.length==0){
+      $(id_enviar+"_viuw").addClass("fucus_negativo");
+      return false;
+    }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    
+    console.time('js_procesar_');
+    //VALIDO CAMPOS SHIFT
+    new_invoice=[]
+    cargar_datos_bancarios.forEach(function(element_a) {
+      element_a["estatus_swift"]="0"
+      element_a["estatus_bank_account"]="0"
+      //console.log(element_a.swift)
+      if(element_a.swift!="" && element_a.swift!=null){
+        var elemento_tempo=element_a.swift
+        if(elemento_tempo.toString().length==1){
+          element_a.swift="00"+element_a.swift
+        }else if(elemento_tempo.toString().length==2){
+          element_a.swift="0"+element_a.swift
+        }
+        console.log(element_a.swift)
+        var searc_in_lista=validar_swift_en_lista("swift", element_a.swift, element_a.account_type)
+        element_a["nambre_del_banco"]=searc_in_lista.BANCO
+        element_a["medio_de_pago"]=searc_in_lista.FORMA_PAGO
+
+        element_a.estatus_swift="1";
+      }else if(element_a.swift=="" || element_a.swift==null){
+        //console.log(element_a.swift)
+        var searc_in_lista=validar_swift_en_lista("bank_id", element_a.bank_id, element_a.account_type)
+        element_a.swift=searc_in_lista.swift
+        element_a["nambre_del_banco"]=searc_in_lista.BANCO;
+        element_a["medio_de_pago"]=searc_in_lista.FORMA_PAGO;
+      } 
+
+      if(element_a.bank_account!="" && element_a.bank_account!=null){
+            element_a.estatus_bank_account="1"
+      }
+      if(element_a.swift!="" && element_a.swift!=null){
+            element_a.estatus_swift="1"
+      }
+    
+      //RUT  tax_code
+       element_a["tax_code_estatus"]="0" 
+      if(element_a.tax_code!=null &&  element_a.tax_code!=""){
+        
+        element_a.tax_code=formato_rut(element_a.tax_code)
+        if(validacampo_Rut_texto(element_a.tax_code.toString())==true) {
+          element_a.tax_code_estatus="1";
+        }
+        console.log(element_a.tax_code)
+      }
+
+      //RUT  tax_document_code
+      element_a["tax_document_code_estatus"]="0";
+      if(element_a.tax_document_code!=null && element_a.tax_document_code!=""){
+        
+         
+          element_a.tax_document_code=formato_rut(element_a.tax_document_code)
+        if(validacampo_Rut_texto(element_a.tax_document_code.toString())==true) {
+          element_a.tax_document_code_estatus="1"
+        }
+        console.log(element_a.tax_document_code)
+      }
+
+    });
+
+    //LIMPIAR DATOS
+    
+    row_new_invoice=[]
+    cargar_datos_bancarios.forEach(function(element_a) {
+      //console.log(element_a.Company_id);
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+
+        if( tem==null || tem=="null" || tem=="" ){
+          row_new_invoice.push("")
+        }else{
+          row_new_invoice.push(tem)
+
+        }
+        if(tem==null || tem=="null"){tem="";}
+        element_a[i]=tem;
+        if(i=="account_type" || i=="bank_id"){
+          delete element_a[i]
+
+        }
+
+    }
+      new_invoice.push(row_new_invoice)
+    
+      
+      
+    
+    });
+    console.timeEnd('js_procesar_');
+
+    
+    
+    console.log(cargar_datos_bancarios)
+    console.log(sizeof.sizeof(cargar_datos_bancarios));  // 50
+    console.log(sizeof.sizeof(cargar_datos_bancarios, true));  // 50 
+
+    //console.log(sizeof.sizeof(new_invoice));  // 50
+    //console.log(sizeof.sizeof(new_invoice, true));  // 50
+    //new_invoice_X = compressor.compress(new_invoice);
+    //console.log(sizeof.sizeof(new_invoice_X, true));  // 50           
+    //return false;
+    //cargar_datos_bancarios=convertToCSV(cargar_datos_bancarios)
+    console.time('js_evio_');
+
+   // var formData = new FormData();
+    //formData.append('cargar_datos_bancarios',cargar_datos_bancarios);
+    /*var files = cargar_datos_bancarios;
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        formData.append('files', file);
+    }*/
+            
+    //console.log(formData)
+    //console.log(sizeof.sizeof(formData, true));  // 50 
+    //return false;  JSON.stringify( )
+
+    tx= JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upAccData",
+                     "data":cargar_datos_bancarios,
+                     "destino":constantes.destino
+                  })
+
+    /*socket= new WebSocket('ws://10.10.50.185:9998');
+    socket.onopen= function() {
+        socket.send("HOLA LC DESDE JAVIER");
+    };
+    socket.onmessage= function(s) {
+        alert('got reply '+JSON.stringify(s.data));
+    };*/
+
+    //return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        //data:formData,
+        /**/data:tx
+        ,
+        contentType: "application/json",
+        //dataType: 'json',
+        //processData: false,
+        //contentType: false,
+        timeout:15000000,
+        beforeSend: function() {
+         
+        
+        },
+        success: function(data) {
+          console.timeEnd('js_envio_');
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              //$(".conter_loader").remove();
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+		
+	}else if (paso==2){
+
+    $("#grupo_12").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+    invoice=[]  
+    id_enviar="#cargar_company_invoice"
+    tx="invoice"
+    //DETERMINO EXCLUSIONES
+    invoice=array_objetos_tabla
+    //VALIDO CARGA
+    if(eval(tx).length==0){
+      $(id_enviar+"_viuw").addClass("fucus_negativo");
+      return false;
+    }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+
+    //VALIDAR RUT
+    
+    console.time('js_');
+    new_invoice=[]
+    invoice.forEach(function(element_a) {
+      //console.log(element_a.Company_id);
+      //tax_document_code VIENE VACIO?
+      if(element_a.tax_document_code=="" && element_a.company_tax_code!=""){
+        element_a.tax_document_code=element_a.company_tax_code
+      }
+
+      //holder_name VIENE VACIO?
+      if(element_a.holder_name=="" && element_a.Company_Name!=""){
+        element_a.holder_name=element_a.Company_Name
+      }
+
+      //RUT  BENEFICIARIO
+       element_a["t_d_c_estatus"]="0" 
+      if(element_a.tax_document_code!=null &&  element_a.tax_document_code!=""){
+        //console.log(element_a.tax_document_code)
+        element_a.tax_document_code=formato_rut(element_a.tax_document_code)
+        if(validacampo_Rut_texto(element_a.tax_document_code.toString())==true) {
+          element_a.t_d_c_estatus="1";
+        }
+      }
+
+      //RUT  EMPRESA
+      element_a["c_t_c_estatus"]="0";
+      if(element_a.company_tax_code!=null && element_a.company_tax_code!=""){
+        element_a.company_tax_code=formato_rut(element_a.company_tax_code)
+        if(validacampo_Rut_texto(element_a.company_tax_code.toString())==true) {
+          element_a.c_t_c_estatus="1"
+        }
+      }
+      
+
+
+
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      row_new_invoice=[]
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        
+        
+        if( tem==null || tem=="null" || tem=="" ){
+          row_new_invoice.push("")
+        }else{
+          row_new_invoice.push(tem)
+
+        }
+
+
+        if( tem==null || tem=="null" || tem=="" ){
+          element_a[i]="";
+        }else{
+          element_a[i]=tem;
+
+        }
+        
+
+      }
+      new_invoice.push(row_new_invoice)
+
+    
+
+    });
+
+    console.timeEnd('js_');
+    console.log(invoice)
+    //return false;
+    tx=JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upInvs",
+                     "data":invoice,
+                     "destino":constantes.destino
+                  })
+    //return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        data:tx,
+        contentType: "application/json",
+        timeout:15000000,
+        beforeSend: function() {
+          
+        
+        },
+        success: function(data) {
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+
+	
+	}else if (paso==3){
+    $("#grupo_23").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+		cargar_datos_sii=[]	
+		id_enviar="#cargar_datos_sii"
+		tx="cargar_datos_sii"
+		//DETERMINO EXCLUSIONES
+		cargar_datos_sii=array_objetos_tabla
+    //VALIDO CARGA
+    if(obligatorio=="NO"){
+    }else{
+      if(cargar_datos_sii.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+      }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    }
+		console.log(cargar_datos_sii)
+
+    //UNO EL RUT
+    cargar_datos_sii.forEach(function(element_a) {
+      //RUT 
+      element_a["rut_sii"]=element_a.Rut+"-"+element_a.DV
+      if(element_a.rut_sii!=null &&  element_a.rut_sii!=""){
+        //console.log(element_a.tax_document_code)
+         element_a.rut_sii=element_a.rut_sii.toString().replace(/[`~!@#$%^*()|+\=?;.:'",<>\{\}\[\]\\\/]/gi, '');
+        if(validacampo_Rut_texto(element_a.rut_sii.toString())==true) {
+          element_a.rut_sii_estatus="1";
+        }
+      }
+
+      
+    })
+
+
+
+    console.time('js_');
+    cargar_datos_sii.forEach(function(element_a) {
+      //console.log(element_a.Company_id);
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        element_a[i]=tem;
+
+      } 
+    
+    });
+    console.timeEnd('js_');
+		
+		
+		//ENVIO TX
+		 tx=JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upSII",
+                     "data":cargar_datos_sii,
+                     "destino":constantes.destino
+                  })
+   // return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        data:tx,
+        contentType: "application/json",
+        timeout:15000000,
+        beforeSend: function() {
+          
+        
+        },
+        success: function(data) {
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+	
+	
+	}else if (paso==4){
+    $("#grupo_34").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+		cargar_socios=[]	
+		id_enviar="#cargar_socios"
+		tx="cargar_socios"
+		//DETERMINO EXCLUSIONES
+		cargar_socios=array_objetos_tabla
+    //VALIDO CARGA
+    if(obligatorio=="NO"){
+    }else{
+      if(cargar_socios.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+      }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    }
+		console.log(cargar_socios)
+		
+    //LIMPIO DATOS
+    console.time('js_');
+    cargar_socios.forEach(function(element_a) {
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        element_a[i]=tem;
+      }
+    });
+    console.timeEnd('js_');
+		
+		//ENVIO TX
+     tx=JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upInversor",
+                     "data":cargar_socios,
+                     "destino":constantes.destino
+                  })
+    //return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        data:tx,
+        contentType: "application/json",
+        timeout:15000000,
+        beforeSend: function() {
+          
+        
+        },
+        success: function(data) {
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+	
+	
+	}else if (paso==5){
+    $("#grupo_45").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+		descuentos_varios=[]	
+		id_enviar="#descuentos_varios"
+		tx="descuentos_varios"
+		//DETERMINO EXCLUSIONES
+		descuentos_varios=array_objetos_tabla;
+    //VALIDO CARGA
+    if(obligatorio=="NO"){
+    }else{
+      if(descuentos_varios.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+      }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    }
+		console.log(descuentos_varios)
+		
+    //LIMPIO DATOS
+    console.time('js_');
+    descuentos_varios.forEach(function(element_a) {
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        element_a[i]=tem;
+      }
+    });
+    console.timeEnd('js_');
+
+		
+		//ENVIO TX
+     tx=JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upDscto",
+                     "data":descuentos_varios,
+                     "destino":constantes.destino
+                  })
+    //return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        data:tx,
+        contentType: "application/json",
+        timeout:15000000,
+        beforeSend: function() {
+         
+        
+        },
+        success: function(data) {
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+	
+	
+	}else if (paso==6){
+    $("#grupo_56").prepend('<div class="conter_loader"><div class="loader"></div></div>'); 
+		claimed_invoice=[]	
+		id_enviar="#claimed_invoice"
+		tx="claimed_invoice"
+		//DETERMINO EXCLUSIONES
+		claimed_invoice=array_objetos_tabla;
+    //VALIDO CARGA
+    if(obligatorio=="NO"){
+    }else{
+      if(claimed_invoice.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+      }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    }
+		console.log(claimed_invoice)
+		
+    //LIMPIO DATOS
+    console.time('js_');
+    claimed_invoice.forEach(function(element_a) {
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        element_a[i]=tem;
+      }
+    });
+    console.timeEnd('js_');
+		
+		//ENVIO TX
+     tx=JSON.stringify({
+                     "tx" : "P0",
+                     "usuario" : "op",
+                     "periodo_anio_semana":anio_periodo_facturacion,
+                     "periodo_desde":fecha_periodo_facturacion_in,
+                     "periodo_hasta":fecha_periodo_facturacion_out,
+                     "fecha_carga":moment().format("DD/MM/YYYY HH:MM:SS"),
+                     "operacion":"upClaimed",
+                     "data":claimed_invoice,
+                     "destino":constantes.destino
+                  })
+    //return false;
+    $.ajax({
+        
+        url: constantes.direccion_base,
+        type: "POST",
+        data:tx,
+        contentType: "application/json",
+        timeout:15000000,
+        beforeSend: function() {
+          
+        
+        },
+        success: function(data) {
+          console.log(data)
+          data=JSON.parse(data)
+          if(data.estatus){
+            if(data.estatus=="OK" || data.estatus=="FIN"){
+              
+              //SALTO PASO
+              $(".tabs_archivos").find("a").each(function(index, element) {     
+                if($(this).html()==Number(paso+1)){
+                  $(this).click();  
+                  $(".conter_loader").remove();
+                  array_objetos_tabla=[]
+                }
+                          
+              });
+            
+            }else if(data.estatus=="NO OK"){
+              controlar_no_ok_desconocido_error("NO OK", data)
+                }
+          }else{
+            controlar_no_ok_desconocido_error("DESCONOCIDO", data)    
+          }
+          
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          controlar_no_ok_desconocido_error("ERROR", xhr.status)
+            
+        }     
+    });
+	
+	/*
+	}else if (paso==7){
+		nomina_rechazados=[]	
+		id_enviar="#nomina_rechazados"
+		tx="nomina_rechazados"
+		//DETERMINO EXCLUSIONES
+		nomina_rechazados=array_objetos_tabla;
+    //VALIDO CARGA
+    if(obligatorio=="NO"){
+    }else{
+      if(nomina_rechazados.length==0){
+        $(id_enviar+"_viuw").addClass("fucus_negativo");
+        return false;
+      }else{$(id_enviar+"_viuw").removeClass("fucus_negativo");}
+    }
+		console.log(nomina_rechazados)
+		
+    //LIMPIO DATOS
+    console.time('js_');
+    nomina_rechazados.forEach(function(element_a) {
+      //LIMPIO DE ELEMENTOS O CARACTERES
+      for (i in element_a){
+        var tem=(element_a[i]+"").replace(/[`~!@#$%^*()|+\=?;:'",<>\{\}\[\]\\\/]/gi, '');
+        element_a[i]=tem;
+      }
+    });
+    console.timeEnd('js_');
+		
+		//SALTO PASO
+		$(".tabs_archivos").find("a").each(function(index, element) {			
+			if($(this).html()==Number(paso+1)){
+				$(this).click();	
+				$(".conter_loader").remove();
+        array_objetos_tabla=[]
+			}
+								
+		});
+	
+	*/
+	}else if (paso==7){
+		console.log("dfsf")
+    $("#lista_formularios").html(nota_campo_edicion)
+	
+	}
+	
+}
+
+
+	
+	
+
+</script>
+
+

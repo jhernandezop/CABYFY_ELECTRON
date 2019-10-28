@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Business’sync | Tecnología y Negocios</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<meta name="Resource-type" content="Document" />
+    <!--ICONOS-->
+    <!--<link rel="stylesheet" href="assets_publica/font-awesome-4.7.0/css/font-awesome.min.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/fontawesome-free-5.1.0/css/fontawesome.css">
+    <!--FACE-->
+  	<link type="text/css" href="assets/css/face.css" rel="stylesheet" />   
+	<!--KANBAN IMGEN
+    <link rel="stylesheet" type="text/css" href="assets/css/op_reportes.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/kanban_002.css" />-->
+    <script src="assets/libs/fontawesome-free-5.1.0/js/fontawesome.js"></script>
+    <script src="assets/libs/fontawesome-free-5.1.0/js/all.js"></script>
+    <script src="assets/custom/constantes.js?12102018"></script>
+    <!--JQRY-->
+    <script src="assets/libs/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script> try {$ = jQuery = module.exports;} catch(e) {}</script>
+    <script src="assets/libs/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="assets/libs/jquery-ui-1.12.1/jquery-ui.css">
+    <!--BOSSTRAP-->
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/libs/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="assets/libs/bootstrap-multiselect/css/bootstrap-multiselect.css">
+    <script src="assets/libs/bootstrap/js/bootstrap-select.js"></script>
+    <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap-select.css">
+    
+    
+    
+    
+    
+    
+    <!--KANBAN IMGEN-->
+    <link rel="stylesheet" type="text/css" href="assets/css/op_reportes.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/kanban_002.css" />
+    <!--DATA RANGE-->
+    <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>-->
+	<script type="text/javascript" src="assets/libs/daterangepicker/js/moment.min.js"></script>
+    <script type="text/javascript" src="assets/libs/daterangepicker/js/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/libs/daterangepicker/css/daterangepicker.css" />
+    <!--DATAPICKER-->
+    <script src="assets/libs/daterangepicker/js/daterangepicker.min.js"></script>
+     <script src="assets/js/datapicker.js"></script>
+    <!--DATATABLE-->
+    <link rel="stylesheet" href="assets/libs/datatables/css/jquery.dataTables.min.css" type="text/css" charset="utf-8">
+    <script src="assets/libs/datatables/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/libs/datatables/js/jszip.min.js"></script>
+	<script src="assets/libs/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="assets/libs/datatables/js/buttons.html5.min.js"></script>
+    <!--PNOTIFY-->
+    <script type="text/javascript" src="assets/libs/pnotify/pnotify.min.js"></script>
+    <link href="assets/libs/pnotify/pnotify.min.css" rel="stylesheet" type="text/css" />
+    
+    <!--<script type="text/javascript" src="assets/js/face.js" ></script>-->
+    <!--KANBAN CUSTOM-->
+    <script src="assets/custom/custom.js?12102018"></script>
+   
+    <!--KANBAN
+	<script src="https://cabify.openpartner.cl/openpartner/002/js/graficos.min.js?12102018"></script>-->
+    <script src="assets/js/graficos.js"></script>
+    <script src="assets/js/validaciones.js?12102018"></script>
+    <!--<script src="../kanban_public_g/js/validaciones.js"></script>-->
+    <script src="assets/js/notas_kamban_001.js?12102018"></script>
+    
+  	<!--<script src="https://cabify.openpartner.cl/openpartner/002/js/kanban.min.js?12102018"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/DE/003/js/formularios.min.js?12102018"></script>-->
+    <script src="assets/js/formularios_formio_003.js"></script> 
+   	<script src="assets/js/formularios_003.js"></script>
+     <script src="assets/js/kanban_002.js"></script>
+     
+	 <!--MANEJO DE CACHE-->
+	 <script src="assets/libs/SessionStorage/sessionHelper.js"></script>
+     <!--MANEJO DE BD
+     <script src="assets/libs/pouchDB/pouchdb.min.js"></script>-->
+	 <!--XML-->
+     <script src="assets/libs/xml/jquery.xml2json.js" type="text/javascript"></script>
+	<!--MANEJO DE EXCEL-->
+    <script src="assets/libs/js-xlsx-master/xlsx.full.min.js.descarga"></script>
+    <script src="assets/libs/js-xlsx-master/xlsx.full.min.js.descarga"></script>
+    <!--FORMIO-->
+    <link rel="stylesheet" href="assets/libs/formio/css/formio.full.min.css">
+	<script src="assets/libs/formio/js/formio.full.min.js"></script>
+    
+    
+    
+    
+    <!--LENGUAJE MARCADO-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+     <!--JSON PADH-->
+     <script src="assets/libs/jsonpath/jsonpath-0.8.0.js"></script>
+     <!--TABLA ANIDADA-->
+   	<link href="https://unpkg.com/tabulator-tables@4.2.4/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.2.4/dist/js/tabulator.min.js"></script>
+	<script type="text/javascript" src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>
+    
+   <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    
+    <style>
+    	.navbar-default {
+	background:#FFF !important;
+	/*background:#CCC;*/
+}
+</style>
+    </style>
+</head>
+<body> 
+	<div id="log" class="fondo">
+      <div class="inicio">
+         	<div class="logoini"></div>
+            <form name="login">
+            	<span id="div_login">
+                    <div>Inicio de Sesión</div>
+                    <input id="id_pass" name="id_pass" autocomplete="off" class="form-control" type="text" placeholder="Usuario">
+                    
+                    <input id="pass" name="pass" class="form-control" type="password" placeholder="Password">
+                    
+                    <div id="msj" class="" ></div>
+                    
+                    <!--<input type="button" class="btn btn-default" value="Login" onClick="pasuser(this.form)">
+                    <input type="Reset" class="btn btn-default">-->
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" id="login" class="btn btn-success confirma_intencion">LOGIN</button>
+                            
+                        </div>
+                    </div>
+                    <div class="ir_recuperar">¿Olvidaste tu clave?</div>
+                </span>
+                <span id="div_recuperar" style="display:none">
+                	<div>Regeneración de Clave</div>
+                    <input id="Email_olv" name="Email_olv" autocomplete="off" class="form-control" type="text" placeholder="Ingrese su E-mail">
+                    
+                    <div id="msj_olv" class="" ></div>
+                    
+                    <!--<input type="button" class="btn btn-default" value="Login" onClick="pasuser(this.form)">
+                    <input type="Reset" class="btn btn-default">-->
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" id="login_recuperacion" class="btn btn-success">REGENERAR CLAVE</button>
+                        </div>
+                    </div>
+                	<div class="ir_login">Ir al inicio</div>
+                
+                </span>
+            </form>
+            <div class="sombra"><img src="https://cabify.openpartner.cl/openpartner/img/OP.png" width="100"></div>
+       </div>
+       
+    </div>
+    
+    
+	<header id="header"></header>
+	<section id="banner"></section>
+	<section id="cuerpo" class=" container-fluid cuerpo" style="height:100%"></section>
+    <footer id="foooter" class="footer" ></footer>
+    <!--MODAL-->
+    <div id="myModal" class="modal fade " role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog  modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content" >
+          <div class="modal-header">
+          	<button type="button" class="salir" data-dismiss="modal">x</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div  class="modal-body">
+          	<div id="carga"></div>
+          </div>
+          <!--<div class="modal-footer"></div>-->
+        </div>
+    
+      </div>
+    </div>
+    
+    
+    
+    
+    <div id="mensajes_alerta" class="modal fade bs-example-modal-sm mensajes_alerta" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        	
+            <!--<i class="fas fa-plug"></i>-->
+            <h1>FALLO LA CONEXION</h1>
+            <h2>Si el problema persiste, contacta a soporte</h2>
+            <!--<h3>000</h3>-->
+        	
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Modal -->
+    <div class="modal fade" id="form_json_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div id="form_json" class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!--<section id="todoapp">
+      <header id="header">
+        <h1>todos</h1>
+        <input id="new-todo" placeholder="What needs to be done?" autofocus>
+      </header>
+      <section id="main">
+        <ul id="todo-list"></ul>
+      </section>
+      <footer id="footer">
+        <span id="todo-count"></span>
+        <div id="sync-wrapper">
+          <div id="sync-success">Currently syncing</div>
+          <div id="sync-error">There was a problem syncing</div>
+        </div>
+      </footer>
+    </section>-->
+    
+<script>
+
+
+
+var session = sessionHelper();
+tiempo_cache = 60;
+
+if (!eval("window.localStorage.usuario_"+cliente_bs) || eval("window.localStorage.usuario_"+cliente_bs).length==0) {
+	login();
+} else if (eval("window.localStorage.usuario_"+cliente_bs) || eval("window.localStorage.usuario_"+cliente_bs).length>=1){
+	genera_interfaz(localStorage.getItem("usuario_"+cliente_bs), localStorage.getItem("menu_"+cliente_bs))
+}
+clientes_madre=[];
+function actualizar_fichas(clientes_madre){
+	/*console.time('js_A');
+	for (i in clientes_madre){
+		nuevo_cliente={}
+															
+		nuevo_cliente["accion"]=[]	
+		nuevo_cliente["alarmas"]=[]
+		nuevo_cliente["busqueda"]=[clientes_madre[i]._source.CLIENT_TAX_CODE, clientes_madre[i]._source.CLIENT_NAME, clientes_madre[i]._source.GRUPO_ECONOMICO, clientes_madre[i]._source.DETALLE_CC_FACTURACION]
+		nuevo_cliente["descripcion"]=""
+		nuevo_cliente["estilo"]="success|habilitada"
+		nuevo_cliente["filtros"]=[]
+		nuevo_cliente["filtros_tarea"]={tabla: ""}
+		nuevo_cliente["id"]= clientes_madre[i]._id
+		nuevo_cliente["indicador"]= "<div class='col-xs-6 col-sm-6 col-md-7'>"+
+										"<strong>Nombre:</strong>"+clientes_madre[i]._source.CLIENT_NAME+"<br>"+
+										"<strong>Grupo:</strong>"+clientes_madre[i]._source.GRUPO_ECONOMICO+
+									 "</div>"+
+									 "<div class='col-xs-6 col-sm-6 col-md-5'>"+
+									 	"<strong>R.U.T:</strong>"+clientes_madre[i]._source.CLIENT_TAX_CODE+"<br>"+
+										"<strong>Det. Facturación:</strong>"+clientes_madre[i]._source.DETALLE_CC_FACTURACION+
+									 "</div>";
+		nuevo_cliente["posicion"]="CLIENTES"
+		nuevo_cliente["siguiente_accion"]=[{"doc":"formulario_clientes", "ws":""}]
+		nuevo_cliente["tag_historico"]=[]
+		nuevo_cliente["tag_metadata"]=["Generar Facturas"]
+		fichas_clientes.push(nuevo_cliente)
+	}
+	console.timeEnd('js_A');*/
+	var jsonQ=require("jsonq");
+	var clientes_madre = jsonQ(clientes_madre);
+	var clientes_madre = clientes_madre.find('_id').parent();
+	console.time('js_Q');
+	clientes_madre.each(function (index, path, value) {
+	//console.log(value);
+		/*new_ROW={
+												 	"DOCUMENT TYPE ID":retornar_codigo_bsale(value.id_documentType),
+													"EMISSIONDATE":value.emissionDate,
+													"CODE":value.code,
+													"CLIENT ID":value.client_id,
+											        "CLIENT ID MADRE":value.client_id_madre,
+													"COMPANY":value.company,
+													"FOLIO":value.number,
+													"FC FOLIO":value.fc_Folio,
+													"ORDEN DE FACTURA":value.MONTO_FACTURA,
+													"TOTALAMOUNT":value.totalAmount,
+													"MONTO NOTA CREDITO":value.MONTO_NOTA_CREDITO,
+													"ESPECIAL":value.especial,
+													"CENTRO COSTO":value.centro_costo,
+													"ORDEN COMPRA":value.orden_compra,
+													"DESGLOSE":value.desglose,
+													"HES":value.hes,
+													"CIUDAD FAC":value.CIUDAD_FAC,
+													"CLIENTE CITY":value.CLIENTE_CITY,
+													"PAYMENT TERMS":value.PAYMENT_TERMS,
+													"METODO PAGO":value.metodo_pago,
+													"GIROS":value.GIROS,
+													"GRUPO ECONOMICO":value.grupo_economico,
+													"CLIENT ADDRESS":value.CLIENT_ADDRESS,
+													"NOMBRE ADMIN":value.nombre_admin,
+													"CORREO ADMIN":value.correo_admin,
+													"TELEFONO ADMIN":value.telefono_admin,
+													"NOMBRE COB":value.nombre_cob,
+													"CORREO COB":value.correo_cob,
+													"TELEFONO COB":value.telefono_cob,
+													"CORREOS FAC":value.CORREOS_FAC,
+													"SALES REP":value.sales_rep,
+													"SOPORTE":value.soporte,
+													"NOMINA":value.NOMINA,
+													"MONTO TOTAL":value.MONTO_TOTAL,
+													"CLIENTE NAME":value.CLIENTE_NAME,
+													"CATEGORIA":value.categoria,
+													"DETALLE CC FACTURACION":value.Detalle_CC_Facturacion
+			}*/
+			//new_taba_Q.push(new_ROW)
+			
+		nuevo_cliente={}
+															
+		nuevo_cliente["accion"]=[]	
+		nuevo_cliente["alarmas"]=[]
+		nuevo_cliente["busqueda"]=[
+                                value._source.CLIENT_TAX_CODE, 
+                                value._source.CLIENT_NAME, 
+                                value._source.GRUPO_ECONOMICO, 
+                                value._source.DETALLE_CC_FACTURACION,
+                                value._source.CLIENT_ID,
+                                value._source.CLIENT_ID_MADRE
+                                
+
+                              ]
+		nuevo_cliente["descripcion"]=""
+		nuevo_cliente["estilo"]="success|habilitada"
+		nuevo_cliente["filtros"]=[]
+		nuevo_cliente["filtros_tarea"]={tabla: ""}
+		nuevo_cliente["id"]= value._id
+		nuevo_cliente["indicador"]= "<div class='col-xs-6 col-sm-6 col-md-6'>"+
+										"<strong>Nombre:</strong>"+value._source.CLIENT_NAME+"<br>"+
+										"<strong>Grupo:</strong>"+value._source.GRUPO_ECONOMICO+
+									 "</div>"+
+									 "<div class='col-xs-6 col-sm-6 col-md-5'>"+
+									 	"<strong>R.U.T:</strong>"+value._source.CLIENT_TAX_CODE+"<br>"+
+										"<strong>Det. Facturación:</strong>"+value._source.DETALLE_CC_FACTURACION+
+									 "</div>"+
+                   "<div class='col-xs-6 col-sm-6 col-md-1 text-ra'>"+
+                      '<label class="switch"><input data-id="${value._id}" type="checkbox" checked="checked"><span class="slider round"></span></label>'+
+                   "</div>";
+		nuevo_cliente["posicion"]="CLIENTES"
+		nuevo_cliente["siguiente_accion"]=[{"doc":"formulario_clientes", "ws":""}]
+		nuevo_cliente["tag_historico"]=[]
+		nuevo_cliente["tag_metadata"]=["Generar Facturas"]
+		fichas_clientes.push(nuevo_cliente)	
+		
+		
+
+
+	});
+	
+	
+	console.timeEnd('js_Q');
+										
+										
+	
+}
+
+
+function ver_xml(url, empresa){
+	
+
+ 
+      $.get(url,{},function(xml){
+        //console.log(xml);
+		  var documento_xml = $.xml2json(xml);
+     	 console.log(documento_xml);
+		 
+		 
+		 
+		 setTimeout (construir_documento(documento_xml.SetDTE.DTE, empresa),900000)
+		
+		
+        
+      });
+    
+}
+function construir_documento(documento_xml, empresa){
+	
+	
+			
+			if (documento_xml.Documento.Encabezado.IdDoc.TipoDTE==34){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">FACTURA NO</span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; "> AFECTA O EXENTA<br>ELECTRONICA</span></td>'+
+						'</tr>';
+			
+			}else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==61){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">NOTA DE CREDITO </span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">ELECTRONICA</span></td>'+
+						'</tr>';
+				
+			}else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==33){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">FACTURA </span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">ELECTRONICA</span></td>'+
+						'</tr>';
+				
+			}else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==56){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">NOTA DE DEBITO</span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">ELECTRONICA</span></td>'+
+						'</tr>';
+				
+			}else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==52){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">GUIA DESPACHO</span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">ELECTRONICA</span></td>'+
+						'</tr>';
+				
+			}
+			else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==110){
+				
+				titulo='<tr>'+
+							'<td align="center"><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">FACTURA DE</span>'+
+							'<br><span style="color:red; font-family:Arial; font-size:14pt; font-weight:bold; ">EXPORTACION<br>ELECTRONICA</span></td>'+
+						'</tr>';
+				
+			}
+			
+			
+			Detalle_venta="";
+			Referencia_venta_vendedor="";
+			header="";
+			
+			if(V_N_T("T",documento_xml.Documento.Encabezado.Emisor.CdgVendedor)!="" && documento_xml.Documento.Encabezado.IdDoc.TipoDTE!=52 && documento_xml.Documento.Encabezado.IdDoc.TipoDTE!=110){
+					//VENTA
+					header='<table  border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid black; font-size:9pt; padding-bottom:20px; font-family: Arial;">'+
+								'<tbody>'+
+									'<tr >'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Señor(es):</span></td>'+
+										'<td width="550" style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RznSocRecep)+'</span></td>'+
+										'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">R.U.T:</span><span style="color:black;  ">&nbsp;</span></td>'+
+										'<td width="129" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RUTRecep)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Giro:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.GiroRecep)+'</span></td>'+
+										'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Fecha emisión:</span></td>'+
+										'<td width="129" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FchEmis)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Dirección:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.DirRecep)+'</span></td>'+
+										'<td width="80" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Fecha Vcto:</span><span style="color:black;  ">&nbsp;</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style=" ">Comuna:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.CmnaRecep)+'</span></td>'+
+										'<td width="95" style="padding: 5px 0px 5px 10px;"><span style=" ">Ciudad:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.CiudadRecep)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style=" ">Vendedor:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  "></span></td>'+
+										'<td width="95" style="padding: 5px 0px 5px 10px;"><span style=" ">Tipo Cambio:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  "></span></td>'+
+									'</tr>'+
+								'</tbody>'+
+							'</table>';
+				}else if(V_N_T("T",documento_xml.Documento.Encabezado.Emisor.CdgVendedor)=="" || documento_xml.Documento.Encabezado.IdDoc.TipoDTE==52){
+						
+					header='<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid black; font-size:9pt; padding-bottom:20px; font-family: Arial;">'+
+							'<tbody>'+
+								'<tr >'+
+									'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Receptor:</span></td>'+
+									'<td width="550" style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">76237019-0</span><span style="color:black;  ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RUTRecep)+'&nbsp;'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RznSocRecep)+'</span></td>'+
+									'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Fecha de emisión:</span><span style="color:black;  ">&nbsp;</span></td>'+
+									'<td width="129" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FchEmis)+'</span></td>'+
+								'</tr>'+
+								'<tr>'+
+									'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Dirección:</span></td>'+
+									'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.DirRecep)+'</span><span style="color:black;  ">, </span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.CmnaRecep)+'</span><span style="color:black;  ">, </span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.CiudadRecep)+'</span></td>'+
+									'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Fecha vencimiento:</span></td>'+
+									'<td width="129" style="padding: 5px 0px 5px 10px;">'+V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FchVenc)+'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Giro:</span></td>'+
+									'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.GiroRecep)+'</span></td>'+
+									'<td width="80" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Forma de pago:</span><span style="color:black;  ">&nbsp;</span></td>'+
+									'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">'+retornar_forma_pago(V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FmaPago))+'</span></td>'+
+								'</tr>'+
+								'<tr>'+
+									'<td width="50" style="padding: 5px 0px 5px 10px;"><span style=" ">Cod. Int.:</span></td>'+
+									'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  "></span></td>'+
+									'<td width="95" style="padding: 5px 0px 5px 10px;"></td>'+
+									'<td style="padding: 5px 0px 5px 10px;"></td>'+
+								'</tr>'+
+							'</tbody>'+
+							'</table>';	
+				} else if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==110){
+					
+					header='<table  border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid black; font-size:9pt; padding-bottom:20px; font-family: Arial;">'+
+								'<tbody>'+
+									'<tr >'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Señor(es):</span></td>'+
+										'<td width="550" style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RznSocRecep)+'</span></td>'+
+										'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">R.U.T:</span><span style="color:black;  ">&nbsp;</span></td>'+
+										'<td width="129" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.RUTRecep)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Dirección:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.Receptor.DirRecep)+'</span></td>'+
+										'<td width="80" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Cláusula de Venta:</span><span style="color:black;  ">&nbsp;</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span></td>'+
+									'</tr>'+
+									'<tr>'+
+									'<tr>'+
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Mod.de Venta:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black; ">&nbsp;</span><span style="color:black;"></span></td>'+
+										'<td width="97" style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">Tipo Cambio:</span></td>'+
+										'<td width="129" style="padding: 5px 0px 5px 10px;"><span style="color:black;  "></span></td>'+
+									'</tr>'+
+									
+										'<td width="50" style="padding: 5px 0px 5px 10px;"><span style=" ">Fecha:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FchEmis)+'</span></td>'+
+										'<td width="95" style="padding: 5px 0px 5px 10px;"><span style=" ">Forma de Pago:</span></td>'+
+										'<td style="padding: 5px 0px 5px 10px;"><span style="color:black;  ">'+retornar_forma_pago(V_N_T("T", documento_xml.Documento.Encabezado.IdDoc.FmaPago))+'</span></td>'+
+									'</tr>'+
+								'</tbody>'+
+							'</table>';
+				
+				}
+			//alert(documento_xml.Documento.Detalle.length)
+			if(documento_xml.Documento.Detalle){
+				//alert(documento_xml.Documento.Referencia.length)
+				if(documento_xml.Documento.Detalle.length){
+				
+					for (i in documento_xml.Documento.Detalle){
+						
+						codigo_linea=""
+					
+						if(documento_xml.Documento.Detalle.CdgItem){
+							if(V_N_T("T",documento_xml.Documento.Detalle.CdgItem.VlrCodigo)!=""){
+								codigo_linea=documento_xml.Documento.Detalle.CdgItem.VlrCodigo;
+							}	
+						}
+						
+						
+						Detalle_venta=Detalle_venta+'<tr>'+
+								'<td align="left" style="padding: 5px 0px 5px 10px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.NroLinDet)+'</td>'+
+								'<td align="left" style="padding: 5px 0px 5px 10px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle[i].CdgItem.VlrCodigo)+'</td>'+
+								'<td width="300" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle[i].NmbItem)+'<br>'+V_N_T("T",documento_xml.Documento.Detalle[i].DscItem)+'</td>'+
+								'<td align="center" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle[i].QtyItem)+'</td>'+
+								'<td align="center" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle[i].UnmdItem)+'</td>'+
+								'<td align="right" style="padding: 5px 0px;  color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle[i].PrcItem)+'</td>'+
+								'<td align="right" style="padding: 5px 0px; color:black; font-size:8pt; "></td>'+
+								'<td align="right" style="padding: 5px 10px 5px 0px; color:black; font-size:8pt; "><span style="color:black; font-size:8pt; ">'+V_N_T("N",documento_xml.Documento.Detalle[i].MontoItem)+'</span></td>'+
+							'</tr>';
+						
+					}
+				}else{
+					codigo_linea=""
+					
+					if(documento_xml.Documento.Detalle.CdgItem){
+						if(V_N_T("T",documento_xml.Documento.Detalle.CdgItem.VlrCodigo)!=""){
+							codigo_linea=documento_xml.Documento.Detalle.CdgItem.VlrCodigo;
+						}	
+					}
+					
+					Detalle_venta=Detalle_venta+'<tr>'+
+								'<td align="left" style="padding: 5px 0px 5px 10px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.NroLinDet)+'</td>'+
+								'<td align="left" style="padding: 5px 0px 5px 10px; color:black; font-size:8pt; ">'+codigo_linea+'</td>'+
+								'<td width="300" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.NmbItem)+'<br>'+V_N_T("T",documento_xml.Documento.Detalle.DscItem)+'</td>'+
+								'<td align="center" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.QtyItem)+'</td>'+
+								'<td align="center" style="padding: 5px 0px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.UnmdItem)+'</td>'+
+								'<td align="right" style="padding: 5px 0px;  color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Detalle.PrcItem)+'</td>'+
+								'<td align="right" style="padding: 5px 0px; color:black; font-size:8pt; ">&nbsp;</td>'+
+								'<td align="right" style="padding: 5px 10px 5px 0px; color:black; font-size:8pt; "><span style="color:black; font-size:8pt; ">'+V_N_T("N",documento_xml.Documento.Detalle.MontoItem)+'</span></td>'+
+							'</tr>';
+					
+				}
+			}
+			
+			
+			
+			if(documento_xml.Documento.Referencia){
+				
+				if(documento_xml.Documento.Referencia.length){
+				
+					for (i in documento_xml.Documento.Referencia){
+						
+						
+						Referencia_venta_vendedor=Referencia_venta_vendedor+'<tr>'+
+								'<td colspan="2" align="left" style="padding: 5px; color:black; font-size:8pt; ">'+retornar_codigo(documento_xml.Documento.Referencia[i].TpoDocRef)+'</td>'+
+								
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia[i].FolioRef)+'</td>'+
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia[i].FchRef)+'</td>'+
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia.CodRef)+'</td>'+
+								'<td  colspan="2" align="right" width="300" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia[i].RazonRef)+'</td>'+
+							'</tr>';
+						
+					}
+				}else{
+					Referencia_venta_vendedor='<tr>'+
+								'<td colspan="2" align="left" style="padding: 5px; color:black; font-size:8pt; ">'+retornar_codigo(documento_xml.Documento.Referencia.TpoDocRef)+'</td>'+
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia.FolioRef)+'</td>'+
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia.FchRef)+'</td>'+
+								'<td align="center" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia.CodRef)+'</td>'+
+								'<td align="right" colspan="2" width="300" style="padding: 5px; color:black; font-size:8pt; ">'+V_N_T("T",documento_xml.Documento.Referencia.RazonRef)+'</td>'+
+							'</tr>';
+					
+				}
+				
+				
+				Referencia_venta_vendedor='<table border="0" cellpadding="0" cellspacing="0" width="100%"  style=" border: 2px solid black; border-top:0px;  padding-bottom:20px; font-family: Arial;">'+
+					'<thead>'+
+						'<tr>'+
+							'<td colspan="2" style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px; "><span style="border-style:none; color:black; font-size:8pt; ">Referencia</span></td>'+
+							'<td align="center" style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px; "><span style="border-style:none; color:black; font-size:8pt; ">Folio</span></td>'+
+							'<td align="center" style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px; "><span style="border-style:none; color:black; font-size:8pt; ">Fecha</span></td>'+
+							'<td align="center" style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px; "><span style="border-style:none; color:black; font-size:8pt; ">Código referencia</span></td>'+
+							'<td align="right" colspan="2" style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px; "><span style="border-style:none; color:black; font-size:8pt; ">Razon referencia</span></td>'+
+						'</tr>'+
+					'</thead>'+
+					'<tbody>'+
+						Referencia_venta_vendedor+
+						
+					'</tbody>'+
+				'</table>';
+			}
+			
+			
+			factura_venta='<br><br><table border="0" table-layout="fixed" width="100%">'+
+				'<tbody>'+
+					'<tr>'+
+						'<td colspan="2">'+
+							'<table border="0" table-layout="fixed" width="400">'+
+								'<tbody>'+
+									'<tr>'+
+										'<td colspan="2" height="21" width="422"><span style="color:black;font-family: Arial;font-size:12pt;font-weight: 600;text-transform: uppercase;">'+documento_xml.Documento.Encabezado.Emisor.RznSoc+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td colspan="2" width="422" style="text-transform: uppercase;"><span style="color:black; font-size:9pt; ">'+documento_xml.Documento.Encabezado.Emisor.DirOrigen+'</span><span style="color:black; ">, </span><span style="color:black; font-size:9pt; ">'+documento_xml.Documento.Encabezado.Emisor.CmnaOrigen+'</span><span style="color:black; ">, </span><span style="color:black; font-size:9pt; ">'+documento_xml.Documento.Encabezado.Emisor.CiudadOrigen+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td colspan="2" width="422"><span style="color:black; font-size:9pt; text-transform: uppercase; ">'+documento_xml.Documento.Encabezado.Emisor.GiroEmis+'</span></td>'+
+									'</tr>'+
+								'</tbody>'+
+							'</table>'+
+						'</td>'+
+						'<td style="border-color:white; border-style:solid; border-width:medium; ">'+
+							'<table border="0" height="70" width="100%">'+
+								'<tbody>'+
+									'<tr>'+
+										'<td style="border-color:red; border-style:solid; border-width:2pt; " align="center">'+
+											'<table style="color:red; font-size:12pt; font-weight:bold; " border="0" width="100%">'+
+												'<tbody>'+
+													'<tr>'+
+														'<td align="center"><span style="color:red; font-size:12pt; font-weight:bold; ">R.U.T.: </span><span style="color:red; font-size:12pt; font-weight:bold; ">'+documento_xml.Documento.Encabezado.Emisor.RUTEmisor+'</span></td>'+
+													'</tr>'+
+														titulo+
+													'<tr>'+
+														'<td align="center"><span style="color:red; font-size:11pt; font-weight:bold; ">No. </span><span style="color:red; font-size:11pt; font-weight:bold; ">'+documento_xml.Documento.Encabezado.IdDoc.Folio+'</span></td>'+
+													'</tr>'+
+												'</tbody>'+
+											'</table>'+
+										'</td>'+
+									'</tr>'+
+								'</tbody>'+
+							'</table>'+
+						'</td>'+
+					'</tr>'+
+					'<tr>'+
+						'<td colspan="3"><br>'+
+							header+
+						'</td>'+
+					'</tr>'+
+				'</tbody>'+
+			'</table>'+
+			'<br>'+
+			'<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid black; padding-bottom:20px; font-family: Arial;">'+
+				'<thead>'+
+					'<tr>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px 5px 10px; "><span style="border-style:none; color:black; font-size:8pt; ">N°</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px 5px 10px; "><span style="border-style:none; color:black; font-size:8pt; ">Código</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px; " width="300"><span style="color:black; font-size:8pt; ">Descripción</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px; " align="center"><span style="color:black; font-size:8pt; ">Cantidad</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px; " align="center"><span style="color:black; font-size:8pt; ">U.M.</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px; " align="right"><span style="color:black; font-size:8pt; ">Precio</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 0px; " align="center"><span style="color:black; font-size:8pt; ">Descuento</span></td>'+
+						'<td style="border-bottom-color:black; border-bottom-style:solid; border-bottom-width:1pt;padding: 5px 10px 5px 0px; " align="right"><span style="color:black; font-size:8pt; ">Importe</span></td>'+
+					'</tr>'+
+				'</thead>'+
+				'<tbody>'+
+					Detalle_venta+
+					
+				'</tbody>'+
+			'</table>'+
+				Referencia_venta_vendedor+
+			'<br>'+
+			'<table border="0" cellpadding="0" cellspacing="0" table-layout="fixed" width="100%" style="border: 2px solid black;  padding-bottom:20px; font-family: Arial;">'+
+				'<tbody>'+
+					'<tr>'+
+					
+						'<td colspan="3" align="center" valign="center" width="30%" style="border-right: 2px solid; padding:5px;">'+
+						//'<img src="https://wsted.azurewebsites.net/api/pdf417/ObtenerImagenTED?id=NwJmmkYIhLLlx5dX138Yrm9uiKcBCKwQv0b8CbfmOdE1YpGCW1CaAASA==&amp;ted=pLI6Edao7hNjdaojAUoVHIOFNyEUkIDo1kNPtJZR01b4dVdIczmbDrKBCK6QoKr9FnYtetxNVzLwOPrf40GBCKmsLmGblgmuPiyNGc04oBCKyzyagmhuFeiYSIwG8UdIRblzZnj02zFrh4bjs6xqwooxyJz5062PssJVmFsfDqtLzEsGHTIQqhZIud7K+3OD8j+Rj7VsVPBCK1JCmICrn7dBKptFEMo7KgFhPihQsSVKvwLtdBCKzrSnmKBY3jXmBCKu5BCKMwvHj51enSIHtE1cZjdaojAUoVHGAgM5BCKRKQXS1kNPtJZR01b4dVdIczmbDppKWChnjPJ4N3O7qGHBUWJLkSgmTQeAabwaUWJIbWyV1YSuC3q3iQey3vQy97kAMDue9hV4o8Liw2cEw12dBCK+D26gSp6ajt8VaFFYuJvSVZlItoqDwOrXIH8w78a9AoxDkBCK7i98+4ZVXSPQoEEzWvQSsABSq9MU2Udo5sP5mIALAcxmFoI4ymYvWxiZRwg14Cw1I19Ex23L58FfgRN56ECbQ1K6vw5z9ITZSTn2Ar2+z8mYbSMU1OEM6ImUJk1hDJxhmmBCKZ0fByKLBCKvwl7wcgldsRkMJuENBBCKCSXSQMCWzZHZXYR9DZAjzn23YnAFB1tbWq1m8loOLQv5oCiwQPyL16xvCzVc4qi57o88YV9d6e+57q090R1e28bNRTTU8JIvLOQSs9Yw1re0FzBoyynxWtocY2rmkQ2SlNdRY0R7YKbDg4olncvam5wBCKVfnoPfz8a8EH7yFApx9dGPN6AfKfY25NmmJkqVsJ51UnR7Rz9Vpr9lJTx6M+m+laG2McCbLq8BCK1xzaZuMmIKUi6alaFxoOasJuPapk5un481mF89u1FVImmHjiw0ncF1cDoeLmwIDdn8iUBXCHhbGKgUwhY9MoXkd1ZAhOK0R08Q39GQkR1j684COv9DtBCKLwY3xMCZHgMWCh4nlEYsbPtZMQqFkSJ1CTYvHrFmB+ySgp7wJD5I3CHBUbTUr0MUlh4E3BGSBCKFZuv5G64EgUg9BCKBCKqBCKP3LWkqJbvcvOb6ujyjX9NVkO6y" title="" alt="">'+
+							//'<p style="font-family: arial;font-size: 8pt;margin: 0px;margin-top: 10px;"> Timbre Electrónico SII </p>'+
+							//'<p style="font-family: arial;font-size: 8pt;margin: 0px;margin-top: 5px;text-decoration: underline;"> Verifique Documento: <span style="color: red;"> www.sii.cl </span></p>'+
+						'</td>'+
+						'<td colspan="2" align="left" style="border-right: 2px solid;" width="30%">&nbsp;</td>'+
+						
+						'<td colspan="2" align="center" width="30%">'+
+							'<table cellpadding="0" cellspacing="0" table-layout="fixed" width="100%">'+
+								'<tbody style="font-size: 12px;">'+
+									'<tr>'+
+										'<td colspan="3" style="padding: 10px 30px 15px 30px;text-align: center; font-size: 15px;font-weight: 600;"> TOTALES</td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td valign="center" width="130"><span style="color:black;  padding: 10px;">Monto Neto</span></td>'+
+										'<td width="11"><span style="color:black; ; padding: 10px;">$</span></td>'+
+										'<td align="right"><span style="color:black;  padding: 10px;">'+V_N_T("N",documento_xml.Documento.Encabezado.Totales.MntNeto)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="130"><span style="color:black;  padding: 10px;">Monto Exento </span></td>'+
+										'<td width="11"><span style="color:black; ; padding: 10px;">$</span></td>'+
+										'<td align="right" style="padding: 10px;">'+V_N_T("N",documento_xml.Documento.Encabezado.Totales.MntExe)+'</td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="130"><span style="color:black;  padding: 10px;">IVA '+V_N_T("N",documento_xml.Documento.Encabezado.Totales.TasaIVA)+'%</span></td>'+
+										'<td align="left" width="11"><span style="color:black;  padding: 10px;">$</span></td>'+
+										'<td align="right"><span style="color:black;  padding: 10px;">'+V_N_T("N",documento_xml.Documento.Encabezado.Totales.IVA)+'</span></td>'+
+									'</tr>'+
+									'<tr>'+
+										'<td width="130"><span style="color:black;  font-weight:bold; padding: 10px;">Monto Total</span></td>'+
+										'<td width="11"><span style="color:black; ; padding: 10px;">$</span></td>'+
+										'<td align="right"><span style="color:black;  font-weight:bold; padding: 10px;">'+V_N_T("N",documento_xml.Documento.TED.DD.MNT)+'</span></td>'+
+									'</tr>'+
+								'</tbody>'+
+							'</table>'+
+						'</td>'+
+					'</tr>'+
+				'</tbody>'+
+			'</table>';
+	
+	
+	
+	
+	if(documento_xml.Documento.Encabezado.IdDoc.TipoDTE==34){
+			
+	}
+	
+	//$("#lista_formularios").html(factura_venta)
+	
+	$("#myModal").modal("show");
+	
+	
+	$("#myModal").find(".modal-dialog").removeClass("modal-sm");
+	$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+
+	$("#myModal").find(".modal-dialog").addClass("modal-lg");
+	$("#myModal").find(".modal-body").html("<div class='verxml'><div>")
+	$("#myModal").find(".modal-header").html('<button type="button" class="salir" data-dismiss="modal">x</button><h4 class="modal-title">'+empresa+'</h4>')
+	//$("#myModal").find(".modal-title").html(empresa);
+	$('#myModal .verxml').html(factura_venta);
+	
+	//alert("FIN")
+}
+
+function V_N_T(tipo,dato){
+	
+	if(dato){
+		return dato;	
+	}else{
+		if( tipo=="N"){
+			return "0";
+		}else if(tipo=="T"){
+				return "";
+		}
+		
+	}
+	
+}
+
+
+function retornar_codigo(codigo){
+	
+	if(codigo==801){ codigo="Orden de compra"}
+	else if(codigo==802){ codigo="Presupuesto"}
+	else if(codigo==803){ codigo="Contrato"}
+	else if(codigo==804){ codigo="Resolución"}
+	else if(codigo==805){ codigo="Proceso ChileCompra"}
+	else if(codigo==806){ codigo="Ficha ChileCompra"}
+	else if(codigo==807){ codigo="DUS"}
+	else if(codigo==808){ codigo="B/L (conocimiento de embarque)"}
+	else if(codigo==809){ codigo="AWB (Air Will Bill)"}
+	else if(codigo==810){ codigo="MIC/DTA"}
+	else if(codigo==811){ codigo="Carta de porte"}
+	else if(codigo==812){ codigo="Resolución del SNA donde califica servicios de exportación"}
+	else if(codigo==813){ codigo="Pasaporte"}
+	else if(codigo==814){ codigo="Certificado de depósito bolsa prod. Chile"}
+	else if(codigo==815){ codigo="Vale de prenda bolsa prod. Chile"}
+	else if(codigo==914){ codigo="Declaración de ingreso (DIN)"}
+	else if(codigo==29){ codigo="Factura de Inicio"}
+	else if(codigo==30){ codigo="Factura"}
+	else if(codigo==32){ codigo="Factura de ventas y servicios no afectos o exentos de IVA"}
+	else if(codigo==33){ codigo="Factura Electrónica"}
+	else if(codigo==34){ codigo="Factura no Afecta o Exenta Electrónica"}
+	else if(codigo==40){ codigo="Liquidación Factura"}
+	else if(codigo==43){ codigo="Liquidación Factura Electrónica"}
+	else if(codigo==45){ codigo="Factura de Compra"}
+	else if(codigo==46){ codigo="Factura de Compra electrónica"}
+	else if(codigo==55){ codigo="Nota de Débito"}
+	else if(codigo==56){ codigo="Nota de débito electrónica"}
+	else if(codigo==60){ codigo="Nota de Crédito"}
+	else if(codigo==61){ codigo="Nota de crédito electrónica"}
+	else if(codigo==108){ codigo="SRF Solicitud de Registro de Factura"}
+	else if(codigo==901){ codigo="Factura de ventas a empresas del territorio preferencial ( Res. Ex. N° 1057, del 25.04.85)"}
+	else if(codigo==914){ codigo="Declaración de Ingreso (DIN)"}
+	else if(codigo==911){ codigo="Declaración de Ingreso a Zona Franca Primaria"}
+	else if(codigo=="HES"){ codigo="HES"}
+	
+	return codigo;
+	
+}
+
+
+function retornar_codigo_bsale(codigo){
+	
+	if(codigo==22){ codigo="BOLETA ELECTRÓNICA"}
+	else if(codigo==28){ codigo="BOLETA NO AFECTA O EXENTA ELECTRÓNICA"}
+	else if(codigo==16){ codigo="FACTURA DE EXPORTACIÓN ELECTRÓNICA"}
+	else if(codigo==11){ codigo="FACTURA MANUAL (no valido al SII)"}
+	else if(codigo==15){ codigo="FACTURA NO AFECTA O EXENTA ELECTRÓNICA"}
+	else if(codigo==2){ codigo="NOTA DE CRÉDITO ELECTRÓNICA"}
+	else if(codigo==17){ codigo="NOTA DE DÉBITO ELECTRÓNICA"}
+	else if(codigo==27){ codigo="FACTURA NO AFECTA O EXENTA ELECTRÓNICA T"}
+	else if(codigo==9){ codigo="NOTA DE CRÉDITO ELECTRÓNICA T"}
+	
+	return codigo;
+	
+}
+
+
+
+
+function retornar_forma_pago(codigo){
+	
+	if(codigo==1){ codigo="Contado"}
+	if(codigo==2){ codigo="Credito"}
+	return codigo;
+	
+}
+
+function retornar_estado_documento(codigo){
+	
+	if(codigo==1){ codigo="Activo"}
+	if(codigo==0){ codigo="Inactivo"}
+	return codigo;
+	
+}
+
+function formatNumber(num, simbolo) {
+    if (!num || num == 'NaN') return '-';
+    if (num == 'Infinity') return '&#x221e;';
+    num = num.toString().replace(/\$|\,/g, '');
+    if (isNaN(num))
+        num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num * 100 + 0.50000000001);
+    cents = num % 100;
+    num = Math.floor(num / 100).toString();
+    if (cents < 10)
+        cents = "0" + cents;
+    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3) ; i++)
+        num = num.substring(0, num.length - (4 * i + 3)) + '.' + num.substring(num.length - (4 * i + 3));
+    return (simbolo+" "+((sign) ? '' : '-') + num);
+}
+
+/*ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('root')
+      );
+*/
+
+//DECLARACION DE BD CLIENTES
+ 
+</script>
+<!--POUCH
+    <script src="//cdn.jsdelivr.net/pouchdb/3.2.0/pouchdb.min.js"></script>
+    <script src="assets/libs/pouch/app.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+HIECHARDTS
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/highstock.js"></script>
+	<script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/highcharts-more.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/map.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/data.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/exporting.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/cl-all.js"></script>
+    <script src="https://cabify.openpartner.cl/openpartner/libs/highcharts/funnel.js"></script> -->   
+    
+	
+ 
+    
+    
+</body>
+</html>
+
+
+	
+    
+    
+   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+

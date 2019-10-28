@@ -1,0 +1,51 @@
+descuento={
+						"formulario":'Carga de archivos de respuesta',
+						"contendio":[	
+										
+										{
+										"grupo":"Semana del Año",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Semana del Año",
+													"tipo":"lista",
+													"opciones":las_semanas,
+													"obligatorio":"si",
+													"nota":"Dia de Devolución",
+													"tamanio":[12,6,4],
+													"id":"semana"
+												}]
+										},
+										{
+										"grupo":"Documentos Obligatorios",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"CSV Contratos",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"id":"cargar_contratos"
+												}
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}]
+				
+}

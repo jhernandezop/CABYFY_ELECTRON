@@ -1,0 +1,3403 @@
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+/*.tabs_archivos{display:none}*/
+
+
+/*#fomulario_form_carga_de_archivos .nav-tabs>li.visto > a {
+
+	color:#3c763d !important;
+	
+}*/
+
+ .dataTables_scroll {
+	/*height: 350px !important;
+    overflow: hidden !important;
+    overflow: scroll !important;
+    padding-bottom: 150px;*/
+}
+
+.tabla_facturas, .tabla_reportes{
+	padding:50px;
+	padding-top:6px;
+}
+.columnna_fija .tabla_facturas {
+    margin-bottom: 130px;
+}
+.sorting_1{
+	padding: 1px 5px !important;
+}
+
+.sorting_1 > .btn-group > .btn-default, .sorting_1 > .btn-group > .btn-default:hover, .sorting_1 > .btn-group > .btn-default:focus {
+    color: #333;
+    background-color: transparent;
+     border-color:transparent; 
+}
+
+#tabla_facturas_filter > label > input, #tabla_reportes_filter > label > input{
+	border:1px solid rgb(204,204,204);
+	padding:5px;
+	border-radius:5px;
+}
+
+.sorting_1 > .btn-group > .dropdown-menu > li{
+	padding:1px;
+	
+}
+.sorting_1 > .btn-group > .dropdown-menu > li:hover{
+	cursor:pointer;
+	background:rgb(102,102,102);
+	color:rgb(255,255,255);
+	
+}
+
+
+.sorting_1 > .btn-group > .dropdown-menu > .divider{
+	padding:0px;
+}
+
+.verpdf{
+	height:500px;
+	
+}
+
+.verxml{
+	background:rgb(255,255,255);
+	padding:20px;
+}
+
+#Modal_glosa{
+	z-index:5000;	
+}
+
+tbody .dropdown-menu > li > a {
+    
+    padding: 0px 0px;
+}
+
+.dataTables_scroll {
+    /*height: 400px; */
+    overflow: visible;
+}
+#total_pendiente{
+	font-weight:bold;
+	font-size:20px;
+	text-align:right;
+}
+#total_nc, #maximo_nc, #monto_documento, #nc_unitvalue{
+	text-align:right;	
+}
+
+#div_ingresar_glosas .dropdown-menu > li > a {
+	font-size: 11px !important;
+}
+
+.seccion-head h2 .badge:hover{
+	cursor: pointer;
+	background: #FFF;
+	color: #000;
+
+}
+
+.seccion-head h2 .ckeck{
+	background: #FFF;
+	color: #000;
+
+}
+
+.table-bordered {
+    border: 0px solid #ddd;
+}
+
+.buttons-excel {
+    padding: 5px !important;
+    border-radius: 5px;
+    margin-top: 10px !important;
+    background: #000;
+    color: #FFF;
+    font-size: 12px;
+}
+
+#tabla_facturas_filter > label > input, #tabla_reportes_filter > label > input {
+    border: 1px solid rgb(204,204,204);
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.dt-buttons {
+    float: left !important;
+     margin-top: 0px !important; 
+     height: 0px !important; 
+}
+
+</style>
+<div class="kanaban_load" id="kanaban_dte"></div>
+</div>
+
+ <!--MODAL-->
+    <div id="Modal_glosa" class="modal fade " role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog  modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content" >
+          <div class="modal-header">
+          	<button type="button" class="salir" data-dismiss="modal">x</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div   class="modal-body">
+          	<div id="agregar_glosa" class="col-xs-12 col-sm-12 col-md-12">
+            
+            </div>
+          	
+          </div>
+          <!--<div class="modal-footer"></div>-->
+        </div>
+    
+      </div>
+    </div>
+
+
+<script type="text/javascript">
+
+//contenido=true
+
+//alert(contenido? "true":"false")
+
+
+
+
+
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+fichas_fichas=[]
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+function baul(parametro, tipo){
+
+	tipo_filtro=tipo;
+	parametro_filtro=parametro;
+	//load_tareas()
+	load_camban()
+}
+
+nueva_busqueda={}
+function buscar_baul(){
+	//alert("alert")
+	//console.log("ES:"+$("#form_form_baul_buscar").serialize())
+	
+	//var nueva_busqueda={}
+	//moment().format('X')
+	//alert(constantes.desarrollo)
+	//if(constantes.desarrollo=="no"){
+		//return false
+		
+	//}else if(constantes.desarrollo=="si"){
+	
+	if($("#fecha_de_desde").val()=="" || $("#fecha_de_hasta").val()==""){
+		
+		$("#fecha_de_desde, #fecha_de_hasta").addClass("fucus_negativo")
+		$(".nota_validacion").html('<div class="alert alert-warning" role="alert"><strong>Selecione</strong>, un rango de fecha valido.</div>')
+	
+	
+	}else if( $("#fecha_de_desde").val()!="" && $("#fecha_de_hasta").val()!=""){
+		//$("#rango").html("Rango: desde el "+$("#fecha_de_desde").val()+", hasta el "+$("#fecha_de_hasta").val())
+		if(moment($("#fecha_de_desde").val()).format('X') > moment($("#fecha_de_hasta").val()).format('X') ){
+			
+			$("#fecha_de_desde, #fecha_de_hasta").addClass("fucus_negativo")
+			$(".nota_validacion").html('<div class="alert alert-warning" role="alert"><strong>"Fecha de hasta"</strong>, no puedes ser menor a "Fecha de desde".</div>')
+		}else{
+			
+			$(".nota_validacion").html("")
+			$("#fecha_de_desde, #fecha_de_hasta").removeClass("fucus_negativo")
+			$("#form_form_baul_buscar").find(".refrescar_validacion").each(function(index, element) {
+				
+				key=$(this).attr("id")
+				//nueva_busqueda.push({eval(key):$(this).val()})
+				
+				if(key=="fecha_de_desde" || key=="fecha_de_hasta" ){
+					valor_fecha="";
+					if($(this).val()!=""){
+						//console.log($(this).val()+"T00:00:00+00:00")
+						if(key=="fecha_de_desde"){
+							fechaBaul=moment($(this).val()).format("YYYY-MM-DD")+"T00:00:00+00:00"
+							valor_fecha= moment(fechaBaul).format("X")
+						}else if(key=="fecha_de_hasta"){
+							fechaBaul=moment($(this).val()).format("YYYY-MM-DD")+"T20:59:59-03:00"
+							valor_fecha= moment(fechaBaul).format("X")
+						}
+						
+						//console.log(moment(fechaBaulInicio).format("X"))
+						
+					}
+					
+					nueva_busqueda[key]=valor_fecha;	
+				}else{
+					
+					if(key=="estado_en_sii" || key=="tipo_documento" ){
+						if($(this).val()!=""){
+							nueva_busqueda[key]=$(this).val();	
+						}else if($(this).val()==""){
+							nueva_busqueda[key]=$(this).val()+"*";	
+						}
+					
+					}else if(key=="rut"){
+						nueva_busqueda[key]=$(this).val().replace(/\./g,"")+"*";	
+					}else{
+						
+						nueva_busqueda[key]=$(this).val()+"*";	
+					}
+					
+				}
+				
+				
+				
+			});
+			load_tareas(nueva_busqueda)
+			
+		}
+		
+		
+	
+	}else /*if( $("#fecha_de_desde").val()=="" || $("#fecha_de_hasta").val()=="")*/{
+		
+		//if($("#fecha_de_desde").val() <= $("#fecha_de_hasta").val() ){
+			
+		
+			$(".nota_validacion").html("")
+			$("#form_form_baul_buscar").find(".refrescar_validacion").each(function(index, element) {
+				
+				key=$(this).attr("id")
+				//nueva_busqueda.push({eval(key):$(this).val()})
+				
+				if(key=="fecha_de_desde" || key=="fecha_de_hasta" ){
+					valor_fecha="";
+					if($(this).val()!=""){
+						valor_fecha= moment($(this).val()).format("X")
+					}
+					
+					nueva_busqueda[key]=valor_fecha;	
+				}else{
+					
+					if(key=="estado_en_sii" || key=="tipo_documento" ){
+						if($(this).val()!=""){
+							nueva_busqueda[key]=$(this).val();	
+						}else if($(this).val()==""){
+							nueva_busqueda[key]=$(this).val()+"*";	
+						}	
+					}else{
+						
+						nueva_busqueda[key]=$(this).val()+"*";	
+					}
+				}
+				
+				
+				
+			});
+			load_tareas(nueva_busqueda)
+		}
+	//}
+	
+	//}
+}
+
+
+function load_camban(tipo){
+	
+	
+			let data_requerida = new Promise((resolve, reject) => {
+				//resolve("FIN")	
+				
+				var dato_en_cache = session.get("clientes_madre");
+				if (dato_en_cache) {
+					
+					
+					//SI EXISTE EN CACHE LO IGULO
+					clientes_madre=	JSON.parse(dato_en_cache)
+					console.log(clientes_madre)
+					//FICHAS EN 
+					fichas_clientes=[]
+					//RECORRO CLIENTES MADRE Y ACTUALIZO LAS FICHAS
+					actualizar_fichas(clientes_madre)
+									
+									
+									
+					
+					console.log(fichas_clientes)
+					resolve("FIN")
+					return false;
+					
+				//SI NO EXISTE LO BUSCO
+				}else{
+					
+					
+					
+					//console.log("B")
+					$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+												   "tx" : "man0",
+												   "usuario" : "op",
+												   "periodo" : "",
+												   "proceso":"cli2admin",
+									   			   "destino":constantes.destino
+												   
+												}
+							),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$(".kanaban_load").html("<div class='loader'></div>");
+									
+							},
+							success: function(data) {
+								//console.log(data)
+								$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+										//LLEVO CLIENTES A CACHE
+										session.set("clientes_madre", JSON.stringify(data.data), tiempo_cache);
+										//COMO NO EXISTE EN CACHE LO IGULO A LA DATA DEL AJAX
+										clientes_madre=data.data;
+										console.log(clientes_madre)
+										//FICHAS EN 
+										fichas_clientes=[]
+										//RECORRO CLIENTES MADRE Y ACTUALIZO LAS FICHAS
+										actualizar_fichas(clientes_madre)
+										
+										
+										
+										resolve("FIN")	
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+				}
+			});
+			
+			
+			
+			
+			
+			Promise.all([data_requerida]).then(values => { 
+			 	if(values[0]=="FIN" ){
+					
+					data={
+    "estatus":"OK",
+    "data": {
+        "interfaz":"simple",
+        "nombre":"CABIFY <span id='ver_refacturacion' class='badge badge-light ckeck'>Refacturación</span> <span class='badge badge-light' id='ver_reporte'>Reporte</span>",
+        "columnas":[ {
+            "nombre":"DOCUMENTOS|<br>&nbsp;",
+            "accion":[ /*{
+                "lista": "Generar Factura", "ws": "", "doc": "generar_factura"
+            }*/
+            ],
+            "tag_metadata":[]
+        }
+        ],
+        "filtros":[ 
+		{
+			"tipo_de_filtro": "baul", 
+			"parametros": [
+				{"id":"Fecha de desde",   "tipo":"fecha"},
+				{"id":"Fecha de hasta",   "tipo":"fecha"},
+				{"id":"Estado en SII",      "tipo":"lista",  "parametros":[{"tag":"Activo","id":"0"}, {"tag":"Inactivo","id":"1"}]},
+				{"id":"rut",                "tipo":"rut"},
+				{"id":"razon_social",       "tipo":"texto"},
+				{"id":"folio",              "tipo":"numero"},
+				{"id":"Cliente_id",         "tipo":"texto"},
+				{"id":"Cliente_id_madre",   "tipo":"texto"},
+				{"id":"tipo_documento",     "tipo":"lista",  "parametros":[
+																			{"tag":"Factura no afecta o exenta","id":"15"}, 
+																			{"tag":"Nota de credito","id":"2"}, 
+																			{"tag":"Nota de debito","id":"17"}
+																			]
+																		}
+			
+			]
+		},{"tipo_de_filtro": "input_fecha_rango", "nombre":"Rango", "presholder": "Selecion rango de fecha..."}
+        ],
+        "fichas":[
+			
+		],
+        "total_invoiceable":542966783,
+		"parametros_baul":[]
+    }
+}
+		kanban_usuario=data.data 
+		construccion_lugar_carga(data.data.fichas, data.data, '#kanaban_dte')
+		$("#kanaban_dte").find(".columnna_oculta").remove();
+		$("#kanaban_dte").find(".modal_baul").click()
+		$("#lista_formularios, #simple").html("");
+
+		//INSERTO ELEMENTO HTML DE INTERFAZ
+		/**/$("#simple").append('<div class="tabla_facturas" >'+
+								'<table id="tabla_facturas" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+									'<thead>'+
+										'<tr class="thead" ></tr>'+
+									'</thead>'+
+									'<tbody></tbody>'+
+							 	'</table>'+
+							 	'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'+
+						   '</div>')
+
+
+		$("#simple").append('<div class="tabla_reportes" >'+
+								'<table id="tabla_reportes" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+									'<thead>'+
+										'<tr class="thead" ></tr>'+
+									'</thead>'+
+									'<tbody></tbody>'+
+							 	'</table>'+
+							 	'<input hidden id="selecion_tabla_reportes" name="selecion_tabla_reportes" type="text"  class="refrescar_validacion  />'+
+						   '</div>')
+		// COMPORTAMIENTO REPORTE VS FACTURACION
+		$("#filtro_Rango").closest(".filtro").hide();
+
+		$("#ver_refacturacion").on("click", function(){
+			$(".ckeck").removeClass("ckeck");
+			$(this).addClass("ckeck")
+			$(".tabla_reportes").hide();
+			$(".tabla_facturas").show();
+			//FILTROS
+			$(".filtro").hide();
+			$(".modal_baul").closest(".filtro").show();
+			console.log("A")
+		})
+		$("#ver_reporte").on("click", function(){
+			$(".ckeck").removeClass("ckeck");
+			$(this).addClass("ckeck")
+			$(".tabla_facturas").hide();
+			$(".tabla_reportes").show();
+			//FILTROS
+			$(".filtro").hide();
+			$("#filtro_Rango").closest(".filtro").show();
+			console.log("B")
+
+		})	
+
+		//SI MUEVO EL FILRO DE FECHA
+		$("#filtro_Rango").on('apply.daterangepicker', function(ev, picker) {
+			//console.log(picker.startDate.format('X') + ' / ' + picker.endDate.format('X'))
+			load_reporte(picker.startDate.format('X'),picker.endDate.format('X'))
+		})
+		
+		
+		
+
+
+
+
+
+		}
+	})
+		
+}
+function load_reporte(fecha_de_desde, fecha_de_hasta){
+
+		//BUSCO DATOS DE REPORTE
+		$.ajax({
+			
+			url: "https://cf.openpartner.cl/",
+			type: "POST",
+			data:JSON.stringify({
+								  "tx": "iF",
+								  "usuario": "op",
+								  "operacion": "iF_emission",
+								  "data2Query": {
+								    "fecha_de_desde": fecha_de_desde,
+								    "fecha_de_hasta": fecha_de_hasta
+								      },
+								  "destino": constantes.destino
+								}
+					   
+			),
+			contentType: "application/json",
+			beforeSend: function () {
+				$("#kanaban_dte").append('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data) {
+				data=JSON.parse(data)
+				console.log(data)
+				if(data.estatus){
+					$(".conter_loader").remove();
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						
+						construir_tabala_reporte(data.data);
+						$("#myModal").modal("hide");
+					
+					}else if(data.estatus=="NO OK"){
+						controlar_no_ok_desconocido_error("NO OK", data)
+							}
+				}else{
+					controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+				}
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				$(".conter_loader").remove();
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+			}			
+		});
+
+
+}
+
+
+
+registros_tabla=""
+
+function load_tareas(nueva_busqueda){
+
+		
+	
+		//BUSCO DETOS DE REFACTURACION
+		$.ajax({
+			
+			url: "https://cf.openpartner.cl",
+			type: "POST",
+			data:JSON.stringify({
+								   "tx" : "D0",
+								   "usuario" : "op",
+								   "operacion":"seekDTE",
+								   "data2Query":nueva_busqueda,
+									"destino":constantes.destino
+								}
+					   
+			),
+			contentType: "application/json",
+			beforeSend: function () {
+									
+					$("#grupo_0form_baul_buscar").append('<div class="conter_loader"><div class="loader"></div></div>');
+					$(".enviar_form_001").attr("disabled", true);
+									
+			},
+			success: function(data) {
+				data=JSON.parse(data)
+				console.log(data)
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						//columnas=[]
+						//console.log(data)
+						/*for (i in data.data.columnas){
+							datos_columna=data.data.columnas[i].nombre.split("|",2);	
+							columnas.push({"columna":datos_columna[0].replace(/\ /g, "_"), "tag_metadata":data.data.columnas[i].tag_metadata})
+						}
+						
+						refrescar_tareas(data.data.fichas, columnas)*/
+						registros_tabla=data.data;
+						construir_tabala_resultado(data.data);
+						$("#myModal").modal("hide");
+					
+					}else if(data.estatus=="NO OK"){
+						controlar_no_ok_desconocido_error("NO OK", data)
+							}
+				}else{
+					controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+				}
+				
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)
+					
+			}			
+		});
+
+		
+
+
+}
+
+
+function construir_tabala_resultado(conteos){
+	
+	$("#myModal").modal("hide")
+	$(".ocultar_columna").click();
+	//console.log(conteos[5])
+	prueb=jsonPath(conteos , "$.._source");
+	prueb2=jsonPath(conteos , "$.[10]");
+	//console.log(prueb)
+	//console.log(prueb2)
+	//return false
+
+	datos_tabla=[]
+	for (i in conteos){
+		//console.log(conteos)
+		new_row={}
+		
+		//SI ES IFACTURES
+	
+		opcion_menu="";
+		if(conteos[i].factura_o.tipoDocumento==2){
+			//opcion_menu=`<li onClick="generar_nc('${conteos[i]._id}')">Generar Nota de Credito</li>`
+			opcion_menu="";
+								
+		}else if(conteos[i].factura_o.tipoDocumento==15){
+			opcion_menu=`<li class="priv_generar_factura" onClick="generar_fa('${conteos[i].factura_o.code}', '${conteos[i].factura_o.totalAmount}', '${conteos[i].factura_o.number}','${conteos[i]._id}','${conteos[i].factura_o.company}')">Generar Nueva Factura</li>
+						<li class="priv_generar_factura" onClick="generar_nc('${conteos[i].factura_o.code}', '${conteos[i].factura_o.totalAmount}', '${conteos[i].factura_o.number}','${conteos[i]._id}','${conteos[i].factura_o.company}')">Generar Nota de Credito</li>`
+						
+		}
+	
+		new_row["opciones"]=`<div class="btn-group">
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Action <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu">
+							  	<li onClick="ver_pdf('${conteos[i].factura_o.urlPDF}', '${conteos[i].factura_o.company}')">Ver PDF</li>
+								<li onClick="descargar_doc('${conteos[i].factura_o.urlPDF}')">Descargar PDF</li>
+								<li role="separator" class="divider"></li>
+								<li onClick="ver_xml('${conteos[i].factura_o.urlXML}', '${conteos[i].factura_o.company}')">Ver XML</li>
+								<li><a href="${conteos[i].factura_o.urlXML}" download="file.xml">Descargar XML</a></li>
+								<li role="separator" class="divider priv_generar_factura"></li>
+								${opcion_menu}
+								<li role="separator" class="divider"></li>
+								<li onClick="generar_co('${conteos[i].factura_o.urlPdf}','${conteos[i].factura_o.totalAmount}','${conteos[i].factura_o.number}','${conteos[i].factura_o.tipoDocumento}','${conteos[i].factura_o.company}')">Enviar mail</li>
+								
+							  </ul>
+							</div>`
+							
+	
+	
+		new_row["number"]=conteos[i].factura_o.number
+		new_row["tipo de documento"]=retornar_codigo_bsale(conteos[i].factura_o.tipoDocumento)
+		new_row["code"]=conteos[i].factura_o.code
+		new_row["company"]=conteos[i].factura_o.company
+		new_row["state"]=retornar_estado_documento(conteos[i].factura_o.state)
+		new_row["totalAmount"]=conteos[i].factura_o.totalAmount
+		//moment($(this).val()).format("YYYY-MM-DD")+"T20:59:59-03:00"
+		new_row["emissionDate"]=moment.unix(conteos[i].factura_o.emissiondate).utc().format('DD-MM-YYYY');
+		new_row["expirationDate"]=moment.unix(conteos[i].factura_o.expiration_date).utc().format('DD-MM-YYYY');
+		new_row["generationDate"]=moment.unix(conteos[i].factura_o.generation_date).utc().format('DD-MM-YYYY');
+		
+		datos_tabla.push(new_row)
+	
+	
+	
+	}
+
+	titulo="sdfsd";
+
+	
+	$(".tabla_facturas").html("")
+	$(".tabla_facturas").html('<table id="tabla_facturas" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+									'<thead>'+
+										'<tr class="thead" ></tr>'+
+									'</thead>'+
+									'<tbody></tbody>'+
+							 	'</table>'+
+							 	'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'
+						   		)
+	generar_tabla("#tabla_facturas", datos_tabla, "")
+	//$("#tabla_reportes_wrapper").hide();
+	console.log(datos_tabla)
+	
+}
+conteos=""
+function construir_tabala_reporte(conteos){
+	conteos=conteos
+	//$("#myModal").modal("hide")
+	//$(".ocultar_columna").click();
+	//console.log(conteos)
+	//conteos=JSON.parse(conteos)
+	titulo="reporte";
+	console.log(conteos)
+	conteos.forEach(function(element, index) {
+			  console.log(element);
+			  //element.emissionDate=moment.unix(element.emissionDate).format('DD-MM-YYYY').add(1, 'days');
+			  element.emissionDate=moment.unix(element.emissionDate).add(1, 'days').format('DD-MM-YYYY');	
+			  element.expirationDate=moment.unix(element.expirationDate).add(1, 'days').format('DD-MM-YYYY');
+			  element.FECHA_VENCIMIENTO=moment.unix(element.FECHA_VENCIMIENTO).add(1, 'days').format('DD-MM-YYYY');		
+			  element.totalAmount=formatNumber(element.totalAmount, "$");
+			  element.MONTO_FACTURA=formatNumber(element.MONTO_FACTURA, "$");
+			  element.MONTO_TOTAL=formatNumber(element.MONTO_TOTAL, "$");
+			  element.MONTO_NOTA_CREDITO=formatNumber(element.MONTO_NOTA_CREDITO, "$");
+			  
+	});
+	console.log(conteos);
+	$(".tabla_reportes").html("")
+	$(".tabla_reportes").html('<table id="tabla_reportes" class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;">'+
+									'<thead>'+
+										'<tr class="thead" ></tr>'+
+									'</thead>'+
+									'<tbody></tbody>'+
+							 	'</table>'+
+							 	'<input hidden id="selecion_tabla_facturas" name="selecion_tabla_facturas" type="text"  class="refrescar_validacion  />'
+						   		)
+	generar_tabla("#tabla_reportes", conteos, "")
+	//revisar_privilegios();
+	//$("#tabla_reportes_wrapper").show();
+	console.log(conteos)
+		
+	
+}		
+		
+		
+
+	
+		
+	load_camban();
+    //setInterval(function(){ load_tareas() }, 30000);	
+		
+	
+		
+
+
+
+
+
+
+
+
+
+/*
+function tarea_click_cliente(){
+
+	//filtro_semana= $("#filtro_Semana").parent(".filtro").find(".btn-default").find('.label-default').html().replace("SEMANA: ","")
+	filtro_semana=""
+	
+		$(".modal-header").html("")
+		//VER UN DOCUMENTO
+		if(ws=="" && documento_accion!=""){
+			//VERIFICO SI EXISTE EN CACHE
+			//var formulario_en_cache = session.get(documento_accion);
+			//if (formulario_en_cache) {
+				//mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, formulario_en_cache, "")
+				//return false;
+			//SI NO EXISTE LO BUSCO
+			//}else{
+			
+				$.ajax({
+					url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+					dataType: "text",
+					cache: false,
+					beforeSend: function () {
+						
+						$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');	
+					},
+					success: function(data){
+						session.set(documento_accion, data, tiempo_cache); // GUARDO EN CACHE
+						//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+						mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, "")	
+					},
+					error: function (xhr, ajaxOptions, thrownError) {}
+				
+				});
+			
+			//}
+			
+			
+			
+		//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK
+		} else if(ws!="" && documento_accion==""){
+			if(metodo_peticion=="GET"){
+				
+				window.location = direccion_ws+ws+"?id_tarea="+identificador+"&filtros_tarea="+key+"&usuario="+usuario_log+"&posicion_tarea="+posicion_tarea+"&authorization=JWT "+localStorage.token;
+				$("#myModal").modal("hide");
+				load_tareas();
+				
+			}else{
+				
+			}
+		
+		//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+		} else if(ws!="" && documento_accion!=""){
+			
+				
+				datos_para_formulario="";
+				//filtro_semana="";
+				//if(documento_accion=="ver_registros_contables"){
+					
+				//}
+				
+				//LAMO DATOS PARA FOMRULARIO
+				let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+					$.ajax({
+						data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0, filtro_semana},
+						url : direccion_ws+ws,
+						type : "POST",
+						headers:{"authorization": "JWT" + " " +localStorage.token },           
+						dataType: 'json',
+						beforeSend: function () {
+							$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');		
+						},
+						success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+								controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							
+							
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						}
+						
+					});
+				});
+				
+				//LAMO  FOMRULARIO
+				Promise.all([llamar_datos_de_formulario]).then(values => {
+					if(values[0]=="SI"  ){
+						//alert("AQUI_b/"+ws+"/"+documento_accion)
+						//VERIFICO SI EXISTE EN CACHE
+						var formulario_en_cache = session.get(documento_accion);
+						if (formulario_en_cache) {
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, formulario_en_cache, datos_para_formulario)
+							return false;
+						//SI NO EXISTE LO BUSCO
+						}else{
+						
+							$.ajax({
+								url : nivel_sistema+"formularios_js/"+documento_accion+".json",
+								dataType: "text",
+								cache: false,
+								beforeSend: function () {},
+								success: function(data){
+									session.set(documento_accion, data, tiempo_cache); // GUARDO EN CACHE
+									cargo_formulario=eval(data)
+									titulo=cargo_formulario.formulario
+									<!--console.log(datos_para_formulario)
+									//alert("AQUI")-->
+									//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+									mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento_accion, data, datos_para_formulario);		
+								},
+								error: function (xhr, ajaxOptions, thrownError) {}
+							});
+						
+						}
+						
+					}
+
+				})
+		}
+
+
+
+
+
+}
+
+
+
+
+
+
+function tarea_dblclick_cliente(){
+	
+	//filtro_semana= $("#filtro_Semana").parent(".filtro").find(".btn-default").find('.label-default').html().replace("SEMANA: ","")
+	filtro_semana=""
+	$(".modal-header").html("<button type='button' class='salir' data-dismiss='modal'>x</button>");
+	
+	//alert(identificador)
+
+	//VER UN DOCUMENTO
+	if(ws=="" && documento!=""){
+		
+		
+		//VERIFICO SI EXISTE EN CACHE
+		var formulario_en_cache = session.get(documento);
+			if (formulario_en_cache) {
+				mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, formulario_en_cache, "")
+				return false;
+		//SI NO EXISTE LO BUSCO
+		}else{
+						
+		
+			$.ajax({
+				url : nivel_sistema+"formularios_js/"+documento+".json",
+				dataType: "text",
+				cache: false,
+				beforeSend: function () {
+					$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+				},
+				success: function(data){
+					session.set(documento, data, tiempo_cache); // GUARDO EN CACHE
+					//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+					mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, "")	
+				},
+				error: function (xhr, ajaxOptions, thrownError) {}
+					
+			});
+		}
+	
+	//ENVIAR INF A UN WS SOBRE UNA TAREA AL HACER CLICK				
+	} else if(ws!="" && documento==""){
+	
+	//BUSCAR INFORMACION DE UN FORMULARIO Y MOSTAR FORMULARIO
+	} else if(ws!="" && documento!=""){
+	
+		
+		datos_para_formulario="";
+		//LAMO DATOS PARA FOMRULARIO
+		let llamar_datos_de_formulario = new Promise((resolve, reject) => {
+		$.ajax({
+			data:{ 'id_tarea':identificador, 'filtros_tarea':key, "usuario":usuario_log, 'posicion_tarea':posicion_tarea, 'paso_ws':0, filtro_semana},
+			url : direccion_ws+ws,
+			type : "POST",
+			headers:{"authorization": "JWT" + " " +localStorage.token },           
+			dataType: 'json',
+			beforeSend: function () {
+				$("#lista_formularios").html('<div class="conter_loader"><div class="loader"></div></div>');
+			},
+			success: function(data){
+							
+							if(data.estatus){
+								if(data.estatus=="OK" || data.estatus=="FIN"){
+									datos_para_formulario=data.data
+									resolve("SI")
+								}else if(data.estatus=="NO OK"){
+									controlar_no_ok_desconocido_error("NO OK", data)
+								}
+							}else{
+								controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+							}
+							
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							controlar_no_ok_desconocido_error("ERROR", xhr.status)
+						}
+						
+					});
+			});
+				
+				//LAMO  FOMRULARIO
+			Promise.all([llamar_datos_de_formulario]).then(values => {
+				if(values[0]=="SI"){
+					//VERIFICO SI EXISTE EN CACHE
+					var formulario_en_cache = session.get(documento);
+						if (formulario_en_cache) {
+							mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, formulario_en_cache, datos_para_formulario)
+							return false;
+					//SI NO EXISTE LO BUSCO
+					}else{
+						$.ajax({
+							url : nivel_sistema+"formularios_js/"+documento+".json",
+							dataType: "text",
+							cache: false,
+							beforeSend: function () {},
+							success: function(data){
+								session.set(documento, data, tiempo_cache); // GUARDO EN CACHE
+								//INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+								mostrar_modal_formulario_de_formulario_json(kanban_usuario.interfaz, documento, data, datos_para_formulario)
+								
+										
+							},
+								error: function (xhr, ajaxOptions, thrownError) {}
+							});
+							
+						}
+					}
+
+				})
+		
+		
+	}
+		
+		
+}
+
+*/
+
+/////FUNCIONES DEL CLIENTE
+function enviar_archivos(){}
+
+
+
+
+
+
+function descargar(documento){
+	
+	nota_negativa="";
+	validacampo_auto(["fecha_pago","fecha","si"]);
+	validacampo_auto(["formato","lista","si"]);
+	if(nota_negativa==""){
+		//console.log(direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&fecha_pago="+$("#fecha_pago").val()+"&authorization=JWT "+localStorage.token)
+		window.location = direccion_ws+"genera_pago_nomina?id_tarea="+documento+"&formato="+$("#formato").val()+"&fecha_pago="+$("#fecha_pago").val().replace(/\//g,'-')+"&token="+localStorage.token;
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+}
+
+
+function enviar_archivos_banco(){}
+
+
+
+
+function format(input){
+	var num = input
+	
+	num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+	num = num.split('').reverse().join('').replace(/^[\.]/,'');
+	input.value = num;
+
+	return  num;
+}											
+	
+	
+function enviar_archivos_pago(paso, condicion){}
+
+function descargar_formato(id){
+	
+	nota_negativa=""
+	validacampo_auto(["formato","lista","si"])
+	if(nota_negativa==""){
+		window.location = direccion_ws+"descargar_pago_nomina?id_tarea="+id+"&formato="+$("#formato").val();
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+	
+	
+}
+
+function generar_factura(){
+	nota_negativa=""
+	
+	validacampo_auto(["tip_descuento","lista","si"])
+	validacampo_auto(["fecha_emision","fecha","si"])
+	validacampo_auto(["fecha_vencimiento","fecha","si"])
+	validacampo_auto(["rut_cliente","texto","si"])
+	//validacampo_auto(["ciudad","texto","si"])
+	validacampo_auto(["razon_social","texto","si"])
+	//validacampo_auto(["comuna","texto","si"])
+	validacampo_auto(["giro","texto","si"])
+	validacampo_auto(["direccion","texto","si"])
+	validacampo_auto(["email","texto","si"])
+	
+	validacampo_auto(["precio","texto","si"])
+	validacampo_auto(["cantidad","texto","si"])
+	validacampo_auto(["producto_glosa","lista","si"])
+	validacampo_auto(["decuento","texto","si"])
+	
+	validacampo_auto(["metodo_pago","lista","si"])
+	
+	//validacampo_auto(["folio_01","texto","si"])
+	//validacampo_auto(["fecha_doc_01","texto","si"])
+	//validacampo_auto(["razon_doc_01","texto","si"])
+	//validacampo_auto(["doc_01","lista","si"])
+	
+	nota_negativa=""
+	if(nota_negativa==""){
+		
+		
+	
+	
+	/*data_sent={
+				"codeSii": 34,
+				"documentTypeId": 27,
+				"officeId": 1,
+				"emissionDate": Date.parse($("#fecha_emision").val()),
+				"expirationDate": Date.parse($("#fecha_vencimiento").val()),
+				"declareSii": 1,
+				"client": {
+					"code": $("#rut_cliente").val(), 
+					"city": $("#ciudad").val(), 
+					"company": $("#razon_social").val(), 
+					"municipality":"",
+					"comuna":$("#comuna").val(), 
+					"activity": $("#giro").val(), 
+					"address": $("#direccion").val(), 
+					"email": $("#email").val(), 
+					"isForeigner": 1
+				}
+				,
+				"sendEmail": 1,
+				"details": [ {
+					"netUnitValue": $("#precio").val(), 
+					"quantity": $("#cantidad").val(), 
+					"comment": $("#producto_glosa").val(), 
+					"discount": $("#decuento").val()
+				}],
+				"payments": [ {
+					"paymentTypeId": $("#metodo_pago").val(), 
+					"amount": "", 
+					"recordDate": ""
+				}],
+				"references": [ {
+					"number":$("#folio_01").val(), 
+					"referenceDate": Date.parse($("#fecha_doc_01").val()), 
+					"reason": $("#razon_doc_01").val(), 
+					"codeSii": $("#doc_01").val()
+				}]
+			}*/
+			
+		//data_sent={"codeSii":34,"documentTypeId":27,"officeId":1,"emissionDate":1567310400000,"expirationDate":1546311600000,"declareSii":1,"client":{"code":"24.834.577-2","city":"","company":"imaginex","municipality":"","comuna":"","activity":"giro","address":"direccion","email":"kquintero@openpartner.cl","isForeigner":1},"sendEmail":1,"details":[{"netUnitValue":"500","quantity":"1","comment":"Servicio de transporte privado remunerado de pasajeros","discount":"0"}],"payments":[{"paymentTypeId":"21","amount":"","recordDate":""}],"references":[{"number":"123","referenceDate":null,"reason":"Orden de Compra 123","codeSii":"35"}]}
+		
+		/*data_sent=""
+		gestion=""
+				$("#form_form_generar_factura").find(".refrescar_validacion").each(function(index, element) {
+					if(data_sent==""){
+						data_sent="'"+$(this).attr("id")+"':'"+$(this).val()+"'"
+					}else{
+						data_sent=data_sent+",'"+$(this).attr("id")+"':'"+$(this).val()+"'"
+					}	;
+                });
+		data_sent="{ "+data_sent.replace(/\'/g,'"')+"}"
+		data_sent=JSON.parse(data_sent)	
+		console.log(JSON.stringify(data_sent))*/
+		
+		
+		
+		data_sent={
+   					 "usuario": $("#usuario").val(), 
+					 "tip_descuento": $("#tip_descuento").val(), 
+					 "fecha_emision": $("#fecha_emision").val(),  
+					 "fecha_vencimiento": $("#fecha_vencimiento").val(), 
+					 "rut_cliente": $("#rut_cliente").val(), 
+					 "razon_social": $("#razon_social").val(), 
+					 "email": $("#email").val(), 
+					 "giro": $("#giro").val(), 
+					 "direccion": $("#direccion").val(), 
+					 "ciudad":$("#ciudad").val(),  
+					 "comuna": $("#comuna").val(), 
+					 "producto_glosa": $("#producto_glosa").val(), 
+					 "precio": $("#precio").val(),  
+					 "cantidad":$("#cantidad").val(), 
+					 "decuento": $("#decuento").val(), 
+					 "metodo_pago": $("#metodo_pago").val(), 
+					 "referencias":[
+					 		{"doc_01": $("#doc_01").val(),"folio_01": $("#folio_01").val(),"fecha_doc_01": $("#fecha_doc_01").val(),"razon_doc_01": $("#razon_doc_01").val()},
+							{"doc_02": $("#doc_02").val(),"folio_02": $("#folio_02").val(),"fecha_doc_02": $("#fecha_doc_02").val(),"razon_doc_02": $("#razon_doc_02").val()},
+							{"doc_03": $("#doc_03").val(),"folio_03": $("#folio_03").val(),"fecha_doc_03": $("#fecha_doc_03").val(),"razon_doc_03": $("#razon_doc_03").val()},
+							{"doc_04": $("#doc_04").val(),"folio_04": $("#folio_04").val(),"fecha_doc_04": $("#fecha_doc_04").val(),"razon_doc_04": $("#razon_doc_04").val()}
+					 
+					 ]
+					  
+					
+					 
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					   
+					  
+					 ,
+}
+		
+		
+		
+		$.ajax({
+			url: "https://cf.openpartner.cl",
+			type: "POST",
+			data:JSON.stringify({
+					"tx" : "f1",
+					"usuario" : "op",
+					"documento" : data_sent,
+					"destino":constantes.destino
+				}
+			),
+			contentType: "application/json",
+			beforeSend: function () {},
+			success: function(data){
+				
+				console.log(data)
+				
+				fichas_fichas.push({
+            					"id": data.id, 
+								"posicion": "FACTURAS", 
+								"indicador": '<i class="fa fa-user" style="font-size:16px !important;" aria-hidden="true"></i>&nbsp;FACTURA:'+data.id+' <br><h4  style="padding-left: 15px;"> <span class="label label-success" >$'+data.netAmount+'</span> </h4>', 
+								"busqueda":["BH-S0319", null, null, null, null, null], 
+								"siguiente_accion":[],
+								"accion":[],
+								"tag_metadata":["FACTURAS"],
+								"alarmas":[],
+								"descripcion":"&nbsp;",
+								"filtros_tarea": {"tabla": ""},
+								"tag_historico":[],
+								"estilo":"success|habilitada",
+								"filtros":[],
+								"semana":"0319",
+								"monto_pagar_socio":0
+							})
+							
+							load_tareas()
+                    			
+			
+			},
+			error: function (xhr, ajaxOptions, thrownError) {}
+							
+		});
+	
+	
+	
+	}
+	
+}
+//alert("wedw")
+
+
+
+
+
+
+
+/*const { remote } = require('electron');
+const PDFWindow = require('electron-pdf-window')*/
+
+/*const { BrowserWindow } = require('electron').remote
+	const PDFWindow = require('electron-pdf-window')*/
+const easypdf = require('easypdf');
+//const PDFWindow = require('electron-pdf-window');
+function ver_pdf(filePath, empresa){
+	
+	
+	
+	$("#myModal").modal("show");
+	
+	
+	
+	$("#myModal").find(".modal-dialog").removeClass("modal-sm");
+
+	$("#myModal").find(".modal-dialog").addClass("modal-lg");
+	$("#myModal").find(".modal-body").html("<div class='verpdf'><div>")
+	$("#myModal").find(".modal-title").html(empresa);
+	
+	
+	
+	
+	let pdf_file = filePath
+	let container = easypdf(pdf_file).setContainer('#myModal .verpdf');
+	container.render();
+		
+	
+	
+	
+}
+
+
+function  generar_nc(rut, monto_factura, folio, id_base, nombre_empresa){
+	console.log(id_base)
+	//,
+	var documento_actual = registros_tabla.find(function(element) {
+	  return element.factura_o.number == folio;
+	});
+	
+	
+	nc_a_operar=0
+	let buscar_glosas = new Promise((resolve, reject) => {
+					
+					
+					
+					glosas_encontradas={
+										  "href": "https://api.bsale.cl/v1/documents/8450/details.json",
+										  "count": 3,
+										  "limit": 25,
+										  "offset": 0,
+										  "items": [
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8505.json",
+											  "id": 8505,
+											  "lineNumber": 1,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7893.json",
+												"id": 7893,
+												"description": "Servicio de transporte 2019 Abril CC Empresa 422",
+												"code": "1557846766"
+											  },
+											  "note": ""
+											},
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8506.json",
+											  "id": 8506,
+											  "lineNumber": 2,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7894.json",
+												"id": 7894,
+												"description": "Servicio de transporte 2019 Abril CC Pyme 214",
+												"code": "1557846767"
+											  },
+											  "note": ""
+											},
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8507.json",
+											  "id": 8507,
+											  "lineNumber": 3,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7895.json",
+												"id": 7895,
+												"description": "Servicio de transporte 2019 Abril CC Factoring 510 ",
+												"code": "1557846767"
+											  },
+											  "note": ""
+											},
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8507.json",
+											  "id": 8507,
+											  "lineNumber": 3,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7895.json",
+												"id": 7895,
+												"description": "Servicio de transporte 2019 Abril CC Factoring 510 ",
+												"code": "1557846767"
+											  },
+											  "note": ""
+											},
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8507.json",
+											  "id": 8507,
+											  "lineNumber": 3,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7895.json",
+												"id": 7895,
+												"description": "Servicio de transporte 2019 Abril CC Factoring 510 ",
+												"code": "1557846767"
+											  },
+											  "note": ""
+											},
+											{
+											  "href": "https://api.bsale.cl/v1/documents/8450/details/8507.json",
+											  "id": 8507,
+											  "lineNumber": 3,
+											  "quantity": 1.0,
+											  "netUnitValue": 27626.0,
+											  "totalUnitValue": 27626.0,
+											  "netAmount": 27626.0,
+											  "taxAmount": 0.0,
+											  "totalAmount": 27626.0,
+											  "netDiscount": 0.0,
+											  "totalDiscount": 0.0,
+											  "variant": {
+												"href": "https://api.bsale.cl/v1/variants/7895.json",
+												"id": 7895,
+												"description": "Servicio de transporte 2019 Abril CC Factoring 510 ",
+												"code": "1557846767"
+											  },
+											  "note": ""
+											}
+										  ]
+										}
+					
+					
+					$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+													"tx":"D0",
+													"operacion":"findNCs",
+													"usuario":"op",
+													"data2query":{"id_factura":documento_actual.factura_o.factura_id_bsale},
+									  				"destino":constantes.destino
+												
+												}),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										nc_a_operar_x=data.datos
+										console.log(nc_a_operar_x)
+										
+										
+										for (i in nc_a_operar_x){
+											console.log(nc_a_operar_x[i].NC_monto)
+											nc_a_operar=nc_a_operar+nc_a_operar_x[i].NC_monto	
+										}
+										
+										resolve("OK")
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+									}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});	
+				
+				
+				
+				});
+				
+				//LAMO  FOMRULARIO
+	Promise.all([buscar_glosas]).then(values => {
+		if(values[0]=="OK"  ){
+						
+						
+		
+	
+	
+		formulario_nc={
+						"formulario":'Notas de Credito',
+						"contendio":[	
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+														"campo":  "Generar",
+														"tipo": "lista",
+														"opciones":[{"tag":"Nota de Credito Total","id":"total"},{"tag":"NC Parcial","id":"parcial"},{"tag":"Modificar","id":"modificar"}],
+														"obligatorio":"no",
+														"nota":"Sleciones una acción a ejecutar",
+														"tamanio":[12,12,12],
+														"id":"accion_nc"
+													},{
+														"campo":  "Monto del folio",
+														"tipo": "numero",
+														"opciones":documento_actual.factura_o.exemptAmount,
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"monto_documento"
+													},{
+														"campo":  "Total en NC",
+														"tipo": "numero",
+														"opciones":"0",
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"total_nc"
+													},{
+														"campo":  "Maximo en NC",
+														"tipo": "numero",
+														"opciones":"0",
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"maximo_nc"
+													},{
+													"campo":"Fecha de Emisi&oacute;n",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha Emisi&oacute;n",
+													"tamanio":[12,12,12],
+													"id":"nc_emissionDate"
+												},{
+													"campo":"Precio",
+													"tipo":"numero",
+													"opciones":[0],
+													"obligatorio":"si",
+													"nota":"Precio",
+													"tamanio":[12,12,12],
+													"id":"nc_unitValue"
+												},{
+													"campo":"Comentario",
+													"tipo":"area_texto",
+													"opciones":[],
+													"obligatorio":"",
+													"nota":"Ingrese comentarios",
+													"tamanio":[12,12,12],
+													"maximo":"400",
+													"alto":"4",
+													"id":"nc_motive"
+													}]
+										}/*,
+										{
+										"grupo":"",
+										"tamanio":[12,6,6],
+										"campos":[{
+													"campo":"Fecha de Emisi&oacute;n",
+													"tipo":"div",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha Emisi&oacute;n",
+													"tamanio":[12,12,12],
+													"id":"div_glosas"
+												}]
+										}*/
+									
+						],
+						"opciones":[{
+							"boton":"GENERAR",
+							"ws":"",
+							"funcion":"generar_nc_mo('"+folio+"','"+id_base+"')"
+						}]
+				
+			}
+			formulario_nc.contendio[0].campos[2].opciones=nc_a_operar
+			formulario_nc.contendio[0].campos[3].opciones=documento_actual.factura_o.exemptAmount-nc_a_operar
+	 		
+			
+			mostrar_modal_formulario_de_formulario_json("kanban", "generar_nc", formulario_nc, "")
+		 	//$(".enviar_form_001").attr("disabled", true);
+		 	$("#myModal").find(".modal-dialog").removeClass("modal-sm, modal-lg");
+		 	//$("#myModal").find(".modal-dialog").addClass("modal-lg")
+			$("#myModal").find(".modal-title").html("GENERAR NC O MODIFICAR EL FOLIO:"+ folio)
+			$("#grupo_0form_generar_nc").prepend('<br><div class="col-xs-12 col-sm-12 col-md-12"><div class="alert alert-info" role="alert"><strong>Selecione</strong>, una opcion para generar notas de credito o modificar datos.</div></div>')
+			$("#grupo_1form_generar_nc").prepend('<br><div class="col-xs-12 col-sm-12 col-md-12"><div class="alert alert-info" role="alert"><strong>Detalle glosas en Folio:</strong> '+folio+'</div></div>')
+		
+			$("#nc_emissiondate, #nc_unitvalue, #nc_motive").closest(".input-group").hide()
+			
+			$("#select_accion_nc").find("a").click(function(){
+				//alert($(this).html())
+				$("#nc_emissiondate, #nc_unitvalue, #nc_motive").closest(".input-group").hide()
+				
+				if($(this).html()=="Nota de Credito Total"){
+					$("#nc_emissiondate, #nc_unitvalue, #nc_motive").closest(".input-group").hide();
+					$("#nc_emissiondate").closest(".input-group").show()
+				}else if ($(this).html()=="NC Parcial"){
+					$("#nc_emissiondate, #nc_unitvalue, #nc_motive").closest(".input-group").show()
+				}else if($(this).html()=="Modificar"){
+					$("#nc_emissiondate, #nc_motive").closest(".input-group").show()
+					
+				}
+				
+					
+			})
+			
+			
+			mensaje_error={
+				mensaje_error:"Documento Anulado"
+			}
+			if(Number($("#maximo_nc").val())<=0){
+				controlar_no_ok_desconocido_error("NO OK", mensaje_error)
+				$("#accion_nc").closest(".col-xs-12").hide();
+				$(".enviar_form_001").hide();
+			}
+		
+			
+			/*$("#div_glosas").append(`<div class="row" style="font-weight:bold; font-size:12px;">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="row">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														GLOSA
+													</div>
+													<div class="col-xs-1 col-sm-1 col-md-1">
+														CAN.
+													</div>
+													<div class="col-xs-5 col-sm-5 col-md-5">
+														MONTO
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<hr style="margin: 0px !important;">
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12" id="insert_glosas" style="max-height: 220px; overflow: auto;">
+											
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<hr style="margin: 0px !important;">
+											</div>
+										</di>`)
+			
+			glosas_encontradas.items.forEach(function(element, index) {
+			  console.log(element);
+			  	$("#insert_glosas").append(`<div class="row" style="font-size:12px;">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="row">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														${element.variant.description}
+													</div>
+													<div class="col-xs-1 col-sm-1 col-md-1">
+														${element.quantity}
+													</div>
+													<div class="col-xs-5 col-sm-5 col-md-5">
+														<div class="input-group" style="">
+															<span class="input-group-addon" id="basic-addon1">monto</span>
+															<input value="${element.totalAmount}" id="monto_${index}" name="monto_${index}" type="text" placeholder="Monto" class="form-control refrescar_validacion" required="required">
+														</div>
+													</div>
+												</div>
+											</div>
+										</di>`)
+			});*/
+
+			
+			
+		}
+	})
+}
+
+
+
+function generar_nc_mo(folio,id_base){
+	
+	//console.log(Number($("#nc_unitvalue").val()), $("#maximo_nc").val())
+	if(Number($("#nc_unitvalue").val())>Number($("#maximo_nc").val())){
+		$(".nota_validacion").html("");
+		$(".nota_validacion").append('<div class="alert alert-danger text-center" role="alert">El  monto  de la Nota de Cr&eacute;dito a generar es mayor que el maximo disponible</div>')
+		
+		
+	}else{
+		
+	//return false;	
+	$(".nota_validacion").html("");
+	
+	nota_negativa=""
+	validacampo_auto(["accion_nc","lista","si","?Que desea Generar?"])
+	
+	
+	if($("#accion_nc").val()=="total"){
+			
+			validacampo_auto(["nc_emissiondate","fecha","si","Fecha"])
+			
+			fecha_nc=moment($("#nc_emissiondate").val()).format("YYYY-MM-DD")
+			modifications={
+				"nc_emissionDate":moment(fecha_nc).format("X"),
+				"nc_priceAdjustment":1,
+				"nc_unitValue":$("#maximo_nc").val(),
+				"nc_editTexts":0,
+				"nc_quantity":0,
+				"nc_motive":"Anula documento"
+				
+			}
+			
+			
+	}else if ($("#accion_nc").val()=="parcial"){
+			
+			validacampo_auto(["nc_emissiondate","fecha","si","Fecha"])
+			validacampo_auto(["nc_unitvalue","numero","si","Monto"])
+			
+			fecha_nc=moment($("#nc_emissiondate").val()).format("YYYY-MM-DD")
+			//alert(fecha_nc)
+			modifications={
+				"nc_emissionDate":moment(fecha_nc).format("X"),
+				"nc_priceAdjustment":1,
+				"nc_unitValue":$("#nc_unitvalue").val(),
+				"nc_editTexts":0,
+				"nc_quantity":0,
+				"nc_motive":$("#nc_motive").val()
+				
+			}
+			
+	}else if($("#accion_nc").val()=="modificar"){
+			
+			validacampo_auto(["nc_emissiondate","texto","si","Fecha"])
+			fecha_nc=moment($("#nc_emissiondate").val()).format("YYYY-MM-DD")
+			modifications={
+				"nc_emissionDate":moment(fecha_nc).format("X"),
+				"nc_priceAdjustment":0,
+				"nc_unitValue":0,
+				"nc_editTexts":1,
+				"nc_quantity":0,
+				"nc_motive":$("#nc_motive").val()
+				
+			}
+			
+	}
+	
+	
+	console.log(nota_negativa)
+	
+	
+	if(nota_negativa==""){
+		if($("#accion_nc").val()!=""){
+			
+				/*glosa_cliente=""
+				for (i in registros_tabla){
+					//console.log(registros_tabla[i]._source.number+"=>"+folio)
+					//console.log(registros_tabla[i]._id+"=>"+id_base)
+					if(registros_tabla[i]._source.number==folio && registros_tabla[i]._id==id_base){
+						glosa_cliente=registros_tabla[i];
+						glosa_cliente._source["_id"]=registros_tabla[i]._id
+						//console.log(glosa_cliente)
+						//return false
+						break;
+					}
+					
+					
+				}*/
+				
+				var glosa_cliente = registros_tabla.find(function(element) {
+				  return element.factura_o.number == folio;
+				});
+				
+				data_envio={"tx": "f1",
+						  "usuario": "op",
+						  "operacion": "dte_nc",
+						  "destino": constantes.destino,
+						  "modifications":modifications,
+						  "doc_original":glosa_cliente.factura_o}
+				//console.log(registros_tabla)		  
+				//console.log(data_envio)
+				//return false;
+				$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify(data_envio),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$("#form_form_generar_nc").append('<div class="conter_loader"><div class="loader"></div></div>');
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										load_tareas(nueva_busqueda)
+										
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+				
+				
+				
+					
+		}
+		
+	}
+	
+	
+	}
+}
+
+function  generar_co(filePath, monto, folio, n_documento, empresa){
+	
+	
+	
+	
+	var formattedBody = empresa+"\n\nEstá disponible el Documento "+retornar_codigo_bsale(n_documento)+" Nº "+folio+" por un monto de $ "+monto+".\n"+
+						"Para ver el documento haga click en el siguiente link:\n "+filePath+"\n\n"+
+						"Atentamente,\n\n"+
+						"Cabify";
+	var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
+	window.location.href = mailToLink;
+	
+
+
+}
+
+
+
+
+function  generar_fa(rut, monto_factura, folio, id_base, nombre_empresa){
+	
+	
+	arreglo_refacturacion=[]
+	
+	monto_factura=monto_factura
+	//DETERMINO CLEINETES A REFACTURAR	
+	/*clientes_a_facturar=[]
+	for (i in clientes_madre){
+		
+		if (clientes_madre[i]._source.CLIENT_TAX_CODE==rut){
+			
+			console.log(clientes_madre[i]._source)
+			clientes_a_facturar.push(clientes_madre[i]._source)
+			
+		}
+		
+		
+		
+	}
+	
+	console.log(clientes_a_facturar)*/
+	/*for(i in registros_tabla){
+		if(){}
+			
+		
+	}*/
+	
+	var documento_actual = registros_tabla.find(function(element) {
+	  return element.factura_o.number == folio;
+	});
+	
+	console.log(documento_actual)
+	
+	
+	/**/
+	nc_a_operar=0
+	nota_negativa="";
+	//NOTA DE REFACTURACION
+	formulario_refacturar={
+						"formulario":'Refactrurar',
+						"contendio":[	
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[]
+										},
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+														"campo":  "Fecha de emisión de la NC",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Fceha",
+														"tamanio":[12,12,12],
+														"id":"nc_emissionDate"
+													},{
+														"campo":  "Total en NC",
+														"tipo": "numero",
+														"opciones":"0",
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"total_nc"
+													},{
+														"campo":  "Total Desglose",
+														"tipo": "numero",
+														"opciones":"0",
+														"obligatorio":"no",
+														"estado":"lectura_envio",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"total_desglose"
+													},{
+														"campo":  "Total Folio: "+folio,
+														"tipo": "numero",
+														"opciones":monto_factura,
+														"obligatorio":"no",
+														"estado":"lectura",
+														"nota":"",
+														"tamanio":[12,12,12],
+														"id":"total_folio"
+													},{
+														"campo":  "Total Pendiente",
+														"tipo": "numero",
+														"opciones":monto_factura,
+														"obligatorio":"no",
+														"estado":"lectura",
+														"nota":"",
+														"tamanio":[12,12,12],
+														"id":"total_pendiente"
+													}]
+										}
+									
+						],
+						"opciones":[{
+							"boton":"REFACTURAR",
+							"ws":"",
+							"funcion":"generar_refacturacion('"+folio+"')"
+						}]
+				
+			}
+			
+	clientes_a_facturar=""
+		
+	
+		
+	let clientes_asociados = new Promise((resolve, reject) => {
+		
+		$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+													"tx":"D0",
+													"operacion":"clientTree",
+													"usuario":"op",
+													"cliente":{
+															"CLIENT_TAX_CODE":rut
+														},
+									  				 "destino":constantes.destino
+												
+												}),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									//$(".kanaban_load").html("<div class='loader'></div>");
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+									
+										clientes_a_facturar=data.data
+										resolve("OK")
+										
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});	
+	
+	
+	
+	
+	})
+	let nc_asociadas = new Promise((resolve, reject) => {
+		
+	
+			$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+													"tx":"D0",
+													"operacion":"findNCs",
+													"usuario":"op",
+													"data2query":{"id_factura":documento_actual.factura_o.factura_id_bsale},
+									  				"destino":constantes.destino
+												
+												}),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										nc_a_operar_x=data.datos
+										console.log(nc_a_operar_x)
+										
+										
+										for (i in nc_a_operar_x){
+											console.log(nc_a_operar_x[i].NC_monto)
+											nc_a_operar=nc_a_operar+nc_a_operar_x[i].NC_monto	
+										}
+										
+										resolve("OK")
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+									}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});	
+	
+	
+	})
+					
+	
+	Promise.all([clientes_asociados, nc_asociadas]).then(values => { 
+		
+		if(values[0]=="OK" && values[1]=="OK" ){
+		
+		formulario_refacturar.contendio[1].campos[1].opciones=nc_a_operar
+		monto_factura=monto_factura-nc_a_operar
+		formulario_refacturar.contendio[1].campos[4].opciones=formulario_refacturar.contendio[1].campos[4].opciones-nc_a_operar
+
+
+		
+		
+		for (i in clientes_a_facturar){
+											
+											cliente_recuperado=clientes_a_facturar[i]
+											for (b in clientes_madre){
+												//console.log(clientes_madre[b])
+												//console.log(clientes_a_facturar[i]._id)
+												if(clientes_madre[b]._id==clientes_a_facturar[i]._id){
+													//console.log(clientes_madre[b]._source.DETALLE_CC_FACTURACION)
+													clientes_a_facturar[i]._source.CLIENT_NAME=clientes_a_facturar[i]._source.CLIENT_NAME+"&nbsp;"+clientes_madre[b]._source.DETALLE_CC_FACTURACION
+													//viendo_al_cliente=clientes_madre[i]
+												}
+											}
+											
+											
+										}
+										
+										
+										for (i in clientes_a_facturar){
+													
+													var new_tag={
+																	"campo":  clientes_a_facturar[i]._source.CLIENT_NAME,
+																	"tipo": "numero",
+																	"opciones":"",
+																	"obligatorio":"no",
+																	"nota":"Ingresar Monto",
+																	"tamanio":[12,12,12],
+																	"estado":"lectura_envio",
+																	"botones":[{"nombre":"+Agregar","funcion":"agregar_referencias_glosas(`"+clientes_a_facturar[i]._id+"`,`"+clientes_a_facturar[i]._source.CLIENT_TAX_CODE+"`,`"+clientes_a_facturar[i]._source.CLIENT_NAME+"`)"}],
+																	"duplicar":"si",
+																	"id":clientes_a_facturar[i]._id
+																}
+													formulario_refacturar.contendio[0].campos.push(new_tag)	
+													
+												
+										}
+	
+		
+		//console.log( new_tag_formulario)	
+		//FUNCIONES INTEGRADAS CON KANBAN INTERFAZ, ID/NOMBREDOCUEMNTO, FORMULARIO JSON, DATOS DE FORMILARIO CUAN HAY WS
+		 mostrar_modal_formulario_de_formulario_json("kanban", "refacturar", formulario_refacturar, "")
+		 $(".enviar_form_001").attr("disabled", true);
+		 $("#myModal").find(".modal-dialog").removeClass("modal-sm");
+		 $("#myModal").find(".modal-dialog").addClass("modal-lg")
+		$("#myModal").find(".modal-title").html("REFACTURACION DE FOLIO:"+ folio)
+		$("#grupo_0form_refacturar").prepend('<br><div class="col-xs-12 col-sm-12 col-md-12"><div class="alert alert-info" role="alert"><strong>Ingrese los Montos por cada R.U.T</strong>, asociados a la empresa matriz, al cual desea cargar el monto total o parcial de la factura original. </div></div>')
+		
+		
+		mensaje_error={
+			mensaje_error:"Documento Anulado"
+		}
+		if(Number($("#total_pendiente").val())-Number($("#total_nc").val())<=0){
+			controlar_no_ok_desconocido_error("NO OK", mensaje_error)
+			
+			$("#grupo_0form_refacturar, .enviar_form_001").hide();
+		}
+		
+		
+		
+		
+		
+		
+		
+		}
+	
+	
+	})
+			
+			
+			
+	/*$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify({
+													"tx":"D0",
+													"operacion":"clientTree",
+													"usuario":"op",
+													"cliente":{
+															"CLIENT_TAX_CODE":rut
+														},
+									  				 "destino":constantes.destino
+												
+												}),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									//$(".kanaban_load").html("<div class='loader'></div>");
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+										
+										clientes_a_facturar=data.data
+										
+										
+	
+		
+		
+		
+ 
+
+		
+		
+										
+										
+										
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+	
+	
+	
+	
+	
+	
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+}
+
+function agregar_referencias_glosas(id,rut_empresa,nombre_empresa ){
+//function funcion_click_boton_imput(datos){
+
+
+//id=datos[0]
+//rut_empresa=datos[1]
+//nombre_empresa=datos[2]
+//console.log(datos)
+
+//return false
+console.log(id.toLowerCase())	
+//console.log(arreglo_refacturacion)
+	data_rescatada="";
+	if($("#"+id.toLowerCase()).val()!=""){
+		//data_rescatada=JSON.parse($("#"+id.toLowerCase()).attr("arreglo_factura"));	
+	}
+	console.log(data_rescatada)	
+	
+	viendo_al_cliente={}
+	for (i in clientes_madre){
+		if(clientes_madre[i]._id==id){
+			//console.log(clientes_madre[i])
+			viendo_al_cliente=clientes_madre[i]._source
+		}
+	}
+	
+	console.log(viendo_al_cliente)
+	//return false
+	
+
+	console.log(arreglo_refacturacion)
+
+	$("#Modal_glosa").modal("show");
+	$("#Modal_glosa .modal-title").html("AGREGAR GLOSA Y REFERENCIAS");
+	
+	//NOTA DE REFACTURACION
+	var formulario_agregar_referencias_glosas={
+						"formulario":'AGREGAR GLOSA Y REFERENCIAS',
+						"contendio":[	
+										{
+										"grupo":"Fecha de Emisión",
+										"tamanio":[6,6,6],
+										"campos":[{
+														"campo":  "Fecha de Emisión",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"fecha_emision"
+													}]
+										}/*,
+										{
+										"grupo":"Seleciona las Referencias",
+										"tamanio":[12,12,12],
+										"campos":[{
+														"campo":  "Referencia",
+														"tipo": "lista_multi",
+														"opciones":referencias_duro,
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[12,12,12],
+														"id":"referencias"
+													}]
+										}*/,
+										{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_referencia" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_referencia" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_referencias"
+													}
+												]
+										},
+										{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_glosa" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_glosa" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_glosas"
+													}
+												]
+										}
+									
+						],
+						"opciones":[{
+							"boton":"AGREGAR",
+							"ws":"",
+							"funcion":"cargar_glosa('"+id+"')"
+						}]
+				
+			}
+		
+	cosntruir_formularios(formulario_agregar_referencias_glosas, "agregar_glosa", "")
+	$("#agregar_glosa .header_formularios").remove()
+	$("#div_ingresar_glosas, #div_ingresar_referencias").attr("class","")
+	//return false();
+	//AGREGAR NOTA  
+	if(viendo_al_cliente.DETALLE_CC_FACTURACION!=""){
+		Detalle_CC_Facturacion='<br>C.C: '+viendo_al_cliente.DETALLE_CC_FACTURACION
+		
+	}else{
+		Detalle_CC_Facturacion="";
+	}
+	//AGREGAR NOTA   
+	//$("#fomulario_agregar_glosa").prepend('<div class="col-xs-6 col-sm-6 col-md-6"><div class="page-header text-left"><small><strong>Facturar a:</strong></small></div><h3>'+nombre_empresa+', R.U.T: '+rut_empresa+'</h3></div>')
+	$("#fomulario_agregar_glosa").prepend('<div class="col-xs-6 col-sm-6 col-md-6">'+
+											'<div class="page-header text-left">'+
+												'<small>'+
+													'<strong>Facturar a:</strong>'+
+												'</small>'+
+											'</div>'+
+											'<h3>'+
+												nombre_empresa+'<br>'+
+												'R.U.T: '+rut_empresa+Detalle_CC_Facturacion+
+											'</h3>'+
+												'<span class="label label-default">O.C: '+viendo_al_cliente.ORDEN_COMPRA+'</span>&nbsp;'+
+												'<span class="label label-default">DESGLOSE: '+viendo_al_cliente.DESGLOSE+'</span>&nbsp;'+
+												'<span class="label label-default">HES: '+viendo_al_cliente.HES+'</span>&nbsp;'+
+												'<span class="label label-default">C.C: '+viendo_al_cliente.CENTRO_COSTO+'</span>&nbsp;'+
+											
+										'</div>')
+	
+	
+	//AGREGAR REFERENCIAS
+	$(".multiselect-container").find(".checkbox").on("change", function(){
+		console.log($(this).find("input").val())
+		id_elemento=$(this).find("input").val()
+		
+		if($(this).find("input").is(":checked") ){
+			
+			
+			
+			$("#grupo_1agregar_glosa").append('<div id="referencia_'+id_elemento+'" class="col-xs-6 col-sm-6 col-md-6 referencia">'+
+											  '<div class="page-header text-left"><small><strong>Referencia:</strong>'+$(this).html().replace('<input type="checkbox" value="'+id_elemento+'">','')+'</small></div>'+
+											  '<div class="row">'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">N°</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_numero">'+
+															'<input hidden value="'+id_elemento+'"  type="text" class="refrescar_validacion referencia_id">'+
+														'</div>'+
+												  '</div>'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">Fecha</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_fecha calendario_002">'+
+														'</div>'+
+												  '</div>'+
+												'</div>'+ 
+											'</div>'
+										  );							
+			
+		}else{
+			$("#referencia_"+id_elemento).remove();
+		}
+		$( ".calendario_002").datepicker({
+							format: "dd/mm/yyyy",
+							changeMonth:true,
+							changeYear:true,
+						})
+		
+	})
+	//AGREGAR REFERENCIAS DOSSS
+	total_referencia=0
+	$("#sumar_referencia").on("click",function(){
+		
+		total_referencia++;
+		$("#div_ingresar_referencias").append("<div class='referencia' id='referencias_"+total_referencia+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		
+			/*for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}*/
+			
+			for (i in campos_del_las_referencias){
+				id_temporal=campos_del_las_referencias[i].id
+				campos_del_las_referencias[i].id=campos_del_las_referencias[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_referencias[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				$(".lista").find(".select_item").on("click", function(){
+					$("#"+$(this).data("destino")).val($(this).data("opcion"))
+					$(this).parent("ul").parent("div").find(".btn").html($(this).parent("ul").parent("div").find(".btn").data("base")+': '+$(this).find("a").html()+" <span class='caret'></span>")
+				})
+				campos_del_las_referencias[i].id=id_temporal
+				
+			}
+		/*
+		nombre_referencias_
+numero_referencias_
+fecha_referencias_
+		*/
+		
+		if(total_referencia>=20){
+			$("#sumar_referencia").attr("disabled", true);
+		}
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled", true);
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		console.log(total_referencia)
+		
+		$(".referencia").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".referencia").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_referencia").on("click", function(){
+		console.log(total_referencia)
+		$("#referencias_"+total_referencia).remove();
+		total_referencia--;
+		if(total_referencia<=20){
+			$("#sumar_referencia").attr("disabled", false);
+		}
+		
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled",true );
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_referencia").click()
+	
+	//AGREGAR GLOSAS
+	total_glosas=0
+	$("#sumar_glosa").on("click",function(){
+		
+		total_glosas++;
+		$("#div_ingresar_glosas").append("<div class='glosa' id='glosa_"+total_glosas+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		//if(data_rescatada==""){
+			for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}
+		//SI ESXISTE DATA RESCATADA
+		/*}else if(data_rescatada!=""){
+			console.log(total_glosas)
+			console.log(data_rescatada.glosas.length)
+			if(total_glosas<=data_rescatada.glosas.length){
+				console.log("A")
+				for(a in data_rescatada.glosas){
+					for (b in campos_del_las_glosas){
+						id_temporal=campos_del_las_glosas[b].id
+						campos_del_las_glosas[b].id=campos_del_las_glosas[b].id+total_glosas
+						if(campos_del_las_glosas[b].campo=="Glosa"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].descripcion
+						}else if(campos_del_las_glosas[b].campo=="Monto"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].monto
+						}
+						construir_campos_de_formulario(campos_del_las_glosas[b], "#glosa_"+total_glosas)
+						$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+						campos_del_las_glosas[b].id=id_temporal
+					}
+					
+				}
+
+			}else if(total_glosas>data_rescatada.glosas.length){
+				console.log("B")
+				for (i in campos_del_las_glosas){
+					id_temporal=campos_del_las_glosas[i].id
+					campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+					if(campos_del_las_glosas[i].campo=="Glosa"){
+							campos_del_las_glosas[i].opciones=""
+					}else if(campos_del_las_glosas[i].campo=="Monto"){
+							campos_del_las_glosas[i].opciones=""
+					}
+					construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+					$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+					campos_del_las_glosas[i].id=id_temporal
+				}
+			}
+		}*/
+		
+		if(total_glosas>=20){
+			$("#sumar_glosa").attr("disabled", true);
+		}
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled", true);
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		console.log(total_glosas)
+		
+		$(".glosa").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".glosa").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_glosa").on("click", function(){
+		console.log(total_glosas)
+		$("#glosa_"+total_glosas).remove();
+		total_glosas--;
+		if(total_glosas<=20){
+			$("#sumar_glosa").attr("disabled", false);
+		}
+		
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled",true );
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_glosa").click()
+		
+	
+	
+	
+	
+}
+
+
+function cargar_glosa(id){
+	console.log(id)
+	nota_negativa=""
+	
+	
+	//VALIDACIONES
+	$("#grupo_0agregar_glosa").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	
+	$("#div_ingresar_glosas").find(".col-md-6, .col-md-4").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	//TOTAL
+	total_factura=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+		
+        total_factura=total_factura+Number($(this).val())
+    });
+	//CONSTRULLO ARREGLO DE FACTURA
+	id_temporal=id
+	if(id_temporal.indexOf("__")<0){
+			id_temporal=id_temporal+"__"
+		}
+		id_temporal=id_temporal.split("__",2);
+		
+	arreglo_temporal={"_id":id_temporal[0], "total_fac":total_factura, "glosas":[], "references":[], "fecha_emision":moment($("#fecha_emision").val()).format('X')}
+	//GLOSA
+	$("#div_ingresar_glosas").find(".glosa").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.glosas.push({"comment":$(this).find(".col-md-6").find(".form-control").val(),"netUnitValue":$(this).find(".col-md-4").find(".form-control").val(),"quantity":1})
+    });
+	
+	//REFERENCIA
+	/*$("#grupo_1agregar_glosa").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.referencias.push({"id":$(this).find(".referencia_id").val(),"fecha":moment($(this).find(".referencia_fecha").val()).format("X"),"numero":$(this).find(".referencia_numero").val()})
+    });*/
+	$("#div_ingresar_referencias").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		
+		if($(this).find(".col-md-3").find(".refrescar_validacion").val()!=""){
+			
+			//NUMERO
+			if($(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).val()==""){$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).removeClass("fucus_negativo");}
+			//FECHA
+			if($(this).find(".col-md-2").find(".calendario_002").val()==""){$(this).find(".col-md-2").find(".calendario_002").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find(".calendario_002").removeClass("fucus_negativo");}
+			//COMENTARIO
+			if($(this).find(".col-md-5").find(".form-control").val()==""){/*$(this).find(".col-md-5").find(".form-control").addClass("fucus_negativo"); nota_negativa="Datos incompletos"*/
+			}else{$(this).find(".col-md-5").find(".form-control").removeClass("fucus_negativo");}
+			
+			
+			//AGERO SI ESTA LLENAS
+			if(nota_negativa==""){
+				arreglo_temporal.references.push({"codeSii":$(this).find(".col-md-3").find(".refrescar_validacion").val(),"referenceDate":moment($(this).find(".col-md-2").find(".calendario_002").val()).format('X'),"number":$(this).find(".col-md-2").find("#numero_referencias_"+Number(index+1)).val(), "reason":$(this).find(".col-md-5").find(".form-control").val()})
+			}
+			
+		}
+		
+		
+    });
+	
+	
+	
+	console.log( JSON.stringify(arreglo_temporal))
+	
+	//return false;
+	
+	
+	
+	//TOTALIZO GENERALES MODAL INFERIOR
+	//TOTAL EN LA PANTALLA DE DETALLE
+	total_a_cargar=0
+	total_acumulado=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+	
+        total_a_cargar=Number(total_a_cargar)+Number($(this).val());
+    });
+	$("#"+id.toLowerCase()).val(total_a_cargar);	
+	//TOTAL EN LA PANTALLA GENERAL
+	$("#fomulario_form_refacturar").find("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+          total_acumulado=Number(total_acumulado)+Number($(this).val())
+    });
+		
+	$("#total_desglose").val(total_acumulado)
+	$("#total_pendiente").val(Number($("#total_folio").val())-Number($("#total_desglose").val())-Number($("#total_nc").val()))		
+	if(total_acumulado==0){
+		$(".enviar_form_001").attr("disabled", true);
+		$(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>Total del desglose es igual a 0</strong></div>');
+	}else if(total_acumulado>0){
+	//}else if(total_acumulado==$("#total_folio").val()){
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	//OCULTO MODAL
+	if(nota_negativa==""){
+		//INSERTO ARREGLO EN EL OBJETO MADRE
+		$("#"+id.toLowerCase()).attr("arreglo_factura", JSON.stringify(arreglo_temporal))
+		$("#Modal_glosa").modal("hide");
+	}else{
+		$("#Modal_glosa").find(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>'+nota_negativa+'</strong></div>')
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	
+}
+
+function generar_refacturacion(folio){
+	
+	//SELECIONO EN LOS REGISTROS EL SELECIONADO
+	
+	/*var documento_actual = registros_tabla.find(function(element) {
+	  return element.factura_o.number == folio;
+	});*/
+	nota_negativa=""
+	//if($("#total_nc").val()>0){
+		
+		validacampo_auto(["nc_emissiondate","fecha","si","Fecha de emisión de la NC"])
+
+	//}
+	
+	glosa_client=""
+	for (i in registros_tabla){
+		
+		if(registros_tabla[i].factura_o.number==folio){
+			glosa_cliente=registros_tabla[i]
+			//glosa_cliente["fecha periodo"]=""
+			glosa_cliente.factura_o["_id"]=registros_tabla[i]._id
+			console.log(glosa_cliente.factura_o.code)
+			break;
+		}
+		
+		
+	}
+	console.log(glosa_cliente.factura_o.code)
+	
+	//VERIFICO OPERACION
+	total_a_cargar=0
+	total_acumulado=0
+		
+	//TOTAL EN LA PANTALLA GENERAL
+	$("#fomulario_form_refacturar").find("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+		console.log($(this).val())
+          total_acumulado=Number(total_acumulado)+Number($(this).val())
+    });
+		
+	$("#total_desglose").val(total_acumulado)
+			
+	if(total_acumulado==0){
+		$(".enviar_form_001").attr("disabled", true);
+		$(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>Total del desglose es igual a 0</strong></div>');
+	
+	}else if(total_acumulado>0){
+	//}else if(total_acumulado==$("#total_folio").val()){
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	//CONSTRYYO EL OBEJTO A ENVIAR
+	
+	/*
+	
+	*/
+	if(nota_negativa==""){
+	
+	fecha_nc=moment($("#nc_emissiondate").val()).format("YYYY-MM-DD")
+
+	data_envio={
+		"tx":"f1",
+		"usuario":"op",
+		"operacion":"dte_rf",
+		"destino":constantes.destino,
+		"doc_original":glosa_cliente.factura_o,
+		"docs_nuevos":[],
+		"ES_id_of":folio,
+		"modifications":{
+			"nc_emissionDate":moment(fecha_nc).format("X"),
+			"nc_priceAdjustment":1,
+			"nc_unitValue":Number(glosa_cliente.factura_o.exemptAmount)-Number($("#total_nc").val()),//(la operacion de la resta de el monto de la fac - el monto de las NC)
+			"nc_editTexts":0,
+			"nc_quantity":1,
+			"nc_motive":"Anula documento"
+			
+		}
+	};
+	$("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+        if($(this).val()!=""){
+			//OBTENGO EL ARREGLO DEL OBJETO
+			factura_x=JSON.parse($(this).attr("arreglo_factura"))
+			factura_x["folio"]=folio;
+			//CREO EL ARREGLO DEFINITIVO
+			factura_a={}
+			//BUSCO LA EMPRESA
+			for(x in clientes_a_facturar){
+				if(factura_x._id==clientes_a_facturar[x]._id){
+					factura_a["cliente"]=clientes_a_facturar[x];
+					if(clientes_a_facturar[x]._source.CLIENT_ID==""){
+						id_clien_o_madre=clientes_a_facturar[x]._source.CLIENT_ID_MADRE
+					}else{
+						id_clien_o_madre=clientes_a_facturar[x]._source.CLIENT_ID
+					}
+					
+				}
+			}
+			//INGRESO id_clien_o_madre EN LA GLOSA
+			for(a in factura_x.glosas){
+				factura_x.glosas[a].comment=factura_x.glosas[a].comment+" [[ "+id_clien_o_madre+" ]]"
+
+			}
+
+			factura_a["ES_id_of"]=folio;
+			factura_a["emissionDate"]=factura_x.fecha_emision;
+			
+			factura_a["references"]=factura_x.references;
+			factura_a["details"]=factura_x.glosas;
+			factura_a["total_fac"]=factura_x.total_fac;
+			//EPRIRATION DATE  
+
+			if (moment().format('X')  > glosa_cliente.factura_o.expiration_date) {
+				factura_a["expirationDate"]=factura_x.fecha_emision;
+			} else {
+				factura_a["expirationDate"]=glosa_cliente.factura_o.expiration_date
+			}
+			//INSERTO EN ARRGELO ORIGINAL
+			data_envio.docs_nuevos.push(factura_a)
+		}
+    });
+	console.log(JSON.stringify(data_envio))
+	//return false;
+	
+		$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify(data_envio),
+							contentType: "application/json",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$("#form_refacturar").append('<div class="conter_loader"><div class="loader"></div></div>');
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										load_tareas(nueva_busqueda)
+										//var date = new Date();
+										//alert()
+										//var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+										//var ultimoDia = new Date(date.getFullYear(), Number(mes_facturacion_ws), 0);
+										
+										//fecha=año_facturacion+"-"+mes_facturacion_ws+"-"+ultimoDia;
+										
+										
+										//$("#lista_formularios").html('<iframe src="https://ks2.openpartner.cl/s/cabify/app/kibana#/dashboard/b998c600-3acb-11e9-a075-d56d28588383?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3A%27'+fecha+'T00%3A00%3A00.000Z%27%2Cmode%3Aabsolute%2Cto%3A%27'+fecha+'T23%3A59%3A59.999Z%27))" style="border:0px;" height="600" width="100%"></iframe>')
+										//$("#myModal").modal("hide");
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+	}
+	
+	
+	
+}
+
+function descargar_formato(id){
+	
+	nota_negativa=""
+	validacampo_auto(["formato","lista","si"])
+	if(nota_negativa==""){
+		window.location = direccion_ws+"descargar_pago_nomina?id_tarea="+id+"&formato="+$("#formato").val();
+		$("#myModal").modal("hide");
+		load_tareas();
+	}
+	
+	
+	
+}
+
+function descargar_doc(url){
+	
+	
+		window.location = url;
+		
+	
+	
+}
+//alert(moment("02-15-2019").format('YYWW')  )
+
+
+referencias_duro=[{
+      "href": "https://api.bsale.cl/v1/dte_codes/28.json",
+      //"id": 28,
+      "tag": "AWB (Air Will Bill)",
+      "id": "809",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/27.json",
+      //"id": 27,
+      "tag": "B/L (Conocimiento de embarque)",
+      "id": "808",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/35.json",
+      //"id": 35,
+      "tag": "Boleta",
+      "id": "35",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/10.json",
+      //"id": 10,
+      "tag": "Boleta Electrónica",
+      "id": "39",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/1.json",
+      //"id": 1,
+      "tag": "Boleta Exenta",
+      "id": "38",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/11.json",
+      //"id": 11,
+      "tag": "Boleta Exenta Electrónica",
+      "id": "41",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/30.json",
+      //"id": 30,
+      "tag": "Carta de Porte",
+      "id": "811",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/33.json",
+      //"id": 33,
+      "tag": "Certificado de Depósito Bolsa Prod. Chile",
+      "id": "814",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/22.json",
+      //"id": 22,
+      "tag": "Contrato",
+      "id": "803",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/38.json",
+      //"id": 38,
+      "tag": "Declaración de Ingreso (DIN)",
+      "id": "914",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/26.json",
+      //"id": 26,
+      "tag": "DUS",
+      "id": "807",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/36.json",
+      //"id": 36,
+      "tag": "Factura",
+      "id": "30",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/2.json",
+      //"id": 2,
+      "tag": "Factura de Compra",
+      "id": "45",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/12.json",
+      //"id": 12,
+      "tag": "Factura de Compra Electrónica",
+      "id": "46",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/39.json",
+      //"id": 39,
+      "tag": "Factura de exportación",
+      "id": "101",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/17.json",
+      //"id": 17,
+      "tag": "Factura de Exportación Electrónica",
+      "id": "110",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/8.json",
+      //"id": 8,
+      "tag": "Factura Electrónica",
+      "id": "33",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/37.json",
+      //"id": 37,
+      "tag": "Factura Exenta",
+      "id": "32",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/9.json",
+      //"id": 9,
+      "tag": "Factura No Afecta o Exenta Electrónica",
+      "id": "34",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/25.json",
+      //"id": 25,
+      "tag": "Ficha ChileCompra",
+      "id": "806",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/15.json",
+      //"id": 15,
+      "tag": "Gu&iacute;a de Despacho",
+      "id": "50",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/16.json",
+      //"id": 16,
+      "tag": "Gu&iacute;a de Despacho Electrónica",
+      "id": "52",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/44.json",
+      //"id": 44,
+      "tag": "HEM",
+      "id": "HEM",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/43.json",
+      //"id": 43,
+      "tag": "HES",
+      "id": "HES",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/5.json",
+      //"id": 5,
+      "tag": "Liquidación",
+      "id": "103",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/6.json",
+      //"id": 6,
+      "tag": "Liquidación Factura",
+      "id": "40",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/7.json",
+      //"id": 7,
+      "tag": "Liquidación-Factura Electrónica",
+      "id": "43",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/29.json",
+      //"id": 29,
+      "tag": "MIC/DTA",
+      "id": "810",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/4.json",
+      //"id": 4,
+      "tag": "Nota de Cr&eacute;dito",
+      "id": "60",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/41.json",
+      //"id": 41,
+      "tag": "Nota de Cr&eacute;dito de exportación",
+      "id": "106",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/19.json",
+      //"id": 19,
+      "tag": "Nota de Cr&eacute;dito de Exportación Electrónica",
+      "id": "112",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/14.json",
+      //"id": 14,
+      "tag": "Nota de Cr&eacute;dito Electrónica",
+      "id": "61",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/3.json",
+      //"id": 3,
+      "tag": "Nota de D&eacute;bito",
+      "id": "55",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/40.json",
+      //"id": 40,
+      "tag": "Nota de d&eacute;bito de exportación",
+      "id": "104",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/18.json",
+      //"id": 18,
+      "tag": "Nota de D&eacute;bito de Exportación Electrónica",
+      "id": "111",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/13.json",
+      //"id": 13,
+      "tag": "Nota de D&eacute;bito Electrónica",
+      "id": "56",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/21.json",
+      //"id": 21,
+      "tag": "Nota de pedido",
+      "id": "802",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/20.json",
+      //"id": 20,
+      "tag": "Orden de Compra",
+      "id": "801",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/32.json",
+      //"id": 32,
+      "tag": "Pasaporte",
+      "id": "813",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/24.json",
+      //"id": 24,
+      "tag": "Proceso ChileCompra",
+      "id": "805",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/23.json",
+      //"id": 23,
+      "tag": "Resolución",
+      "id": "804",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/31.json",
+      //"id": 31,
+      "tag": "Resolución del SNA donde califica Servicios de Exportación",
+      "id": "812",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/34.json",
+      //"id": 34,
+      "tag": "Vale de Prenda Bolsa Prod. Chile",
+      "id": "815",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/42.json",
+      //"id": 42,
+      "tag": "Vales comprobantes de Pago Medios Electrónicos (Transbank)",
+      "id": "48",
+      "state": 1
+    }	]
+
+
+
+/*glosa_duro=[
+	{
+	  "id": 2360,
+      "tag": "Servicio de transporte 2018 Diciembre",
+	}
+	,
+	{
+	  "id": 2261,
+      "tag": "Servicio de transporte 2019 Enero",
+	  }
+	,
+	{
+	  "id": 2262,
+      "tag": "Servicio de transporte 2019 Febrero",
+	 }
+	,
+	{
+	  "id": 2363,
+      "tag": "Servicio de transporte 2019 Marzo"
+	}
+	,
+	{
+	  "id": 2364,
+      "tag": "Servicio de transporte 2019 Abril"
+	},{
+	  "id": 2365,
+      "tag": "Servicio de transporte 2019 Mayo"
+	},
+	{
+	  "id": 2366,
+      "tag": "Servicio de transporte 2019 junio"
+	}
+	
+
+]*/
+
+glosa_duro=[];
+meses_aniao=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+mes_partida=1;
+anio_partida=2019;
+mes_actual=Number(moment().format("MM"));
+anio_actual=Number(moment().format("YYYY"));
+for(A=anio_partida; A<anio_actual+1; A++){
+	console.log(A)
+	for(B in meses_aniao){
+		if((Number(B)+1)>=mes_partida && A==anio_partida){
+			console.log("Servicio de transporte "+A+" "+meses_aniao[B])
+			glosa_duro.push({"id": A+""+moment(B).format("MM"),"tag": "Servicio de transporte -- -- "+A+"-"+moment(B).format("MM")})
+		}else if(A>anio_partida){
+			console.log("Servicio de transporte "+A+" "+meses_aniao[B])
+			glosa_duro.push({"id": A+""+moment(B).format("MM"),"tag": "Servicio de transporte -- -- "+A+" "+moment(B).format("MM")})
+			if(A==anio_actual && mes_actual==(Number(B)+1)){
+				break;
+			}
+		}
+	}
+}
+
+campos_del_las_glosas=[{
+														"campo":  "Glosa de Ref.",
+														"tipo": "lista",
+														"opciones":glosa_duro,
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[2,2,2],
+														"id":"referencias_"
+													},
+													{
+														"campo":  "Glosa",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar o Selecione Glosa",
+														"tamanio":[6,6,6],
+														"id":"glosa_descriptiva_"
+													}
+													
+													,
+													{
+														"campo":  "Monto",
+														"tipo": "numero",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[4,4,4],
+														"id":"monto_"
+													}
+]
+
+campos_del_las_referencias=[{
+														"campo":  "Referencia",
+														"tipo": "lista",
+														"opciones":referencias_duro,
+														"obligatorio":"no",
+														"nota":"Selecione Referencia",
+														"tamanio":[3,3,3],
+														"id":"nombre_referencias_"
+													},
+													{
+														"campo":  "N°",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar N°",
+														"tamanio":[2,2,2],
+														"id":"numero_referencias_"
+													}
+													
+													,
+													{
+														"campo":  "Fecha",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Fecha",
+														"tamanio":[2,2,2],
+														"id":"fecha_referencias_"
+													},
+													{
+														"campo":  "Comentario",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Comentario",
+														"tamanio":[5,5,5],
+														"id":"comentario_"
+													}
+]
+
+
+
+
+</script>
+<style>
+
+#grupo_0form_refacturar{
+	max-height:300px;
+	overflow:auto;	
+}
+#grupo_0form_refacturar .numero, #total_desglose, #total_folio, #grupo_2agregar_glosa .numero{
+	text-align:right;	
+}
+
+#agregar_glosa{
+	background:rgb(255,255,255);
+	height: 550px;
+    overflow: auto;	
+}
+
+.lista {
+    padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.multi_lista .btn-group, .multi_lista .multiselect{
+	width:100%;
+	
+}
+
+
+</style>
+

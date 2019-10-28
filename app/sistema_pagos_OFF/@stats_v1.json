@@ -1,0 +1,71 @@
+{
+  "query": {
+    "match" : {
+        "id_cliente" : "46922572"
+    }
+  },
+  "size": 0,
+  "aggs": {
+    "total_gestionado": { "sum": { "field" : "monto_oper" } 
+    },
+    "total_pagado" : {
+        "filter" : { 
+            "exists": {
+                  "field" : "date_pay"
+                }
+          
+        },
+        "aggs" : {
+            "sum_price" : { "sum": { "field" : "monto_oper" } }
+        }
+    },
+    "total_deudo_vigente" : {
+        "filter" : {
+          "bool": {
+            "must_not": {
+                "exists": {
+                    "field": "date_pay"
+                }
+            },
+            "must": [
+              {
+                "range" : {
+                  "real_deadline_timestamp": {
+                    "gte" : "2015-01-01",
+                    "lt" :  "now/d"
+                  }
+                } 
+              }
+            ] 
+          }
+        },
+        "aggs" : {
+            "sum_price" : { "sum": { "field" : "monto_oper" } }
+        }
+    },
+    "total_deudo_mora" : {
+        "filter" : {
+          "bool": {
+            "must_not": {
+                "exists": {
+                    "field": "date_pay"
+                }
+            },
+            "must": [
+              {
+                "range" : {
+                  "real_deadline_timestamp": {
+                    "gte" : "now+1d",
+                    "lt" :  "2020-12-31"
+                  }
+                } 
+              }
+            ] 
+          }
+        },
+        "aggs" : {
+            "sum_price" : { "sum": { "field" : "monto_oper" } }
+        }
+    }
+  }
+}

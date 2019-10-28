@@ -1,0 +1,40 @@
+//{ usuario, fecha, identificador, archivo }
+cartola={
+						"formulario":'Clientes con boleta',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[
+												{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},
+												{
+													"campo":"fecha",
+													"tipo":"tabla",
+													"opciones":datos_para_formulario,
+													"obligatorio":"si",
+													"nota":"",
+													"tamanio":[12,12,12],
+													"id":"seleccion"
+												}]
+												
+												
+										}
+									
+						]/*,
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"email_resumen",
+							"funcion":""
+						}]*/
+				
+}

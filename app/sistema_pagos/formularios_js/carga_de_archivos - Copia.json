@@ -1,0 +1,142 @@
+descuento={
+						"formulario":'Carga de Archivos',
+						"contendio":[	
+										
+										{
+										"grupo":"Semana del Año",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Semana del Año",
+													"tipo":"panel_colapsable",
+													"opciones":las_semanas,
+													"obligatorio":"si",
+													"nota":"Dia de Devolución",
+													"tamanio":[12,6,4],
+													"id":"semana"
+												}]
+										},
+										{
+										"grupo":"Documentos Obligatorios",
+										"tamanio":[12,12,12],
+										"campos":[/*{
+													"campo":"CSV Contratos",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"cargar_contratos"
+												},*/
+												
+												{
+													"campo":"CSV Alza",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"cargar_alza"
+												},{
+													"campo":"XLSX Company Information",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"xlsx",
+													"id":"cargar_datos_bancarios"
+												},{
+													"campo":"CSV Circulo",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"datos_circulo"
+												},
+												{
+													"campo":"CSV Datos Sii",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"cargar_datos_sii"
+												},
+												{
+													"campo":"XLSX Company Invoice",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,12],
+													"tipo_file":"xlsx",
+													"id":"cargar_company_invoice"
+												}]
+												
+												
+										},
+										{
+										"grupo":"Documentos Opcionales de descuento",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"CSV Desc. Varios",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"descuentos_varios"
+												}/*,{
+													"campo":"CSV Documento Admin",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,4],
+													"tipo_file":"csv",
+													"id":"documento_admin"
+												}*/,{
+													"campo":"CSV Claimend Invoice",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,6],
+													"tipo_file":"csv",
+													"id":"claimed_invoice"
+												},{
+													"campo":"XLSX Nomina de rechazados",
+													"tipo":"file",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,12],
+													"tipo_file":"xlsx",
+													"id":"nomina_rechazados"
+												}]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"ENVIAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}]
+				
+}

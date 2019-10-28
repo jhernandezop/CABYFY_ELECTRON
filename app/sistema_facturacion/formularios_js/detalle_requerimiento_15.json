@@ -1,0 +1,145 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+
+//$("#myModal").find(".modal-dialog").addClass("modal-sm");
+descuento={
+						"formulario":'Carga de Archivo 15 Días',
+						"contendio":[	 
+										
+							{
+								"grupo":"Paso 1",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class="well well-sm"><strong></strong>XLSX FN Facturas (Obligatorio)</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strong>XLSX FN Facturas</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/FN_FACTURAS_EMITIDAS_crosstab.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"descargar_"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>Seleciona : </strong>Mes a tratar</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_00"
+										},
+										{
+											"campo":"Mes",
+											"tipo":"lista",
+											"opciones":[
+														{"tag":"Enero","id":"enero"},
+														{"tag":"Febrero","id":"febrero"},
+														{"tag":"Marzo","id":"marzo"},
+														{"tag":"Abril","id":"abril"},
+														{"tag":"Mayo","id":"mayo"},
+														{"tag":"Junio","id":"junio"},
+														{"tag":"Julio","id":"julio"},
+														{"tag":"Agosto","id":"agosto"},
+														{"tag":"Septiembre","id":"septiembre"},
+														{"tag":"Octubre","id":"octubre"},
+														{"tag":"Noviembre","id":"noviembre"},
+														{"tag":"Diciembre","id":"diciembre"}],
+											"obligatorio":"si",
+											"nota":"Dia de Devolución",
+											"tamanio":[12,6,6],
+											"id":"mes"
+										},
+										{
+											"campo":"Año",
+											"tipo":"lista",
+											"opciones":[
+														{"tag":"2019","id":"2019"},
+														{"tag":"2020","id":"2020"},
+														{"tag":"2021","id":"2021"},
+														{"tag":"2022","id":"2022"}
+														],
+											"obligatorio":"si",
+											"nota":"Dia de Devolución",
+											"tamanio":[12,6,6],
+											"id":"anio"
+										},
+										{
+											"campo":"",
+											"tipo":"div",
+											"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_01"
+										},{
+											"campo":"XLSX FN Facturas",
+											"tipo":"buscar_columnas_excel",
+											"columnas_obligatorias":["date","client_id", "client_country", "client_name", "client_tax_code", "Mes, Día, Año de value_date", "billing_period", "payment_terms", "Total Amount Invoice"],
+											"cordenadas":[{"x":"0","y":"0"}],
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"xlsx",
+											"id":"cargar_fn_facturas"
+										}],
+								"opciones":[{
+									"boton":"PROCESAR",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso_quince_dias(1)"
+								}],
+										
+										
+							},
+							
+							{
+								"grupo":"Paso 2",
+								"tamanio":[12,12,12],
+								"pestania":[{"tipo":"seguimiento","nombre":"archivos"}],
+								"campos":[
+										{
+											"campo":"usuario",
+											"tipo":"div",
+											"opciones":['<div class="well well-sm text-center"><strong>Las validaciones han sido exitosas, los archivos se están procesando </strong></div>'],
+											"obligatorio":"si",
+											"nota":"usuario",
+											"tamanio":[12,12,12],
+											"id":"nota_:enviar_01"
+										}],
+								"opciones":[{
+									"boton":"CONTINUAR CON LA FACTURACIÓN",
+									"ws":"",
+									"funcion":"enviar_archivos_proceso_quince_dias(2)"
+								}],
+										
+										
+							}
+							
+									
+						],
+						"opciones":[/*{
+							"boton":"PROCESAR",
+							"ws":"",
+							"funcion":"enviar_archivos()"
+						}*/]
+				
+}

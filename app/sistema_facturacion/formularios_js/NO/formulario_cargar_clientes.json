@@ -1,0 +1,43 @@
+$("#myModal").find(".modal-dialog").removeClass("modal-lg");
+/*$("#myModal").find(".modal-dialog").addClass("modal-sm");*/
+descuento={
+						"formulario":'Carga de Archivo',
+						"contendio":[	 
+										
+							
+		
+							{
+								"grupo":"Cargar Lista de clientes",
+								"tamanio":[12,12,12],
+								"campos":[
+										
+										{
+											"campo":"usuario",
+											"tipo":"texto",
+											"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+											"obligatorio":"no",
+											"nota":"usuario",
+											"tamanio":[0],
+											"id":"usuario"
+										},{
+											"campo":"XLSX Clientes",
+											"tipo":"file",
+											"opciones":[],
+											"obligatorio":"si",
+											"nota":"Cargar Archivo...",
+											"tamanio":[12,12,12],
+											"tipo_file":"xlsx",
+											"id":"clientes"
+										}]
+										
+										
+							}
+									
+						],
+						"opciones":[{
+							"boton":"CARGAR",
+							"ws":"cargar_clientes",
+							"funcion":""
+						}]
+				
+}
