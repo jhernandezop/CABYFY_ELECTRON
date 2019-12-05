@@ -1,0 +1,525 @@
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+
+.dropdown-menu {
+	max-height: 200px !important;
+}
+
+@media print{
+  #lista_tareas, .seccion-head, #foooter, .barra_tareas, #header *{
+    display: none !important;
+  }
+  
+  
+  
+  
+  #lista_formularios{
+	  margin-top:-120px;
+	  overflow:hidden;
+	  position:absolute;
+  }
+  
+  .kanaban_load {
+   
+    top: 0px;
+}
+}
+
+td.details-control {
+    background: url('assets/libs/datatables/resource/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('assets/libs/datatables/resource/details_close.png') no-repeat center center;
+}
+
+#lista_formularios{
+
+	padding: 20px;
+	margin-top: 0px;
+}
+
+#lista_opciones_interz{
+	display: none;
+}
+
+.header_formularios h2{
+	margin-top: 0px;
+}
+
+#lista_formularios .conter_loader {
+    background: #ffffff96 !important;
+}
+
+.conter_loader .alert-success{
+	position: absolute;
+    top: 40%;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+}
+
+#lista_formularios{
+	max-width: 100%;
+}
+#lista_formularios .conter_loader {
+    position: absolute;
+    bottom: -300px;
+}
+#grupo_0lista_formularios div{
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+}
+
+</style>
+<div class="col-12" id="lista_formularios">
+	
+</div>
+<script type="text/javascript">
+
+
+
+
+
+
+function agregar_referencias_glosas(){
+
+
+	$("#myModal").modal("hide");
+	$("#myModal").find('.modal-footer').remove();
+	//NOTA DE REFACTURACION
+	var formulario_agregar_referencias_glosas={
+						"formulario":'CARGAR MASIVO',
+						"contendio":[	
+										
+										{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},
+												{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<div class=""><strong>Descarga formato para la carga de planilla: </strongma>Masivo</div>'],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"nota_01"
+												},
+												{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<a target="_blank" href="http://dev.openpartner.cl:33333/cabify/bsync_pre/documents/FN_FACTURAS_EMITIDAS_crosstab.xlsx"><button type="button" class="btn btn-default"><i class="fas fa-download"></i> Descarga Planilla</button></a>'],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"descargar_"
+												},
+												{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<br><div class=""><strong>A continuación:</strong> sube el archivo con la planilla completa</div>'],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[12,12,12],
+													"id":"nota_01"
+												},{
+													"campo":"XLSX FN Facturas",
+													"tipo":"buscar_columnas_excel",
+													"columnas_obligatorias":["Nº de Documento",
+																			"Monto Total",
+																			"Fecha Emision",
+																			"Fecha Vencimiento",
+																			"Forma de Pago",
+																			"Rut Cliente",
+																			"Razon Social",
+																			"Giro",
+																			"Email",
+																			"Direccion",
+																			"Ciudad",
+																			"Comuna",
+																			"Cantidad",
+																			"Glosa",
+																			"Valor Unitario"],
+													"cordenadas":[{"x":"0","y":"0"}],
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Cargar Archivo...",
+													"tamanio":[12,12,12],
+													"tipo_file":"xlsx",
+													"id":"cargar_masivo"
+												}
+												
+												
+												]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"PROCESAR",
+							"ws":"",
+							"funcion":"generar_masivo()"
+						}]
+				
+			}
+		
+	cosntruir_formularios(formulario_agregar_referencias_glosas, "lista_formularios", "")
+}
+agregar_referencias_glosas()
+
+function validar_numero(input){
+
+	condicion = typeof input == 'number';
+	return condicion;
+
+
+}
+
+function generar_masivo(){
+
+		if($("#cargar_masivo_viuw").val()==""){
+			return false;
+		}
+		//console.log(total_FN_Facturas)
+		facturables_nofacturables=array_objetos_tabla;
+		temporal=[]
+		let result = facturables_nofacturables.reduce((prev, current, index, arr) => {
+		  // Compruebo si ya existe el elemento
+		  //console.log(prev)
+		  let exists = prev.find(x => x.Nº_de_Documento === current.Nº_de_Documento );
+		  // Si no existe lo creo con un array vacío en VALOR
+
+		  //validaciones en el Excel de RUT,  
+		  //si es posible formato de fecha 
+		  //y que los campos de valor unitario y cantidades sea numero
+		  if (!exists ) {
+			exists = {
+					  "Nº_de_Documento":current.Nº_de_Documento,
+				      "cliente": {
+				        "_source": {
+				          "CIUDAD_FAC": 	current.Ciudad,
+				          "CLIENT_ADDRESS": current.Direccion,
+				          "CLIENT_CITY": 	current.Comuna,
+				          "CLIENT_NAME": 	current.Razon_Social,
+				          "CLIENT_TAX_CODE":current.Rut_Cliente,
+				          "CORREOS_FAC": 	current.Email,
+				          "GIRO": 			current.Giro,
+				          "METODO_PAGO": 	current.Forma_de_Pago,
+				        }
+				      },
+				      "ES_id_of": "voucher",
+				      "emissionDate": moment(current.Fecha_Emision).format("X"),
+				      "expirationDate": moment(current.Fecha_Vencimiento).format("X"),
+				      "references": [],
+				      "details": [{
+							          "comment": current.Glosa,
+							          "netUnitValue": current.Valor_Unitario,
+							          "quantity": current.Cantidad,
+							       }],
+				      "total_fac": current.Monto_Total
+			    };
+
+			    //VALIDO CONDICION DEL PRIMER REGISTRO
+			    if(validacampo_Rut_texto(current.Rut_Cliente)==false ){
+		  			exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Rut No Valido";
+		  			current["condicion"]="Glosa con Rut No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Valor_Unitario)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con valor unitario No Valido";
+		  			current["condicion"]="Glosa con valor unitario No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Cantidad)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Cantidad No Valido";
+		  			current["condicion"]="Glosa con Cantidad No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Monto_Total)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Monto Total No Valido";
+		  			current["condicion"]="Glosa con Monto Total No Valido";
+		  			temporal.push(current)
+				}
+
+			
+
+			prev.push(exists);
+		  }else{
+		  	exists.details.push({
+							     "comment": current.Glosa,
+							     "netUnitValue": current.Valor_Unitario,
+							     "quantity": current.Cantidad,
+							    })
+		  	//VALIDO CONDICION DEL PRIMER REGISTRO
+			    //VALIDO CONDICION DEL PRIMER REGISTRO
+			    if(validacampo_Rut_texto(current.Rut_Cliente)==false ){
+		  			exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Rut No Valido";
+		  			current["condicion"]="Glosa con Rut No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Valor_Unitario)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con valor unitario No Valido";
+		  			current["condicion"]="Glosa con valor unitario No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Cantidad)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Cantidad No Valido";
+		  			current["condicion"]="Glosa con Cantidad No Valido";
+		  			temporal.push(current)
+				}else if(validar_numero(current.Monto_Total)==false){
+					exists["condicion"]="ELIMINAR";
+		  			exists.details[0]["condicion"]="Glosa con Monto Total No Valido";
+		  			current["condicion"]="Glosa con Monto Total No Valido";
+		  			temporal.push(current)
+				}
+		  }
+		 
+		  console.log(current);
+		  return prev;
+		}, []);
+		facturacion=[]
+		noFacturacion=[]
+		for(i in result){
+			if (result[i].condicion){
+				noFacturacion.push(result[i]);
+			}else{
+				facturacion.push(result[i]);
+			}
+
+		}
+		console.log(facturacion, noFacturacion)
+
+		console.log(facturacion)
+
+		glosa_cliente={
+		    "ES_id_of": "voucher",
+		    "client_id": "",
+		    "client_tax_code": "",
+		    "client_name": "",
+		    "grupo_economico": "",
+		    "monto_factura": "",
+		    "client_id_madre": "",
+		    "categoria": "",
+		    "soporte": "",
+		    "sales_rep": "",
+		    "fecha_periodo": ""
+		}
+
+		data_envio={
+			"tx":"f1",
+			"usuario":"op",
+			"operacion":"dte_fc",
+			"destino":constantes.destino,
+			"doc_original":glosa_cliente,
+			"docs_nuevos":facturacion,
+			"ES_id_of":"voucher",
+		};
+
+		if(noFacturacion.length>0){
+			generaraTabla(temporal, data_envio);
+			return false;
+				
+		}
+
+		enviar(data_envio)
+		
+		
+	
+		
+		
+		
+}
+
+function generaraTabla(masivo_clientes_invalidos){
+
+	nuevo_header_=`<th class="">Nº de Documento</th>
+				   <th class="">Monto Total</th>
+				   <th class="">Fecha Emision</th>
+				   <th class="">Fecha Vencimiento</th>
+				   <th class="">Forma de Pago</th>
+				   <th class="">Rut Cliente</th>
+				   <th class="">Razon Social</th>
+				   <th class="">Giro</th>
+				   <th class="">Email</th>
+				   <th class="">Direccion</th>
+				   <th class="">Ciudad</th>
+				   <th class="">Comuna</th>
+				   <th class="">Cantidad</th>
+				   <th class="">Glosa</th>
+				   <th class="">Valor Unitario</th>
+				   <th class="">Condicion</th>`
+
+					$("#myModal").modal("show");
+					$("#myModal > .modal-dialog").removeClass('modal-sm');
+					$("#myModal > .modal-dialog").addClass('modal-lg');
+					$("#myModal").find(".modal-header").html('<div class="modal-header"><h4 class="modal-title">SE ENCONTRARON GLOSAS NO VALIDAS</h4></div>');
+					$("#myModal").find(".modal-body").html('<div class="col-xs-12 col-sm-12 col-md-12"><br><table id="htmlout_no_validos" class=" table table-striped table-bordered nowrap" cellspacing="0" style="width:100%;"><br></div>'+
+								'<thead><tr>'+nuevo_header_+'</tr></thead><tbody></tbody>'+
+							'</table>');
+					$("#myModal").find('.modal-content').append(`<div class="modal-footer">
+											<button onClick="enviar(data_envio)" type="button" class="btn btn-success btn-sm">
+														Enviar Facturas validas
+													</button>
+													<button onClick="agregar_referencias_glosas()" type="button" class="btn btn-success btn-sm">
+														Volver a cargar
+													</button>
+
+						</div>`);
+
+					masivo_clientes_invalidos_tabla=[]
+				    masivo_clientes_invalidos.forEach(function(element_a) {
+				      masivo_clientes_invalidos_tabla_ROW=[]
+				      for (i in element_a){
+				        masivo_clientes_invalidos_tabla_ROW.push(element_a[i])
+				      }
+				      masivo_clientes_invalidos_tabla.push(masivo_clientes_invalidos_tabla_ROW)
+				    });
+					
+				    $('#htmlout_no_validos').DataTable( {
+								data:          masivo_clientes_invalidos_tabla,
+								deferRender:    true,
+								scrollX: true,
+								//scrollY:        1000,
+								//scrollCollapse: true,
+								//scroller:       true,
+								ordering: false,
+								order: false,
+							} );
+				    //masivo_clientes_validos=[]
+				    //masivo_clientes_invalidos=[]
+				    $(".enviar_form_001").attr("disabled", false)
+				    return false;
+}
+
+function enviar(data_envio){
+
+	$("#myModal").modal("hide");
+				$("#myModal").find('.modal-footer').remove();
+
+	$.ajax({
+			url: "https://cf.openpartner.cl",
+			type: "POST",
+			data:JSON.stringify(data_envio),
+			contentType: "text/plain",
+			timeout:1800000,
+			beforeSend: function () {
+				$("#lista_formularios").append('<div class="conter_loader"><div class="loader"></div></div>');	
+
+				
+			},
+			success: function(data) {
+				data=JSON.parse(data)
+				if(data.estatus){
+					if(data.estatus=="OK" || data.estatus=="FIN"){
+						$(".conter_loader").html(`<div class="alert alert-success" role="alert">
+													Facturas enviadas<br>
+													<button onClick="agregar_referencias_glosas()" type="button" class="btn btn-success btn-sm">
+														Enviar otras facturas
+													</button>
+												</div>`);
+						}else if(data.estatus=="NO OK"){
+							controlar_no_ok_desconocido_error("NO OK", data)
+						}
+					}else{
+						controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+					}
+				},
+			error: function (xhr, ajaxOptions, thrownError) {
+				controlar_no_ok_desconocido_error("ERROR", xhr.status)	
+			}			
+		});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+

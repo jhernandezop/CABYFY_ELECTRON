@@ -426,7 +426,7 @@ function load_camban(tipo){
     "estatus":"OK",
     "data": {
         "interfaz":"simple",
-        "nombre":"CABIFY <span id='ver_refacturacion' class='badge badge-light ckeck'>Refacturación</span> <span class='badge badge-light' id='ver_reporte'>Reporte</span>",
+        "nombre":"BUSCAR FACURAS EMITIDAS <span id='ver_refacturacion' class='badge badge-light ckeck'>Refacturación</span> <span class='badge badge-light' id='ver_reporte'>Reporte</span>",
         "columnas":[ {
             "nombre":"DOCUMENTOS|<br>&nbsp;",
             "accion":[ /*{
@@ -505,7 +505,8 @@ function load_camban(tipo){
 			$(".modal_baul").closest(".filtro").show();
 			console.log("A")
 		})
-		$("#ver_reporte").on("click", function(){
+		$("#ver_reporte, #ver_refacturacion").hide();
+		/*$("#ver_reporte").on("click", function(){
 			$(".ckeck").removeClass("ckeck");
 			$(this).addClass("ckeck")
 			$(".tabla_facturas").hide();
@@ -515,7 +516,7 @@ function load_camban(tipo){
 			$("#filtro_Rango").closest(".filtro").show();
 			console.log("B")
 
-		})	
+		})	*/
 
 		//SI MUEVO EL FILRO DE FECHA
 		$("#filtro_Rango").on('apply.daterangepicker', function(ev, picker) {
@@ -675,7 +676,8 @@ function construir_tabala_resultado(conteos){
 			opcion_menu="";
 								
 		}else if(conteos[i].factura_o.tipoDocumento==15){
-			opcion_menu=`<li class="priv_generar_factura" onClick="generar_fa('${conteos[i].factura_o.code}', '${conteos[i].factura_o.totalAmount}', '${conteos[i].factura_o.number}','${conteos[i]._id}','${conteos[i].factura_o.company}')">Generar Nueva Factura</li>
+			/*<li class="priv_generar_factura" onClick="generar_fa('${conteos[i].factura_o.code}', '${conteos[i].factura_o.totalAmount}', '${conteos[i].factura_o.number}','${conteos[i]._id}','${conteos[i].factura_o.company}')">Generar Nueva Factura</li>*/
+			opcion_menu=`
 						<li class="priv_generar_factura" onClick="generar_nc('${conteos[i].factura_o.code}', '${conteos[i].factura_o.totalAmount}', '${conteos[i].factura_o.number}','${conteos[i]._id}','${conteos[i].factura_o.company}')">Generar Nota de Credito</li>`
 						
 		}
@@ -1296,32 +1298,13 @@ const PDFWindow = require('electron-pdf-window')*/
 /*const { BrowserWindow } = require('electron').remote
 	const PDFWindow = require('electron-pdf-window')*/
 const easypdf = require('easypdf');
+
 //const PDFWindow = require('electron-pdf-window');
 function ver_pdf(filePath, empresa){
 	
+	console.log(filePath, empresa);
 	let shell = require('electron').shell;
 	shell.openExternal(filePath);
-	return false;
-	
-	$("#myModal").modal("show");
-	
-	
-	
-	$("#myModal").find(".modal-dialog").removeClass("modal-sm");
-
-	$("#myModal").find(".modal-dialog").addClass("modal-lg");
-	$("#myModal").find(".modal-body").html("<div class='verpdf'><div>")
-	$("#myModal").find(".modal-title").html(empresa);
-	
-	
-	
-	
-	let pdf_file = filePath
-	let container = easypdf(pdf_file).setContainer('#myModal .verpdf');
-	container.render();
-		
-	
-	
 	
 }
 

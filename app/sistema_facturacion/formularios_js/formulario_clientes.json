@@ -1553,20 +1553,18 @@ descuento={
 												},{
 													"campo":"Farmer rep",
 													"tipo":"lista",
-													"opciones":[{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
+													"opciones":[
+																{"tag": "Agustin Sabate", "id":"Agustin Sabate"},
+																{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
+																{"tag": "Eric Romano", "id":"Eric Romano"},
+																{"tag": "Franco Aranguiz", "id":"Franco Aranguiz"},
 																{"tag": "Gabriela Marcano", "id":"Gabriela Marcano"},
-																{"tag": "Luis  Jara", "id":"Luis  Jara"},
 																{"tag": "Klaus Pollmann", "id":"Klaus Pollmann"},
-																{"tag": "Luis Parra Garrido", "id":"Luis Parra Garrido"},
-																{"tag": "Ivan  Seijas", "id":"Ivan  Seijas"},
-																{"tag": "Valerio Santana", "id":"Valerio Santana"},
 																{"tag": "Lucas Almeida", "id":"Lucas Almeida"},
-																{"tag": "Ricardo Macchiavello", "id":"Ricardo Macchiavello"},
-																{"tag": "Vitor Correia", "id":"Vitor Correia"},
-																{"tag": "Juan Pablo  Aste", "id":"Juan Pablo  Aste"},
-																{"tag": "Ana Gabriela Arrieta Vergara", "id":"Ana Gabriela Arrieta Vergara"},
-																{"tag": "Camila Bijit", "id":"Camila Bijit"},
-																{"tag": "Excellence", "id":"Excellence"}
+																{"tag": "Luis Jara", "id":"Luis Jara"},
+																{"tag": "Luis Parra", "id":"Luis Parra"},
+																{"tag": "Rocio Ortiz", "id":"Rocio Ortiz"},
+																{"tag": "Valerio Santana", "id":"Valerio Santana"}
 																],
 													"obligatorio":"no",
 													"nota":"",
@@ -1575,10 +1573,9 @@ descuento={
 												},{
 													"campo":"Collection",
 													"tipo":"lista",
-													"opciones":[{"tag": "duemint", "id":"duemint"},
+													"opciones":[{"tag": "Due Mint", "id":"Due Mint"},
 																{"tag": "male", "id":"male"},
-																{"tag": "pablo", "id":"pablo"},
-																{"tag": "rodian", "id":"rodian"}
+																{"tag": "pablo", "id":"pablo"}
 																],
 													"obligatorio":"no",
 													"nota":"",

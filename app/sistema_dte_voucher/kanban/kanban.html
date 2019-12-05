@@ -1,69 +1,173 @@
-descuento={
-						"formulario":'Crear Cliente',
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+
+.dropdown-menu {
+	max-height: 200px !important;
+	overflow: auto;
+}
+
+@media print{
+  #lista_tareas, .seccion-head, #foooter, .barra_tareas, #header *{
+    display: none !important;
+  }
+  
+  
+  
+  
+  #lista_formularios{
+	  margin-top:-120px;
+	  overflow:hidden;
+	  position:absolute;
+  }
+  
+  .kanaban_load {
+   
+    top: 0px;
+}
+}
+
+td.details-control {
+    background: url('assets/libs/datatables/resource/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('assets/libs/datatables/resource/details_close.png') no-repeat center center;
+}
+
+#lista_formularios{
+
+	padding: 20px;
+	margin-top: 0px;
+}
+
+#lista_opciones_interz{
+	display: none;
+}
+
+.header_formularios h2{
+	margin-top: 0px;
+}
+
+#lista_formularios .conter_loader {
+    background: #ffffff96 !important;
+}
+
+.conter_loader .alert-success{
+	position: absolute;
+    top: 40%;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+}
+
+</style>
+<div class="col-12" id="lista_formularios">
+	
+</div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+fichas_fichas=[]
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+
+
+
+
+function agregar_referencias_glosas(){
+
+
+	
+	//NOTA DE REFACTURACION
+	var formulario_agregar_referencias_glosas={
+						"formulario":'CREAR FACTURA',
 						"contendio":[	
+										
 										{
-										"grupo":"Datos Empresa",
-										"tamanio":[12,12,6],
-										"campos":[
-													{
-													"campo":"estado",
+										"grupo":"Referencias y Fechas",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
 													"tipo":"texto",
-													"opciones":"activo",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
 													"obligatorio":"si",
-													"nota":"",
+													"nota":"usuario",
 													"tamanio":[0],
-													"id":"estado"
-													},{
-													"campo":"Rut",
-													"tipo":"texto",
-													"opciones":"",
+													"id":"usuario"
+												}
+												,{
+													"campo":"Fecha de Emisión",
+													"tipo":"fecha",
+													"opciones":[],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"CLIENT_TAX_CODE"
-													},
-													{
-													"campo":"Razon social",
-													"tipo":"texto",
-													"opciones":"",
+													"nota":"Fecha Emisión",
+													"tamanio":[12,4,4],
+													"id":"fecha_emision"
+												},{
+													"campo":"Fecha de Vencimiento",
+													"tipo":"fecha",
+													"opciones":[],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,8],
-													"id":"CLIENT_NAME"
-													},
-													{
-													"campo":"Grupo economco",
+													"nota":"Fecha Emisión",
+													"tamanio":[12,4,4],
+													"id":"fecha_vencimiento"
+												},{
+													"campo":"Rut Cliente",
+													"tipo":"rut",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Rut de cliente",
+													"tamanio":[12,4,4],
+													"id":"rut_cliente"
+												},{
+													"campo":"Razón Social",
 													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Razón Social",
 													"tamanio":[12,12,12],
-													"id":"GRUPO_ECONOMICO"
-													},
-													{
-													"campo":"client id",
+													"id":"razon_social"
+												},{
+													"campo":"E-mail",
 													"tipo":"texto",
-													"opciones":"",
+													"opciones":[],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CLIENT_ID"
-													},
-													{
-													"campo":"client id madre",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CLIENT_ID_MADRE"
-													},
-													{
+													"nota":"E-mail de cliente",
+													"tamanio":[12,4,4],
+													"id":"correos_fact"
+												},{
 													"campo":"Gir. giro",
 													"tipo":"lista_serach",
 													"opciones":[
 														{"id":"","tag":"Gir. giro"},
-{"id":"ACABADO DE PRODUCTOS TEXTILES","tag":"ACABADO DE PRODUCTOS TEXTILES"},
+														{"id":"ACABADO DE PRODUCTOS TEXTILES","tag":"ACABADO DE PRODUCTOS TEXTILES"},
 {"id":"ACTIVIDADES ARTÍSTICAS REALIZADAS POR BANDAS DE MÚSICA, COMPAÑÍAS DE TEATRO, CIRCENSES Y SIMILARES","tag":"ACTIVIDADES ARTÍSTICAS REALIZADAS POR BANDAS DE MÚSICA, COMPAÑÍAS DE TEATRO, CIRCENSES Y SIMILARES"},
 {"id":"ACTIVIDADES BANCARIAS","tag":"ACTIVIDADES BANCARIAS"},
 {"id":"ACTIVIDADES COMBINADAS DE APOYO A INSTALACIONES","tag":"ACTIVIDADES COMBINADAS DE APOYO A INSTALACIONES"},
@@ -740,171 +844,101 @@ descuento={
 													],
 													"obligatorio":"si",
 													"nota":"",
-													"tamanio":[12,12,12],
-													"id":"GIRO"
+													"tamanio":[12,8,8],
+													"id":"giro"
 													},{
-													"campo":"Last event type",
-													"tipo":"lista",
-													"opciones":[{"tag": "finisher", "id":"finisher"},
-																{"tag": "farmer", "id":"farmer"},
-																{"tag": "hunter", "id":"hunter"}
-																],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"LAST_EVENT_TYPE"
-													},
-													{
-													"campo":"Categoria",
-													"tipo":"lista",
-													"opciones":[{"tag": "Importante", "id":"Importante"},
-																{"tag": "Resto", "id":"Resto"},
-																{"tag": "VIP", "id":"VIP"}
-																],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"CATEGORIA"
-													},
-													
-													{
-													"campo":"Billing period",
-													"tipo":"lista",
-													"opciones":[{"tag": "monthly", "id":"monthly"},
-																{"tag": "biweekly", "id":"biweekly"},
-																{"tag": "on_receipt", "id":"on_receipt"}
-																],
+													"campo":"Dirección",
+													"tipo":"texto",
+													"opciones":[],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"BILLING_PERIOD"
-													},
-													{
-													"campo":"Size",
+													"nota":"Dirección",
+													"tamanio":[12,12,12],
+													"id":"direccion"
+												},{
+													"campo":"Metodo de Pago",
 													"tipo":"lista",
-													"opciones":[{"tag": "employee_1", "id":"employee_1"},
-																{"tag": "employees_2_10", "id":"employees_2_10"},
-																{"tag": "employees_11_50", "id":"employees_11_50"},
-																{"tag": "employees_51_200", "id":"employees_51_200"},
-																{"tag": "employees_more_200", "id":"employees_more_200"},
-																{"tag": "employees_more_500", "id":"employees_more_500"},
-																{"tag": "employees_more_1000", "id":"employees_more_1000"},
-																{"tag": "employees_more_5000", "id":"employees_more_5000"}],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"SIZE"
-												},
-												{
-													"campo":"Sector",
-													"tipo":"lista",
-													"opciones":[{"tag": "advertising_agencies", "id":"advertising_agencies"},
-																{"tag": "apparel", "id":"apparel"},
-																{"tag": "baking_financial_services", "id":"baking_financial_services"},
-																{"tag": "construction", "id":"construction"},
-																{"tag": "consulting", "id":"consulting"},
-																{"tag": "education", "id":"education"},
-																{"tag": "entertainment", "id":"entertainment"},
-																{"tag": "fast_food_and_restaurants", "id":"fast_food_and_restaurants"},
-																{"tag": "food_processing_and_beverage", "id":"food_processing_and_beverage"},
-																{"tag": "gambling", "id":"gambling"},
-																{"tag": "government", "id":"government"},
-																{"tag": "healthcare", "id":"healthcare"},
-																{"tag": "hotels_and_airlines", "id":"hotels_and_airlines"},
-																{"tag": "human_resources_and_recruiting", "id":"human_resources_and_recruiting"},
-																{"tag": "insurance", "id":"insurance"},
-																{"tag": "it_engineering_and_data", "id":"it_engineering_and_data"},
-																{"tag": "legal_services", "id":"legal_services"},
-																{"tag": "mail_package_and_delivery", "id":"mail_package_and_delivery"},
-																{"tag": "mass_media	motor_vehicles", "id":"mass_media	motor_vehicles"},
-																{"tag": "other", "id":"other"},
-																{"tag": "personal_products_and_household", "id":"personal_products_and_household"},
-																{"tag": "pharmaceutical_and_drug_stores", "id":"pharmaceutical_and_drug_stores"},
-																{"tag": "real_estate", "id":"real_estate"},
-																{"tag": "retailers", "id":"retailers"},
-																{"tag": "sports", "id":"sports"},
-																{"tag": "telecommunication", "id":"telecommunication"},
-																{"tag": "travel_services", "id":"travel_services"},
-																{"tag": "wholesalers", "id":"wholesalers"}
-																],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,8],
-													"id":"SECTOR"
-												},
-												{
-													"campo":"City",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CITY"
-												},
-												{
-													"campo":"County",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"COUNTY"
-												},
-												{
-													"campo":"Usuarios registrados",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"REGISTERED_USERS"
-												},
-												{
-													"campo":"Usuarios potenciales",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"POTENTIAL_USERS"
-												},
-												{
-													"campo":"Deal value",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"DEAL_VALUE"
-												},
-										
-											]
-										}
-										,
-										{
-										"grupo":"Datos de Facturacion",
-										"tamanio":[12,12,6],
-										"campos":[
-													{
-													"campo":"Cor. fac",
-													"tipo":"texto",
-													"opciones":"",
+													"opciones":[
+																{"id": 21,"tag": "120 Días"},
+																{"id": 18,"tag": "30 Días"},
+																{"id": 19,"tag": "60 Días"},
+																{"id": 13,"tag": "90 Dias"},
+																{"id": 5,"tag": "CHEQUE"},
+																{"id": 2,"tag": "TARJETA CREDITO"},
+																{"id": 8,"tag": "TRANSFERENCIA BANCARIA"},
+													],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CORREOS_FAC"
-													},
-													{
-													"campo":"Direccion Fac",
-													"tipo":"texto",
-													"opciones":"",
+													"nota":"Metodo de Pago",
+													"tamanio":[12,4,4],
+													"id":"metodo_pago"
+												},{
+													"campo":"Ciudad",
+													"tipo":"lista_serach",
+													"opciones":[
+														{"id":"","tag":"Ciudad Fac"},
+														{"id":"Aisén","tag":"Aisén"},  
+														{"id":"Antártica Chilena","tag":"Antártica Chilena"},  
+														{"id":"Antofagasta","tag":"Antofagasta"},  
+														{"id":"Arauco","tag":"Arauco"},  
+														{"id":"Arica","tag":"Arica"},   
+														{"id":"Bío- Bío","tag":"Bío- Bío"},  
+														{"id":"Cachapoal","tag":"Cachapoal"},  
+														{"id":"Capitan Prat","tag":"Capitan Prat"},  
+														{"id":"Cardenal Caro","tag":"Cardenal Caro"},  
+														{"id":"Cauquenes","tag":"Cauquenes"},  
+														{"id":"Cautín","tag":"Cautín"},  
+														{"id":"Chacabuco","tag":"Chacabuco"},  
+														{"id":"Chañaral","tag":"Chañaral"},   
+														{"id":"Chiloe","tag":"Chiloe"},  
+														{"id":"Choapa","tag":"Choapa"},  
+														{"id":"Coihaique","tag":"Coihaique"},    
+														{"id":"Colchagua","tag":"Colchagua"},  
+														{"id":"Concepción","tag":"Concepción"},   
+														{"id":"Copiapó","tag":"Copiapó"},    
+														{"id":"Cordillera","tag":"Cordillera"},  
+														{"id":"Curico","tag":"Curico"},  
+														{"id":"El Loa","tag":"El Loa"},  
+														{"id":"Elqui","tag":"Elqui"},  
+														{"id":"General Carrera","tag":"General Carrera"},  
+														{"id":"Huasco","tag":"Huasco"},  
+														{"id":"Ignorada","tag":"Ignorada"},  
+														{"id":"Iquique","tag":"Iquique"},    
+														{"id":"Isla de Pascua","tag":"Isla de Pascua"},   
+														{"id":"Limari","tag":"Limari"},  
+														{"id":"Linares","tag":"Linares"},   
+														{"id":"Llanquihue","tag":"Llanquihue"},  
+														{"id":"Los Andes","tag":"Los Andes"},    
+														{"id":"Magallanes","tag":"Magallanes"},  
+														{"id":"Maipo","tag":"Maipo"},  
+														{"id":"Malleco","tag":"Malleco"},  
+														{"id":"Marga Marga","tag":"Marga Marga"},  
+														{"id":"Melipilla","tag":"Melipilla"},  
+														{"id":"Ñuble","tag":"Ñuble"},  
+														{"id":"Osorno","tag":"Osorno"},    
+														{"id":"Palena","tag":"Palena"},  
+														{"id":"Parinacota","tag":"Parinacota"},  
+														{"id":"Petorca","tag":"Petorca"},  
+														{"id":"Quillota","tag":"Quillota"},    
+														{"id":"Ranco","tag":"Ranco"},  
+														{"id":"San Antonio","tag":"San Antonio"},    
+														{"id":"San Felipe","tag":"San Felipe"},    
+														{"id":"Santiago","tag":"Santiago"},    
+														{"id":"Talagante","tag":"Talagante"},    
+														{"id":"Talca","tag":"Talca"},  
+														{"id":"Tamarugal","tag":"Tamarugal"},  
+														{"id":"Tierra del Fuego","tag":"Tierra del Fuego"},  
+														{"id":"Tocopilla","tag":"Tocopilla"},    
+														{"id":"Ultima Esperanza","tag":"Ultima Esperanza"},  
+														{"id":"Valdivia","tag":"Valdivia"},    
+														{"id":"Valparaíso","tag":"Valparaíso"},   
+
+
+													],
 													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CLIENT_ADDRESS"
-													},
-													{
-													"campo":"Comuna Fac",
+													"nota":"Tipo de descuento",
+													"tamanio":[12,4,4],
+													"id":"ciudad"
+												},{
+													"campo":"Comuna",
 													"tipo":"lista_serach",
 													"opciones":[
 														{"tag":"Comuna Fac","id":""},
@@ -1207,7 +1241,6 @@ descuento={
 														{"tag":"San Pablo","id":"San Pablo"},
 														{"tag":"San Pedro","id":"San Pedro"},
 														{"tag":"San Pedro de Atacama","id":"San Pedro de Atacama"},
-
 														{"tag":"San Pedro de La Paz","id":"San Pedro de La Paz"},
 														{"tag":"San Rafael","id":"San Rafael"},
 														{"tag":"San Ramón","id":"San Ramón"},
@@ -1260,322 +1293,986 @@ descuento={
 													],
 													"obligatorio":"si",
 													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CLIENT_CITY"
-													},
-													{
-													"campo":"Ciudad Fac",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"CIUDAD_FAC"
-													},{
-													"campo":"Det. CC. facturacion",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,8],
-													"id":"DETALLE_CC_FACTURACION"
-													},{
-													"campo":"Recurrente ",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"RECURRENTE"
-													},{
-													"campo":"N.OC",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"N_OC"
-													},{
-													"campo":"Venciemiento OC",
-													"tipo":"fecha",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,8],
-													"id":"VENCIMIENTO_OC"
+													"tamanio":[12,4,4],
+													"id":"comuna"
 													}
-										
-										
-											]
-										}
-										,
-										{
-										"grupo":"Detalles de Facturacion",
-										"tamanio":[12,12,6],
-										"campos":[
-													{
-													"campo":"Especial",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,8],
-													"id":"ESPECIAL"
-													}
-													,
-													{
-													"campo":"C. costos",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"CENTRO_COSTO"
-													}
-													,
-													{
-													"campo":"O. compra",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"ORDEN_COMPRA"
-													}
-													,
-													{
-													"campo":"Desglose",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"DESGLOSE"
-													}
-													,
-													{
-													"campo":"Hes",
-													"tipo":"lista",
-													"opciones":[{"tag":"SI","id":"SI"},{"tag":"NO","id":"NO"}],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,4],
-													"id":"HES"
-													},
-													{
-													"campo":"Metodo pago",
-													"tipo":"lista",
-													"opciones":[{"tag": "Deposito", "id":"Deposito"},
-																{"tag": "Tarjeta", "id":"Tarjeta"},
-																{"tag": "Transferencia", "id":"Transferencia"},
-																{"tag": "Vale Vista Banco de Chile", "id":"Vale Vista Banco de Chile"},
-																{"tag": "Vale Vista BCI", "id":"Vale Vista BCI"},
-																{"tag": "Vale Vista Chile-Edwards", "id":"Vale Vista Chile-Edwards"},
-																{"tag": "Vale Vista Corpbanca", "id":"Vale Vista Corpbanca"},
-																{"tag": "Vale Vista Santander", "id":"Vale Vista Santander"}
-																],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"METODO_PAGO"
-													},
-													{
-													"campo":"Payment terms",
-													"tipo":"lista",
-													"opciones":[{"tag": "billing_period", "id":"billing_period"},
-																{"tag": "billing_period_plus_15", "id":"billing_period_plus_15"},
-																{"tag": "billing_period_plus_30", "id":"billing_period_plus_30"},
-																{"tag": "billing_period_plus_45", "id":"billing_period_plus_45"},
-																{"tag": "billing_period_plus_60", "id":"billing_period_plus_60"},
-																{"tag": "billing_period_plus_7", "id":"billing_period_plus_7"},
-																{"tag": "On Receipt", "id":"On Receipt"}
-																],
-													"obligatorio":"si",
-													"nota":"",
-													"tamanio":[12,12,6],
-													"id":"PAYMENT_TERMS"
-													}
-										
-										
-											]
-										}
-										,
-										{
-										"grupo":"Contactos",
-										"tamanio":[12,12,8],
-										"campos":[
-													{
-													"campo":"Nom. admin",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"NOMBRE_ADMIN"
-												},
-												{
-													"campo":"Cor. admin",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"CORREO_ADMIN"
-												},
-												{
-													"campo":"Tel. admin 1",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"TELEFONO_ADMIN"
-												},{
-													"campo":"Tel. admin 2",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"TELEFONO_ADMIN2"
-												},{
-													"campo":"Nom. cob 1",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"NOMBRE_COB"
-												},{
-													"campo":"Cor. cob 1",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"CORREO_COB"
-												},{
-													"campo":"Tel. cob 1",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"TELEFONO_COB"
-												},{
-													"campo":"Tel. cob 2",
-													"tipo":"texto",
-													"opciones":"",
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,3],
-													"id":"TELEFONO_COB2"
-												}
 												
-										
-										
-											]
-										}
-										,
-										{
-										"grupo":"Responsables Cabify",
-										"tamanio":[12,12,4],
+												]
+												
+												
+										},{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_referencia" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_referencia" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
 										"campos":[
 													{
-													"campo":"Hunter rep",
-													"tipo":"lista",
-													"opciones":[{"tag": "Agustin Sabate", "id":"Agustin Sabate"},
-																{"tag": "Juan Ignacio Garces", "id":"Juan Ignacio Garces"},
-																{"tag": "Constanza Veronica Garcia Garcia", "id":"Constanza Veronica Garcia Garcia"},
-																{"tag": "Felix Sayago", "id":"Felix Sayago"},
-																{"tag": "Jose Tomas Aguirre", "id":"Jose Tomas Aguirre"},
-																{"tag": "Constanza Cifuentes", "id":"Constanza Cifuentes"},
-																{"tag": "Alberto Tognetti", "id":"Alberto Tognetti"},
-																{"tag": "Manuel Ramirez", "id":"Manuel Ramirez"},
-																{"tag": "Sebastian Eyzaguirre", "id":"Sebastian Eyzaguirre"},
-																{"tag": "Jose Domingo Jaramillo Reyes", "id":"Jose Domingo Jaramillo Reyes"},
-																{"tag": "Camila Bijit", "id":"Camila Bijit"},
-																{"tag": "Luis Parra Garrido", "id":"Luis Parra Garrido"},
-																{"tag": "Klaus Pollmann", "id":"Klaus Pollmann"},
-																{"tag": "Constanza  Frauenberg", "id":"Constanza  Frauenberg"},
-																{"tag": "Pia Carrasco", "id":"Pia Carrasco"},
-																{"tag": "Lucas Almeida", "id":"Lucas Almeida"},
-																{"tag": "Rocio Paz Ortiz Guzman", "id":"Rocio Paz Ortiz Guzman"},
-																{"tag": "Ricardo Macchiavello", "id":"Ricardo Macchiavello"},
-																{"tag": "Juan Pablo  Aste", "id":"Juan Pablo  Aste"},
-																{"tag": "Valerio Santana", "id":"Valerio Santana"},
-																{"tag": "Luciana Correa Meyer", "id":"Luciana Correa Meyer"},
-																{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
-																{"tag": "Piero Bosi", "id":"Piero Bosi"},
-																{"tag": "Eva Ibarra", "id":"Eva Ibarra"},
-																{"tag": "Ventas Cabify", "id":"Ventas Cabify"},
-																{"tag": "Camila Andrea", "id":"Camila Andrea"},
-																{"tag": "Toro Calderon", "id":"Toro Calderon"},
-																{"tag": "Agustin Guilisasti", "id":"Agustin Guilisasti"},
-																{"tag": "Gabriela Marcano", "id":"Gabriela Marcano"},
-																{"tag": "Ivan  Seijas", "id":"Ivan  Seijas"},
-																{"tag": "Lucas Barros", "id":"Lucas Barros"},
-																{"tag": "Luis Vindrola Caceres", "id":"Luis Vindrola Caceres"},
-																{"tag": "Javier Ignacio Iturrieta Brath", "id":"Javier Ignacio Iturrieta Brath"},
-																{"tag": "Javiera Duarte Contesse", "id":"Javiera Duarte Contesse"},
-																{"tag": "Sergio Andrés Rodriguez del Canto", "id":"Sergio Andrés Rodriguez del Canto"},
-																{"tag": "Javiera Duarte", "id":"Javiera Duarte"},
-																{"tag": "Jose Domingo Jaramillo", "id":"Jose Domingo Jaramillo"},
-																{"tag": "Luis Vindrola", "id":"Luis Vindrola"},
-																{"tag": "Rocio Ortiz", "id":"Rocio Ortiz"}],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,12,12],
-													"id":"SALES_REP"
-												},{
-													"campo":"Farmer rep",
-													"tipo":"lista",
-													"opciones":[{"tag": "Agustin Sabate", "id":"Agustin Sabate"},
-																{"tag": "Carlos Martinez", "id":"Carlos Martinez"},
-																{"tag": "Eric Romano", "id":"Eric Romano"},
-																{"tag": "Franco Aranguiz", "id":"Franco Aranguiz"},
-																{"tag": "Gabriela Marcano", "id":"Gabriela Marcano"},
-																{"tag": "Klaus Pollmann", "id":"Klaus Pollmann"},
-																{"tag": "Lucas Almeida", "id":"Lucas Almeida"},
-																{"tag": "Luis Jara", "id":"Luis Jara"},
-																{"tag": "Luis Parra", "id":"Luis Parra"},
-																{"tag": "Rocio Ortiz", "id":"Rocio Ortiz"},
-																{"tag": "Valerio Santana", "id":"Valerio Santana"}
-																],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,6,6],
-													"id":"SOPORTE"
-												},{
-													"campo":"Collection",
-													"tipo":"lista",
-													"opciones":[{"tag": "Due Mint", "id":"Due Mint"},
-																{"tag": "male", "id":"male"},
-																{"tag": "pablo", "id":"pablo"}
-																],
-													"obligatorio":"no",
-													"nota":"",
-													"tamanio":[12,6,6],
-													"id":"COLLECTION"
-												}
-										
-										
-											]
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_referencias"
+													}
+												]
+										},
+										{
+										"grupo":'<div class="btn-group btn-group-xs" role="group" aria-label="..."><button id="sumar_glosa" type="button" class="btn btn-success"><i class="fas fa-plus"></i></button><button id="eliminar_glosa" type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button></div>&nbsp;&nbsp;&nbsp;Agregue  o elimine las glosas y montos',
+										"tamanio":[12,12,12],
+										"campos":[
+													{
+														"campo":  "",
+														"tipo": "div",
+														"opciones":"",
+														"tamanio":[12,12,12],
+														"id":"div_ingresar_glosas"
+													}
+												]
 										}
-										
-										
-										
 									
 						],
 						"opciones":[{
-							"boton":"GUARDAR",
+							"boton":"AGREGAR",
 							"ws":"",
-							"funcion":"crear_cliente()"
+							"funcion":"generar_refacturacion()"
 						}]
 				
+			}
+		
+	cosntruir_formularios(formulario_agregar_referencias_glosas, "lista_formularios", "")
+	//$("#agregar_glosa .header_formularios").remove()
+	$("#div_ingresar_glosas, #div_ingresar_referencias").attr("class","")
+	//return false();
+	//AGREGAR NOTA   
+	//$("#fomulario_agregar_glosa").prepend('<div class="col-xs-6 col-sm-6 col-md-6"><div class="page-header text-left"><small><strong>Facturar a:</strong></small></div><h3>'+nombre_empresa+', R.U.T: '+rut_empresa+'</h3></div>')
+	
+	//AGREGAR REFERENCIAS
+	$(".multiselect-container").find(".checkbox").on("change", function(){
+		console.log($(this).find("input").val())
+		id_elemento=$(this).find("input").val()
+		
+		if($(this).find("input").is(":checked") ){
+			
+			
+			
+			$("#grupo_1agregar_glosa").append('<div id="referencia_'+id_elemento+'" class="col-xs-6 col-sm-6 col-md-6 referencia">'+
+											  '<div class="page-header text-left"><small><strong>Referencia:</strong>'+$(this).html().replace('<input type="checkbox" value="'+id_elemento+'">','')+'</small></div>'+
+											  '<div class="row">'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">NÂ°</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_numero">'+
+															'<input hidden value="'+id_elemento+'"  type="text" class="refrescar_validacion referencia_id">'+
+														'</div>'+
+												  '</div>'+
+												  '<div class="col-xs-6 col-sm-6 col-md-6">'+
+														'<div class="input-group">'+
+															'<span class="input-group-addon" id="basic-addon1">Fecha</span>'+
+															'<input value=""  type="text" placeholder="Indicar..." class="form-control refrescar_validacion referencia_fecha calendario_002">'+
+														'</div>'+
+												  '</div>'+
+												'</div>'+ 
+											'</div>'
+										  );							
+			
+		}else{
+			$("#referencia_"+id_elemento).remove();
+		}
+		$( ".calendario_002").datepicker({
+							format: "dd/mm/yyyy",
+							changeMonth:true,
+							changeYear:true,
+						})
+		
+	})
+	//AGREGAR REFERENCIAS DOSSS
+	total_referencia=0
+	$("#sumar_referencia").on("click",function(){
+		
+		total_referencia++;
+		$("#div_ingresar_referencias").append("<div class='referencia' id='referencias_"+total_referencia+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		
+			/*for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}*/
+			
+			for (i in campos_del_las_referencias){
+				id_temporal=campos_del_las_referencias[i].id
+				campos_del_las_referencias[i].id=campos_del_las_referencias[i].id+total_referencia
+				construir_campos_de_formulario(campos_del_las_referencias[i], "#referencias_"+total_referencia)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				$(".lista").find(".select_item").on("click", function(){
+					$("#"+$(this).data("destino")).val($(this).data("opcion"))
+					$(this).parent("ul").parent("div").find(".btn").html($(this).parent("ul").parent("div").find(".btn").data("base")+': '+$(this).find("a").html()+" <span class='caret'></span>")
+				})
+				campos_del_las_referencias[i].id=id_temporal
+				
+			}
+		/*
+		nombre_referencias_
+numero_referencias_
+fecha_referencias_
+		*/
+		
+		if(total_referencia>=20){
+			$("#sumar_referencia").attr("disabled", true);
+		}
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled", true);
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		console.log(total_referencia)
+		
+		$(".referencia").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".referencia").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_referencia").on("click", function(){
+		console.log(total_referencia)
+		$("#referencias_"+total_referencia).remove();
+		total_referencia--;
+		if(total_referencia<=20){
+			$("#sumar_referencia").attr("disabled", false);
+		}
+		
+		if(total_referencia<=1){
+			$("#eliminar_referencia").attr("disabled",true );
+		}else if(total_referencia>=2){
+			$("#eliminar_referencia").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_referencia").click()
+	
+	//AGREGAR GLOSAS
+	total_glosas=0
+	$("#sumar_glosa").on("click",function(){
+		
+		total_glosas++;
+		$("#div_ingresar_glosas").append("<div class='glosa' id='glosa_"+total_glosas+"'></div>")
+		
+		//SI NO ESXISTE DATA RESCATADA
+		//if(data_rescatada==""){
+			for (i in campos_del_las_glosas){
+				id_temporal=campos_del_las_glosas[i].id
+				campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+				construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+				$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+				campos_del_las_glosas[i].id=id_temporal
+			}
+		//SI ESXISTE DATA RESCATADA
+		/*}else if(data_rescatada!=""){
+			console.log(total_glosas)
+			console.log(data_rescatada.glosas.length)
+			if(total_glosas<=data_rescatada.glosas.length){
+				console.log("A")
+				for(a in data_rescatada.glosas){
+					for (b in campos_del_las_glosas){
+						id_temporal=campos_del_las_glosas[b].id
+						campos_del_las_glosas[b].id=campos_del_las_glosas[b].id+total_glosas
+						if(campos_del_las_glosas[b].campo=="Glosa"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].descripcion
+						}else if(campos_del_las_glosas[b].campo=="Monto"){
+							campos_del_las_glosas[b].opciones=data_rescatada.glosas[a].monto
+						}
+						construir_campos_de_formulario(campos_del_las_glosas[b], "#glosa_"+total_glosas)
+						$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+						campos_del_las_glosas[b].id=id_temporal
+					}
+					
+				}
+
+			}else if(total_glosas>data_rescatada.glosas.length){
+				console.log("B")
+				for (i in campos_del_las_glosas){
+					id_temporal=campos_del_las_glosas[i].id
+					campos_del_las_glosas[i].id=campos_del_las_glosas[i].id+total_glosas
+					if(campos_del_las_glosas[i].campo=="Glosa"){
+							campos_del_las_glosas[i].opciones=""
+					}else if(campos_del_las_glosas[i].campo=="Monto"){
+							campos_del_las_glosas[i].opciones=""
+					}
+					construir_campos_de_formulario(campos_del_las_glosas[i], "#glosa_"+total_glosas)
+					$(".numero").keyup(function(){$(this).val($(this).val().replace(/\D/g, ''))})
+					campos_del_las_glosas[i].id=id_temporal
+				}
+			}
+		}*/
+		
+		if(total_glosas>=20){
+			$("#sumar_glosa").attr("disabled", true);
+		}
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled", true);
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		console.log(total_glosas)
+		
+		$(".glosa").find(".col-md-2").find(".lista").find(".select_item a").on("click", function(){
+			console.log($(this).html())
+			$(this).closest(".glosa").find(".col-md-6").find(".refrescar_validacion").val($(this).html())
+		})
+	
+	
+		
+		
+	
+	
+	})
+	
+	$("#eliminar_glosa").on("click", function(){
+		console.log(total_glosas)
+		$("#glosa_"+total_glosas).remove();
+		total_glosas--;
+		if(total_glosas<=20){
+			$("#sumar_glosa").attr("disabled", false);
+		}
+		
+		if(total_glosas<=1){
+			$("#eliminar_glosa").attr("disabled",true );
+		}else if(total_glosas>=2){
+			$("#eliminar_glosa").attr("disabled", false);
+		}
+		
+		
+	})
+	$("#sumar_glosa").click()
+		
+	
+	
+	
+	
 }
 
-												
+
+
+
+function cargar_glosa(id){
+	nota_negativa=""
+	
+	
+	//VALIDACIONES
+	$("#grupo_0agregar_glosa").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	
+	$("#div_ingresar_glosas").find(".col-md-2, .col-md-5, .col-md-3").find(".input-group").find(".form-control").each(function(index, element) {
+		if($(this).val()==""){
+			$(this).addClass("fucus_negativo");
+			nota_negativa="Datos incompletos"
+			
+		}else{
+			$(this).removeClass("fucus_negativo");
+			
+			
+		}
+        
+    });
+	//TOTAL
+	total_factura=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+		
+        total_factura=total_factura+Number($(this).val())
+    });
+	//CONSTRULLO ARREGLO DE FACTURA
+	id_temporal="10"
+	if(id_temporal.indexOf("_")<0){
+			id_temporal=id_temporal+"_"
+		}
+		id_temporal=id_temporal.split("_",2);
+		
+	arreglo_temporal={"_id":id_temporal[0], "total_fac":total_factura, "glosas":[], "referencias":[], "fecha_emision":moment($("#fecha_emision").val()).format('X')}
+	//GLOSA
+	$("#div_ingresar_glosas").find(".glosa").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.glosas.push({"comment":$(this).find(".col-md-6").find(".form-control").val(),"netUnitValue":$(this).find(".col-md-4").find(".form-control").val(),"quantity":1})
+    });
+	
+	//REFERENCIA
+	/*$("#grupo_1agregar_glosa").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		arreglo_temporal.referencias.push({"id":$(this).find(".referencia_id").val(),"fecha":moment($(this).find(".referencia_fecha").val()).format("X"),"numero":$(this).find(".referencia_numero").val()})
+    });*/
+	$("#div_ingresar_referencias").find(".referencia").each(function(index, element) {
+        //NOMBRE
+		//console.log("s")
+		//$(this).hide();
+		if($(this).find(".col-md-3").find(".refrescar_validacion").val()!=""){
+			
+			//NUMERO
+			if($(this).find(".col-md-2").find(".numero").val()==""){$(this).find(".col-md-2").find(".numero").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find(".numero").removeClass("fucus_negativo");}
+			//FECHA
+			if($(this).find(".col-md-2").find(".calendario_002").val()==""){$(this).find(".col-md-2").find(".calendario_002").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-2").find(".calendario_002").removeClass("fucus_negativo");}
+			//COMENTARIO
+			if($(this).find(".col-md-5").find(".form-control").val()==""){$(this).find(".col-md-5").find(".form-control").addClass("fucus_negativo"); nota_negativa="Datos incompletos"
+			}else{$(this).find(".col-md-5").find(".form-control").removeClass("fucus_negativo");}
+			
+			
+			//AGERO SI ESTA LLENAS
+			if(nota_negativa==""){
+				arreglo_temporal.referencias.push({"codeSii":$(this).find(".col-md-3").find(".refrescar_validacion").val(),"referenceDate":moment($(this).find(".col-md-2").find(".calendario_002").val()).format('X'),"number":$(this).find(".col-md-2").find(".numero").val(), "reason":$(this).find(".col-md-5").find(".form-control").val()})
+			}
+			
+		}
+		
+		
+    });
+	
+	
+	
+	console.log( JSON.stringify(arreglo_temporal))
+	
+	//return false;
+	
+	
+	/*
+	//TOTALIZO GENERALES MODAL INFERIOR
+	//TOTAL EN LA PANTALLA DE DETALLE
+	total_a_cargar=0
+	total_acumulado=0
+	$("#div_ingresar_glosas").find(".numero").each(function(index, element) {
+	
+        total_a_cargar=Number(total_a_cargar)+Number($(this).val());
+    });
+	$("#"+id.toLowerCase()).val(total_a_cargar);	
+	//TOTAL EN LA PANTALLA GENERAL
+	$("#fomulario_form_refacturar").find("#grupo_0form_refacturar").find(".numero").each(function(index, element) {
+          total_acumulado=Number(total_acumulado)+Number($(this).val())
+    });
+		
+	$("#total_desglose").val(total_acumulado)
+			
+	if(total_acumulado!=$("#total_folio").val()){
+		$(".enviar_form_001").attr("disabled", true);
+		$(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>Total del desglose es distinto a Total Folio</strong></div>');
+	}else if(total_acumulado==$("#total_folio").val()){
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	
+	//OCULTO MODAL
+	if(nota_negativa==""){
+		//INSERTO ARREGLO EN EL OBJETO MADRE
+		$("#"+id.toLowerCase()).attr("arreglo_factura", JSON.stringify(arreglo_temporal))
+		$("#Modal_glosa").modal("hide");
+	}else{
+		$("#Modal_glosa").find(".nota_validacion").html('<div class="alert alert-warning text-center" role="alert"><strong>'+nota_negativa+'</strong></div>')
+		$(".enviar_form_001").attr("disabled", false);
+		$(".nota_validacion").html("")
+	}
+	*/
+	
+}
+
+function generar_refacturacion(folio){
+	
+	//SELECIONO EN LOS REGISTROS EL SELECIONADO
+	nota_negativa="";
+	validacampo_auto(["fecha_emision","texto","si","Fecha de emision,"])
+	validacampo_auto(["fecha_vencimiento","texto","si","Fecha de vencimiento,"])
+	validacampo_auto(["rut_cliente","rut","si","RUT,"])
+	validacampo_auto(["razon_social","texto","si","Razon social,"])
+	validacampo_auto(["correos_fact","texto","si","Correo,"])
+	validacampo_auto(["giro","lista_serach","si","Giro,"])
+	validacampo_auto(["direccion","texto","si","Dirección,"])
+	validacampo_auto(["metodo_pago","lista","si","Metodo de pago,"])
+	validacampo_auto(["ciudad","lista_serach","si","Ciduad,"])
+	validacampo_auto(["comuna","lista_serach","si","Comuna,"])
+	
+	glosa_cliente={
+		    "ES_id_of": "voucher",
+		    "client_id": "",
+		    "client_tax_code": "",
+		    "client_name": "",
+		    "grupo_economico": "",
+		    "monto_factura": "",
+		    "client_id_madre": "",
+		    "categoria": "",
+		    "soporte": "",
+		    "sales_rep": "",
+		    "fecha_periodo": ""
+		  }
+
+	//CONSTRYYO EL OBEJTO A ENVIAR
+	
+	data_envio={
+		"tx":"f1",
+		"usuario":"op",
+		"operacion":"dte_fc",
+		"destino":constantes.destino,
+		"doc_original":glosa_cliente,
+		"docs_nuevos":[],
+		"ES_id_of":"voucher",
+	};
+
+	//DOCUMENTO A ENVIAR
+    docs_nuevos= {
+			      "cliente": {
+			        "_source": {
+			          "CIUDAD_FAC": 	$("#ciudad").val() =="" ?  "": $("#ciudad").val(),
+			          "CLIENT_ADDRESS": $("#direccion").val() =="" ?  "": $("#direccion").val(),
+			          "CLIENT_CITY": 	$("#comuna").val() =="" ?  "": $("#comuna").val(),
+			          "CLIENT_NAME": 	$("#razon_social").val() =="" ?  "": $("#razon_social").val(),
+			          "CLIENT_TAX_CODE":$("#rut_cliente").val() =="" ?  "": $("#rut_cliente").val().replace(/\./g, ""),
+			          "CORREOS_FAC": 	$("#correos_fact").val() =="" ?  "": $("#correos_fact").val(),
+			          "GIRO": 			$("#giro").val() =="" ?  "": $("#giro").val(),
+			          "METODO_PAGO": 	$("#metodo_pago").val() =="" ?  "": $("#metodo_pago").val()
+			        }
+			      },
+			      "ES_id_of": "voucher",
+			      "emissionDate": $("#fecha_emision").val() =="" ?  "": moment($("#fecha_emision").val()).format("X"),
+			      "expirationDate": $("#fecha_vencimiento").val() =="" ?  "": moment($("#fecha_vencimiento").val()).format("X"),
+			      "references": [],
+			      "details": [],
+			      "total_fac": 0
+			    }
+
+
+	//REFERENCIAS
+	referencias=[]
+	$("#div_ingresar_referencias").find(".referencia").each(function(index_a){
+		index_a=1+index_a;
+		if($("#nombre_referencias_"+index_a).val()!=""){
+			if($("#fecha_referencias_"+index_a).val()==""){$("#fecha_referencias_"+index_a).addClass("fucus_negativo"); nota_negativa=nota_negativa+"Fecha de Reeferencia, "; }
+			if($("#numero_referencias_"+index_a).val()==""){$("#numero_referencias_"+index_a).addClass("fucus_negativo"); nota_negativa=nota_negativa+"N° de Reeferencia, "; }
+		
+		referencias.push({
+		          "codeSii": $("#nombre_referencias_"+index_a).val(),
+		          "referenceDate": moment($("#fecha_referencias_"+index_a).val()).format("X"),
+		          "number": $("#numero_referencias_"+index_a).val(),
+		          "reason": $("#comentario_"+index_a).val()
+		        })
+		}
+
+		
+	});
+	docs_nuevos.references=referencias;
+	//DETAILS
+	glosas=[];
+	totalfacturas=0;
+	$("#div_ingresar_glosas").find(".glosa").each(function(index_a){
+		index_a=1+index_a;
+		$(this).find(".fucus_negativo").removeClass("fucus_negativo");
+		if($("#glosa_cantidad_"+index_a).val()==""){$("#glosa_cantidad_"+index_a).addClass("fucus_negativo"); nota_negativa=nota_negativa+"Cantidad de la glosa, "; }
+		if($("#glosa_descriptiva_"+index_a).val()==""){$("#glosa_descriptiva_"+index_a).addClass("fucus_negativo"); nota_negativa=nota_negativa+"Descripción de la glosa, "; }
+		if($("#monto_"+index_a).val()==""){$("#monto_"+index_a).addClass("fucus_negativo"); nota_negativa=nota_negativa+"Monto de glosa, "; }
+		
+		glosas.push({
+				          "comment": $("#glosa_descriptiva_"+index_a).val(),
+				          "netUnitValue": $("#monto_"+index_a).val(),
+				          "quantity": $("#glosa_cantidad_"+index_a).val()
+				        });
+		totalfacturas=totalfacturas+Number($("#monto_"+index_a).val());
+	});
+	docs_nuevos.details=glosas;
+	docs_nuevos.total_fac=totalfacturas;
+	data_envio.docs_nuevos.push(docs_nuevos)
+
+
+	
+	//VALIDO NOTA NEGATIVA
+	if(nota_negativa==""){
+		//INSERTO ARREGLO EN EL OBJETO MADRE
+		$(".nota_kanban").removeClass("alert-warning");
+		$(".nota_kanban").removeClass("text-center");
+		$(".nota_kanban").hide()
+		$(".nota_kanban").html("");
+		$(".enviar_form_001").attr("disabled", true);
+	}else{
+		$(".nota_kanban").addClass("alert-warning");
+		$(".nota_kanban").addClass("text-center");
+		$(".nota_kanban").show()
+		$(".nota_kanban").html("Los campos:"+ nota_negativa+" son obligatorios");
+		$(".enviar_form_001").attr("disabled", false);
+		return false;
+	}
+
+
+	console.log(JSON.stringify(data_envio))
+	//return false;
+	$.ajax({
+							url: "https://cf.openpartner.cl",
+							type: "POST",
+							data:JSON.stringify(data_envio),
+							contentType: "text/plain",
+							timeout:1800000,
+							beforeSend: function () {
+									
+									$("#lista_formularios").append('<div class="conter_loader"><div class="loader"></div></div>');
+									
+							},
+							success: function(data) {
+							
+								//$(".loader").remove();
+								data=JSON.parse(data)
+								if(data.estatus){
+									if(data.estatus=="OK" || data.estatus=="FIN"){
+										
+
+									$(".conter_loader").html(`<div class="alert alert-success" role="alert">
+																	Factura enviada<br>
+																	<button onClick="agregar_referencias_glosas()" type="button" class="btn btn-success btn-sm">
+																	  Enviar otra factura
+																	</button>
+																</div>`);
+										
+									
+									}else if(data.estatus=="NO OK"){
+										controlar_no_ok_desconocido_error("NO OK", data)
+											}
+								}else{
+									controlar_no_ok_desconocido_error("DESCONOCIDO", data)		
+								}
+								
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								controlar_no_ok_desconocido_error("ERROR", xhr.status)
+									
+							}			
+					});
+	
+	
+	
+}
+
+
+referencias_duro=[{
+      "href": "https://api.bsale.cl/v1/dte_codes/28.json",
+      //"id": 28,
+      "tag": "AWB (Air Will Bill)",
+      "id": "809",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/27.json",
+      //"id": 27,
+      "tag": "B/L (Conocimiento de embarque)",
+      "id": "808",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/35.json",
+      //"id": 35,
+      "tag": "Boleta",
+      "id": "35",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/10.json",
+      //"id": 10,
+      "tag": "Boleta Electrónica",
+      "id": "39",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/1.json",
+      //"id": 1,
+      "tag": "Boleta Exenta",
+      "id": "38",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/11.json",
+      //"id": 11,
+      "tag": "Boleta Exenta Electrónica",
+      "id": "41",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/30.json",
+      //"id": 30,
+      "tag": "Carta de Porte",
+      "id": "811",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/33.json",
+      //"id": 33,
+      "tag": "Certificado de Depósito Bolsa Prod. Chile",
+      "id": "814",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/22.json",
+      //"id": 22,
+      "tag": "Contrato",
+      "id": "803",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/38.json",
+      //"id": 38,
+      "tag": "Declaración de Ingreso (DIN)",
+      "id": "914",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/26.json",
+      //"id": 26,
+      "tag": "DUS",
+      "id": "807",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/36.json",
+      //"id": 36,
+      "tag": "Factura",
+      "id": "30",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/2.json",
+      //"id": 2,
+      "tag": "Factura de Compra",
+      "id": "45",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/12.json",
+      //"id": 12,
+      "tag": "Factura de Compra Electrónica",
+      "id": "46",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/39.json",
+      //"id": 39,
+      "tag": "Factura de exportación",
+      "id": "101",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/17.json",
+      //"id": 17,
+      "tag": "Factura de Exportación Electrónica",
+      "id": "110",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/8.json",
+      //"id": 8,
+      "tag": "Factura Electrónica",
+      "id": "33",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/37.json",
+      //"id": 37,
+      "tag": "Factura Exenta",
+      "id": "32",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/9.json",
+      //"id": 9,
+      "tag": "Factura No Afecta o Exenta Electrónica",
+      "id": "34",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/25.json",
+      //"id": 25,
+      "tag": "Ficha ChileCompra",
+      "id": "806",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/15.json",
+      //"id": 15,
+      "tag": "GuÃ­a de Despacho",
+      "id": "50",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/16.json",
+      //"id": 16,
+      "tag": "GuÃ­a de Despacho Electrónica",
+      "id": "52",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/44.json",
+      //"id": 44,
+      "tag": "HEM",
+      "id": "HEM",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/43.json",
+      //"id": 43,
+      "tag": "HES",
+      "id": "HES",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/5.json",
+      //"id": 5,
+      "tag": "Liquidación",
+      "id": "103",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/6.json",
+      //"id": 6,
+      "tag": "Liquidación Factura",
+      "id": "40",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/7.json",
+      //"id": 7,
+      "tag": "Liquidación-Factura Electrónica",
+      "id": "43",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/29.json",
+      //"id": 29,
+      "tag": "MIC/DTA",
+      "id": "810",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/4.json",
+      //"id": 4,
+      "tag": "Nota de Crédito",
+      "id": "60",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/41.json",
+      //"id": 41,
+      "tag": "Nota de Crédito de exportación",
+      "id": "106",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/19.json",
+      //"id": 19,
+      "tag": "Nota de Crédito de Exportación Electrónica",
+      "id": "112",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/14.json",
+      //"id": 14,
+      "tag": "Nota de Crédito Electrónica",
+      "id": "61",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/3.json",
+      //"id": 3,
+      "tag": "Nota de Débito",
+      "id": "55",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/40.json",
+      //"id": 40,
+      "tag": "Nota de débito de exportación",
+      "id": "104",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/18.json",
+      //"id": 18,
+      "tag": "Nota de Débito de Exportación Electrónica",
+      "id": "111",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/13.json",
+      //"id": 13,
+      "tag": "Nota de Débito Electrónica",
+      "id": "56",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/21.json",
+      //"id": 21,
+      "tag": "Nota de pedido",
+      "id": "802",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/20.json",
+      //"id": 20,
+      "tag": "Orden de Compra",
+      "id": "801",
+      "state": 0
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/32.json",
+      //"id": 32,
+      "tag": "Pasaporte",
+      "id": "813",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/24.json",
+      //"id": 24,
+      "tag": "Proceso ChileCompra",
+      "id": "805",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/23.json",
+      //"id": 23,
+      "tag": "Resolución",
+      "id": "804",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/31.json",
+      //"id": 31,
+      "tag": "Resolución del SNA donde califica Servicios de Exportación",
+      "id": "812",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/34.json",
+      //"id": 34,
+      "tag": "Vale de Prenda Bolsa Prod. Chile",
+      "id": "815",
+      "state": 1
+    },
+    {
+      "href": "https://api.bsale.cl/v1/dte_codes/42.json",
+      //"id": 42,
+      "tag": "Vales comprobantes de Pago Medios Electrónicos (Transbank)",
+      "id": "48",
+      "state": 1
+    }	]		
+			
+
+glosa_duro=[
+	{
+	  "id": 2360,
+      "tag": "2018 Diciembre",
+	}
+	,
+	{
+	  "id": 2264,
+      "tag": "2019 Enero",
+	  }
+	,
+	{
+	  "id": 2265,
+      "tag": "2019 Febrero",
+	 }
+	,
+	{
+	  "id": 2359,
+      "tag": "2019 Marzo"
+	}
+
+]
+
+campos_del_las_glosas=[
+													{
+														"campo":  "Cant.",
+														"tipo": "numero",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Cantidad",
+														"tamanio":[2,2,2],
+														"id":"glosa_cantidad_"
+													},
+													{
+														"campo":  "Glosa",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar o Selecione Glosa",
+														"tamanio":[7,7,7],
+														"id":"glosa_descriptiva_"
+													}
+													
+													,
+													{
+														"campo":  "Monto",
+														"tipo": "numero",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Monto",
+														"tamanio":[3,3,3],
+														"id":"monto_"
+													}
+]
+
+campos_del_las_referencias=[{
+														"campo":  "Referencia",
+														"tipo": "lista",
+														"opciones":referencias_duro,
+														"obligatorio":"no",
+														"nota":"Selecione Referencia",
+														"tamanio":[3,3,3],
+														"id":"nombre_referencias_"
+													},
+													{
+														"campo":  "N°",
+														"tipo": "numero",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar N°",
+														"tamanio":[2,2,2],
+														"id":"numero_referencias_"
+													}
+													
+													,
+													{
+														"campo":  "Fecha",
+														"tipo": "fecha",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Fecha",
+														"tamanio":[2,2,2],
+														"id":"fecha_referencias_"
+													},
+													{
+														"campo":  "Comentario",
+														"tipo": "texto",
+														"opciones":"",
+														"obligatorio":"no",
+														"nota":"Ingresar Comentario",
+														"tamanio":[5,5,5],
+														"id":"comentario_"
+													}
+]
+
+
+	
+
+
+
+
+agregar_referencias_glosas()
 
 
 
@@ -1588,7 +2285,6 @@ descuento={
 
 
 
- 
 
 
 
@@ -1596,5 +2292,63 @@ descuento={
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 
 

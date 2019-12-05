@@ -734,6 +734,10 @@ function validar_usuario(usuario, clave){
 	dte_manua={'sistema': 'DTE_Manual',
 			'menu': '<li class="vinculo" id="link_kanban" data-vinculo="sistema_dte/kanban/kanban" id="kanaban" title="Actividades"><a><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></a></li>',
 			'wsUrl': 'bsync/'};
+
+	sistema_dte_voucher={'sistema': 'DTE_Voucher',
+			'menu': '<li class="vinculo" id="link_kanban" data-vinculo="sistema_dte_voucher/kanban/kanban" id="kanaban" title="Crear factura"><a><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></a></li><li class="vinculo" id="link_kanban" data-vinculo="sistema_dte_voucher/kanban/masivo" id="kanaban" title="Carga masiva"><a><i class="fas fa-file-alt"></i></a></li><li class="vinculo" id="link_kanban" data-vinculo="sistema_dte_voucher/kanban/registros" id="kanaban" title="Busqueda de DTE"><a><i class="fas fa-search" aria-hidden="true"></i></a></li>',
+			'wsUrl': 'bsync/'};
 			
 	sistema_pagas ={
 					'sistema':'Pagos',
@@ -745,7 +749,7 @@ function validar_usuario(usuario, clave){
 	
 	
 	if(usuario=="renny.rada" && clave=="rrada"){
-		return {estatus:"OK", sistemas:[refacturacion], privilegios:[{css:"priv_generar_factura", permiso:"NO"}]};
+		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_dte_voucher], privilegios:[{css:"priv_generar_factura", permiso:"SI"}]};
 	}else if(usuario=="valerio.santana" && clave=="vsantana"){
 		return {estatus:"OK", sistemas:[refacturacion], privilegios:[{css:"priv_generar_factura", permiso:"NO"}]};
 	}else if(usuario=="ricardo.macchiavello" && clave=="rmacchiavello"){
@@ -771,17 +775,18 @@ function validar_usuario(usuario, clave){
 	}else if(usuario=="klaus.pollmann" && clave=="kpollmann"){
 		return {estatus:"OK", sistemas:[refacturacion], privilegios:[{css:"priv_generar_factura", permiso:"NO"}]};
 	}else if(usuario=="alejandra.rodriguez" && clave=="arodriguez"){
-		return {estatus:"OK", sistemas:[refacturacion], privilegios:[{css:"priv_generar_factura", permiso:"NO"}]};
+		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_dte_voucher], privilegios:[{css:"priv_generar_factura", permiso:"SI"}]};
 	}else if(usuario=="pablo.millar" && clave=="pmillar"){
 		return {estatus:"OK", sistemas:[refacturacion], privilegios:[{css:"priv_generar_factura", permiso:"NO"}]};
-	}else if(usuario=="veronica.leal" && clave=="vleal"){
+	/*}else if(usuario=="veronica.leal" && clave=="vleal"){
 		return {estatus:"OK", sistemas:[facturacion, refacturacion], privilegios:[]};
+	*/
 	}else if(usuario=="gabriela.baruffi" && clave=="gbaruffi"){
-		return {estatus:"OK", sistemas:[facturacion, refacturacion], privilegios:[]};
+		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_dte_voucher], privilegios:[]};
 	}else if(usuario=="marcelo.munoz" && clave=="mmunoz"){
-		return {estatus:"OK", sistemas:[facturacion, refacturacion], privilegios:[]};
+		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_dte_voucher], privilegios:[]};
 	}else if(usuario=="op" && clave=="1q2w3e.,"){
-		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_pagas, dte_manua ], privilegios:[]};
+		return {estatus:"OK", sistemas:[facturacion, refacturacion, sistema_pagas, sistema_dte_voucher, dte_manua ], privilegios:[]};
 	}
 	
 	return {estatus:"NO OK"};

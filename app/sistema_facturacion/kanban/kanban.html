@@ -1589,7 +1589,7 @@ function enviar_archivos_proceso(paso){
 		else if(mes_facturacion=="agosto"){numero_mes="08"}
 		else if(mes_facturacion=="septiembre"){numero_mes="09"}
 		else if(mes_facturacion=="octubre"){numero_mes="10"}
-		else if(mes_facturacion=="nombiembre"){numero_mes="11"}
+		else if(mes_facturacion=="noviembre"){numero_mes="11"}
 		else if(mes_facturacion=="diciembre"){numero_mes="12"} 
 		
 		var date = new Date();
@@ -2325,7 +2325,7 @@ function enviar_archivos_proceso(paso){
 				new_facturacion.push(facturacion[a])
 			
 			//SI ES biweekly ENTONCO EVALUO LAS CONDICONES
-			}else if(exclusiones_billing_period.indexOf(facturacion[a].CLIENTE_ID)>0){
+			}else if(exclusiones_billing_period.indexOf(facturacion[a].CLIENTE_ID)>=0){
 
 				// SI CONTIENE SOLO UN REGISTRO LO EVALUO
 				if(facturacion[a].TXS.length==1){
@@ -2435,8 +2435,8 @@ function messiguiente(mes_facturacion){
 	else if(mes_facturacion=="julio"){return "agosto"}
 	else if(mes_facturacion=="agosto"){return "septiembre"}
 	else if(mes_facturacion=="septiembre"){return "octubre"}
-	else if(mes_facturacion=="octubre"){return "nomviembre"}
-	else if(mes_facturacion=="nomviembre"){return "diciembre"}
+	else if(mes_facturacion=="octubre"){return "noviembre"}
+	else if(mes_facturacion=="noviembre"){return "diciembre"}
 	else if(mes_facturacion=="diciembre"){return "enero"} 
 
 }
@@ -2458,7 +2458,7 @@ function enviar_archivos_proceso_quince_dias(paso){
 		else if(mes_facturacion=="agosto"){numero_mes="08"}
 		else if(mes_facturacion=="septiembre"){numero_mes="09"}
 		else if(mes_facturacion=="octubre"){numero_mes="10"}
-		else if(mes_facturacion=="nomviembre"){numero_mes="11"}
+		else if(mes_facturacion=="noviembre"){numero_mes="11"}
 		else if(mes_facturacion=="diciembre"){numero_mes="12"} 
 		
 		var date = new Date();
@@ -3083,6 +3083,10 @@ $(".eliminar_formulario_auto").on("click", function(){$("#lista_formularios").ht
 const easypdf = require('easypdf');
 
 function ver_pdf(filePath, empresa){
+
+	let shell = require('electron').shell;
+	shell.openExternal(filePath);
+	return false;
 	
 	
 	

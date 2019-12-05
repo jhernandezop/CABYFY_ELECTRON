@@ -1,0 +1,401 @@
+descuento={
+						"formulario":'Crear DTE',
+						"contendio":[	
+										
+										
+										{
+										"grupo":"Referencias y Fechas",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"usuario",
+													"tipo":"texto",
+													"opciones":[localStorage.getItem("usuario_"+cliente_bs)],
+													"obligatorio":"si",
+													"nota":"usuario",
+													"tamanio":[0],
+													"id":"usuario"
+												},{
+													"campo":"Tipo de Doc.",
+													"tipo":"lista",
+													"opciones":[
+																{"id": 36,"tag": "Boleta Elec DEMO"},
+																{"id": 1, "tag": "BOLETA ELECTRÓNICA"},
+																{"id": 22,"tag": "BOLETA ELECTRÓNICA PRUEBA"},
+																{"id": 10,"tag": "BOLETA MANUAL"},
+																{"id": 28,"tag": "BOLETA NO AFECTA O EXENTA ELECTRÓNICA"},
+																{"id": 29,"tag": "BOLETA NO AFECTA O EXENTA ELECTRÓNICA T"},
+																{"id": 34,"tag": "Boleta prueba"},
+																{"id": 15,"tag": "FACTURA NO AFECTA O EXENTA ELECTRÓNICA"},
+																{"id": 2, "tag": "NOTA DE CRÉDITO ELECTRÓNICA"},
+																{"id": 17,"tag": "NOTA DE DÉBITO ELECTRÓNICA"},
+																
+																],
+													"obligatorio":"si",
+													"nota":"Tipo de descuento",
+													"tamanio":[12,4,4],
+													"id":"tip_descuento"
+												}
+												,{
+													"campo":"Fecha de Emisión",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha Emisión",
+													"tamanio":[12,4,4],
+													"id":"fecha_emision"
+												},{
+													"campo":"Fecha de Vencimiento",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha Emisión",
+													"tamanio":[12,4,4],
+													"id":"fecha_vencimiento"
+												},{
+													"campo":"Rut Cliente",
+													"tipo":"rut",
+													"opciones":["24.834.577-2"],
+													"obligatorio":"si",
+													"nota":"Rut de cliente",
+													"tamanio":[12,4,4],
+													"id":"rut_cliente"
+												},{
+													"campo":"Razón Social",
+													"tipo":"texto",
+													"opciones":["imaginex"],
+													"obligatorio":"si",
+													"nota":"Razón Social",
+													"tamanio":[12,8,8],
+													"id":"razon_social"
+												},{
+													"campo":"E-mail",
+													"tipo":"texto",
+													"opciones":["kquintero@openpartner.cl"],
+													"obligatorio":"si",
+													"nota":"E-mail de cliente",
+													"tamanio":[12,4,4],
+													"id":"correos_fact"
+												},{
+													"campo":"Giro",
+													"tipo":"texto",
+													"opciones":["giro"],
+													"obligatorio":"si",
+													"nota":"Giro",
+													"tamanio":[12,8,8],
+													"id":"giro"
+												},{
+													"campo":"Dirección",
+													"tipo":"texto",
+													"opciones":["direccion"],
+													"obligatorio":"si",
+													"nota":"Dirección",
+													"tamanio":[12,4,4],
+													"id":"direccion"
+												},{
+													"campo":"Ciudad",
+													"tipo":"lista",
+													"opciones":["SANTIAGO"],
+													"obligatorio":"si",
+													"nota":"Tipo de descuento",
+													"tamanio":[12,4,4],
+													"id":"ciudad"
+												},{
+													"campo":"Comuna",
+													"tipo":"lista",
+													"opciones":["LAS CONDES"],
+													"obligatorio":"si",
+													"nota":"Comuna",
+													"tamanio":[12,4,4],
+													"id":"comuna"
+												}
+												
+												]
+												
+												
+										},{
+										"grupo":"Detalles del documento",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Producto o Glosa",
+													"tipo":"lista",
+													"opciones":[{"tag":"Servicio de transporte privado remunerado de pasajeros", "id":"Servicio de transporte privado remunerado de pasajeros"}],
+													"obligatorio":"si",
+													"nota":"Producto o Glosa",
+													"tamanio":[12,12,12],
+													"id":"producto_glosa"
+												},{
+													"campo":"Precio",
+													"tipo":"numero",
+													"opciones":[500],
+													"obligatorio":"si",
+													"nota":"Precio",
+													"tamanio":[12,4,4],
+													"id":"precio"
+												},{
+													"campo":"Cantidad",
+													"tipo":"numero",
+													"opciones":[1],
+													"obligatorio":"si",
+													"nota":"Producto",
+													"tamanio":[12,4,4],
+													"id":"cantidad"
+												},{
+													"campo":"% descuento",
+													"tipo":"numero",
+													"opciones":[0],
+													"obligatorio":"si",
+													"nota":"% descuento",
+													"tamanio":[12,4,4],
+													"id":"decuento"
+												}
+												
+												]
+												
+												
+										},{
+										"grupo":"Pago del Documento",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Metodo de Pago",
+													"tipo":"lista",
+													"opciones":[
+																{"id": 21,"tag": "120 Días"},
+																{"id": 18,"tag": "30 Días"},
+																{"id": 19,"tag": "60 Días"},
+																{"id": 13,"tag": "90 Dias"},
+																{"id": 5,"tag": "CHEQUE"},
+																{"id": 2,"tag": "TARJETA CREDITO"},
+																{"id": 8,"tag": "TRANSFERENCIA BANCARIA"},
+													],
+													"obligatorio":"si",
+													"nota":"Metodo de Pago",
+													"tamanio":[6,6,6],
+													"id":"metodo_pago"
+												}
+												
+												]
+												
+												
+										},{
+										"grupo":"Referencias del Documento",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<div class="well well-sm">Doc. de Ref.</div>'],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,2,2],
+													"id":"div_01"
+												},{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<div class="well well-sm">Folio Doc. de Ref.</div>'],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,2,2],
+													"id":"div_02"
+												},{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<div class="well well-sm">Fecha Doc. de Ref.</div>'],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,2,2],
+													"id":"div_03"
+												},{
+													"campo":"",
+													"tipo":"div",
+													"opciones":['<div class="well well-sm">Razón de Doc.</div>'],
+													"obligatorio":"no",
+													"nota":"",
+													"tamanio":[12,6,6],
+													"id":"div_04"
+												}
+												
+												
+												]
+										},{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Doc.",
+													"tipo":"lista",
+													"opciones":[
+																{"tag": "Boleta","id":35},
+																{"tag": "Boleta Electrónica","id":39},
+																{"tag": "HES","codeSii": "HES"},
+																{"tag": "Factura No Afecta o Exenta Electrónica","id":34},
+																{"tag": "Contrato","id":803},
+													],
+													"obligatorio":"si",
+													"nota":"Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"doc_01"
+												},{
+													"campo":"",
+													"tipo":"numero",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Folio Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"folio_01"
+												},{
+													"campo":"",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Fecha Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"fecha_doc_01"
+												},{
+													"campo":"",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"si",
+													"nota":"Razón de Doc.",
+													"tamanio":[12,6,6],
+													"id":"razon_doc_01"
+												}
+										]
+										},{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Doc.",
+													"tipo":"lista",
+													"opciones":[
+																{"tag": "Boleta","id":35},
+																{"tag": "Boleta Electrónica","id":39},
+																{"tag": "HES","codeSii": "HES"},
+																{"tag": "Factura No Afecta o Exenta Electrónica","id":34},
+																{"tag": "Contrato","id":803},
+													],
+													"obligatorio":"si",
+													"nota":"Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"doc_02"
+												},{
+													"campo":"",
+													"tipo":"numero",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Folio Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"folio_02"
+												},{
+													"campo":"",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Fecha Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"fecha_doc_02"
+												},{
+													"campo":"",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Razón de Doc.",
+													"tamanio":[12,6,6],
+													"id":"razon_doc_02"
+												}
+										]
+										},{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Doc.",
+													"tipo":"lista",
+													"opciones":[
+																{"tag": "Boleta","id":35},
+																{"tag": "Boleta Electrónica","id":39},
+																{"tag": "HES","codeSii": "HES"},
+																{"tag": "Factura No Afecta o Exenta Electrónica","id":34},
+																{"tag": "Contrato","id":803},
+													],
+													"obligatorio":"si",
+													"nota":"Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"doc_03"
+												},{
+													"campo":"",
+													"tipo":"numero",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Folio Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"folio_03"
+												},{
+													"campo":"",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Fecha Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"fecha_doc_03"
+												},{
+													"campo":"",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Razón de Doc.",
+													"tamanio":[12,6,6],
+													"id":"razon_doc_03"
+												}
+										]
+										},{
+										"grupo":"",
+										"tamanio":[12,12,12],
+										"campos":[{
+													"campo":"Doc.",
+													"tipo":"lista",
+													"opciones":[
+																{"tag": "Boleta","id":35},
+																{"tag": "Boleta Electrónica","id":39},
+																{"tag": "HES","codeSii": "HES"},
+																{"tag": "Factura No Afecta o Exenta Electrónica","id":34},
+																{"tag": "Contrato","id":803},
+													],
+													"obligatorio":"si",
+													"nota":"Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"doc_04"
+												},{
+													"campo":"",
+													"tipo":"numero",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Folio Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"folio_04"
+												},{
+													"campo":"",
+													"tipo":"fecha",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Fecha Doc. de Ref.",
+													"tamanio":[12,2,2],
+													"id":"fecha_doc_04"
+												},{
+													"campo":"",
+													"tipo":"texto",
+													"opciones":[],
+													"obligatorio":"no",
+													"nota":"Razón de Doc.",
+													"tamanio":[12,6,6],
+													"id":"razon_doc_04"
+												}
+										]
+												
+												
+										}
+									
+						],
+						"opciones":[{
+							"boton":"Generar Factura",
+							"ws":"",
+							"funcion":"generar_factura()"
+						}]
+				
+}

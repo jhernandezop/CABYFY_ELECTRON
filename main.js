@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, shell, BrowserWindow} = require('electron')
 const electron = require('electron');
 const showdown  = require('showdown');
 const PDFWindow = require('electron-pdf-window')
@@ -43,6 +43,10 @@ function createWindow () {
 	//mainWindow.openDevTools();
   // Open the DevTools.
    //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.on("new-window", function(event, url) {
+      event.preventDefault();
+      shell.openExternal(url);
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

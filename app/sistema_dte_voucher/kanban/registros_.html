@@ -1,0 +1,104 @@
+
+<!--<div id="kanaban_load"></div>-->
+<style>
+
+.dropdown-menu {
+	max-height: 200px !important;
+}
+
+@media print{
+  #lista_tareas, .seccion-head, #foooter, .barra_tareas, #header *{
+    display: none !important;
+  }
+  
+  
+  
+  
+  #lista_formularios{
+	  margin-top:-120px;
+	  overflow:hidden;
+	  position:absolute;
+  }
+  
+  .kanaban_load {
+   
+    top: 0px;
+}
+}
+
+td.details-control {
+    background: url('assets/libs/datatables/resource/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('assets/libs/datatables/resource/details_close.png') no-repeat center center;
+}
+
+#lista_formularios{
+
+	padding: 20px;
+	margin-top: 0px;
+}
+
+#lista_opciones_interz{
+	display: none;
+}
+
+.header_formularios h2{
+	margin-top: 0px;
+}
+
+#lista_formularios .conter_loader {
+    background: #ffffff96 !important;
+}
+
+.conter_loader .alert-success{
+	position: absolute;
+    top: 40%;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+}
+
+</style>
+<div class="col-12" id="lista_formularios">
+	
+</div>
+<script type="text/javascript">
+fecha_actualizacion="?08082018";
+key="";
+identificador="";
+posicion_usuario="";
+posicion_tarea="";
+tarea_seleccionada="";
+parametros_formulario="";
+ws="";
+if (window.filtros_seleccionados){filtros_seleccionados=filtros_seleccionados}else{filtros_seleccionados=[];}
+if (window.tipo_filtro){tipo_filtro=tipo_filtro}else{tipo_filtro="";}
+if (window.parametro_filtro){parametro_filtro=parametro_filtro}else{parametro_filtro="";}
+
+//GALERIA DE OBJETOS
+nota_accion="";
+nota_campo_edicion="<div class='nota_selcciona'><i class='fas fa-edit' aria-hidden='true'></i></div>";
+nota_lista="<div class='nota_selcciona'><i class='fa fa-list-alt' aria-hidden='true'></i></div>";
+nota_realizado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+error_ws="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Realizado</span></span></div>";
+nota_correo_enviado="<div class='nota_selcciona'><span class='positivo'><i class='fa fa-check' aria-hidden='true'></i><span>Enviado</span></span></div>";
+nota_registro_cambio="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-refresh' aria-hidden='true'></i><span>REGISTRO CAMBIO DE ESTADO</span></span></div>";
+nota_registro_bloqueado="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO BLOQUEADO</span></span></div>";
+nota_desbloqueo="<div class='nota_selcciona_modal'><span class='advertencia'><i class='fa fa-lock' aria-hidden='true'></i><span>REGISTRO DESBLOQUEADO</span></span></div>";
+nota_accion=nota_campo_edicion
+camban_cargado=[];
+
+
+fichas_fichas=[]
+
+//tipo_filtro="";
+//parametro_filtro="";
+
+
+
+
+</script>
+
+
