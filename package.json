@@ -47,7 +47,7 @@
     }
   },
   "devDependencies": {
-    "electron": "^4.0.6",
+    "electron": "^15.5.5",
     "electron-builder": "^20.43.0",
     "xlsx": "^0.14.1"
   },
